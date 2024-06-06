@@ -1,4 +1,4 @@
-<img align="left" width="40" height="40"
+<img align="left" width="60" height="60"
 src=".github/repo_icon.png" alt="App icon">
 
 # Inkwell Keyboard
