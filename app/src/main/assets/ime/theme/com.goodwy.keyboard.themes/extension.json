@@ -1,0 +1,77 @@
+{
+  "$": "ime.extension.theme",
+  "meta": {
+    "id": "com.goodwy.keyboard.themes",
+    "version": "0.1.0",
+    "title": "Inkwell default themes",
+    "description": "Default themes (both day and night) for the keyboard UI",
+    "maintainers": [ "Goodwy (https://play.google.com/store/apps/dev?id=8268163890866913014)" ],
+    "license": "apache-2.0"
+  },
+  "themes": [
+    {
+      "id": "gboard_day",
+      "label": "Gboard Day",
+      "authors": [ "Goodwy" ],
+      "isNight": false,
+      "isBorderless": false,
+      "isMaterialYouAware": true
+    },
+    {
+      "id": "gboard_night",
+      "label": "Gboard Night",
+      "authors": [ "Goodwy" ],
+      "isNight": true,
+      "isBorderless": false,
+      "isMaterialYouAware": true
+    },
+    {
+      "id": "ios_day",
+      "label": "iOS Day",
+      "authors": [ "Goodwy" ],
+      "isNight": false,
+      "isBorderless": false,
+      "isMaterialYouAware": false
+    },
+    {
+      "id": "ios_night",
+      "label": "iOS Night",
+      "authors": [ "Goodwy" ],
+      "isNight": true,
+      "isBorderless": false,
+      "isMaterialYouAware": false
+    },
+    {
+      "id": "ios_pure_night",
+      "label": "iOS Pure Night",
+      "authors": [ "Goodwy" ],
+      "isNight": true,
+      "isBorderless": false,
+      "isMaterialYouAware": false
+    },
+    {
+      "id": "sea_melody_day",
+      "label": "Sea Melody Beta",
+      "authors": [ "Goodwy" ],
+      "isNight": false,
+      "isBorderless": false,
+      "isMaterialYouAware": false
+    },
+    {
+      "id": "vintage_night",
+      "label": "Vintage Night Beta",
+      "authors": [ "Goodwy" ],
+      "isNight": true,
+      "isBorderless": false,
+      "isMaterialYouAware": false
+    },
+    {
+      "id": "vintage_candy_day",
+      "label": "Candy Day Beta",
+      "authors": [ "Goodwy" ],
+      "isNight": false,
+      "isBorderless": false,
+      "isMaterialYouAware": false
+    }
+  ]
+}

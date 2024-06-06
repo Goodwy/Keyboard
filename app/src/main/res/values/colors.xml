@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#5589F1</color>
+    <color name="colorPrimaryDark">#2960f5</color><!-- Indigo 700 -->
+    <color name="colorAccent">#FF9800</color><!-- Orange 500 -->
+    <color name="colorAccentDark">#F57C00</color><!-- Orange 700 -->
+
+    <color name="colorSuccess">@color/colorPrimary</color>
+    <color name="textColorSuccess">#FFFFFF</color><!-- White -->
+    <color name="colorWarning">#FFFF00</color><!-- Yellow A200 -->
+    <color name="textColorWarning">#000000</color><!-- Black -->
+    <color name="colorError">#B00020</color><!-- Red 1000? -->
+    <color name="textColorError">#FFFFFF</color><!-- White -->
+
+    <color name="ic_app_icon_background">#FEE501</color>
+    <color name="ic_app_icon_stable_background">@color/ic_app_icon_background</color>
+    <color name="ic_app_icon_beta_background">#272B2D</color>
+    <color name="ic_app_icon_debug_background">@color/ic_app_icon_background</color>
+
+    <color name="cardViewBackgroundColor">#FFFFFF</color><!-- White -->
+    <color name="navigationBarColor">#000000</color><!-- Black -->
+    <color name="toolbarForegroundColor">#000000</color><!-- Black -->
+    <color name="windowBackground">#FAFAFA</color><!-- Gray 50 -->
+
+    <color name="florisApp_windowBackground">#FFFFFFFF</color>
+</resources>

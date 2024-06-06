@@ -1,0 +1,35 @@
+<resources>
+    <string name="florisboard__repo_url" translatable="false">https://github.com/goodwy/keyboard</string>
+    <string name="florisboard__issue_tracker_url" translatable="false">https://github.com/goodwy/keyboard/issues</string>
+    <string name="florisboard__privacy_policy_url" translatable="false">https://sites.google.com/view/goodwy/about/privacy-policy-inkwell-keyboard</string>
+    <string name="florisboard__changelog_url" translatable="false">https://github.com/goodwy/keyboard/releases/v{version}</string>
+    <string name="florisboard__commit_by_hash_url" translatable="false">https://github.com/goodwy/keyboard/commit/{hash}</string>
+    <string name="florisboard__spell_checker_wiki_url" translatable="false">https://github.com/goodwy/keyboard/wiki/System-spell-checker-service</string>
+    <string name="florisboard__theme_editor_wiki_url" translatable="false">https://github.com/goodwy/keyboard/wiki/Using-the-new-Theme-Editor</string>
+    <string name="florisboard__internal_key_codes_url" translatable="false">https://github.com/goodwy/keyboard/blob/master/app/src/main/kotlin/dev/patrickgold/florisboard/ime/text/key/KeyCode.kt</string>
+    <string name="florisboard__character_key_codes_url" translatable="false">https://unicode-table.com/en</string>
+
+    <string name="general__system_string_placeholder" translatable="false">%s</string>
+    <string name="general__empty_string" translatable="false"/>
+    <string name="general__invalid_fatal" translatable="false">!! invalid !!</string>
+
+    <string name="key__view_characters" translatable="false">ABC</string>
+    <string name="key__view_numeric" translatable="false">1 2\n3 4</string>
+    <string name="key__view_phone" translatable="false">123</string>
+    <string name="key__view_phone2" translatable="false">* #</string>
+    <string name="key__view_symbols" translatable="false">\?1#</string><!--\?123-->
+    <string name="key__view_symbols2" translatable="false">=\\&lt;</string>
+    <string name="key__view_half_space" translatable="false">&#8626;</string>
+    <string name="key__view_keshida" translatable="false">"یــــ"</string>
+    <string name="key__dotted_circle" translatable="false">&#9676;</string>
+
+    <!-- Media strings -->
+    <string name="media__tab__emoticons_label" translatable="false">;-)</string>
+    <string name="media__tab__kaomoji_label" translatable="false">(^-^*)/</string>
+
+    <!-- Goodwy -->
+    <string name="inkwell__google_play_url" translatable="false">https://play.google.com/store/apps/details?id=com.goodwy.keyboard</string>
+    <string name="inkwell__google_play_apps_url" translatable="false">https://play.google.com/store/apps/dev?id=8268163890866913014</string>
+    <string name="inkwell__rustore_url" translatable="false">https://apps.rustore.ru/app/com.goodwy.keyboard</string>
+    <string name="inkwell__rustore_apps_url" translatable="false">rustore://apps.rustore.ru/developer/d01f495d</string>
+</resources>

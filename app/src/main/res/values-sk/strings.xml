@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name">FlorisBoard</string>
+    <string name="key__phone_pause" comment="Label for the Pause key in the telephone keyboard layout">Pauza</string>
+    <string name="key__phone_wait" comment="Label for the Wait key in the telephone keyboard layout">Počkajte</string>
+    <string name="key_popup__threedots_alt" comment="Content description for the three-dots icon in a key popup">Ikona s tromi bodkami. Ak je viditeľná, znamená, že po dlhšom stlačení je možné použiť viac písmen.</string>
+    <!-- One-handed strings -->
+    <string name="one_handed__close_btn_content_description" comment="Content description for the one-handed close button">Režim zatvárania jednou rukou.</string>
+    <string name="one_handed__move_start_btn_content_description" comment="Content description for the one-handed move to left button">Presuňte klávesnicu doľava.</string>
+    <string name="one_handed__move_end_btn_content_description" comment="Content description for the one-handed move to right button">Presuňte klávesnicu doprava.</string>
+    <!-- Media strings -->
+    <string name="media__tab__emojis" comment="Tab description for emojis in the media UI">Emoji</string>
+    <string name="media__tab__emoticons" comment="Tab description for emoticons in the media UI">Emotívny</string>
+    <string name="media__tab__kaomoji" comment="Tab description for kaomoji in the media UI">Kaomoji</string>
+    <!-- Emoji strings -->
+    <string name="emoji__category__smileys_emotion" comment="Emoji category name">Smajlíky &amp; Emócie</string>
+    <string name="emoji__category__people_body" comment="Emoji category name">Ľudia &amp; Telo</string>
+    <string name="emoji__category__animals_nature" comment="Emoji category name">Zvieratá &amp; Príroda</string>
+    <string name="emoji__category__food_drink" comment="Emoji category name">Potraviny a nápoje</string>
+    <string name="emoji__category__travel_places" comment="Emoji category name">Cestovanie &amp; Miesta</string>
+    <!-- Quick action strings -->
+    <!-- Incognito mode strings -->
+    <!-- Settings UI strings -->
+    <string name="settings__home__ime_not_enabled" comment="Error message shown in Home fragment when FlorisBoard is not enabled in the system">FlorisBoard nie je v systéme povolený, a preto nebude k dispozícii, ako metóda zadávania v ponuke na výber vstupov. Kliknutím sem tento problém vyriešite.</string>
+    <string name="settings__home__ime_not_selected" comment="Warning message shown in Home fragment when FlorisBoard is not selected as the default keyboard">FlorisBoard nie je vybraný, ako predvolená metóda zadávania. Kliknutím sem tento problém vyriešite.</string>
+    <string name="settings__localization__subtype_add_title" comment="Title of subtype dialog when adding a new subtype">Pridať podtyp</string>
+    <string name="settings__localization__subtype_no_subtypes_configured_warning" comment="Warning message that no subtype has been defined">Zdá sa, že ste nenakonfigurovali žiadne podtypy. Ako náhradný sa použije podtyp Angličtina/QWERTY!</string>
+    <string name="pref__theme__night" comment="Label of the night group (night means dark theme)">Nočná téma</string>
+    <string name="pref__theme__any_theme__label" comment="Label of the theme selector preference">Vybraná téma</string>
+    <string name="pref__theme__any_theme_adapt_to_app__label" comment="Label of the theme adapt to app preference">Prispôsobenie farieb aplikácii</string>
+    <string name="pref__theme__any_theme_adapt_to_app__summary" comment="Summary of the theme adapt to app preference">Farby motívu sa prispôsobia farbám v aktuálnej aplikácii, ak to cieľová aplikácia podporuje.</string>
+    <string name="pref__theme__source_assets" comment="Label for the theme source field">Aktíva aplikácie FlorisBoard</string>
+    <string name="pref__theme__source_internal" comment="Label for the theme source field">Interné úložisko</string>
+    <string name="pref__theme__source_external" comment="Label for the theme source field">Externý poskytovateľ</string>
+    <string name="pref__input_feedback__haptic_vibration_strength__summary_no_amplitude_ctrl" comment="Preference summary">Táto funkcia vyžaduje hardvérovú podporu riadenia amplitúdy, ktorá vo vašom zariadení chýba.</string>
+    <string name="pref__input_feedback__haptic_vibration_strength__summary_unsupported_android_version" comment="Preference summary">Táto funkcia vyžaduje podporu ovládania amplitúdy, ktorá je k dispozícii len v systéme Android 8.0 alebo novšom.</string>
+    <string name="pref__input_feedback__haptic_feat_key_press__label" comment="Preference title">Vibrácie pri stlačení tlačidla</string>
+    <string name="pref__input_feedback__haptic_feat_key_long_press__label" comment="Preference title">Vibrácie pri dlhom stlačení tlačidla</string>
+    <string name="pref__input_feedback__haptic_feat_key_repeated_action__label" comment="Preference title">Kľúčové opakované vibrácie</string>
+    <string name="pref__input_feedback__haptic_feat_gesture_swipe__label" comment="Preference title">Vibrácie pri posúvaní gestom</string>
+    <string name="pref__input_feedback__haptic_feat_gesture_moving_swipe__label" comment="Preference title">Vibrácie pri posúvaní gestom</string>
+    <string name="pref__input_feedback__any_feat_key_press__summary" comment="Preference summary">Napr. Klávesy, tlačidlá, karty emoji</string>
+    <string name="pref__input_feedback__any_feat_key_long_press__summary" comment="Preference summary">Napr. Vyskakovanie menu</string>
+    <string name="pref__input_feedback__any_feat_key_repeated_action__summary" comment="Preference summary">Napr. Kláves delete</string>
+    <string name="pref__input_feedback__any_feat_gesture_swipe__summary" comment="Preference summary">nerealizované</string>
+    <string name="pref__input_feedback__any_feat_gesture_moving_swipe__summary" comment="Preference summary">Napr. Ovládanie kurzora potiahnutím</string>
+    <string name="settings__keyboard__title" comment="Title of Keyboard preferences screen">Klávesnica</string>
+    <string name="pref__keyboard__number_row__label" comment="Preference title">Číselný riadok</string>
+    <string name="pref__keyboard__hinted_number_row_mode__label" comment="Preference title">Naznačený číselný rad</string>
+    <string name="pref__keyboard__hinted_symbols_mode__label" comment="Preference title">Naznačené symboly</string>
+    <string name="pref__keyboard__utility_key_enabled__label" comment="Preference title">Zobrazenie pomocného kľúča</string>
+    <string name="pref__keyboard__utility_key_enabled__summary" comment="Preference summary">Zobrazí konfigurovateľný pomocný kláves vedľa medzerníka</string>
+    <string name="pref__keyboard__utility_key_action__label" comment="Preference title">Akcia užitočného kľúča</string>
+    <!-- Smartbar strings -->
+    <string name="settings__smartbar__title" comment="Title of Smartbar screen">Smartbar</string>
+    <!-- Typing strings -->
+    <!-- About UI strings -->
+    <!-- Setup UI strings -->
+    <!-- Back up & Restore -->
+    <!-- Crash Dialog strings -->
+    <!-- Clipboard strings -->
+    <!-- Devtools strings -->
+    <!-- Extension strings -->
+    <!-- Action strings -->
+    <!-- Error strings (generic) -->
+    <!-- General strings -->
+    <!-- Screen orientation strings -->
+    <!-- State strings -->
+    <string name="state__disabled">Bezbariérový</string>
+    <!-- Enum label and description strings -->
+    <string name="enum__utility_key_action__switch_to_emojis" comment="Enum value label">Prechod na emotikony</string>
+    <!-- Unit strings (symbols) -->
+    <!-- Unit strings (written words) -->
+</resources>

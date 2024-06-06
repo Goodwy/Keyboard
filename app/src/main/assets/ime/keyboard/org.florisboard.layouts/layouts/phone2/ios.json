@@ -1,0 +1,28 @@
+[
+  [
+    { "$": "layout_direction_selector",
+      "ltr": { "code":   40, "label": "(" },
+      "rtl": { "code":   41, "label": "(" }
+    },
+    { "code":   47, "label": "/" },
+    { "$": "layout_direction_selector",
+      "ltr": { "code":   41, "label": ")" },
+      "rtl": { "code":   40, "label": ")" }
+    }
+  ],
+  [
+    { "code":   44, "label": "pause", "type": "system_gui" },
+    { "code":   78, "label": "N" },
+    { "code":   59, "label": "wait", "type": "system_gui" }
+  ],
+  [
+    { "code":   42, "label": "*" },
+    { "code":   45, "label": "-" },
+    { "code":   35, "label": "#" }
+  ],
+  [
+    { "code": -206, "label": "view_phone", "type": "system_gui" },
+    { "code":   43, "label": "+" },
+    { "code":   -7, "label": "delete", "type": "enter_editing" }
+  ]
+]
