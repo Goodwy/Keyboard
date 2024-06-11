@@ -317,7 +317,7 @@ private fun PreferenceUiScope<AppPrefs>.steps(
                 id = Steps.WithNotifications.SelectNotification.id,
                 title = stringRes(R.string.setup__grant_notification_permission__title)
             ) {
-                StepText(stringRes(R.string.setup__grant_notification_permission__description_g))
+                StepText(stringRes(com.goodwy.keyboard.strings.R.string.setup__grant_notification_permission__description_g))
                 StepButton(stringRes(R.string.setup__grant_notification_permission__btn)) {
                     if (AndroidVersion.ATLEAST_API33_T) {
                         requestNotification.launch(android.Manifest.permission.POST_NOTIFICATIONS)

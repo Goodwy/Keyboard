@@ -165,7 +165,7 @@ fun ThemeManagerScreen(action: ThemeManagerScreenAction?) = FlorisScreen {
                 )
                 Spacer(modifier = Modifier.size(12.dp))
                 Text(
-                    text = stringRes(id = R.string.settings__uses_material_you__label),
+                    text = stringRes(id = com.goodwy.keyboard.strings.R.string.settings__uses_material_you__label),
                     color = grayColor,
                     fontSize = 14.sp,
                     lineHeight = 14.sp,

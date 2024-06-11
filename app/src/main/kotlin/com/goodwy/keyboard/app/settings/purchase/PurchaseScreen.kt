@@ -82,11 +82,12 @@ import com.sdkit.paylib.paylibsdk.client.domain.DefaultPaylibClientInfoProvider.
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 import dev.patrickgold.jetpref.datastore.ui.LocalDefaultDialogPrefStrings
 import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
+import com.goodwy.keyboard.strings.R as StringsR
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PurchaseScreen() = FlorisScreen {
-    title = stringRes(R.string.tipping_jar_title)
+    title = stringRes(StringsR.string.tipping_jar_title)
 
     val context = LocalContext.current
 
@@ -144,7 +145,7 @@ fun PurchaseScreen() = FlorisScreen {
                 Spacer(modifier = Modifier.size(8.dp))
             }
             val isRustore = !useGooglePlay && isRuStoreInstalled
-            val textButton = stringRes(R.string.restore_purchase)
+            val textButton = stringRes(StringsR.string.restore_purchase)
             Box(
                 modifier = Modifier
                     .combinedClickable(
@@ -174,7 +175,7 @@ fun PurchaseScreen() = FlorisScreen {
 //            ) {
 //                Icon(
 //                    painter = painterResource(id = R.drawable.ic_restore_purchase),
-//                    contentDescription = stringRes(R.string.restore_purchase),
+//                    contentDescription = stringRes(StringsR.string.restore_purchase),
 //                )
 //            }
 
@@ -193,7 +194,7 @@ fun PurchaseScreen() = FlorisScreen {
                         context.launchUrlNew(url)
                         expanded = false
                     },
-                    text = { Text(text = stringRes(R.string.billing_subscriptions)) },
+                    text = { Text(text = stringRes(StringsR.string.billing_subscriptions)) },
                 )
             }
         }
@@ -201,22 +202,22 @@ fun PurchaseScreen() = FlorisScreen {
 
     content {
 
-        val failed = stringResource(R.string.tipping_jar_dialog_error_title)
+        val failed = stringResource(StringsR.string.tipping_jar_dialog_error_title)
         val prices1 = if (useGooglePlay) { if (products1.valid) products1.price else failed } else productsRustore1.price
         val prices2 = if (useGooglePlay) { if (products2.valid) products2.price else failed } else productsRustore2.price
         val prices3 = if (useGooglePlay) { if (products3.valid) products3.price else failed } else productsRustore3.price
-        val prices4 = if (useGooglePlay) { if (products4.valid) stringResource(id = R.string.per_month, products4.price) else failed }
-                                else stringResource(id = R.string.per_month, productsRustore4.price)
-        val prices5 = if (useGooglePlay) { if (products5.valid) stringResource(id = R.string.per_month, products5.price) else failed }
-                                else stringResource(id = R.string.per_month, productsRustore5.price)
-        val prices6 = if (useGooglePlay) { if (products6.valid) stringResource(id = R.string.per_month, products6.price) else failed }
-                                else stringResource(id = R.string.per_month, productsRustore6.price)
-        val prices7 = if (useGooglePlay) { if (products7.valid) stringResource(id = R.string.per_month, products7.price) else failed }
-                                else stringResource(id = R.string.per_month, productsRustore7.price)
-        val prices8 = if (useGooglePlay) { if (products8.valid) stringResource(id = R.string.per_month, products8.price) else failed }
-                                else stringResource(id = R.string.per_month, productsRustore8.price)
-        val prices9 = if (useGooglePlay) { if (products9.valid) stringResource(id = R.string.per_month, products9.price) else failed }
-                                else stringResource(id = R.string.per_month, productsRustore9.price)
+        val prices4 = if (useGooglePlay) { if (products4.valid) stringResource(id = StringsR.string.per_month, products4.price) else failed }
+                                else stringResource(id = StringsR.string.per_month, productsRustore4.price)
+        val prices5 = if (useGooglePlay) { if (products5.valid) stringResource(id = StringsR.string.per_month, products5.price) else failed }
+                                else stringResource(id = StringsR.string.per_month, productsRustore5.price)
+        val prices6 = if (useGooglePlay) { if (products6.valid) stringResource(id = StringsR.string.per_month, products6.price) else failed }
+                                else stringResource(id = StringsR.string.per_month, productsRustore6.price)
+        val prices7 = if (useGooglePlay) { if (products7.valid) stringResource(id = StringsR.string.per_year, products7.price) else failed }
+                                else stringResource(id = StringsR.string.per_year, productsRustore7.price)
+        val prices8 = if (useGooglePlay) { if (products8.valid) stringResource(id = StringsR.string.per_year, products8.price) else failed }
+                                else stringResource(id = StringsR.string.per_year, productsRustore8.price)
+        val prices9 = if (useGooglePlay) { if (products9.valid) stringResource(id = StringsR.string.per_year, products9.price) else failed }
+                                else stringResource(id = StringsR.string.per_year, productsRustore9.price)
 
         val isPurchased1 = if (useGooglePlay) products1.purchased else productsRustore1.purchased
         val isPurchased2 = if (useGooglePlay) products2.purchased else productsRustore2.purchased
@@ -262,7 +263,7 @@ fun PurchaseScreen() = FlorisScreen {
                         .size(108.dp)
                         .padding(12.dp),
                     painter = painterResource(id = R.drawable.ic_plus_support),
-                    contentDescription = stringResource(id = R.string.action_support_project),
+                    contentDescription = stringResource(id = StringsR.string.action_support_project),
                     tint = MaterialTheme.colorScheme.secondary,
                 )
             }
@@ -270,9 +271,17 @@ fun PurchaseScreen() = FlorisScreen {
 
             if (isPlayStoreInstalled || isRuStoreInstalled) {
                 Text(
-                    text = stringResource(R.string.action_support_project),
+                    text = stringResource(StringsR.string.action_support_project),
                     fontSize = 18.sp,
                     textAlign = TextAlign.Center,
+                )
+                Spacer(modifier = Modifier.size(8.dp))
+                Text(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    text = stringResource(com.goodwy.keyboard.strings.R.string.any_support_unlock_all),
+                    fontSize = 13.sp,
+                    lineHeight = 16.sp,
+                    color = LocalContentColor.current.copy(alpha = 0.5F),
                 )
                 Spacer(modifier = Modifier.size(16.dp))
                 Row(
@@ -304,7 +313,7 @@ fun PurchaseScreen() = FlorisScreen {
                                     .height(52.dp)
                                     .padding(horizontal = 2.dp)
                                     .wrapContentHeight(),
-                                text = stringResource(R.string.tip_kind),
+                                text = stringResource(StringsR.string.tip_kind),
                                 fontSize = 14.sp,
                                 lineHeight = 14.sp,
                                 textAlign = TextAlign.Center,
@@ -425,7 +434,7 @@ fun PurchaseScreen() = FlorisScreen {
                                     .height(52.dp)
                                     .padding(horizontal = 2.dp)
                                     .wrapContentHeight(),
-                                text = stringResource(R.string.tip_excellent),
+                                text = stringResource(StringsR.string.tip_excellent),
                                 fontSize = 14.sp,
                                 lineHeight = 14.sp,
                                 textAlign = TextAlign.Center,
@@ -546,7 +555,7 @@ fun PurchaseScreen() = FlorisScreen {
                                     .height(52.dp)
                                     .padding(horizontal = 2.dp)
                                     .wrapContentHeight(),
-                                text = stringResource(R.string.tip_incredible),
+                                text = stringResource(StringsR.string.tip_incredible),
                                 fontSize = 14.sp,
                                 lineHeight = 14.sp,
                                 textAlign = TextAlign.Center,
@@ -670,7 +679,7 @@ fun PurchaseScreen() = FlorisScreen {
                                 )
                                 Spacer(modifier = Modifier.size(2.dp))
                                 Text(
-                                    text = stringResource(R.string.night_theme_summary),
+                                    text = stringResource(StringsR.string.night_theme_summary),
                                     lineHeight = 16.sp,
                                     color = LocalContentColor.current.copy(alpha = 0.5F),
                                 )
@@ -697,7 +706,7 @@ fun PurchaseScreen() = FlorisScreen {
                                 )
                                 Spacer(modifier = Modifier.size(2.dp))
                                 Text(
-                                    text = stringResource(R.string.theme_manager_summary),
+                                    text = stringResource(StringsR.string.theme_manager_summary),
                                     lineHeight = 16.sp,
                                     color = LocalContentColor.current.copy(alpha = 0.5F),
                                 )
@@ -715,19 +724,19 @@ fun PurchaseScreen() = FlorisScreen {
                                 .size(62.dp)
                                 .padding(5.dp),
                             painter = painterResource(id = R.drawable.ic_plus_round),
-                            contentDescription = stringResource(id = R.string.plus_title),
+                            contentDescription = stringResource(id = StringsR.string.plus_title),
                             tint = MaterialTheme.colorScheme.secondary,
                         )
                     },
                     headlineContent = {
                         Column {
                             Text(
-                                text = stringResource(R.string.plus_title),
+                                text = stringResource(StringsR.string.plus_title),
                                 fontSize = 18.sp,
                             )
                             Spacer(modifier = Modifier.size(2.dp))
                             Text(
-                                text = stringResource(R.string.plus_summary),
+                                text = stringResource(StringsR.string.plus_summary),
                                 lineHeight = 16.sp,
                                 color = LocalContentColor.current.copy(alpha = 0.5F),
                             )
@@ -757,7 +766,7 @@ fun PurchaseScreen() = FlorisScreen {
                 }
                 if (isDialogOpen.value) {
                     val signatureError = purchaseErrorRustore == "Application signature not correct"
-                    val subtitle = if (signatureError) stringRes(R.string.billing_error_application_signature_not_correct)
+                    val subtitle = if (signatureError) stringRes(StringsR.string.billing_error_application_signature_not_correct)
                                             else stringRes(ru.rustore.sdk.billingclient.R.string.ru_store_user_unauthorized_title)
                     JetPrefAlertDialog(
                         title = stringRes(R.string.error__title),
@@ -818,7 +827,7 @@ fun PurchaseScreen() = FlorisScreen {
                 ) {
                     Text(
                         modifier = Modifier.padding(horizontal = 24.dp),
-                        text = stringResource(R.string.donate_text),
+                        text = stringResource(StringsR.string.donate_text),
                         textAlign = TextAlign.Center,
                     )
                     Spacer(modifier = Modifier.size(16.dp))
@@ -828,10 +837,10 @@ fun PurchaseScreen() = FlorisScreen {
                         //shape = RoundedCornerShape(10.dp),
                         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp)
                     ) {
-                        Text(stringResource(R.string.action_support_project))
+                        Text(stringResource(StringsR.string.action_support_project))
                     }
                     Spacer(modifier = Modifier.size(56.dp))
-                    Text(stringResource(R.string.unlock))
+                    Text(stringResource(StringsR.string.unlock))
                     Spacer(modifier = Modifier.size(8.dp))
                     Switch(
                         modifier = Modifier.scale(2f),

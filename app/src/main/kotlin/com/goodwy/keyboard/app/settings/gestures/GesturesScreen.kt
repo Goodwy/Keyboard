@@ -149,13 +149,13 @@ fun GesturesScreen() = FlorisScreen {
             DividerRow(start = 16.dp)
             ListPreferenceRow(
                 prefs.gestures.spaceBarSwipeDown,
-                title = stringRes(R.string.pref__gestures__space_bar_swipe_down__label_g),
+                title = stringRes(com.goodwy.keyboard.strings.R.string.pref__gestures__space_bar_swipe_down__label_g),
                 entries = SwipeAction.generalListEntries(),
             )
             DividerRow(start = 16.dp)
             SwitchPreferenceRow(
                 prefs.gestures.useHideLabelWhenMoveCursor,
-                title = stringRes(R.string.pref__gestures__use_hide_label_when_move_cursor__label),
+                title = stringRes(com.goodwy.keyboard.strings.R.string.pref__gestures__use_hide_label_when_move_cursor__label),
                 enabledIf = { prefs.gestures.spaceBarSwipeUp isEqualTo SwipeAction.MOVE_CURSOR_UP && prefs.gestures.spaceBarSwipeLeft isEqualTo SwipeAction.MOVE_CURSOR_LEFT
                     && prefs.gestures.spaceBarSwipeRight isEqualTo SwipeAction.MOVE_CURSOR_RIGHT && prefs.gestures.spaceBarSwipeDown isEqualTo SwipeAction.MOVE_CURSOR_DOWN},
             )

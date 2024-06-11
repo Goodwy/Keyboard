@@ -77,7 +77,7 @@ import java.text.DateFormat
 import java.util.*
 
 object Restore {
-    const val MIN_VERSION_CODE = 64
+    const val MIN_VERSION_CODE = 20
     const val PACKAGE_NAME = "com.goodwy.keyboard"
     const val BACKUP_ARCHIVE_FILE_NAME = "backup.zip"
 

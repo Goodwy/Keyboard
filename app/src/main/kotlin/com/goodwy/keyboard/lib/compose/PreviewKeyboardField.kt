@@ -197,7 +197,7 @@ fun PreviewKeyboardField(
         val dialogStrings = LocalDefaultDialogPrefStrings.current
         val (tmpListPrefValue, setTmpListPrefValue) = remember { mutableIntStateOf(previewKeyboardTypePref.get()) }
         JetPrefAlertDialog(
-            title = stringRes(id = R.string.settings__keyboard_type),
+            title = stringRes(id = com.goodwy.keyboard.strings.R.string.settings__keyboard_type),
             confirmLabel = dialogStrings.confirmLabel,
             onConfirm = {
                 previewKeyboardTypePref.set(tmpListPrefValue)
@@ -237,11 +237,11 @@ fun PreviewKeyboardField(
                             modifier = Modifier.padding(end = 12.dp),
                         )
                         val typeText = when(type) {
-                            3 -> R.string.settings__number
+                            3 -> com.goodwy.keyboard.strings.R.string.settings__number
                             4 -> R.string.clipboard__item_description_phone
                             5 -> R.string.clipboard__item_description_url
                             6 -> R.string.clipboard__item_description_email
-                            else -> R.string.settings__text
+                            else -> com.goodwy.keyboard.strings.R.string.settings__text
                         }
                         Text(
                             modifier = Modifier

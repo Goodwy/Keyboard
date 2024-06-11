@@ -34,19 +34,19 @@ data class Product(val id: String, var price: String, var purchased: Boolean = f
         return "Product { id=$id, price=$price, purchased=$purchased, valid=$valid }"
     }
 
-    object SerializerList : PreferenceSerializer<List<Product>> {
-        private const val DELIMITER = ";"
-
-        override fun serialize(value: List<Product>): String {
-            return value.joinToString(DELIMITER) { it.id }
-        }
-
-        override fun deserialize(value: String): List<Product> {
-            return value.split(DELIMITER).mapNotNull { rawValue ->
-                rawValue.trim().let { if (it.isBlank()) null else Product(it.trim(), "", false) }
-            }
-        }
-    }
+//    object SerializerList : PreferenceSerializer<List<Product>> {
+//        private const val DELIMITER = ";"
+//
+//        override fun serialize(value: List<Product>): String {
+//            return value.joinToString(DELIMITER) { it.id }
+//        }
+//
+//        override fun deserialize(value: String): List<Product> {
+//            return value.split(DELIMITER).mapNotNull { rawValue ->
+//                rawValue.trim().let { if (it.isBlank()) null else Product(it.trim(), "", false) }
+//            }
+//        }
+//    }
 
     companion object {
         private const val DELIMITER = ";"

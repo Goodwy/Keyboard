@@ -32,6 +32,7 @@ import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.material.icons.rounded.Savings
 import androidx.compose.material.icons.rounded.SettingsSuggest
 import androidx.compose.material.icons.rounded.Spellcheck
+import androidx.compose.material.icons.rounded.VolumeUp
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -79,14 +80,14 @@ fun HomeScreen() = FlorisScreen {
             FlorisErrorCard(
                 modifier = Modifier.padding(start = 12.dp, end = 12.dp, top = 16.dp),
                 showIcon = false,
-                text = stringRes(R.string.settings__home__ime_not_enabled_g),
+                text = stringRes(com.goodwy.keyboard.strings.R.string.settings__home__ime_not_enabled_g),
                 onClick = { InputMethodUtils.showImeEnablerActivity(context) },
             )
         } else if (!isFlorisBoardSelected) {
             FlorisWarningCard(
                 modifier = Modifier.padding(start = 12.dp, end = 12.dp, top = 16.dp),
                 showIcon = false,
-                text = stringRes(R.string.settings__home__ime_not_selected_g),
+                text = stringRes(com.goodwy.keyboard.strings.R.string.settings__home__ime_not_selected_g),
                 onClick = { InputMethodUtils.showImePicker(context) },
             )
         }
@@ -142,6 +143,13 @@ fun HomeScreen() = FlorisScreen {
                 icon = Icons.Outlined.Keyboard,
                 title = stringRes(R.string.settings__keyboard__title),
                 onClick = { navController.navigate(Routes.Settings.Keyboard) },
+            )
+            DividerRow()
+            PreferenceRow(
+                iconColor = preferencePurple,
+                icon = Icons.Rounded.VolumeUp,
+                title = stringRes(R.string.settings__input_feedback__title),
+                onClick = { navController.navigate(Routes.Settings.InputFeedback) },
             )
             DividerRow()
             PreferenceRow(
@@ -209,7 +217,7 @@ fun HomeScreen() = FlorisScreen {
             PreferenceRow(
                 iconColor = preferenceOrange,
                 icon = Icons.Rounded.Savings,
-                title = stringRes(R.string.tipping_jar_title),
+                title = stringRes(com.goodwy.keyboard.strings.R.string.tipping_jar_title),
                 onClick = { navController.navigate(Routes.Settings.Purchase) },
             )
             DividerRow()

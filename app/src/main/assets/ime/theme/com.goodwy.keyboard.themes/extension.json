@@ -50,8 +50,32 @@
       "isMaterialYouAware": false
     },
     {
+      "id": "n_air_day",
+      "label": "Air Day",
+      "authors": [ "Goodwy" ],
+      "isNight": false,
+      "isBorderless": false,
+      "isMaterialYouAware": false
+    },
+    {
+      "id": "n_air_night",
+      "label": "Air Night",
+      "authors": [ "Goodwy" ],
+      "isNight": true,
+      "isBorderless": false,
+      "isMaterialYouAware": false
+    },
+    {
+      "id": "n_maya_day",
+      "label": "Maya Day",
+      "authors": [ "Goodwy" ],
+      "isNight": false,
+      "isBorderless": false,
+      "isMaterialYouAware": false
+    },
+    {
       "id": "sea_melody_day",
-      "label": "Sea Melody Beta",
+      "label": "Sea Melody",
       "authors": [ "Goodwy" ],
       "isNight": false,
       "isBorderless": false,
@@ -59,7 +83,7 @@
     },
     {
       "id": "vintage_night",
-      "label": "Vintage Night Beta",
+      "label": "Vintage Night",
       "authors": [ "Goodwy" ],
       "isNight": true,
       "isBorderless": false,
@@ -67,7 +91,7 @@
     },
     {
       "id": "vintage_candy_day",
-      "label": "Candy Day Beta",
+      "label": "Candy Day",
       "authors": [ "Goodwy" ],
       "isNight": false,
       "isBorderless": false,

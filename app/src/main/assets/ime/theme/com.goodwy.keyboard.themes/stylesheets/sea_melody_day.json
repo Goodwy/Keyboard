@@ -1,8 +1,8 @@
 {
   "@defines": {
-    "--primary": "#8CA2C4",
+    "--primary": "#8d9fc7",
     "--primary-variant": "#65769d",
-    "--secondary": "#8CA2C4",
+    "--secondary": "#8d9fc7",
     "--secondary-variant": "#65769d",
     "--background": "#9FB3D3",
     "--surface": "#E7DECC",

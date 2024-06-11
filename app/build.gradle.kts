@@ -227,6 +227,7 @@ dependencies {
     androidTestImplementation(libs.androidx.test.espresso.core)
 
     //Goodwy
+    implementation(project(":strings"))
     implementation(libs.billing.client)
     implementation(libs.rustore.client)
 }

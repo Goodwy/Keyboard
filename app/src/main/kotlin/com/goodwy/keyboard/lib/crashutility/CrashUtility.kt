@@ -135,7 +135,7 @@ abstract class CrashUtility private constructor() {
                             if (notificationManager != null && notificationManager is NotificationManager) {
                                 val notificationChannel = NotificationChannel(
                                     NOTIFICATION_CHANNEL_ID,
-                                    context.resources.getString(R.string.crash_notification_channel__title_g),
+                                    context.resources.getString(com.goodwy.keyboard.strings.R.string.crash_notification_channel__title_g),
                                     NotificationManager.IMPORTANCE_HIGH
                                 )
                                 notificationManager.createNotificationChannel(notificationChannel)
@@ -308,7 +308,7 @@ abstract class CrashUtility private constructor() {
             pushNotification(
                 context,
                 NOTIFICATION_ID.toInt(),
-                context.resources.getString(R.string.crash_once_notification__title_g),
+                context.resources.getString(com.goodwy.keyboard.strings.R.string.crash_once_notification__title_g),
                 context.resources.getString(R.string.crash_once_notification__body)
             )
         }
@@ -324,7 +324,7 @@ abstract class CrashUtility private constructor() {
             pushNotification(
                 context,
                 NOTIFICATION_ID.toInt(),
-                context.resources.getString(R.string.crash_multiple_notification__title_g),
+                context.resources.getString(com.goodwy.keyboard.strings.R.string.crash_multiple_notification__title_g),
                 context.resources.getString(R.string.crash_multiple_notification__body)
             )
         }

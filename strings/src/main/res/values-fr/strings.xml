@@ -1,0 +1,92 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">Inkwell n\'est pas activé dans le système et ne sera donc pas disponible comme méthode de saisie dans le sélectionneur de saisie. Cliquez ici pour résoudre ce problème.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">Inkwell n\'est pas sélectionné comme méthode de saisie par défaut. Cliquez ici pour résoudre ce problème.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkwell est sous licence {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">Depuis Android 13+, les applications doivent demander la permission pour
+        envoyer des notifications. Dans Inkwell, cette autorisation n\'est utilisée que pour ouvrir un écran de rapport en cas d\'incident.
+        Cette autorisation peut être modifiée à tout moment dans les paramètres du système.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Rapport d\'erreur de Inkwell</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">Désolé pour le désagrément, mais Inkwell a crashé en raison d\'une erreur inattendue.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">Si vous souhaitez signaler cette erreur, vérifier avant tout si votre problème n\'a pas déjà été signalé sur le tracker d\'erreur de github.\nSi ce n\'est pas le cas, copiez le journal d\'erreur généré et ouvrez une nouvelle issue. Utilisez le modèle \"%s\" et remplissez la description, les étapes de reproduction puis collez le journal d\'erreur généré à la fin. Ceci contribue à améliorer Inkwell et à le rendre plus stable pour tous. Merci de votre aide!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Rapports d\'erreur de Inkwell</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkwell a cessé de fonctionner…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">Les mises à jour du presse-papiers du système mettent également à jour le presse-papiers de Inkwell</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Le presse-papier Inkwell met aussi à jour le presse-papier du système</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Ressources de l’application Inkwell</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">Icône de l\'application Inkwell</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">Pot à pourboire</string>
+    <string name="tip_kind">Bon support</string>
+    <string name="tip_excellent">Excellent soutien</string>
+    <string name="tip_incredible">Un soutien incroyable</string>
+    <string name="action_support_project">Support project</string>
+    <string name="action_support_project_summary">Get the paid app to support future developments and get extra features</string>
+    <string name="learn_more">Learn more</string>
+    <string name="night_theme_summary">Customizing the theme for the dark keyboard mode</string>
+    <string name="theme_manager_summary">Managing installed and custom themes</string>
+    <string name="plus_title">Support us</string>
+    <string name="plus_summary">All of our apps are ad-free, Open Source and it will always remain that way. With your help we are able to implement more features and make them even better</string>
+
+    <string name="locked">Locked</string>
+    <string name="unlock">Unlock</string>
+    <string name="donate_text">
+        For those who do not use Google Play, it is possible to unlock all functions of the application.
+            \nIf you like our apps which are offline, non-intrusive and have no ads, please consider supporting us in some way. We would be very grateful.
+            \n\nThank you!
+    </string>
+    <!--Not used-->
+    <string name="lifebuoy_title">We will support you</string>
+    <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>
+    <string name="participants_title">Participants</string>
+    <string name="special_thanks_to">Special thanks to</string>
+    <string name="get">Get</string>
+
+    <!--Billing-->
+    <string name="tipping_jar_dialog_error_title">Failed to tip</string>
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Confirming the purchase…</string>
+    <string name="billing_purchase_delete_in_progress">Deleting a purchase…</string>
+    <string name="billing_product_confirmed">Product confirmed</string>
+    <string name="billing_product_deleted">Purchase cancelled</string>
+    <string name="billing_subscriptions">Subscriptions</string>
+    <string name="billing_error_application_signature_not_correct">To pay via RuStore you need to install the app version from RuStore</string>
+    <string name="per_month">%s/mois</string>
+    <string name="per_year">%s/an</string>
+    <string name="restore_purchase">Restore purchase</string>
+
+    <!--About-->
+    <string name="about_rate_title">Rate App</string>
+    <string name="about_other_app_title">Other Apps</string>
+    <string name="about_message">An open source Inkwell keyboard. Inkwell is based on the open source FlorisBoard application.
+        \n\nI would be very grateful if you leave a review or rating about the application, it will greatly help the development of the project.
+    </string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Onglet par défaut</string>
+    <string name="settings__open_last_tab">Ouvrez le dernier onglet utilisé</string>
+    <string name="settings__emoji_as_subtype">Emoji comme disposition</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Passer aux emoji lors d’un changement de langue</string>
+    <string name="settings__big_enter_key">Grande touche Entrée</string>
+    <string name="settings__show_comma_key">Afficher la touche point-virgule</string>
+    <string name="settings__show_dot_key">Afficher la touche point</string>
+    <string name="settings__by_character_layout">On the layout of the letters</string>
+    <string name="settings__keys">Keys</string>
+    <string name="settings__uses_material_you__label">Uses colors Material You</string>
+    <string name="settings__keyboard_type">Keyboard type</string>
+    <string name="settings__number">Number</string>
+    <string name="settings__text">Text</string>
+    <string name="settings__sound_effect">Bruitage</string>
+    <string name="settings__sound_effect_summary">Les effets sonores peuvent varier en fonction de l’appareil</string>
+    <string name="settings__sound_effect__standard">Son standard</string>
+    <string name="settings__sound_effect__clicking">Clic sonore</string>
+    <string name="settings__use_horizontal_grid">Utiliser le défilement horizontal</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Glisser de la barre d\'espace vers le bas</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Masquer les raccourcis lors du déplacement du curseur</string>
+</resources>
