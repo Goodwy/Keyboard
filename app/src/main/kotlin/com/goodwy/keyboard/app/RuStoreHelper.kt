@@ -179,14 +179,14 @@ class RuStoreHelper(
     private fun confirmPurchase(purchaseId: String) {
         _stateBilling.value = _stateBilling.value.copy(
             isLoading = true,
-            snackbarResId = R.string.billing_purchase_confirm_in_progress
+            snackbarResId = com.goodwy.keyboard.strings.R.string.billing_purchase_confirm_in_progress
         )
         billingClientRuStore.purchases.confirmPurchase(purchaseId, null)
             .addOnSuccessListener { response ->
                 _eventBilling.tryEmit(
                     BillingEvent.ShowDialog(
                         InfoDialogState(
-                            titleRes = R.string.billing_product_confirmed,
+                            titleRes = com.goodwy.keyboard.strings.R.string.billing_product_confirmed,
                             message = response.toString(),
                         )
                     )
@@ -204,13 +204,13 @@ class RuStoreHelper(
     private fun deletePurchase(purchaseId: String) {
         _stateBilling.value = _stateBilling.value.copy(
             isLoading = true,
-            snackbarResId = R.string.billing_purchase_delete_in_progress
+            snackbarResId = com.goodwy.keyboard.strings.R.string.billing_purchase_delete_in_progress
         )
         billingClientRuStore.purchases.deletePurchase(purchaseId)
             .addOnSuccessListener { response ->
                 _eventBilling.tryEmit(
                     BillingEvent.ShowDialog(InfoDialogState(
-                        titleRes = R.string.billing_product_deleted,
+                        titleRes = com.goodwy.keyboard.strings.R.string.billing_product_deleted,
                         message = response.toString()
                     ))
                 )

@@ -1,0 +1,87 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">تەختەکلیلی Inkwell هێشتا چالاک نەکراوە لە ڕێکخستنەکانی سیستەمدا، پێویستە چالاکی بکەیت بۆ بەکارهێنان پەنجەبنێ بێرەدا.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">تەختەکلیلی Inkwell چالاککراوە لە ڕێکخستنەکانی سیستەمدا بەڵام هەڵنەبژێردراوە بۆ بەکارهێنان وەک تەختەکلیلی سەرەکی، پێویستە دیاریبکەیت بۆ بەکارهێنان پەنجەبنێ بێرەدا بۆ هەڵبژاردن.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">بەرنامەکە مۆڵەتی {license_name} هەیە</string>
+    <string name="setup__grant_notification_permission__description_g">لە Android 13+ ەوە ئەپەکان دەبێت داوای مۆڵەت بکەن بۆ ناردنی ئاگادارکردنەوە. لە Inkwell ئەمە تەنها بۆ کردنەوەی شاشەی ڕاپۆرتی کەوتنەخوارەوە بەکاردێت لە ئەگەری کەوتنەخوارەوە. ئەم مۆڵەتە دەتوانرێت لە هەر کاتێکدا لە ڕێکخستنەکانی سیستەمدا بگۆڕدرێت.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Inkwell ڕاپۆرتی هەڵەی</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">بەداخەوە، بەهۆی هەڵەیەکی لەناکاو تەختەکلیلی Inkwell لەکارکەوت.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">If you wish to report this error, first check out the issue tracker on GitHub if your crash has not already been reported.\nIf it hasn\'t, copy the generated crash log and open a new issue. Use the \"%s\" template and fill out the description, the steps to reproduce, and paste the generated crash log at the end. This helps in making Inkwell better and more stable for everyone. Thank you!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Inkwell ڕاپۆرتی هەڵەی</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">تەختەکلیلی Inkwell لە کارکەوت…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">هەڵگرتنی شتە لەبەرگیراوەکانی سیستەم</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">هەڵگرتنی شتە لەبەرگیراوەکانی بەرنامەکە</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">ڕەنگی بنەڕەتی بەرنامەکە</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">پیشاندانی ئایکۆنی بەرنامەکە</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">پشتیوانی</string>
+    <string name="tip_kind">پشتیوانییەکی باش</string>
+    <string name="tip_excellent">پشتیوانییەکی نایاب</string>
+    <string name="tip_incredible">پشتیوانی سەرسوڕهێنەر</string>
+    <string name="action_support_project">پشتیوانی پڕۆژە</string>
+    <string name="action_support_project_summary">ئەپەکە بکڕە بۆ پشتگیریکردن لە پێشکەوتنەکانی داهاتوو و وەرگرتنی تایبەتمەندی زیادە</string>
+    <string name="learn_more">زیاتر بزانە</string>
+    <string name="night_theme_summary">تێمێک بۆ دۆخی تاریکی کیبۆرد دابنێ</string>
+    <string name="theme_manager_summary">بەڕێوەبردنی تەوەرەکانی دامەزراو و تایبەتمەند</string>
+    <string name="plus_title">پشتیوانیمان بکەن</string>
+    <string name="plus_summary">هەموو ئەپەکانمان بێ ڕێکلامن، سەرچاوە کراوەن و هەمیشە دەبن. بە یارمەتی ئێوە دەتوانین فەنکشنی زیاتر جێبەجێ بکەین و باشتریان بکەین</string>
+    <string name="any_support_unlock_all">ئاستی پشتگیری پڕۆژە هەڵبژێرە کە لەبەردەستتدایە (یەکجارە، مانگانە یان ساڵانە). هەر پشتگیرییەک هەموو تایبەتمەندییەکانی بەرنامەکە دەکاتەوە.</string>
+    <string name="locked">قفڵ کراوە</string>
+    <string name="unlock">قفڵ بکەرەوە</string>
+    <string name="donate_text">
+        For those who do not use Google Play, it is possible to unlock all functions of the application.
+            \nIf you like our apps which are offline, non-intrusive and have no ads, please consider supporting us in some way. We would be very grateful.
+            \n\nThank you!
+    </string>
+    <!--Not used-->
+    <string name="lifebuoy_title">We will support you</string>
+    <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>
+    <string name="participants_title">Participants</string>
+    <string name="special_thanks_to">Special thanks to</string>
+    <string name="get">Get</string>
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">دڵنیاکردنەوەی کڕینێک...</string>
+    <string name="billing_purchase_delete_in_progress">سڕینەوەی کڕینێک...</string>
+    <string name="billing_product_confirmed">بەرهەم پشتڕاستکراوەتەوە</string>
+    <string name="billing_product_deleted">کڕین هەڵوەشایەوە</string>
+    <string name="billing_subscriptions">بەشداریکردنەکان</string>
+    <string name="billing_error_application_signature_not_correct">To pay via RuStore you need to install the app version from RuStore</string>
+    <string name="per_month">%s/مانگ</string>
+    <string name="per_year">%s/ساڵ</string>
+    <string name="restore_purchase">گەڕاندنەوەی کڕین</string>
+
+    <!--About-->
+    <string name="about_rate_title">ئەپڵیکەیشنی هەڵسەنگاندن</string>
+    <string name="about_other_app_title">ئەپەکانی تر</string>
+    <string name="about_message">An open source Inkwell keyboard. Inkwell is based on the open source FlorisBoard application.
+        \n\nI would be very grateful if you leave a review or rating about the application, it will greatly help the development of the project.
+    </string>
+
+    <!--settings-->
+    <string name="settings__default_tab">تابی پێشوەختە</string>
+    <string name="settings__open_last_tab">دوا تابی بەکارهێنراو بکەرەوە</string>
+    <string name="settings__emoji_as_subtype">ئیمۆجی وەک ژێرجۆرێک</string>
+    <string name="settings__switch_to_emoji_when_changing_language">بگۆڕە بۆ ئیمۆجی لە کاتی گۆڕینی زمان</string>
+    <string name="settings__big_enter_key">کلیلی داخڵکردنی گەورە</string>
+    <string name="settings__show_comma_key">کلیلی نیمچە کۆلۆن پیشان بدە</string>
+    <string name="settings__show_dot_key">کلیلی خاڵ پیشان بدە</string>
+    <string name="settings__by_character_layout">لە سەر شێوازی پیت</string>
+    <string name="settings__keys">کلیلەکان</string>
+    <string name="settings__uses_material_you__label">مادەی تۆ ڕەنگەکان بەکاردەهێنێت</string>
+    <string name="settings__keyboard_type">جۆری تەختەکلیل</string>
+    <string name="settings__number">ژمارەکان</string>
+    <string name="settings__text">دەق</string>
+    <string name="settings__sound_effect">کاریگەری دەنگی</string>
+    <string name="settings__sound_effect_summary">کاریگەرییە دەنگییەکان ڕەنگە جیاواز بن بەپێی ئامێر</string>
+    <string name="settings__sound_effect__standard">دەنگی ستاندارد</string>
+    <string name="settings__sound_effect__clicking">دەنگی کلیککردن</string>
+    <string name="settings__use_horizontal_grid">بەکارهێنانی سکڕۆڵی ئاسۆیی</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">دوگمەی دابەزینی سپەیسبار</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">لە کاتی جوڵاندنی ئاماژەدەرەکەدا کورتە ڕێگاکان بشارەوە</string>
+</resources>

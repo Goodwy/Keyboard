@@ -32,6 +32,7 @@
     <string name="theme_manager_summary">Managing installed and custom themes</string>
     <string name="plus_title">Support us</string>
     <string name="plus_summary">All of our apps are ad-free, Open Source and it will always remain that way. With your help we are able to implement more features and make them even better</string>
+    <string name="any_support_unlock_all">Choose the level of project support available to you (one-time, monthly or yearly). Any support unlocks all features of the application</string>
 
     <string name="locked">Locked</string>
     <string name="unlock">Unlock</string>
@@ -46,9 +47,6 @@
     <string name="participants_title">Participants</string>
     <string name="special_thanks_to">Special thanks to</string>
     <string name="get">Get</string>
-
-    <!--Billing-->
-    <string name="tipping_jar_dialog_error_title">Failed to tip</string>
 
     <!--RuStore-->
     <string name="billing_purchase_confirm_in_progress">Confirming the purchase…</string>

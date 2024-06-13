@@ -64,8 +64,8 @@ fun InputFeedbackScreen() = FlorisScreen {
             DividerRow(start = 16.dp)
             ListPreferenceRow(
                 prefs.inputFeedback.soundEffect,
-                title = stringRes(R.string.settings__sound_effect),
-                summary = stringRes(R.string.settings__sound_effect_summary),
+                title = stringRes(com.goodwy.keyboard.strings.R.string.settings__sound_effect),
+                summary = stringRes(com.goodwy.keyboard.strings.R.string.settings__sound_effect_summary),
                 enabledIf = { prefs.inputFeedback.audioEnabled isEqualTo true},
                 entries = InputFeedbackSoundEffect.audioListEntries(),
             )
@@ -143,6 +143,7 @@ fun InputFeedbackScreen() = FlorisScreen {
                         stringRes(R.string.unit__milliseconds__symbol, "v" to it)
                     }
                 },
+                oldView = vibrator == null || !vibrator.hasVibrator(),
                 min = 1,
                 max = 100,
                 stepIncrement = 1,
@@ -172,6 +173,7 @@ fun InputFeedbackScreen() = FlorisScreen {
                         stringRes(R.string.unit__percent__symbol, "v" to strength)
                     }
                 },
+                oldView = (vibrator == null || !vibrator.hasVibrator()) || (AndroidVersion.ATMOST_API25_N_MR1) || (!vibrator.hasAmplitudeControl()),
                 min = 1,
                 max = 100,
                 stepIncrement = 1,

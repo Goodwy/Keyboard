@@ -142,10 +142,13 @@ object ZipUtils {
             while (flexEntries.hasMoreElements()) {
                 val flexEntry = flexEntries.nextElement()
                 val flexEntryFile = FsFile(dstDir, flexEntry.name)
-                if (flexEntry.isDirectory) {
-                    flexEntryFile.mkdir()
-                } else {
-                    flexFile.copy(flexEntry, flexEntryFile)
+                val canonicalPath = flexEntryFile.canonicalPath
+                if (canonicalPath.startsWith(prefix = dstDir.canonicalPath)) {
+                    if (flexEntry.isDirectory) {
+                        flexEntryFile.mkdir()
+                    } else {
+                        flexFile.copy(flexEntry, flexEntryFile)
+                    }
                 }
             }
         }

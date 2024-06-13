@@ -1,0 +1,86 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">Inkwell n\'est pas activé dans le système et ne sera donc pas disponible comme méthode de saisie dans le sélectionneur de saisie. Cliquez ici pour résoudre ce problème.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">Inkwell ei ole valittu oletussyöttötavaksi. Klikkaa tästä ratkaistaksesi ongelman.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkwell on lisensoitu lisenssillä {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">As of Android 13+, apps must ask for permission to
+        send notifications. In Inkwell, this is only used to open a crash report screen in the event of a crash.
+        This permission can be changed at any time in the system settings.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Inkwell virheraportti</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">Pahoittelut, Inkwell kaatui odottamattoman virheen vuoksi.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">If you wish to report this error, first check out the issue tracker on GitHub if your crash has not already been reported.\nIf it hasn\'t, copy the generated crash log and open a new issue. Use the \"%s\" template and fill out the description, the steps to reproduce, and paste the generated crash log at the end. This helps in making Inkwell better and more stable for everyone. Thank you!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Inkwell-virheraportit</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkwell on lopettanut toimintansa…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">Järjestelmän leikepöytä päivittää myös Inkwell leikepöydän</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Inkwell leikepöytä päivittää myös järjestelmän leikepöydän</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Inkwell-sovellus</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">Inkwell kuvake</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">Vinkki purkki</string>
+    <string name="tip_kind">Hyvä tuki</string>
+    <string name="tip_excellent">Erinomainen tuki</string>
+    <string name="tip_incredible">Hämmästyttävä tuki</string>
+    <string name="action_support_project">Projektin tuki</string>
+    <string name="action_support_project_summary">Osta sovellus tukemaan tulevaa kehitystä ja lisäominaisuuksia</string>
+    <string name="learn_more">Opi lisää</string>
+    <string name="night_theme_summary">Teeman mukauttaminen tummaan näppäimistötilaan</string>
+    <string name="theme_manager_summary">Asennettujen ja mukautettujen teemojen hallinta</string>
+    <string name="plus_title">Tue meitä</string>
+    <string name="plus_summary">Kaikki sovelluksemme ovat mainoksettomia, avoimen lähdekoodin sovelluksia, ja se pysyy aina sellaisena. Sinun avullasi pystymme toteuttamaan enemmän ominaisuuksia ja tekemään niistä entistä parempia</string>
+
+    <string name="any_support_unlock_all">Valitse käytettävissäsi olevan projektituen taso (kertaluonteinen, kuukausittainen tai vuosittainen). Mikä tahansa tuki avaa kaikki sovelluksen ominaisuudet</string>
+    <string name="locked">Tukossa</string>
+    <string name="unlock">Avata</string>
+    <string name="donate_text">Niille, jotka eivät käytä Google Playta, on mahdollista avata kaikki sovelluksen toiminnot.             \\nJos pidät sovelluksistamme, jotka ovat offline-tilassa, jotka eivät häiritse ja joissa ei ole mainoksia, harkitse meidän tukemistamme jollakin tavalla. Olisimme hyvin kiitollisia.             \\n\\nKiitos!</string>
+    <!--Not used-->
+    <string name="lifebuoy_title">We will support you</string>
+    <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>
+    <string name="participants_title">Participants</string>
+    <string name="special_thanks_to">Special thanks to</string>
+    <string name="get">Get</string>
+
+    <!--Billing-->
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Confirming the purchase…</string>
+    <string name="billing_purchase_delete_in_progress">Deleting a purchase…</string>
+    <string name="billing_product_confirmed">Product confirmed</string>
+    <string name="billing_product_deleted">Purchase cancelled</string>
+    <string name="billing_subscriptions">Subscriptions</string>
+    <string name="billing_error_application_signature_not_correct">To pay via RuStore you need to install the app version from RuStore</string>
+    <string name="per_month">%s/kuukausi</string>
+    <string name="per_year">%s/vuosi</string>
+    <string name="restore_purchase">Ostosten palauttaminen</string>
+
+    <!--About-->
+    <string name="about_rate_title">Arvioi sovellus</string>
+    <string name="about_other_app_title">Muut sovellukset</string>
+    <string name="about_message">Avoimen lähdekoodin Inkwell-näppäimistö. Inkwell perustuu avoimen lähdekoodin FlorisBoard-sovellukseen.         \\n\\nOlisin erittäin kiitollinen, jos jätät arvostelun tai luokituksen sovelluksesta, se auttaa suuresti projektin kehittämisessä.</string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Oletus-välilehti</string>
+    <string name="settings__open_last_tab">Avaa viimeksi käytetty välilehti</string>
+    <string name="settings__emoji_as_subtype">Emoji alatyyppinä</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Vaihda emojiin, kun vaihdat kieltä</string>
+    <string name="settings__big_enter_key">Suuri Enter-näppäin</string>
+    <string name="settings__show_comma_key">Näytä puolipisteavain</string>
+    <string name="settings__show_dot_key">Näytä pistenäppäin</string>
+    <string name="settings__by_character_layout">Kirjainten asettelusta</string>
+    <string name="settings__keys">Avaimet</string>
+    <string name="settings__uses_material_you__label">Käyttää Material You värejä</string>
+    <string name="settings__keyboard_type">Näppäimistön tyyppi</string>
+    <string name="settings__number">Numerot</string>
+    <string name="settings__text">Teksti</string>
+    <string name="settings__sound_effect">Äänitehoste</string>
+    <string name="settings__sound_effect_summary">Äänitehosteet voivat vaihdella laitteesta riippuen</string>
+    <string name="settings__sound_effect__standard">Vakio ääni</string>
+    <string name="settings__sound_effect__clicking">Napsauta-ääni</string>
+    <string name="settings__use_horizontal_grid">Käytä vaakasuuntaista vieritystä</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Pyyhkäisy alaspäin välilyöntinäppäimessä</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Piilota pikakuvakkeet, kun siirrät kohdistinta</string>
+</resources>

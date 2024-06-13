@@ -1,0 +1,88 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">Inkwell di pergalê de ne çalak e û ji ber vê yekê dê wekî rêbazek têketê di hilbijarka têketê de tune be. Ji bo çareserkirina vê pirsgirêkê li vir bitikin.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">Inkwell wekî metoda têketê ya pêşdarazî nayê hilbijartin. Ji bo çareserkirina vê pirsgirêkê li vir bitikin.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkwell di binê lîsansê de ye {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">Ji Android 13+ de, pêdivî ye ku serîlêdan destûr bixwazin
+ ragihandinê bişînin. Di Inkwell de, ev tenê ji bo vekirina dîmenderek raporek têkçûnê di bûyera qezayê de tê bikar anîn.
+ Ev destûr dikare her dem di mîhengên pergalê de were guheztin.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Raporta xeletiya Inkwell</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">Ji ber nelirêtîyê xemgîn im, lê Inkwell ji ber xeletîyeka nelibendê têk çû.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">Heke hûn bixwazin vê çewtiyê ragihînin, pêşî li ser GitHubê temaşekerê pirsgirêkê kontrol bikin heke qezaya we jixwe nehatibe ragihandin. nIf ew nehatibe ragihandin, qeyda têkçûnê ya hilberandî kopî bikin û pirsgirêkeke nû vekin. Şablona \"%s\" bi kar bîne û danasînê, gavên ji nû ve hilberînê dagire û di dawîyê da rojnivîska têkçûnê ya çêkirî pê ve bike. Ev, dibe alîkar ku Inkwell ji bo her kesî baştir û aramtir bibe. Sax bî!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Raportên xeletiya Inkwell</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkwell dest ji kar berda…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">System clipboard updates also update Inkwell clipboard</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Inkwell clipboard updates also update system clipboard</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Inkwell Hebûnên Sepan</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">Îkona Sepan ya Inkwell</string>
+
+    <string name="tipping_jar_title">Piştgirî</string>
+    <string name="tip_kind">Piştgiriya baş</string>
+    <string name="tip_excellent">Piştgiriya hêja</string>
+    <string name="tip_incredible">Piştgiriya ecêb</string>
+    <string name="action_support_project">Piştgiriya projeyê</string>
+    <string name="action_support_project_summary">Sêlêdanê bikirin da ku pêşkeftinên pêşerojê piştgirî bikin û taybetmendiyên zêde bistînin</string>
+    <string name="learn_more">Zêdetir hîn bibin</string>
+    <string name="night_theme_summary">Ji bo moda tarî ya klavyeyê mijarek saz bike</string>
+    <string name="theme_manager_summary">Mijarên sazkirî û xwerû bi rêve bibin</string>
+    <string name="plus_title">Piştgiriya me bikin</string>
+    <string name="plus_summary">Hemû sepanên me bê reklam in, çavkaniyek vekirî ne û her dem dê bibin. Bi alîkariya we, em ê karibin bêtir fonksiyonan pêk bînin û wan hîn çêtir bikin</string>
+    <string name="any_support_unlock_all">Asta piştgiriya projeyê ya ku ji we re heye hilbijêrin (yekcar, mehane an salane). Her piştgirî dê hemî fonksiyonên serîlêdanê veke</string>
+
+    <string name="locked">Girtî ye</string>
+    <string name="unlock">Rakirin</string>
+    <string name="donate_text">
+ Ji bo kesên ku Google Play-ê bikar neynin, vebijarkek heye ku hemî fonksiyonên serîlêdanê vekin.
+ \nHeke hûn ji sepanên me yên negirêdayî, bênavber û bê reklam hez dikin, ji kerema xwe re bi rengekî piştgirî bidin me. Em ê gelek spasdar bin.
+ \n\nSpas!
+ </string>
+    <!--Not used-->
+    <string name="lifebuoy_title">Em ê piştgiriya we bikin</string>
+    <string name="lifebuoy_summary">Heke ji ber hin sedeman hûn nikanin serlêdana me bikin, lê bi rastî hûn dixwazin hemî taybetmendiyên wê bikar bînin, tenê ji me re binivîsin.</string>
+    <string name="participants_title">Beşdar</string>
+    <string name="special_thanks_to">Spasên taybetî</string>
+    <string name="get">Daxistin</string>
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Kirînê pejirand…</string>
+    <string name="billing_purchase_delete_in_progress">Kirînê jêbirin…</string>
+    <string name="billing_product_confirmed">Berhem hate pejirandin</string>
+    <string name="billing_product_deleted">Kirîn hat betalkirin</string>
+    <string name="billing_subscriptions">Abonetî</string>
+    <string name="billing_error_application_signature_not_correct">Ji bo dayina bi rêya RuStore divê hûn guhertoya sepanê ji RuStore saz bikin</string>
+    <string name="per_month">%s/meh</string>
+    <string name="per_year">%s/sal</string>
+    <string name="restore_purchase">Kirînan vegerîne</string>
+
+    <!--About-->
+    <string name="about_rate_title">Berlêdanê binirxîne</string>
+    <string name="about_other_app_title">Serlêdanên din</string>
+    <string name="about_message">Inkwell klavyeyek çavkaniyek vekirî ye. Li ser bingeha serîlêdana FlorisBoard ve hatî pêşve xistin.
+ \n\nEz ê gelek spasdar bim ku hûn di derbarê serîlêdanê de nirxandinek an nirxek bihêlin, ev ê pir alîkariya pêşkeftina projeyê bike.
+ </string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Tabela xwerû</string>
+    <string name="settings__open_last_tab">Tabela herî dawî ya hatî bikaranîn veke</string>
+    <string name="settings__emoji_as_subtype">Emoji wekî binecure</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Dema ziman diguhere biguherîne emoji</string>
+    <string name="settings__big_enter_key">Bişkojka Ketina Mezin</string>
+    <string name="settings__show_comma_key">Bişkojka nîvcolanê nîşan bide</string>
+    <string name="settings__show_dot_key">Bişkojka xalê nîşan bide</string>
+    <string name="settings__by_character_layout">Li ser plansaziya tîpan</string>
+    <string name="settings__keys">Bişkok</string>
+    <string name="settings__uses_material_you__label">Rengên Materyal Hûn Bi kar tîne</string>
+    <string name="settings__keyboard_type">Cûreya klavyeyê</string>
+    <string name="settings__number">Hejmar</string>
+    <string name="settings__text">Nivîs</string>
+    <string name="settings__sound_effect">Efekta deng</string>
+    <string name="settings__sound_effect_summary">Li gor amûrê dibe ku bandorên deng biguhere</string>
+    <string name="settings__sound_effect__standard">Dengê standard</string>
+    <string name="settings__sound_effect__clicking">Deng bitikîne</string>
+    <string name="settings__use_horizontal_grid">Pêgerîna horizontal bikar bînin</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Destûra xwarê li ser valahiyê</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Dema ku nîşanderê diherike etîketên mifteyê veşêre</string></resources>

@@ -84,7 +84,7 @@ fun SupportRow(
                         .size(86.dp)
                         .padding(2.dp),
                     painter = painterResource(id = R.drawable.ic_plus_support),
-                    contentDescription = stringResource(id = R.string.action_support_project),
+                    contentDescription = stringResource(id = com.goodwy.keyboard.strings.R.string.action_support_project),
                     tint = MaterialTheme.colorScheme.secondary,
                 )
             }
@@ -97,12 +97,12 @@ fun SupportRow(
             ) {
                 Text(
                     modifier = Modifier.padding(start = 16.dp),
-                    text = stringResource(R.string.action_support_project),
+                    text = stringResource(com.goodwy.keyboard.strings.R.string.action_support_project),
                     fontSize = 18.sp,
                 )
                 Text(
                     modifier = Modifier.padding(start = 16.dp),
-                    text = stringResource(R.string.action_support_project_summary),
+                    text = stringResource(com.goodwy.keyboard.strings.R.string.action_support_project_summary),
                     fontSize = 13.sp,
                     lineHeight = 16.sp,
                     color = LocalContentColor.current.copy(alpha = 0.5F),
@@ -118,7 +118,7 @@ fun SupportRow(
                     contentPadding = PaddingValues(horizontal = 12.dp, vertical = 0.dp)
                 ) {
                     Text(
-                        text = stringResource(R.string.learn_more).toUpperCase(LocaleList.current),
+                        text = stringResource(com.goodwy.keyboard.strings.R.string.learn_more).toUpperCase(LocaleList.current),
                         fontSize = 12.sp,
                     )
                 }

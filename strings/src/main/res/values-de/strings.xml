@@ -1,0 +1,86 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">Inkwell ist in deinem System nicht aktiviert und kann daher nicht als Eingabemethode ausgewählt werden. Hier klicken, um dieses Problem zu lösen.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">Inkwell ist nicht als Standard-Eingabemethode ausgewählt. Hier klicken, um dieses Problem zu lösen.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkwell ist unter {license_name} lizensiert</string>
+    <string name="setup__grant_notification_permission__description_g">As of Android 13+, apps must ask for permission to
+        send notifications. In Inkwell, this is only used to open a crash report screen in the event of a crash.
+        This permission can be changed at any time in the system settings.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Inkwell Fehlermeldung</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">Entschuldigung für die Unannehmlichkeiten, aber Inkwell ist aufgrund eines unerwarteten Fehlers abgestürzt.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">Wenn du diesen Fehler melden möchtest, prüfe zuerst im Issue Tracker auf Github, ob der Absturz bereits gemeldet worden ist.\nFalls nicht, kopiere den erzeugten Absturzbericht und erstelle ein neues Problem. Benutze die \"%s\"-Vorlage, gib die Beschreibung und die Schritte zum Reproduzieren des Fehlers an und füge am Ende den erzeugten Absturzbericht hinzu. Dies hilft, Inkwell für alle besser und stabiler zu machen. Vielen Dank!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Inkwell Fehlermeldungen</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkwell funktioniert nicht mehr …</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">Änderungen in der Systemzwischenablage aktualisieren auch die interne Zwischenablage</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Aktualisierungen der Inkwell Zwischenablage aktualisieren auch die Systemzwischenablage</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Inkwell App Ressourcen</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">App-Icon von Inkwell</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">Trinkgeld-Glas</string>
+    <string name="tip_kind">Guter Support</string>
+    <string name="tip_excellent">Exzellenter Support</string>
+    <string name="tip_incredible">Erstaunliche Unterstützung</string>
+    <string name="action_support_project">Projektbegleitung</string>
+    <string name="action_support_project_summary">Kaufen Sie die App, um zukünftige Entwicklungen und zusätzliche Funktionen zu unterstützen</string>
+    <string name="learn_more">Weitere Informationen</string>
+    <string name="night_theme_summary">Anpassen des Designs für den dunklen Tastaturmodus</string>
+    <string name="theme_manager_summary">Verwalten installierter und benutzerdefinierter Designs</string>
+    <string name="plus_title">Unterstützen Sie uns</string>
+    <string name="plus_summary">Alle unsere Apps sind werbefrei, Open Source und das wird auch immer so bleiben. Mit Ihrer Hilfe sind wir in der Lage, weitere Funktionen zu implementieren und noch besser zu machen</string>
+
+    <string name="any_support_unlock_all">Wählen Sie den Umfang der Projektunterstützung, die Ihnen zur Verfügung steht (einmalig, monatlich oder jährlich). Jede Unterstützung schaltet alle Funktionen der Anwendung frei</string>
+    <string name="locked">Gesperrt</string>
+    <string name="unlock">Aufschließen</string>
+    <string name="donate_text">Für diejenigen, die Google Play nicht verwenden, ist es möglich, alle Funktionen der Anwendung freizuschalten.             \\nWenn Ihnen unsere Apps gefallen, die offline und nicht aufdringlich sind und keine Werbung enthalten, ziehen Sie bitte in Betracht, uns in irgendeiner Weise zu unterstützen. Wir wären sehr dankbar.             \\n\\nDanke!</string>
+    <!--Not used-->
+    <string name="lifebuoy_title">We will support you</string>
+    <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>
+    <string name="participants_title">Participants</string>
+    <string name="special_thanks_to">Special thanks to</string>
+    <string name="get">Get</string>
+
+    <!--Billing-->
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Confirming the purchase…</string>
+    <string name="billing_purchase_delete_in_progress">Deleting a purchase…</string>
+    <string name="billing_product_confirmed">Product confirmed</string>
+    <string name="billing_product_deleted">Purchase cancelled</string>
+    <string name="billing_subscriptions">Subscriptions</string>
+    <string name="billing_error_application_signature_not_correct">To pay via RuStore you need to install the app version from RuStore</string>
+    <string name="per_month">%s/Monat</string>
+    <string name="per_year">%s/Jahr</string>
+    <string name="restore_purchase">Käufe wiederherstellen</string>
+
+    <!--About-->
+    <string name="about_rate_title">Bewerten Sie die App</string>
+    <string name="about_other_app_title">Andere Anwendungen</string>
+    <string name="about_message">Eine Open-Source-Tintenfasstastatur. Inkwell basiert auf der Open-Source-Anwendung FlorisBoard.         \\n\\nIch wäre Ihnen sehr dankbar, wenn Sie eine Bewertung oder Bewertung über die Anwendung hinterlassen, dies wird der Entwicklung des Projekts sehr helfen.</string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Registerkarte \"Standard\"</string>
+    <string name="settings__open_last_tab">Öffnen Sie die zuletzt verwendete Registerkarte</string>
+    <string name="settings__emoji_as_subtype">Emoji als Untertyp</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Beim Ändern der Sprache zu Emoji wechseln</string>
+    <string name="settings__big_enter_key">Große Eingabetaste</string>
+    <string name="settings__show_comma_key">Semikolon-Taste anzeigen</string>
+    <string name="settings__show_dot_key">Punktschlüssel anzeigen</string>
+    <string name="settings__by_character_layout">Über das Layout von Buchstaben</string>
+    <string name="settings__keys">Tasten</string>
+    <string name="settings__uses_material_you__label">Verwendet die Farben von Material You</string>
+    <string name="settings__keyboard_type">Tastaturtyp</string>
+    <string name="settings__number">Zahlen</string>
+    <string name="settings__text">Text</string>
+    <string name="settings__sound_effect">Soundeffekt</string>
+    <string name="settings__sound_effect_summary">Soundeffekte können je nach Gerät variieren</string>
+    <string name="settings__sound_effect__standard">Standard-Sound</string>
+    <string name="settings__sound_effect__clicking">Klickgeräusch</string>
+    <string name="settings__use_horizontal_grid">Verwenden Sie horizontales Scrollen</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Leertaste nach unten wischen</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Ausblenden von Verknüpfungen beim Bewegen des Cursors</string>
+</resources>

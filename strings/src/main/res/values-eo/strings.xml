@@ -1,0 +1,88 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Erara mesaĝo montrita en Hejma fragmento kiam Inkwell ne estas ebligita en la sistemo">La Inkwell-klavaro ne estas ebligita en la sistemo kaj tial ne estos disponebla kiel enigmetodo. Klaku ĉi tie por solvi ĉi tiun problemon.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Averta mesaĝo montrita en Hejma fragmento kiam Inkwell ne estas elektita kiel defaŭlta klavaro">La Inkwell-klavaro ne estas elektita kiel la defaŭlta enigmetodo. Klaku ĉi tie por solvi ĉi tiun problemon.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkujo estas liberigita sub {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">Ekstante en Android 13, aplikaĵoj devas peti permeson sendi sciigojn. Inkwell nur uzos ĉi tion por sendi kraŝraporton kiam la aplikaĵo kraŝas. Ĉi tiu permeso ĉiam povas esti revokita en la aparato-agordoj.
+ </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Inkwell erarmesaĝo</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">Pardonu la ĝenon, sed Inkwell kraŝis pro neatendita eraro.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Instrukcioj pri raporto pri problemoj por la kraŝa dialogo. La lokokupilo %s estas la nomo de la ŝablono pri kraŝa raporto kaj ĉiam en la angla/LTR.">Se vi volas raporti ĉi tiun cimon, bonvolu kontroli la spurilo unue eldonas en GitHub por vidi ĉu via kraŝo jam estis raportita.\nSe ne, kopiu la generitan cimprogramon kaj malfermu novan aferon. Uzu la ŝablonon \"%s\" kaj plenigu la priskribon, paŝojn por reprodukti la eraron kaj alglui la generitan protokolon ĉe la fino. Ĉi tio helpos fari Inkwell pli bona kaj pli stabila por ĉiuj. Dankon!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Raporto pri eraro de Inkwell</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkujo ĉesis funkcii…</string>
+    <string name="crash_multiple_notification__title_g" comment="Titolo de la sciigo por sinsekvaj kraŝoj">Inkujo ĉiam ŝajnas ĉesi funkcii…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">Ŝanĝoj al la sistema tondujo estas reflektitaj en la Inkwell-tondujo</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Inkwell Clipboard ankaŭ ĝisdatigas la sisteman tondujo</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Inkwell App Assets</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">Aplikaĵo bildeto de Inkwell</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">Subteno</string>
+    <string name="tip_kind">Bona subteno</string>
+    <string name="tip_excellent">Bonega subteno</string>
+    <string name="tip_incredible">Mirinda subteno</string>
+    <string name="action_support_project">Subteno de projekto</string>
+    <string name="action_support_project_summary">Aĉetu la apon por subteni estontajn evoluojn kaj ricevi pliajn funkciojn</string>
+    <string name="learn_more">Lernu pli</string>
+    <string name="night_theme_summary">Agordu temon por klavara malhela reĝimo</string>
+    <string name="theme_manager_summary">Administri instalitajn kaj kutimajn temojn</string>
+    <string name="plus_title">Subtenu nin</string>
+    <string name="plus_summary">Ĉiuj niaj aplikaĵoj estas sen reklamoj, malfermfonte, kaj ĉiam estos. Kun via helpo, ni povos efektivigi pli da funkcioj kaj fari ilin eĉ pli bonaj</string>
+    <string name="any_support_unlock_all">Elektu la nivelon de projekta subteno disponebla por vi (unufoja, monata aŭ ĉiujara). Ajna subteno malŝlosos ĉiujn funkciojn de la aplikaĵo</string>
+
+    <string name="locked">Ŝlosita</string>
+    <string name="unlock">Malŝlosu</string>
+    <string name="donate_text">
+ Por tiuj, kiuj ne uzas Google Play, ekzistas eblo por malŝlosi ĉiujn funkciojn de la aplikaĵo.
+ \nSe vi ŝatas niajn programojn kiuj estas eksterrete, netrudemaj kaj senreklamoj, bonvolu pripensi subteni nin iel. Ni estos tre dankemaj.
+ \n\nDankon!
+ </string>
+    <!--Not used-->
+    <string name="lifebuoy_title">Ni subtenos vin</string>
+    <string name="lifebuoy_summary">Se vi ial ne povas pagi nian aplikaĵon, sed vere volas uzi ĉiujn ĝiajn funkciojn, simple skribu al ni.</string>
+    <string name="participants_title">Partoprenantoj</string>
+    <string name="special_thanks_to">Specialan dankon</string>
+    <string name="get">Elŝutu</string>
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Konfirmante la aĉeton…</string>
+    <string name="billing_purchase_delete_in_progress">Forigi aĉeton…</string>
+    <string name="billing_product_confirmed">Produkto konfirmita</string>
+    <string name="billing_product_deleted">Aĉeto nuligita</string>
+    <string name="billing_subscriptions">Abonoj</string>
+    <string name="billing_error_application_signature_not_correct">Por pagi per RuStore vi devas instali la version de la aplikaĵo de RuStore</string>
+    <string name="per_month">%s/monato</string>
+    <string name="per_year">%s/jaro</string>
+    <string name="restore_purchase">Restarigi aĉetojn</string>
+
+    <!--About-->
+    <string name="about_rate_title">Taksi apon</string>
+    <string name="about_other_app_title">Aliaj aplikaĵoj</string>
+    <string name="about_message">Inkujo estas malfermkoda klavaro. Disvolvita surbaze de la aplikaĵo FlorisBoard.
+ \n\nMi estus tre dankema se vi lasos recenzon aŭ takson pri la aplikaĵo, tio multe helpos la evoluon de la projekto.
+ </string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Defaŭlta langeto</string>
+    <string name="settings__open_last_tab">Malfermu laste uzatan langeton</string>
+    <string name="settings__emoji_as_subtype">Emoji kiel subtipo</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Ŝanĝi al emoji dum ŝanĝado de lingvo</string>
+    <string name="settings__big_enter_key">Granda Eniga klavo</string>
+    <string name="settings__show_comma_key">Montri punktokomon-klavon</string>
+    <string name="settings__show_dot_key">Montri punktoklavon</string>
+    <string name="settings__by_character_layout">Pri literaranĝo</string>
+    <string name="settings__keys">Ŝlosiloj</string>
+    <string name="settings__uses_material_you__label">Uzas Materialon, kiun Vi koloroj</string>
+    <string name="settings__keyboard_type">Klavara tipo</string>
+    <string name="settings__number">Nombroj</string>
+    <string name="settings__text">Teksto</string>
+    <string name="settings__sound_effect">Sonefiko</string>
+    <string name="settings__sound_effect_summary">Sonefikoj povas varii depende de aparato</string>
+    <string name="settings__sound_effect__standard">Norma sono</string>
+    <string name="settings__sound_effect__clicking">Alklako de sono</string>
+    <string name="settings__use_horizontal_grid">Uzu horizontala movo</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Malsupren gesto sur spacbreto</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Kaŝi klavajn etikedojn dum movo de kursoro</string>
+</resources>

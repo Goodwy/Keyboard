@@ -1,0 +1,89 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Mesazhi i gabimit shfaqet në fragmentin Home kur Inkwell nuk është i aktivizuar në sistem">Tastiera Inkwell nuk është e aktivizuar në sistem dhe për këtë arsye nuk do të jetë e disponueshme si metodë hyrëse. Klikoni këtu për të rregulluar këtë problem.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Mesazhi paralajmërues shfaqet në fragmentin Home kur Inkwell nuk zgjidhet si tastiera e paracaktuar">Tastiera Inkwell nuk zgjidhet si metodë e parazgjedhur e hyrjes. Klikoni këtu për të rregulluar këtë problem.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkwell lëshohet nën {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">Që nga Android 13+, aplikacionet duhet të kërkojnë leje për të dërguar njoftime. Në Inkwell, kjo përdoret vetëm për të hapur një ekran të raportit të përplasjes në rast përplasjeje.
+ Kjo leje mund të ndryshohet në çdo kohë në cilësimet e sistemit.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Mesazhi i gabimit Inkwell</string>
+    <string name="crash_dialog__description_g" comment="Description of Crash dialog">Na falni për shqetësimin, por Inkwell u rrëzua për shkak të një gabimi të papritur.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Lësho udhëzimet e raportit të gjurmuesit për dialogun e ndërprerjes aksidentale. Mbajtësi i vendndodhjes %s është emri i shabllonit të raportit të përplasjes dhe gjithmonë në anglisht/LTR.">Nëse dëshironi të raportoni këtë defekt, ju lutemi kontrolloni gjurmuesi lëshohet fillimisht në GitHub për të parë nëse aksidenti yt është raportuar tashmë.\nNëse jo, kopjo regjistrin e krijuar të gabimeve dhe hap një problem të ri. Përdorni shabllonin \"%s\" dhe plotësoni përshkrimin, hapat për të riprodhuar gabimin dhe ngjitni regjistrin e krijuar në fund. Kjo do të ndihmojë që Inkwell të jetë më i mirë dhe më i qëndrueshëm për të gjithë. Faleminderit!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of Crash Notification channel">Raportimi i gabimit Inkwell</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkwell pushoi së punuari…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell gjithmonë duket se nuk funksionon…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">Ndryshimet në kujtesën e sistemit pasqyrohen në kujtesën e kujtesës Inkwell</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Clipboard Inkwell përditëson gjithashtu kujtesën e fragmenteve të sistemit</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Inkwell App Assets</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">App icon of Inkwell</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">Mbështetje</string>
+    <string name="tip_kind">Mbështetje e mirë</string>
+    <string name="tip_excellent">Mbështetje e shkëlqyer</string>
+    <string name="tip_incredible">Mbështetje e mahnitshme</string>
+    <string name="action_support_project">Mbështetje e projektit</string>
+    <string name="action_support_project_summary">Bli aplikacionin për të mbështetur zhvillimet e ardhshme dhe për të marrë veçori shtesë</string>
+    <string name="learn_more">Mëso më shumë</string>
+    <string name="night_theme_summary">Cakto një temë për modalitetin e errët të tastierës</string>
+    <string name="theme_manager_summary">Menaxho temat e instaluara dhe të personalizuara</string>
+    <string name="plus_title">Na mbështesni</string>
+    <string name="plus_summary">Të gjitha aplikacionet tona janë pa reklama, me burim të hapur dhe do të jenë gjithmonë. Me ndihmën tuaj, ne do të jemi në gjendje të implementojmë më shumë funksione dhe t\'i bëjmë ato edhe më të mira</string>
+    <string name="any_support_unlock_all">Zgjidhni nivelin e mbështetjes së projektit të disponueshëm për ju (një herë, mujore ose vjetore). Çdo mbështetje do të zhbllokojë të gjitha funksionet e aplikacionit</string>
+
+    <string name="locked">E kyçur</string>
+    <string name="unlock">Shkyç</string>
+    <string name="donate_text">
+        Për ata që nuk përdorin Google Play, është e mundur të zhbllokojnë të gjitha funksionet e aplikacionit.
+ \nNëse ju pëlqejnë aplikacionet tona që janë jashtë linje, jo ndërhyrëse dhe nuk kanë reklama, ju lutemi merrni parasysh të na mbështesni në një farë mënyre. Do të ishim shumë mirënjohës.
+ \n\nFaleminderit!
+    </string>
+    <!--Not used-->
+    <string name="lifebuoy_title">We will support you</string>
+    <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>
+    <string name="participants_title">Participants</string>
+    <string name="special_thanks_to">Special thanks to</string>
+    <string name="get">Get</string>
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Po konfirmon blerjen…</string>
+    <string name="billing_purchase_delete_in_progress">Fshirja e një blerjeje…</string>
+    <string name="billing_product_confirmed">Produkti u konfirmua</string>
+    <string name="billing_product_deleted">Blerja u anulua</string>
+    <string name="billing_subscriptions">Abonimet</string>
+    <string name="billing_error_application_signature_not_correct">Për të paguar përmes RuStore, duhet të instaloni versionin e aplikacionit nga RuStore</string>
+    <string name="per_month">%s/muaj</string>
+    <string name="per_year">%s/vit</string>
+    <string name="restore_purchase">Rivendos blerjet</string>
+
+    <!--About-->
+    <string name="about_rate_title">Vlerëso aplikacionin</string>
+    <string name="about_other_app_title">Aplikacione të tjera</string>
+    <string name="about_message">Inkwell është një tastierë me burim të hapur. Zhvilluar në bazë të aplikacionit FlorisBoard.
+ \n\nDo të isha shumë mirënjohës nëse lini një rishikim ose vlerësim për aplikacionin, kjo do të ndihmojë shumë në zhvillimin e projektit.
+ </string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Skeda e parazgjedhur</string>
+    <string name="settings__open_last_tab">Hap skedën e fundit të përdorur</string>
+    <string name="settings__emoji_as_subtype">Emoji si nënlloj</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Kalo te emoji kur ndryshon gjuhën</string>
+    <string name="settings__big_enter_key">Çelësi Big Enter</string>
+    <string name="settings__show_comma_key">Shfaq çelësin e pikëpresjes</string>
+    <string name="settings__show_dot_key">Trego tastin me pika</string>
+    <string name="settings__by_character_layout">Për paraqitjen e shkronjave</string>
+    <string name="settings__keys">Çelësat</string>
+    <string name="settings__uses_material_you__label">Përdor ngjyrat e materialit tënd</string>
+    <string name="settings__keyboard_type">Lloji i tastierës</string>
+    <string name="settings__number">Numrat</string>
+    <string name="settings__text">Tekst</string>
+    <string name="settings__sound_effect">Efekt zanor</string>
+    <string name="settings__sound_effect_summary">Efektet zanore mund të ndryshojnë në varësi të pajisjes</string>
+    <string name="settings__sound_effect__standard">Tingulli standard</string>
+    <string name="settings__sound_effect__clicking">Tingulli duke klikuar</string>
+    <string name="settings__use_horizontal_grid">Përdor lëvizjen horizontale</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Gest poshtë në shiritin e hapësirës</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Fshih etiketat kryesore kur lëviz kursorin</string>
+</resources>

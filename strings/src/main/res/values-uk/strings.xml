@@ -1,0 +1,86 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">Inkwell не ввімкнено в системі, тому він не буде доступним як метод вводу в меню вибору методу вводу. Натисніть сюди, щоб виправити це.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">Inkwell не вибрано як стандартний метод вводу. Натисніть сюди, щоб виправити це.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkwell випускається під ліцензією {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">Починаючи з Android 13, додатки повинні
+        запитувати дозвіл для надсилання повідомлень. Inkwell використовуватиме це тільки для надсилання звіту про збій під час вильоту програми.
+        Цей дозвіл завжди можна відкликати в налаштуваннях пристрою.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Звіт про помилку Inkwell</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">Вибачте за незручності, але в Inkwell стався збій через непередбачену помилку.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">Якщо хочете повідомити про цю помилку, спочатку перевірте трекер проблем на GitHub, чи не повідомлялося вже про ваш збій.\nЯкщо ні, скопіюйте згенерований журнал помилки та відкрийте нову проблему. Використовуйте шаблон "%s" і заповніть опис, кроки для відтворення помилки та вставте згенерований журнал наприкінці. Це допоможе зробити Inkwell кращим і стабільнішим для всіх. Дякую!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Звіти про помилки Inkwell</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkwell перестав працювати…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">Оновлення системного буферу також оновить буфер обміну Inkwell</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Буфер обміну Inkwell також оновлює системний буфер обміну</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Ресурси Inkwell</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">Значок програми Inkwell</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">Банка з підказками</string>
+    <string name="tip_kind">Хороша підтримка</string>
+    <string name="tip_excellent">Відмінна підтримка</string>
+    <string name="tip_incredible">Неймовірна підтримка</string>
+    <string name="action_support_project">Супровід проектів</string>
+    <string name="action_support_project_summary">Придбайте додаток, щоб підтримати майбутню розробку та додаткові функції</string>
+    <string name="learn_more">Дізнатися більше</string>
+    <string name="night_theme_summary">Налаштування теми для темного режиму клавіатури</string>
+    <string name="theme_manager_summary">Керування встановленими та користувацькими темами</string>
+    <string name="plus_title">Підтримайте нас</string>
+    <string name="plus_summary">Усі наші додатки не містять реклами, мають відкритий вихідний код, і вони завжди залишатимуться такими. З вашою допомогою ми можемо впровадити більше функцій і зробити їх ще кращими</string>
+
+    <string name="any_support_unlock_all">Виберіть доступний вам рівень підтримки проекту (разова, щомісячна або щорічна). Будь-яка підтримка відкриває всі можливості програми</string>
+    <string name="locked">Заблоковано</string>
+    <string name="unlock">Розблокувати</string>
+    <string name="donate_text">Для тих, хто не користується Google Play, є можливість розблокувати всі функції програми.             \\nЯкщо вам подобаються наші додатки, які працюють офлайн, ненав\'язливі та не містять реклами, будь ласка, розгляньте можливість якимось чином підтримати нас. Будемо дуже вдячні.             \\n\\nДякуємо!</string>
+    <!--Not used-->
+    <string name="lifebuoy_title">We will support you</string>
+    <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>
+    <string name="participants_title">Participants</string>
+    <string name="special_thanks_to">Special thanks to</string>
+    <string name="get">Get</string>
+
+    <!--Billing-->
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Confirming the purchase…</string>
+    <string name="billing_purchase_delete_in_progress">Deleting a purchase…</string>
+    <string name="billing_product_confirmed">Product confirmed</string>
+    <string name="billing_product_deleted">Purchase cancelled</string>
+    <string name="billing_subscriptions">Subscriptions</string>
+    <string name="billing_error_application_signature_not_correct">To pay via RuStore you need to install the app version from RuStore</string>
+    <string name="per_month">%s/місяць</string>
+    <string name="per_year">%s/рік</string>
+    <string name="restore_purchase">Відновлення покупок</string>
+
+    <!--About-->
+    <string name="about_rate_title">Оцініть додаток</string>
+    <string name="about_other_app_title">Інші сфери застосування</string>
+    <string name="about_message">Клавіатура Inkwell з відкритим вихідним кодом. Inkwell заснований на додатку FlorisBoard з відкритим вихідним кодом.         \\n\\nБуду дуже вдячний, якщо ви залишите відгук або оцінку про додаток, це дуже допоможе розвитку проекту.</string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Вкладка за замовчуванням</string>
+    <string name="settings__open_last_tab">Відкрийте останню використану вкладку</string>
+    <string name="settings__emoji_as_subtype">Емодзі як підтип</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Перемикання на емодзі при зміні мови</string>
+    <string name="settings__big_enter_key">Велика клавіша Enter</string>
+    <string name="settings__show_comma_key">Показати клавішу крапки з комою</string>
+    <string name="settings__show_dot_key">Показати клавішу крапки</string>
+    <string name="settings__by_character_layout">Про компонування букв</string>
+    <string name="settings__keys">Ключі</string>
+    <string name="settings__uses_material_you__label">Використовує кольори Material You</string>
+    <string name="settings__keyboard_type">Тип клавіатури</string>
+    <string name="settings__number">Номери</string>
+    <string name="settings__text">Текст</string>
+    <string name="settings__sound_effect">Звуковий ефект</string>
+    <string name="settings__sound_effect_summary">Звукові ефекти можуть відрізнятися залежно від пристрою</string>
+    <string name="settings__sound_effect__standard">Стандартний звук</string>
+    <string name="settings__sound_effect__clicking">Звук клацання</string>
+    <string name="settings__use_horizontal_grid">Використовуйте горизонтальне прокручування</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Провести вниз на пробілі</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Приховування ярликів під час переміщення курсора</string>
+</resources>

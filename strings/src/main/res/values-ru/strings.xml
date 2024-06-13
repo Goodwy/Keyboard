@@ -4,9 +4,7 @@
     <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">Клавиатура Inkwell не включена в системе и поэтому не будет доступна в качестве метода ввода. Нажмите здесь, чтобы исправить эту проблему.</string>
     <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">Клавиатура Inkwell не выбрана в качестве метода ввода по умолчанию. Нажмите здесь, чтобы исправить эту проблему.</string>
     <string name="about__project_license__summary_g" comment="Preference summary">Inkwell выпускается под лицензией {license_name}</string>
-    <string name="setup__grant_notification_permission__description_g">Начиная с Android 13, приложения должны
-        запрашивать разрешение для отправки уведомлений. Inkwell будет использовать это только для отправки отчёта о сбое при вылете приложения.
-        Данное разрешение всегда можно отозвать в настройках устройства.
+    <string name="setup__grant_notification_permission__description_g">Начиная с Android 13, приложения должны запрашивать разрешение для отправки уведомлений. Inkwell будет использовать это только для отправки отчёта о сбое при вылете приложения. Данное разрешение всегда можно отозвать в настройках устройства.
     </string>
     <string name="crash_dialog__title_g" comment="Title of crash dialog">Сообщение об ошибке Inkwell</string>
     <string name="crash_dialog__description_g" comment="Description of crash dialog">Извините за неудобства, но в Inkwell произошёл сбой из-за непредвиденной ошибки.</string>
@@ -32,6 +30,8 @@
     <string name="theme_manager_summary">Управление установленными и пользовательскими темами</string>
     <string name="plus_title">Поддержите нас</string>
     <string name="plus_summary">Все наши приложения без рекламы, с открытым исходным кодом, и так будет всегда. С Вашей помощью мы сможем реализовать больше функций и сделать их еще лучше</string>
+    <string name="any_support_unlock_all">Выберите доступный Вам уровень поддержки проекта (единовременный, ежемесячный или ежегодный). Любая поддержка разблокирует все функции приложения</string>
+
     <string name="locked">Заблокированно</string>
     <string name="unlock">Разблокировать</string>
     <string name="donate_text">
@@ -39,9 +39,12 @@
             \nЕсли вам нравятся наши приложения, которые работают автономно, не навязчивы и не содержат рекламы, пожалуйста, подумайте о том, чтобы поддержать нас каким-либо образом. Мы будем очень благодарны.
             \n\nСпасибо!
     </string>
-
-    <!--Billing-->
-    <string name="tipping_jar_dialog_error_title">Не удалось</string>
+    <!--Not used-->
+    <string name="lifebuoy_title">Мы поддержим вас</string>
+    <string name="lifebuoy_summary">Если по каким-то причинам вы не можете позволить себе наше приложение, но очень хотите использовать все его возможности, просто напишите нам.</string>
+    <string name="participants_title">Участники</string>
+    <string name="special_thanks_to">Особая благодарность</string>
+    <string name="get">Скачать</string>
 
     <!--RuStore-->
     <string name="billing_purchase_confirm_in_progress">Подтверждаем покупку…</string>

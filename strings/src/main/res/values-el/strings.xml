@@ -1,0 +1,86 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">Το Inkwell δεν είναι ενεργοποιημένο στο σύστημα και συνεπώς δε θα είναι διαθέσιμο ως μέθοδος εισαγωγής στον επιλογέα εισαγωγής. Πατήστε εδώ για να επιλύσετε αυτό το πρόβλημα.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">Το Inkwell δεν έχει επιλεχθεί ως η προεπιλεγμένη μέθοδος εισαγωγής. Πατήστε εδώ για να επιλύσετε αυτό το πρόβλημα.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Το Inkwell είναι αδειοδοτημένο υπό την άδεια {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">As of Android 13+, apps must ask for permission to
+        send notifications. In Inkwell, this is only used to open a crash report screen in the event of a crash.
+        This permission can be changed at any time in the system settings.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Αναφορά σφάλματος Inkwell</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">Συγγνώμη για την ταλαιπωρία, αλλά το Inkwell έχει τερματιστεί απροσδόκητα εξαιτίας ενός απρόσμενου σφάλματος.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">Εάν επιθυμείτε να αναφέρετε αυτό το σφάλμα, πρώτα ελέγξτε αν το πρόβλημά σας δεν έχει ακόμα αναφερθεί στην παρακολούθηση προβλημάτων στο GitHub.\nΕάν δεν έχει αναφερθεί, αντιγράψτε την καταγραφή του απροσδόκητου τερματισμού που έχει προκύψει και ανοίξτε ένα νέο θέμα. Χρησιμοποιήστε το πρότυπο \"%s\" και συμπληρώστε την περιγραφή, τα βήματα για αναπαραγωγή, και αντιγράψτε την καταγραφή του τερματισμού στο τέλος. Αυτό βοηθάει να γίνει το Inkwell καλύτερο και πιο σταθερό για όλους. Ευχαριστώ!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Αναφορές σφάλματος Inkwell</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Το Inkwell έχει σταματήσει να λειτουργεί…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">Οι ενημερώσεις του συστημικού προχείρου ενημερώνουν και το πρόχειρο Inkwell</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Οι ενημερώσεις του προχείρου Inkwell, ενημερώνουν και το συστημικό πρόχειρο</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Πηγές της Εφαρμογής Inkwell</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">Εικονίδιο εφαρμογής του Inkwell</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">Συμβουλή Βάζο</string>
+    <string name="tip_kind">Καλή υποστήριξη</string>
+    <string name="tip_excellent">Εξαιρετική υποστήριξη</string>
+    <string name="tip_incredible">Καταπληκτική υποστήριξη</string>
+    <string name="action_support_project">Υποστήριξη έργου</string>
+    <string name="action_support_project_summary">Αγοράστε την εφαρμογή για να υποστηρίξετε μελλοντική ανάπτυξη και πρόσθετες λειτουργίες</string>
+    <string name="learn_more">Μάθε περισσότερα</string>
+    <string name="night_theme_summary">Προσαρμογή του θέματος για τη λειτουργία σκοτεινού πληκτρολογίου</string>
+    <string name="theme_manager_summary">Διαχείριση εγκατεστημένων και προσαρμοσμένων θεμάτων</string>
+    <string name="plus_title">Υποστηρίξτε μας</string>
+    <string name="plus_summary">Όλες οι εφαρμογές μας είναι χωρίς διαφημίσεις, ανοιχτού κώδικα και θα παραμείνει πάντα έτσι. Με τη βοήθειά σας είμαστε σε θέση να εφαρμόσουμε περισσότερες δυνατότητες και να τις κάνουμε ακόμα καλύτερες</string>
+
+    <string name="any_support_unlock_all">Επιλέξτε το επίπεδο υποστήριξης έργου που έχετε στη διάθεσή σας (εφάπαξ, μηνιαία ή ετήσια). Οποιαδήποτε υποστήριξη ξεκλειδώνει όλες τις δυνατότητες της εφαρμογής</string>
+    <string name="locked">Αποκλεισμένος</string>
+    <string name="unlock">Ξεκλειδώνω</string>
+    <string name="donate_text">Για όσους δεν χρησιμοποιούν το Google Play, είναι δυνατό να ξεκλειδώσετε όλες τις λειτουργίες της εφαρμογής.             \\nΑν σας αρέσουν οι εφαρμογές μας που είναι εκτός σύνδεσης, μη παρεμβατικές και δεν έχουν διαφημίσεις, εξετάστε το ενδεχόμενο να μας υποστηρίξετε με κάποιο τρόπο. Θα ήμασταν πολύ ευγνώμονες.             \\n\\nΕυχαριστώ!</string>
+    <!--Not used-->
+    <string name="lifebuoy_title">We will support you</string>
+    <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>
+    <string name="participants_title">Participants</string>
+    <string name="special_thanks_to">Special thanks to</string>
+    <string name="get">Get</string>
+
+    <!--Billing-->
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Confirming the purchase…</string>
+    <string name="billing_purchase_delete_in_progress">Deleting a purchase…</string>
+    <string name="billing_product_confirmed">Product confirmed</string>
+    <string name="billing_product_deleted">Purchase cancelled</string>
+    <string name="billing_subscriptions">Subscriptions</string>
+    <string name="billing_error_application_signature_not_correct">To pay via RuStore you need to install the app version from RuStore</string>
+    <string name="per_month">%s/μήνα</string>
+    <string name="per_year">%s/έτος</string>
+    <string name="restore_purchase">Επαναφορά αγορών</string>
+
+    <!--About-->
+    <string name="about_rate_title">Αξιολογήστε την εφαρμογή</string>
+    <string name="about_other_app_title">Άλλες εφαρμογές</string>
+    <string name="about_message">Ένα πληκτρολόγιο Inkwell ανοιχτού κώδικα. Το Inkwell βασίζεται στην εφαρμογή ανοιχτού κώδικα FlorisBoard.         \\n\\nΘα ήμουν πολύ ευγνώμων αν αφήσετε μια κριτική ή βαθμολογία σχετικά με την εφαρμογή, θα βοηθήσει πολύ στην ανάπτυξη του έργου.</string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Προεπιλεγμένη καρτέλα</string>
+    <string name="settings__open_last_tab">Άνοιγμα της τελευταίας καρτέλας που χρησιμοποιήθηκε</string>
+    <string name="settings__emoji_as_subtype">Emoji ως υποτύπος</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Εναλλαγή σε emoji κατά την αλλαγή γλώσσας</string>
+    <string name="settings__big_enter_key">Μεγάλο πλήκτρο Enter</string>
+    <string name="settings__show_comma_key">Εμφάνιση πλήκτρου ερωτηματικού</string>
+    <string name="settings__show_dot_key">Εμφάνιση πλήκτρου κουκκίδας</string>
+    <string name="settings__by_character_layout">Σχετικά με τη διάταξη των γραμμάτων</string>
+    <string name="settings__keys">Κλειδιά</string>
+    <string name="settings__uses_material_you__label">Χρησιμοποιεί τα χρώματα του Material You</string>
+    <string name="settings__keyboard_type">Τύπος πληκτρολογίου</string>
+    <string name="settings__number">Αριθμοί</string>
+    <string name="settings__text">Κείμενο</string>
+    <string name="settings__sound_effect">Ηχητικό εφέ</string>
+    <string name="settings__sound_effect_summary">Τα ηχητικά εφέ ενδέχεται να διαφέρουν ανάλογα με τη συσκευή</string>
+    <string name="settings__sound_effect__standard">Τυπικός ήχος</string>
+    <string name="settings__sound_effect__clicking">Κάνοντας κλικ στον ήχο</string>
+    <string name="settings__use_horizontal_grid">Χρήση οριζόντιας κύλισης</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Ολίσθηση προς τα κάτω από το πλήκτρο διαστήματος</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Απόκρυψη συντομεύσεων κατά τη μετακίνηση του δρομέα</string>
+</resources>

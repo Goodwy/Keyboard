@@ -51,14 +51,14 @@ fun ClipboardScreen() = FlorisScreen {
             SwitchPreferenceRow(
                 prefs.clipboard.syncToFloris,
                 title = stringRes(R.string.pref__clipboard__sync_from_system_clipboard__label),
-                summary = stringRes(R.string.pref__clipboard__sync_from_system_clipboard__summary_g),
+                summary = stringRes(com.goodwy.keyboard.strings.R.string.pref__clipboard__sync_from_system_clipboard__summary_g),
                 enabledIf = { prefs.clipboard.useInternalClipboard isEqualTo true },
             )
             DividerRow(start = 16.dp)
             SwitchPreferenceRow(
                 prefs.clipboard.syncToSystem,
                 title = stringRes(R.string.pref__clipboard__sync_to_system_clipboard__label),
-                summary = stringRes(R.string.pref__clipboard__sync_to_system_clipboard__summary_g),
+                summary = stringRes(com.goodwy.keyboard.strings.R.string.pref__clipboard__sync_to_system_clipboard__summary_g),
                 enabledIf = { prefs.clipboard.useInternalClipboard isEqualTo true },
             )
         }

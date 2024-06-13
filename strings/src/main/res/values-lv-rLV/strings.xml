@@ -1,0 +1,86 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">Inkwell nav iespējots sistēmas iestatījumos, tādēļ tā nebūs pieejama kā ievades avots atlasītājā. Klikšķināt šeit, lai atrisinātu to.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">Inkwell nav atlasīts kā noklusējuma ievades veids. Klikšķināt šeit, lai to novērstu.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkwell ir licencēts ar {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">Sākot ar Android 13, lietotnēm ir jāprasa atļauja, lai
+        nosūtītu paziņojumus. Inkwell tā tiek izmantota tikai, lai atvērtu avārijas ziņojuma ekrānu avārijas gadījumā.
+        Šo atļauju sistēmas iestatījumos var mainīt jebkurā laikā.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Inkwell kļūdu ziņojums</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">Atvainojamies par neērtībām, bet Inkwell avarēja neparedzētas kļūdas dēļ.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">Ja ir vēlme ziņot par šo kļūdu, vispirms jāpārliecinās, vai GitHub pieteikumu ceļrādī par šādu avāriju jau ir ziņots.\nJa nē, starpliktuvē jāievieto izveidotais avārijas žurnāls un jāatver jauns pieteikums. Jāizmanto \"%s\" veidne un jānorāda apraksts, darbības atkārtošanai un beigās jāielīmē avārijas žurnāls. Tas palīdz padarīt Inkwell labāku un noturīgāku ikvienam. Paldies!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Inkwell kļūdu ziņojumi</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkwell pārstāja darboties…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">Sistēmas starpliktuves izmaiņas atjauninās arī Inkwell starpliktuvi</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Inkwell starpliktuves izmaiņas atjauninās arī sistēmas starpliktuvi</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Inkwell lietotnes līdzekļi</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">Inkwell lietotnes ikona</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">Padoms Burka</string>
+    <string name="tip_kind">Labs atbalsts</string>
+    <string name="tip_excellent">Lielisks atbalsts</string>
+    <string name="tip_incredible">Pārsteidzošs atbalsts</string>
+    <string name="action_support_project">Projekta atbalsts</string>
+    <string name="action_support_project_summary">Iegādājieties lietotni, lai atbalstītu turpmāko attīstību un papildu funkcijas</string>
+    <string name="learn_more">Apgūt vairāk</string>
+    <string name="night_theme_summary">Dizaina pielāgošana tumšās tastatūras režīmam</string>
+    <string name="theme_manager_summary">Instalēto un pielāgoto dizainu pārvaldība</string>
+    <string name="plus_title">Atbalstiet mūs</string>
+    <string name="plus_summary">Visas mūsu lietotnes ir bez reklāmām, atvērtais pirmkods, un tas vienmēr tā arī paliks. Ar jūsu palīdzību mēs varam ieviest vairāk funkciju un padarīt tās vēl labākas</string>
+
+    <string name="any_support_unlock_all">Izvēlieties jums pieejamo projektu atbalsta līmeni (vienreizējs, ikmēneša vai gada). Jebkurš atbalsts atbloķē visas lietojumprogrammas funkcijas</string>
+    <string name="locked">Bloķēts</string>
+    <string name="unlock">Atbloķēt</string>
+    <string name="donate_text">Tiem, kas neizmanto Google Play, ir iespējams atbloķēt visas lietojumprogrammas funkcijas.             \\nJa jums patīk mūsu lietotnes, kas ir bezsaistē, neuzbāzīgas un kurām nav reklāmu, lūdzu, apsveriet iespēju mūs kaut kādā veidā atbalstīt. Mēs būtu ļoti pateicīgi.             \\n\\nIzsmej!</string>
+    <!--Not used-->
+    <string name="lifebuoy_title">We will support you</string>
+    <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>
+    <string name="participants_title">Participants</string>
+    <string name="special_thanks_to">Special thanks to</string>
+    <string name="get">Get</string>
+
+    <!--Billing-->
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Confirming the purchase…</string>
+    <string name="billing_purchase_delete_in_progress">Deleting a purchase…</string>
+    <string name="billing_product_confirmed">Product confirmed</string>
+    <string name="billing_product_deleted">Purchase cancelled</string>
+    <string name="billing_subscriptions">Subscriptions</string>
+    <string name="billing_error_application_signature_not_correct">To pay via RuStore you need to install the app version from RuStore</string>
+    <string name="per_month">%s/mēnesī</string>
+    <string name="per_year">%s/gadā</string>
+    <string name="restore_purchase">Pirkumu atjaunošana</string>
+
+    <!--About-->
+    <string name="about_rate_title">Novērtējiet lietotni</string>
+    <string name="about_other_app_title">Citas lietojumprogrammas</string>
+    <string name="about_message">Atvērtā koda Inkwell tastatūra. Inkwell pamatā ir atvērtā koda FlorisBoard lietojumprogramma.         \\n\\nI būtu ļoti pateicīgs, ja jūs atstātu atsauksmi vai vērtējumu par pieteikumu, tas ļoti palīdzēs projekta attīstībai.</string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Noklusējuma cilne</string>
+    <string name="settings__open_last_tab">Pēdējās izmantotās cilnes atvēršana</string>
+    <string name="settings__emoji_as_subtype">Emocijzīmes kā apakšveids</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Pārslēdzieties uz emocijzīmēm, mainot valodu</string>
+    <string name="settings__big_enter_key">Liels taustiņš Enter</string>
+    <string name="settings__show_comma_key">Rādīt semikola atslēgu</string>
+    <string name="settings__show_dot_key">Rādīt punktveida taustiņu</string>
+    <string name="settings__by_character_layout">Par burtu izkārtojumu</string>
+    <string name="settings__keys">Taustiņus</string>
+    <string name="settings__uses_material_you__label">Izmanto krāsas Material You</string>
+    <string name="settings__keyboard_type">Tastatūras tips</string>
+    <string name="settings__number">Skaitļi</string>
+    <string name="settings__text">Teksts</string>
+    <string name="settings__sound_effect">Skaņas efekts</string>
+    <string name="settings__sound_effect_summary">Skaņas efekti var atšķirties atkarībā no ierīces</string>
+    <string name="settings__sound_effect__standard">Standarta skaņa</string>
+    <string name="settings__sound_effect__clicking">Noklikšķināšana uz skaņas</string>
+    <string name="settings__use_horizontal_grid">Horizontālās ritināšanas izmantošana</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Pavilkt no atstarpes taustiņa uz leju</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Paslēpiet īsceļus, pārvietojot kursoru</string>
+</resources>

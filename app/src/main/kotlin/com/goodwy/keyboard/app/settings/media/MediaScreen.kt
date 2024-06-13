@@ -61,13 +61,13 @@ fun MediaScreen() = FlorisScreen {
             DividerRow(start = 16.dp)
             SwitchPreferenceRow(
                 pref = prefs.media.emojiUseLastTab,
-                title = stringRes(R.string.settings__open_last_tab),
+                title = stringRes(com.goodwy.keyboard.strings.R.string.settings__open_last_tab),
             )
             DividerRow(start = 16.dp)
             val emojiDefaultTab = prefs.media.emojiDefaultTab.observeAsState()
             ListPreferenceRow(
                 prefs.media.emojiDefaultTab,
-                title = stringRes(R.string.settings__default_tab),
+                title = stringRes(com.goodwy.keyboard.strings.R.string.settings__default_tab),
                 entries = EmojiCategory.listEntries(),
                 enabledIf = { prefs.media.emojiUseLastTab isEqualTo false },
                 showEndIcon = true,
@@ -76,7 +76,7 @@ fun MediaScreen() = FlorisScreen {
             DividerRow(start = 16.dp)
             SwitchPreferenceRow(
                 pref = prefs.media.emojiUseHorizontalGrid,
-                title = stringRes(R.string.settings__use_horizontal_grid),
+                title = stringRes(com.goodwy.keyboard.strings.R.string.settings__use_horizontal_grid),
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(

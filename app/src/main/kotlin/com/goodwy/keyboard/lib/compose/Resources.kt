@@ -98,6 +98,6 @@ fun stringResAddLockedLabelIfNeeded(
     vararg args: CurlyArg,
 ): String {
     val resources = LocalResourcesContext.current.resources
-    val string = if (needed) "${resources.getString(id)} (${resources.getString(R.string.locked)})" else resources.getString(id)
+    val string = if (needed) "${resources.getString(id)} (${resources.getString(com.goodwy.keyboard.strings.R.string.locked)})" else resources.getString(id)
     return formatString(string, args)
 }

@@ -1,0 +1,89 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Порака за грешка прикажана во Home фрагмент кога Inkwell не е овозможена во системот">Inkwell тастатурата не е овозможена на системот и затоа нема да биде достапна како метод за внесување. Кликнете овде за да го решите овој проблем.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Предупредувачка порака прикажана во Home фрагмент кога Inkwell не е избрана како стандардна тастатура">Inkwell тастатурата не е избрана како стандарден метод за внесување. Кликнете овде за да го решите овој проблем.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkwell е издаден под {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">Почнувајќи од Android 13, апликациите мора да бараат дозвола за испраќање известувања. Inkwell ќе го користи ова само за да испрати извештај за пад кога апликацијата ќе се урна. Оваа дозвола секогаш може да се отповика во поставките на уредот.
+ </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Порака за грешка Inkwell</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">Извинете за непријатностите, но Inkwell падна поради неочекувана грешка.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Издадете упатства за извештајот за следење за дијалогот за падови. Местото %s е името на шаблонот за извештај за падот и секогаш на англиски/LTR.">Ако сакате да ја пријавите оваа грешка, проверете тракерот прво излегува на GitHub за да види дали вашиот пад е веќе пријавен.\nАко не, копирајте го генерираниот дневник за грешки и отворете нов проблем. Користете го шаблонот \"%s\" и пополнете го описот, чекорите за репродукција на грешката и залепете го генерираниот дневник на крајот. Ова ќе помогне да се направи Inkwell подобар и постабилен за секого. Ви благодариме!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Известување за грешка Inkwell</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkwell престана да работи…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell секогаш престанува да работи…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">Промените на системската таблата со исечоци се рефлектираат во таблата со исечоци Inkwell</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Инквел таблата со исечоци ја ажурира и таблата со исечоци на системот</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Inkwell App Assets</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">App icon of Inkwell</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">Поддршка</string>
+    <string name="tip_kind">Добра поддршка</string>
+    <string name="tip_excellent">Одлична поддршка</string>
+    <string name="tip_incredible">Неверојатна поддршка</string>
+    <string name="action_support_project">Поддршка на проектот</string>
+    <string name="action_support_project_summary">Купете ја апликацијата за да ги поддржите идните случувања и да добиете дополнителни функции</string>
+    <string name="learn_more">Дознајте повеќе</string>
+    <string name="night_theme_summary">Поставете тема за темниот режим на тастатура</string>
+    <string name="theme_manager_summary">Управувајте со инсталираните и приспособените теми</string>
+    <string name="plus_title">Поддржете нè</string>
+    <string name="plus_summary">Сите наши апликации се без реклами, со отворен код и секогаш ќе бидат. Со ваша помош, ќе можеме да имплементираме повеќе функции и да ги направиме уште подобри</string>
+    <string name="any_support_unlock_all">Изберете го нивото на проектна поддршка што ви е достапно (еднократно, месечно или годишно). Секоја поддршка ќе ги отклучи сите функции на апликацијата</string>
+
+    <string name="locked">Заклучено</string>
+    <string name="unlock">Отклучи</string>
+    <string name="donate_text">
+ За оние кои не користат Google Play, постои опција за отклучување на сите функции на апликацијата.
+ \nАко ви се допаѓаат нашите апликации што се офлајн, ненаметливи и без реклами, размислете да не поддржите на некој начин. Ќе бидеме многу благодарни.
+ \n\nВи благодариме!
+ </string>
+    <!--Not used-->
+    <string name="lifebuoy_title">Ќе ве поддржиме</string>
+    <string name="lifebuoy_summary">Ако поради некоја причина не можете да си ја дозволите нашата апликација, но навистина сакате да ги користите сите нејзини функции, само пишете ни.</string>
+    <string name="participants_title">Учесници</string>
+    <string name="special_thanks_to">Посебна благодарност</string>
+    <string name="get">Преземи</string>
+
+    <!--Billing-->
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Се потврдува купувањето…</string>
+    <string name="billing_purchase_delete_in_progress">Бришење купување…</string>
+    <string name="billing_product_confirmed">Производот е потврден</string>
+    <string name="billing_product_deleted">Купувањето е откажано</string>
+    <string name="billing_subscriptions">Претплати</string>
+    <string name="billing_error_application_signature_not_correct">За да платите преку RuStore, треба да ја инсталирате верзијата на апликацијата од RuStore</string>
+    <string name="per_month">%s/месец</string>
+    <string name="per_year">%s/година</string>
+    <string name="restore_purchase">Вратете ги купувањата</string>
+
+    <!--About-->
+    <string name="about_rate_title">Оценете ја апликацијата</string>
+    <string name="about_other_app_title">Други апликации</string>
+    <string name="about_message">Inkwell е тастатура со отворен код. Развиено врз основа на апликацијата FlorisBoard.
+ \n\nБи бил многу благодарен ако оставите преглед или оцена за апликацијата, тоа многу ќе помогне во развојот на проектот.
+ </string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Стандардна картичка</string>
+    <string name="settings__open_last_tab">Отвори ја последната користена картичка</string>
+    <string name="settings__emoji_as_subtype">Емоџи како подтип</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Префрлете се на емотикони кога менувате јазик</string>
+    <string name="settings__big_enter_key">Биг клуч за внесување</string>
+    <string name="settings__show_comma_key">Прикажи го клучот со точка-запирка</string>
+    <string name="settings__show_dot_key">Прикажи го клучот со точка</string>
+    <string name="settings__by_character_layout">За распоред на букви</string>
+    <string name="settings__keys">Клучеви</string>
+    <string name="settings__uses_material_you__label">Користи бои на материјалот што го правите</string>
+    <string name="settings__keyboard_type">Тип на тастатура</string>
+    <string name="settings__number">Броеви</string>
+    <string name="settings__text">Текст</string>
+    <string name="settings__sound_effect">Звучен ефект</string>
+    <string name="settings__sound_effect_summary">Звучните ефекти може да се разликуваат во зависност од уредот</string>
+    <string name="settings__sound_effect__standard">Стандарден звук</string>
+    <string name="settings__sound_effect__clicking">Звук на кликнување</string>
+    <string name="settings__use_horizontal_grid">Користете хоризонтално лизгање</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Гест надолу на празно место</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Сокриј ги етикетите на копчињата при движење на курсорот</string></resources>

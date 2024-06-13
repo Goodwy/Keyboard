@@ -1,0 +1,86 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">Inkwell没有在系统中被启用，因此在输入法选择界面中不会出现。点击这里解决这一问题。</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">Inkwell没有被设置为默认输入法。点击这里解决这一问题。</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkwell 在 {license_name} 下进行授权</string>
+    <string name="setup__grant_notification_permission__description_g">As of Android 13+, apps must ask for permission to
+        send notifications. In Inkwell, this is only used to open a crash report screen in the event of a crash.
+        This permission can be changed at any time in the system settings.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Inkwell 错误报告</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">很抱歉给您带来不便，但 Inkwell 因意外错误而崩溃。</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">如果您希望报告此错误，请先查看 GitHub 上的问题跟踪器（如果尚未报告您的崩溃）。\n如果没有，请复制生成的崩溃日志并打开一个新问题。使用“%s”模板，填写描述、重现崩溃的步骤，最后粘贴生成的崩溃日志。这有助于让 Inkwell 对每个用户都更好、更稳定。谢谢！</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Inkwell 错误报告</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkwell 已停止工作…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">当系统剪贴板更新时，同时更新 Inkwell 剪贴板</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">当 Inkwell 剪贴板更新时，同时更新系统剪贴板</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Inkwell应用资源</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">Inkwell 的应用图标</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">提示罐</string>
+    <string name="tip_kind">良好的支持</string>
+    <string name="tip_excellent">出色的支持</string>
+    <string name="tip_incredible">惊人的支持</string>
+    <string name="action_support_project">项目支持</string>
+    <string name="action_support_project_summary">购买应用程序以支持未来的开发和其他功能</string>
+    <string name="learn_more">了解更多信息</string>
+    <string name="night_theme_summary">自定义深色键盘模式的主题</string>
+    <string name="theme_manager_summary">管理已安装的主题和自定义主题</string>
+    <string name="plus_title">支持我们</string>
+    <string name="plus_summary">我们所有的应用程序都是无广告的、开源的，并且将永远保持这种状态。在您的帮助下，我们能够实现更多功能并使其变得更好</string>
+
+    <string name="any_support_unlock_all">选择可用的项目支持级别（一次性、每月或每年）。任何支持都可以解锁应用程序的所有功能</string>
+    <string name="locked">封锁</string>
+    <string name="unlock">开锁</string>
+    <string name="donate_text">对于那些不使用 Google Play 的人，可以解锁该应用程序的所有功能。            \\n如果您喜欢我们的离线、非侵入性且没有广告的应用程序，请考虑以某种方式支持我们。我们将不胜感激。            \\n\\n谢谢！</string>
+    <!--Not used-->
+    <string name="lifebuoy_title">We will support you</string>
+    <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>
+    <string name="participants_title">Participants</string>
+    <string name="special_thanks_to">Special thanks to</string>
+    <string name="get">Get</string>
+
+    <!--Billing-->
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Confirming the purchase…</string>
+    <string name="billing_purchase_delete_in_progress">Deleting a purchase…</string>
+    <string name="billing_product_confirmed">Product confirmed</string>
+    <string name="billing_product_deleted">Purchase cancelled</string>
+    <string name="billing_subscriptions">Subscriptions</string>
+    <string name="billing_error_application_signature_not_correct">To pay via RuStore you need to install the app version from RuStore</string>
+    <string name="per_month">%s/月</string>
+    <string name="per_year">%s/年</string>
+    <string name="restore_purchase">恢复购买项目</string>
+
+    <!--About-->
+    <string name="about_rate_title">为应用评分</string>
+    <string name="about_other_app_title">其他应用</string>
+    <string name="about_message">开源 Inkwell 键盘。Inkwell 基于开源的 FlorisBoard 应用程序。        \\n\\n如果您留下有关应用程序的评论或评级，我将不胜感激，这将极大地帮助项目的发展。</string>
+
+    <!--settings-->
+    <string name="settings__default_tab">“默认”选项卡</string>
+    <string name="settings__open_last_tab">打开上次使用的选项卡</string>
+    <string name="settings__emoji_as_subtype">表情符号作为子类型</string>
+    <string name="settings__switch_to_emoji_when_changing_language">更改语言时切换到表情符号</string>
+    <string name="settings__big_enter_key">大 Enter 键</string>
+    <string name="settings__show_comma_key">显示分号键</string>
+    <string name="settings__show_dot_key">显示点键</string>
+    <string name="settings__by_character_layout">关于字母的布局</string>
+    <string name="settings__keys">钥匙</string>
+    <string name="settings__uses_material_you__label">使用 Material You 的颜色</string>
+    <string name="settings__keyboard_type">键盘类型</string>
+    <string name="settings__number">数字</string>
+    <string name="settings__text">文本</string>
+    <string name="settings__sound_effect">音效</string>
+    <string name="settings__sound_effect_summary">声音效果可能因设备而异</string>
+    <string name="settings__sound_effect__standard">标准声音</string>
+    <string name="settings__sound_effect__clicking">咔哒声</string>
+    <string name="settings__use_horizontal_grid">使用水平滚动</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">空格键向下移动</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">移动光标时隐藏快捷方式</string>
+</resources>

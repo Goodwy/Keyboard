@@ -1,0 +1,86 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">Inkwell är inte aktiverad och kommer därför inte vara tillgänglig som inmatningsmetod i inmatningsväljaren. Tryck här för att lösa problemet.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">Inkwell är inte vald som standard inmatningsmetod. Tryck här för att lösa problemet.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkwell is licensed under {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">As of Android 13+, apps must ask for permission to
+        send notifications. In Inkwell, this is only used to open a crash report screen in the event of a crash.
+        This permission can be changed at any time in the system settings.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Inkwell error report</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">Sorry for the inconvenience, but Inkwell has crashed due to an unexpected error.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">If you wish to report this error, first check out the issue tracker on GitHub if your crash has not already been reported.\nIf it hasn\'t, copy the generated crash log and open a new issue. Use the \"%s\" template and fill out the description, the steps to reproduce, and paste the generated crash log at the end. This helps in making Inkwell better and more stable for everyone. Thank you!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Inkwell error reports</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkwell has stopped working…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">System clipboard updates also update Inkwell clipboard</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Inkwell clipboard updates also update system clipboard</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Inkwell app-tillgångar</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">Inkwell appikon</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">Tips burk</string>
+    <string name="tip_kind">Bra stöd</string>
+    <string name="tip_excellent">Utmärkt support</string>
+    <string name="tip_incredible">Fantastiskt stöd</string>
+    <string name="action_support_project">Stöd till projekt</string>
+    <string name="action_support_project_summary">Köp appen för att stödja framtida utveckling och ytterligare funktioner</string>
+    <string name="learn_more">Lära sig mer</string>
+    <string name="night_theme_summary">Anpassa temat för det mörka tangentbordsläget</string>
+    <string name="theme_manager_summary">Hantera installerade och anpassade teman</string>
+    <string name="plus_title">Stöd oss</string>
+    <string name="plus_summary">Alla våra appar är annonsfria, öppen källkod och det kommer alltid att förbli så. Med din hjälp kan vi implementera fler funktioner och göra dem ännu bättre</string>
+
+    <string name="any_support_unlock_all">Välj vilken nivå av projektstöd som är tillgängligt för dig (engångs-, månads- eller årsstöd). Allt stöd låser upp alla funktioner i programmet</string>
+    <string name="locked">Blockerad</string>
+    <string name="unlock">Låsa upp</string>
+    <string name="donate_text">För dem som inte använder Google Play är det möjligt att låsa upp alla funktioner i applikationen.             \\nOm du gillar våra appar som är offline, icke-påträngande och inte har några annonser, överväg att stödja oss på något sätt. Vi skulle vara mycket tacksamma.             \\n\\nTack!</string>
+    <!--Not used-->
+    <string name="lifebuoy_title">We will support you</string>
+    <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>
+    <string name="participants_title">Participants</string>
+    <string name="special_thanks_to">Special thanks to</string>
+    <string name="get">Get</string>
+
+    <!--Billing-->
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Confirming the purchase…</string>
+    <string name="billing_purchase_delete_in_progress">Deleting a purchase…</string>
+    <string name="billing_product_confirmed">Product confirmed</string>
+    <string name="billing_product_deleted">Purchase cancelled</string>
+    <string name="billing_subscriptions">Subscriptions</string>
+    <string name="billing_error_application_signature_not_correct">To pay via RuStore you need to install the app version from RuStore</string>
+    <string name="per_month">%s/månad</string>
+    <string name="per_year">%s/år</string>
+    <string name="restore_purchase">Återskapa köp</string>
+
+    <!--About-->
+    <string name="about_rate_title">Betygsätt appen</string>
+    <string name="about_other_app_title">Andra applikationer</string>
+    <string name="about_message">Ett Inkwell-tangentbord med öppen källkod. Inkwell är baserat på FlorisBoard-applikationen med öppen källkod.         \\n\\nJag skulle vara mycket tacksam om du lämnar en recension eller ett betyg om applikationen, det kommer att vara till stor hjälp för utvecklingen av projektet.</string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Fliken Standard</string>
+    <string name="settings__open_last_tab">Öppna den senast använda fliken</string>
+    <string name="settings__emoji_as_subtype">Emoji som undertyp</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Växla till emoji när du byter språk</string>
+    <string name="settings__big_enter_key">Stor Enter-tangent</string>
+    <string name="settings__show_comma_key">Visa semikolonnyckel</string>
+    <string name="settings__show_dot_key">Visa punktnyckel</string>
+    <string name="settings__by_character_layout">Om bokstävernas layout</string>
+    <string name="settings__keys">Nycklar</string>
+    <string name="settings__uses_material_you__label">Använder färgerna på Material You</string>
+    <string name="settings__keyboard_type">Typ av tangentbord</string>
+    <string name="settings__number">Tal</string>
+    <string name="settings__text">Text</string>
+    <string name="settings__sound_effect">Ljudeffekt</string>
+    <string name="settings__sound_effect_summary">Ljudeffekterna kan variera beroende på enhet</string>
+    <string name="settings__sound_effect__standard">Standard-ljud</string>
+    <string name="settings__sound_effect__clicking">Klickande ljud</string>
+    <string name="settings__use_horizontal_grid">Använd vågrät rullning</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Blanksteg svep ner</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Dölj genvägar när du flyttar markören</string>
+</resources>

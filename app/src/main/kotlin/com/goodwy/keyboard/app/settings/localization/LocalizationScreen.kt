@@ -105,8 +105,8 @@ fun LocalizationScreen() = FlorisScreen {
             DividerRow(start = 16.dp)
             SwitchPreferenceRow(
                 pref = prefs.localization.switchEmojiWhenChangingLanguage,
-                title = stringRes(R.string.settings__emoji_as_subtype),
-                summary = stringRes(R.string.settings__switch_to_emoji_when_changing_language),
+                title = stringRes(com.goodwy.keyboard.strings.R.string.settings__emoji_as_subtype),
+                summary = stringRes(com.goodwy.keyboard.strings.R.string.settings__switch_to_emoji_when_changing_language),
                 enabledIf = { subtypes.isNotEmpty() },
             )
         }

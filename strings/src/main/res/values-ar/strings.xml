@@ -1,0 +1,83 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">لم يتم تمكين Inkwell في النظام وبالتالي لن يكون متاحًا كطريقة إدخال في منتقي الإدخال. انقر هنا لحل هذه المشكلة.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">لم يتم تعيين Inkwell كطريقة الإدخال الافتراضية. انقر هنا لحل هذه المشكلة.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">هذا التطبيق هو مرخص تحت رخصة {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">اعتبارًا من نظام التشغيل Android 13+، يجب أن تطلب التطبيقات الإذن بذلك
+         إرسال الإخطارات. في Inkwell، يُستخدم هذا فقط لفتح شاشة تقرير الأعطال في حالة حدوث عطل.
+         يمكن تغيير هذا الإذن في أي وقت في إعدادات النظام.    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">تقرير حول خطأ في Inkwell</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">نأسف للإزعاج ، ولكن Inkwell تعطل بسبب خطأ غير متوقع.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">إذا كنت ترغب في الإبلاغ عن هذا الخطأ ، فتحقق أولاً من أداة تعقب المشكلات على GitHub إذا لم يتم الإبلاغ عن العطل بالفعل. \n إذا لم يتم الإبلاغ عن هذا الخطأ ، فقم بنسخ سجل التعطل الذي تم إنشاؤه وافتح مشكلة جديدة. استخدم القالب واملأ الوصف وخطوات إعادة إنتاج ولصق سجل العطل الذي تم إنشاؤه في النهاية. هذا يساعد\"%s\" في جعل Inkwell أفضل وأكثر استقرارًا للجميع. شكرا لك!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">تقارير حول خطأ في Inkwell</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">توقف Inkwell عن العمل…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">عند مزامنة حافظة النظام يتم مزامنة حافظة لوحة المفاتيح تلقائيا</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">تحديثات حافظة لوحة المفاتيح يقوم أيضًا بتحديث حافظة النظام</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">أصول تطبيق Inkwell</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">أيقونة التطبيق Inkwell</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">جرة تلميح</string>
+    <string name="tip_kind">دعم جيد</string>
+    <string name="tip_excellent">دعم ممتاز</string>
+    <string name="tip_incredible">دعم مذهل</string>
+    <string name="action_support_project">دعم المشروع</string>
+    <string name="action_support_project_summary">شراء التطبيق لدعم التطوير المستقبلي والميزات الإضافية</string>
+    <string name="learn_more">التعرف على المزيد</string>
+    <string name="night_theme_summary">تخصيص السمة لوضع لوحة المفاتيح المظلمة</string>
+    <string name="theme_manager_summary">إدارة السمات المثبتة والمخصصة</string>
+    <string name="plus_title">ادعمنا</string>
+    <string name="plus_summary">جميع تطبيقاتنا خالية من الإعلانات ومفتوحة المصدر وستظل دائما على هذا النحو. بمساعدتكم نحن قادرون على تنفيذ المزيد من الميزات وجعلها أفضل</string>
+
+    <string name="any_support_unlock_all">اختر مستوى دعم المشروع المتاح لك (لمرة واحدة أو شهريا أو سنويا). أي دعم يفتح جميع ميزات التطبيق</string>
+    <string name="locked">مسدود</string>
+    <string name="unlock">فتح</string>
+    <string name="donate_text">بالنسبة لأولئك الذين لا يستخدمون Google Play ، من الممكن فتح جميع وظائف التطبيق.             \\nإذا كنت تحب تطبيقاتنا غير المتصلة بالإنترنت وغير المتطفلة وليس لها إعلانات ، فيرجى التفكير في دعمنا بطريقة ما. سنكون ممتنين جدا.             \\n\\nشكرا لك!</string>
+    <!--Not used-->
+    <string name="lifebuoy_title">We will support you</string>
+    <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>
+    <string name="participants_title">Participants</string>
+    <string name="special_thanks_to">Special thanks to</string>
+    <string name="get">Get</string>
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Confirming the purchase…</string>
+    <string name="billing_purchase_delete_in_progress">Deleting a purchase…</string>
+    <string name="billing_product_confirmed">Product confirmed</string>
+    <string name="billing_product_deleted">Purchase cancelled</string>
+    <string name="billing_subscriptions">Subscriptions</string>
+    <string name="billing_error_application_signature_not_correct">To pay via RuStore you need to install the app version from RuStore</string>
+    <string name="per_month">%s في الشهر</string>
+    <string name="per_year">%s/السنة</string>
+    <string name="restore_purchase">استعادة المشتريات</string>
+
+    <!--About-->
+    <string name="about_rate_title">تقييم التطبيق</string>
+    <string name="about_other_app_title">تطبيقات أخرى</string>
+    <string name="about_message">لوحة مفاتيح Inkwell مفتوحة المصدر. يعتمد Inkwell على تطبيق FlorisBoard مفتوح المصدر.         \\n\\nسأكون ممتنا جدا إذا تركت تعليقا أو تقييما حول التطبيق ، فسوف يساعد ذلك بشكل كبير في تطوير المشروع.</string>
+
+    <!--settings-->
+    <string name="settings__default_tab">علامة التبويب الافتراضية</string>
+    <string name="settings__open_last_tab">افتح علامة التبويب الأخيرة المستخدمة</string>
+    <string name="settings__emoji_as_subtype">الرموز التعبيرية كنوع فرعي</string>
+    <string name="settings__switch_to_emoji_when_changing_language">التبديل إلى الرموز التعبيرية عند تغيير اللغة</string>
+    <string name="settings__big_enter_key">مفتاح Enter كبير</string>
+    <string name="settings__show_comma_key">إظهار مفتاح الفاصلة المنقوطة</string>
+    <string name="settings__show_dot_key">إظهار مفتاح النقطة</string>
+    <string name="settings__by_character_layout">على تخطيط الحروف</string>
+    <string name="settings__keys">المفاتيح</string>
+    <string name="settings__uses_material_you__label">يستخدم ألوان Material You</string>
+    <string name="settings__keyboard_type">نوع لوحة المفاتيح</string>
+    <string name="settings__number">الأرقام</string>
+    <string name="settings__text">نص</string>
+    <string name="settings__sound_effect">تأثير الصوت</string>
+    <string name="settings__sound_effect_summary">قد تختلف المؤثرات الصوتية حسب الجهاز</string>
+    <string name="settings__sound_effect__standard">صوت قياسي</string>
+    <string name="settings__sound_effect__clicking">النقر على الصوت</string>
+    <string name="settings__use_horizontal_grid">استخدام التمرير الأفقي</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">السحب لأسفل من خلال مفتاح المسافة</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">إخفاء الاختصارات عند تحريك المؤشر</string>
+</resources>

@@ -1,0 +1,86 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">Inkwell is not enabled in the system and thus won\'t be available as an input method in the input picker. Click here to resolve this issue.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">Inkwell is not selected as the default input method. Click here to resolve this issue.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkwell is licensed under {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">As of Android 13+, apps must ask for permission to
+        send notifications. In Inkwell, this is only used to open a crash report screen in the event of a crash.
+        This permission can be changed at any time in the system settings.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Inkwell error report</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">Sorry for the inconvenience, but Inkwell has crashed due to an unexpected error.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">If you wish to report this error, first check out the issue tracker on GitHub if your crash has not already been reported.\nIf it hasn\'t, copy the generated crash log and open a new issue. Use the \"%s\" template and fill out the description, the steps to reproduce, and paste the generated crash log at the end. This helps in making Inkwell better and more stable for everyone. Thank you!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Inkwell error reports</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkwell has stopped working…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">System clipboard updates also update Inkwell clipboard</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Inkwell clipboard updates also update system clipboard</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Inkwell App Assets</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">App icon of Inkwell</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">Kozarec z nasveti</string>
+    <string name="tip_kind">Dobra podpora</string>
+    <string name="tip_excellent">Odlična podpora</string>
+    <string name="tip_incredible">Neverjetna podpora</string>
+    <string name="action_support_project">Projektna podpora</string>
+    <string name="action_support_project_summary">Nakup aplikacije za podporo prihodnjemu razvoju in dodatnim funkcijam</string>
+    <string name="learn_more">Več</string>
+    <string name="night_theme_summary">Prilagajanje teme načinu temne tipkovnice</string>
+    <string name="theme_manager_summary">Upravljanje nameščenih tem in tem po meri</string>
+    <string name="plus_title">Podprite nas</string>
+    <string name="plus_summary">Vse naše aplikacije so brez oglasov, odprtokodne in vedno bodo tako tudi ostale. Z vašo pomočjo lahko implementiramo več funkcij in jih še izboljšamo</string>
+
+    <string name="any_support_unlock_all">Izberite raven podpore za projekt, ki vam je na voljo (enkratna, mesečna ali letna). Vsaka podpora odklene vse funkcije aplikacije</string>
+    <string name="locked">Blokirano</string>
+    <string name="unlock">Odkleniti</string>
+    <string name="donate_text">Za tiste, ki ne uporabljajo Googla Play, je mogoče odkleniti vse funkcije aplikacije.             \\nČe so vam všeč naše aplikacije, ki niso povezane s spletom, niso vsiljive in nimajo oglasov, razmislite o tem, da bi nas na nek način podprli. Zelo bi bili hvaležni.             \\n\\nHvala!</string>
+    <!--Not used-->
+    <string name="lifebuoy_title">We will support you</string>
+    <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>
+    <string name="participants_title">Participants</string>
+    <string name="special_thanks_to">Special thanks to</string>
+    <string name="get">Get</string>
+
+    <!--Billing-->
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Confirming the purchase…</string>
+    <string name="billing_purchase_delete_in_progress">Deleting a purchase…</string>
+    <string name="billing_product_confirmed">Product confirmed</string>
+    <string name="billing_product_deleted">Purchase cancelled</string>
+    <string name="billing_subscriptions">Subscriptions</string>
+    <string name="billing_error_application_signature_not_correct">To pay via RuStore you need to install the app version from RuStore</string>
+    <string name="per_month">%s/mesec</string>
+    <string name="per_year">%s/leto</string>
+    <string name="restore_purchase">Obnovitev nakupov</string>
+
+    <!--About-->
+    <string name="about_rate_title">Ocenite aplikacijo</string>
+    <string name="about_other_app_title">Druge aplikacije</string>
+    <string name="about_message">Odprtokodna tipkovnica Inkwell. Inkwell temelji na odprtokodni aplikaciji FlorisBoard.         \\n\\nZelo bi bil hvaležen, če bi pustili recenzijo ali oceno o prijavi, to bo v veliki meri pomagalo pri razvoju projekta.</string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Privzeti zavihek</string>
+    <string name="settings__open_last_tab">Odpiranje zadnjega uporabljenega zavihka</string>
+    <string name="settings__emoji_as_subtype">Emoji kot podtip</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Preklop na čustvene simbole pri spreminjanju jezika</string>
+    <string name="settings__big_enter_key">Velika tipka Enter</string>
+    <string name="settings__show_comma_key">Pokaži tipko podpičja</string>
+    <string name="settings__show_dot_key">Pokaži pikčasto tipko</string>
+    <string name="settings__by_character_layout">Na postavitvi črk</string>
+    <string name="settings__keys">Tipke</string>
+    <string name="settings__uses_material_you__label">Uporablja barve Material You</string>
+    <string name="settings__keyboard_type">Vrsta tipkovnice</string>
+    <string name="settings__number">Številke</string>
+    <string name="settings__text">Besedilo</string>
+    <string name="settings__sound_effect">Zvočni učinek</string>
+    <string name="settings__sound_effect_summary">Zvočni učinki se lahko razlikujejo glede na napravo</string>
+    <string name="settings__sound_effect__standard">Standardni zvok</string>
+    <string name="settings__sound_effect__clicking">Klikanje zvoka</string>
+    <string name="settings__use_horizontal_grid">Uporaba vodoravnega drsenja</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Space bar swipe down</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Skrivanje bližnjic med premikanjem kazalca</string>
+</resources>

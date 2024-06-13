@@ -55,7 +55,7 @@ fun KeyboardScreen() = FlorisScreen {
     val navController = LocalNavController.current
 
     content {
-        PreferenceGroupCard(title = stringRes(R.string.settings__keys)) {
+        PreferenceGroupCard(title = stringRes(com.goodwy.keyboard.strings.R.string.settings__keys)) {
             SwitchPreferenceRow(
                 prefs.keyboard.numberRow,
                 title = stringRes(R.string.pref__keyboard__number_row__label),
@@ -82,7 +82,7 @@ fun KeyboardScreen() = FlorisScreen {
                 prefs.keyboard.utilityKeyEnabled,
                 title = stringRes(R.string.pref__keyboard__utility_key_enabled__label),
                 //summary = stringRes(R.string.pref__keyboard__utility_key_enabled__summary),
-                summary = stringRes(R.string.settings__by_character_layout),
+                summary = stringRes(com.goodwy.keyboard.strings.R.string.settings__by_character_layout),
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(
@@ -95,19 +95,19 @@ fun KeyboardScreen() = FlorisScreen {
             DividerRow(start = 16.dp)
             SwitchPreferenceRow(
                 prefs.keyboard.commaKeyEnabled,
-                title = stringRes(R.string.settings__show_comma_key),
-                summary = stringRes(R.string.settings__by_character_layout),
+                title = stringRes(com.goodwy.keyboard.strings.R.string.settings__show_comma_key),
+                summary = stringRes(com.goodwy.keyboard.strings.R.string.settings__by_character_layout),
             )
             DividerRow(start = 16.dp)
             SwitchPreferenceRow(
                 prefs.keyboard.dotKeyEnabled,
-                title = stringRes(R.string.settings__show_dot_key),
-                summary = stringRes(R.string.settings__by_character_layout),
+                title = stringRes(com.goodwy.keyboard.strings.R.string.settings__show_dot_key),
+                summary = stringRes(com.goodwy.keyboard.strings.R.string.settings__by_character_layout),
             )
             DividerRow(start = 16.dp)
             SwitchPreferenceRow(
                 prefs.keyboard.bigEnterButton,
-                title = stringRes(R.string.settings__big_enter_key),
+                title = stringRes(com.goodwy.keyboard.strings.R.string.settings__big_enter_key),
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(
@@ -202,11 +202,11 @@ fun KeyboardScreen() = FlorisScreen {
         }
 
         PreferenceGroupCard(title = stringRes(R.string.pref__keyboard__group_keypress__label)) {
-            PreferenceRow(
-                title = stringRes(R.string.settings__input_feedback__title),
-                onClick = { navController.navigate(Routes.Settings.InputFeedback) },
-            )
-            DividerRow(start = 16.dp)
+//            PreferenceRow(
+//                title = stringRes(R.string.settings__input_feedback__title),
+//                onClick = { navController.navigate(Routes.Settings.InputFeedback) },
+//            )
+//            DividerRow(start = 16.dp)
             SwitchPreferenceRow(
                 prefs.keyboard.popupEnabled,
                 title = stringRes(R.string.pref__keyboard__popup_enabled__label),

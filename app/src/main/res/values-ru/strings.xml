@@ -285,6 +285,8 @@
     <string name="pref__keyboard__utility_key_enabled__label" comment="Preference title">Показать служебную клавишу</string>
     <string name="pref__keyboard__utility_key_enabled__summary" comment="Preference summary">Показывает настраиваемую служебную клавишу рядом с пробелом</string>
     <string name="pref__keyboard__utility_key_action__label" comment="Preference title">Действие служебной клавиши</string>
+    <string name="pref__keyboard__space_bar_mode__label" comment="Preference title">Надпись на пробеле</string>
+    <string name="pref__keyboard__capitalization_behavior__label" comment="Preference title">Поведение кнопки изменения регистра</string>
     <string name="pref__keyboard__font_size_multiplier__label" comment="Preference title">Множитель размера шрифта</string>
     <string name="pref__keyboard__group_layout__label" comment="Preference group title">Внешний вид</string>
     <string name="pref__keyboard__one_handed_mode__label" comment="Preference title">Управление одной рукой</string>
@@ -301,6 +303,7 @@
     <string name="pref__keyboard__long_press_delay__label" comment="Preference title">Длительность долгого нажатия</string>
     <string name="pref__keyboard__space_bar_switches_to_characters__label" comment="Preference title">Пробел переключает на буквы</string>
     <string name="pref__keyboard__space_bar_switches_to_characters__summary" comment="Preference summary">Будучи в символьной или цифровой раскладке, автоматически переходить обратно на ввод букв</string>
+    <string name="pref__keyboard__incognito_indicator__label" comment="Preference title">Индикатор инкогнито</string>
     <!-- Smartbar strings -->
     <string name="settings__smartbar__title" comment="Title of Smartbar screen">Умная панель</string>
     <string name="pref__smartbar__enabled__label" comment="Preference title">Активировать умную панель</string>
@@ -661,6 +664,10 @@
     <string name="enum__candidates_display_mode__classic" comment="Enum value label">Классика (3 колонки)</string>
     <string name="enum__candidates_display_mode__dynamic" comment="Enum value label">Динамическая ширина</string>
     <string name="enum__candidates_display_mode__dynamic_scrollable" comment="Enum value label">Динамическая ширина и прокрутка</string>
+
+    <string name="enum__capitalization_behavior__capslock_by_double_tap" comment="Enum value label">Активировать Capslock двойным нажатием</string>
+    <string name="enum__capitalization_behavior__capslock_by_cycle" comment="Enum value label">Переключать режимы регистра с каждым нажатием</string>
+
     <string name="enum__display_colors_as__hex8" comment="Enum value label">Шестнадцатеричные коды</string>
     <string name="enum__display_colors_as__rgba" comment="Enum value label">Красный Зелёный Синий Прозрачность</string>
     <string name="enum__display_kbd_after_dialogs__always" comment="Enum value label">Отображать всегда</string>
@@ -694,6 +701,17 @@
     <string name="enum__key_hint_mode__hint_priority__description" comment="Enum value description">Начальный символ, выбираемый долгим нажатием, всегда является символом подсказки или основным акцентом, если символ подсказки недоступен</string>
     <string name="enum__key_hint_mode__smart_priority" comment="Enum value label">Умный приоритет</string>
     <string name="enum__key_hint_mode__smart_priority__description" comment="Enum value description">Начальный символ, выбираемый долгим нажатием, динамически определяется как основной акцент или символ подсказки, основываясь на текущем языке и раскладке</string>
+
+    <string name="enum__incognito_mode__force_off" comment="Enum value label">Всегда выключен</string>
+    <string name="enum__incognito_mode__force_off__description" comment="Enum value description">Режим инкогнито будет отключен всегда, независимо от переданных опций целевого приложения. Быстрое действие инкогнито в Smartbar будет недоступно при использовании этой опции.</string>
+    <string name="enum__incognito_mode__force_on" comment="Enum value label">Всегда включен</string>
+    <string name="enum__incognito_mode__force_on__description" comment="Enum value description">Режим инкогнито будет включен всегда, независимо от переданных опций целевого приложения. Быстрое действие инкогнито в Smartbar не будет доступно при использовании этой опции.</string>
+    <string name="enum__incognito_mode__dynamic_on_off" comment="Enum value label">Динамическое переключение</string>
+    <string name="enum__incognito_mode__dynamic_on_off__description" comment="Enum value description">Рекомендуемый вариант. Режим инкогнито будет включён либо в зависимости от предпочтений целевого приложения (автоматически), либо путём нажатия кнопки инкогнито на умной панели (вручную).</string>
+
+    <string name="enum__incognito_display_mode__replace_shared_actions_toggle" comment="Enum value label">Заменять значок переключения общих действий на индикатор инкогнито</string>
+    <string name="enum__incognito_display_mode__display_behind_keyboard" comment="Enum value label">Отображать индикатор инкогнито за клавиатурой</string>
+
     <string name="enum__input_feedback_activation_mode__audio_respect_system_settings" comment="Enum value label">Воспроизводить звуки при вводе в зависимости от системных настроек</string>
     <string name="enum__input_feedback_activation_mode__audio_ignore_system_settings" comment="Enum value label">Воспроизводить звуки при вводе вне зависимости от системных настроек</string>
     <string name="enum__input_feedback_activation_mode__haptic_respect_system_settings" comment="Enum value label">Использовать вибрацию при вводе в зависимости от системных настроек</string>
@@ -723,6 +741,11 @@
     <string name="enum__snygg_level__advanced__description" comment="Enum value description">Отображаются все свойства, переводятся свойства и правила.</string>
     <string name="enum__snygg_level__developer" comment="Enum value label">Разработчик</string>
     <string name="enum__snygg_level__developer__description" comment="Enum value description">Отображаются все свойства. Свойства и правила отображаются так, как прописано в самом файле таблицы стилей.</string>
+
+    <string name="enum__space_bar_mode__nothing" comment="Enum value label">Без надписи</string>
+    <string name="enum__space_bar_mode__current_language" comment="Enum value label">Текущий язык</string>
+    <string name="enum__space_bar_mode__space_bar_key" comment="Enum value label">␣</string>
+
     <string name="enum__spelling_language_mode__use_system_languages" comment="Enum value label">Использовать системные языки</string>
     <string name="enum__spelling_language_mode__use_keyboard_subtypes" comment="Enum value label">Использовать раскладки клавиатуры</string>
     <string name="enum__swipe_action__no_action" comment="Enum value label">Не задано</string>

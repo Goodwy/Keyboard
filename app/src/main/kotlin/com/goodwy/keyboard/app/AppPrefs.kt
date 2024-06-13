@@ -304,7 +304,7 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
         )
         val audioActivationMode = enum(
             key = "input_feedback__audio_activation_mode",
-            default = InputFeedbackActivationMode.RESPECT_SYSTEM_SETTINGS,
+            default = InputFeedbackActivationMode.IGNORE_SYSTEM_SETTINGS,
         )
         val audioVolume = int(
             key = "input_feedback__audio_volume",
@@ -337,7 +337,7 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
         )
         val hapticActivationMode = enum(
             key = "input_feedback__haptic_activation_mode",
-            default = InputFeedbackActivationMode.RESPECT_SYSTEM_SETTINGS,
+            default = InputFeedbackActivationMode.IGNORE_SYSTEM_SETTINGS,
         )
         val hapticVibrationMode = enum(
             key = "input_feedback__haptic_vibration_mode",

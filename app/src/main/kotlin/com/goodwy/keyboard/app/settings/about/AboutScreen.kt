@@ -122,7 +122,7 @@ fun AboutScreen() = FlorisScreen {
                     },
                 )
         ) {
-            Spacer(modifier = Modifier.size(24.dp))
+            Spacer(modifier = Modifier.size(16.dp))
             FlorisCanvasIcon(
                 modifier = Modifier.requiredSize(64.dp),
                 iconId = R.mipmap.floris_app_icon,
@@ -143,7 +143,7 @@ fun AboutScreen() = FlorisScreen {
         }
         Text(
             modifier = Modifier.padding(horizontal = 28.dp),
-            text = stringResource(R.string.about_message),
+            text = stringResource(com.goodwy.keyboard.strings.R.string.about_message),
             fontSize = 15.sp,
         )
         Spacer(modifier = Modifier.size(12.dp))
@@ -154,14 +154,15 @@ fun AboutScreen() = FlorisScreen {
         AboutRow(
             modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
             icon = Icons.Rounded.Star,
-            title = stringRes(R.string.about_rate_title),
+            title = stringRes(com.goodwy.keyboard.strings.R.string.about_rate_title),
             onClick = { context.launchUrlNew(rateUrl) },
         )
+        val otherAppIcon = if (useRuStore) ImageVector.vectorResource(R.drawable.ic_rustore) else ImageVector.vectorResource(R.drawable.ic_google_play)
         val otherAppUrl = if (useRuStore) stringRes(R.string.inkwell__rustore_apps_url) else stringRes(R.string.inkwell__google_play_apps_url)
         AboutRow(
             modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
-            icon = ImageVector.vectorResource(R.drawable.ic_google_play),
-            title = stringRes(R.string.about_other_app_title),
+            icon = otherAppIcon,
+            title = stringRes(com.goodwy.keyboard.strings.R.string.about_other_app_title),
             onClick = { context.launchUrlNew(otherAppUrl) },
         )
         val privacyPolicyUrl = stringRes(R.string.florisboard__privacy_policy_url)
@@ -175,7 +176,7 @@ fun AboutScreen() = FlorisScreen {
         AboutRow(
             modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
             icon = Icons.Rounded.Savings,
-            title = stringRes(id = R.string.tipping_jar_title),
+            title = stringRes(id = com.goodwy.keyboard.strings.R.string.tipping_jar_title),
             color = MaterialTheme.colorScheme.primaryContainer,
             onClick = { navController.navigate(Routes.Settings.Purchase) },
         )
@@ -183,7 +184,7 @@ fun AboutScreen() = FlorisScreen {
             modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
             icon = Icons.Rounded.Description,
             title = stringRes(R.string.about__project_license__title),
-            summary = stringRes(R.string.about__project_license__summary_g, "license_name" to "Apache 2.0"),
+            summary = stringRes(com.goodwy.keyboard.strings.R.string.about__project_license__summary_g, "license_name" to "Apache 2.0"),
             onClick = { navController.navigate(Routes.Settings.ProjectLicense) },
         )
         AboutRow(

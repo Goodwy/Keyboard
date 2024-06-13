@@ -1,0 +1,89 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">Klik di sini untuk menyelesaikan masalah ini.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">Inkwell tidak dipilih sebagai metode masukan bawaan. Klik di sini untuk menyelesaikan masalah ini.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkwell dilisensikan di bawah {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">Mulai Android 13+, aplikasi harus meminta izin untuk melakukannya
+ mengirim pemberitahuan. Di Inkwell, ini hanya digunakan untuk membuka layar laporan kerusakan jika terjadi kerusakan.
+ Izin ini dapat diubah kapan saja di pengaturan sistem.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Laporan kesalahan Inkwell</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">Maaf atas ketidaknyamanan ini, tetapi Inkwell mogok karena kesalahan yang tidak terduga.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">Jika Anda ingin melaporkan kesalahan ini, periksa dulu pelacak masalah di GitHub jika crash Anda belum dilaporkan.\nJika belum, salin log crash yang dihasilkan dan buka masalah baru. Gunakan template \"%s\" dan isi deskripsi, langkah-langkah untuk mereproduksi, dan tempel log crash yang dihasilkan di bagian akhir. Ini membantu membuat Inkwell lebih baik dan lebih stabil untuk semuanya. Terima kasih!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Laporan kesalahan Inkwell</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkwell berhenti bekerja…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">Pembaruan papan klip sistem juga memperbarui papan klip Inkwell</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Pembaruan papan klip Inkwell juga memperbarui papan klip sistem</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Aset Aplikasi Inkwell</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">Ikon aplikasi Inkwell</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">Dukungan</string>
+    <string name="tip_kind">Dukungan yang bagus</string>
+    <string name="tip_excellent">Dukungan luar biasa</string>
+    <string name="tip_incredible">Dukungan luar biasa</string>
+    <string name="action_support_project">Dukungan proyek</string>
+    <string name="action_support_project_summary">Beli aplikasi untuk mendukung pengembangan di masa depan dan menerima fitur tambahan</string>
+    <string name="learn_more">Pelajari lebih lanjut</string>
+    <string name="night_theme_summary">Setel tema untuk mode gelap keyboard</string>
+    <string name="theme_manager_summary">Kelola tema yang terpasang dan khusus</string>
+    <string name="plus_title">Dukung kami</string>
+    <string name="plus_summary">Semua aplikasi kami bebas iklan, sumber terbuka, dan akan selalu demikian. Dengan bantuan Anda, kami akan dapat mengimplementasikan lebih banyak fungsi dan menjadikannya lebih baik</string>
+    <string name="any_support_unlock_all">Pilih tingkat dukungan proyek yang tersedia untuk Anda (satu kali, bulanan, atau tahunan). Dukungan apa pun akan membuka kunci semua fungsi aplikasi</string>
+
+    <string name="locked">Terkunci</string>
+    <string name="unlock">Buka kunci</string>
+    <string name="donate_text">
+ Bagi yang tidak menggunakan Google Play, ada opsi untuk membuka kunci semua fungsi aplikasi.
+ \nJika Anda menyukai aplikasi kami yang offline, tidak mengganggu, dan bebas iklan, mohon pertimbangkan untuk mendukung kami dengan cara tertentu. Kami akan sangat berterima kasih.
+ \n\nTerima kasih!</string>
+    <!--Not used-->
+    <string name="lifebuoy_title">Kami akan mendukung Anda</string>
+    <string name="lifebuoy_summary">Jika karena alasan tertentu Anda tidak mampu membeli aplikasi kami, namun benar-benar ingin menggunakan semua fiturnya, cukup kirimkan surat kepada kami.</string>
+    <string name="participants_title">Peserta</string>
+    <string name="special_thanks_to">Terima kasih khusus</string>
+    <string name="get">Unduh</string>
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Mengonfirmasi pembelian…</string>
+    <string name="billing_purchase_delete_in_progress">Menghapus pembelian…</string>
+    <string name="billing_product_confirmed">Produk dikonfirmasi</string>
+    <string name="billing_product_deleted">Pembelian dibatalkan</string>
+    <string name="billing_subscriptions">Langganan</string>
+    <string name="billing_error_application_signature_not_correct">Untuk membayar melalui RuStore Anda perlu menginstal versi aplikasi dari RuStore</string>
+    <string name="per_month">%s/bulan</string>
+    <string name="per_year">%s/tahun</string>
+    <string name="restore_purchase">Pulihkan pembelian</string>
+
+    <!--About-->
+    <string name="about_rate_title">Beri nilai aplikasi</string>
+    <string name="about_other_app_title">Aplikasi lain</string>
+    <string name="about_message">Inkwell adalah keyboard sumber terbuka. Dikembangkan berdasarkan aplikasi FlorisBoard.
+ \n\nSaya akan sangat berterima kasih jika anda memberikan review atau rating tentang aplikasi, ini akan sangat membantu perkembangan proyek.
+ </string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Tab bawaan</string>
+    <string name="settings__open_last_tab">Buka tab yang terakhir digunakan</string>
+    <string name="settings__emoji_as_subtype">Emoji sebagai subtipe</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Beralih ke emoji saat mengubah bahasa</string>
+    <string name="settings__big_enter_key">Tombol Enter Besar</string>
+    <string name="settings__show_comma_key">Tampilkan kunci titik koma</string>
+    <string name="settings__show_dot_key">Tampilkan kunci titik</string>
+    <string name="settings__by_character_layout">Pada tata letak huruf</string>
+    <string name="settings__keys">Kunci</string>
+    <string name="settings__uses_material_you__label">Menggunakan warna Material You</string>
+    <string name="settings__keyboard_type">Jenis papan ketik</string>
+    <string name="settings__number">Angka</string>
+    <string name="settings__text">Teks</string>
+    <string name="settings__sound_effect">Efek suara</string>
+    <string name="settings__sound_effect_summary">Efek suara dapat bervariasi tergantung pada perangkat</string>
+    <string name="settings__sound_effect__standard">Suara standar</string>
+    <string name="settings__sound_effect__clicking">Suara klik</string>
+    <string name="settings__use_horizontal_grid">Gunakan pengguliran horizontal</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Geser batang spasi ke turun</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Sembunyikan label kunci saat menggerakkan kursor</string>
+</resources>

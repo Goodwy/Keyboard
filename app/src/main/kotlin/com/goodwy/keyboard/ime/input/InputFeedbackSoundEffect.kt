@@ -30,11 +30,11 @@ enum class InputFeedbackSoundEffect  {
         fun audioListEntries() = listPrefEntries {
             entry(
                 key = KEYPRESS_STANDARD,
-                label = stringRes(R.string.settings__sound_effect__standard),
+                label = stringRes(com.goodwy.keyboard.strings.R.string.settings__sound_effect__standard),
             )
             entry(
                 key = KEY_CLICK,
-                label = stringRes(R.string.settings__sound_effect__clicking),
+                label = stringRes(com.goodwy.keyboard.strings.R.string.settings__sound_effect__clicking),
             )
         }
     }

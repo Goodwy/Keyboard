@@ -24,8 +24,8 @@ import com.goodwy.keyboard.lib.snygg.SnyggStylesheet
 
 val FlorisImeThemeBaseStyle = SnyggStylesheet {
     defines {
-        "primary" to rgbaColor(76, 175, 80)
-        "primaryVariant" to rgbaColor(56, 142, 60)
+        "primary" to rgbaColor(85, 137, 241)
+        "primaryVariant" to rgbaColor(41, 96, 245)
         "secondary" to rgbaColor(245, 124, 0)
         "secondaryVariant" to rgbaColor(230, 81, 0)
         "background" to rgbaColor(33, 33, 33)

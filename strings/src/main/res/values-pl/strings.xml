@@ -1,0 +1,86 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">Inkwell nie jest włączony w systemie i dlatego nie będzie dostępny jako metoda wprowadzania danych w oknie wyboru. Kliknij tutaj, aby rozwiązać ten problem.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">Inkwell nie jest wybrany jako domyślna metoda wprowadzania danych. Kliknij tutaj, aby rozwiązać ten problem.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkwell używa licencji {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">Od Androida 13+ aplikacje muszД… prosiД‡ o pozwolenie na
+        wysyЕ‚anie powiadomieЕ„. We Inkwell jest to uЕјywane tylko do otwierania ekranu raportu o awarii, w przypadku awarii.
+        Zezwolenie to moЕјna zmieniД‡ w dowolnym momencie w ustawieniach systemu.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Pobierz raport o błędach</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">Przepraszamy za niedogodności, ale Inkwell uległ awarii z powodu nieoczekiwanego błędu.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">Jeśli chcesz zgłosić ten błąd, najpierw sprawdź system do śledzenia zgłoszeń na GitHub, czy Twoja awaria nie została już zgłoszona.\nJeśli nie, skopiuj wygenerowany dziennik awarii i otwórz nowy \"issue\". Użyj szablonu „%s” i wypełnij opis, kroki do odtworzenia, a na końcu wklej wygenerowany dziennik awarii. Pomaga to uczynić Inkwell lepszym i bardziej stabilnym dla wszystkich. Dziękuję Ci!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Raporty o błędach Inkwell</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkwell przestał działać…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">Zmiana w schowku systemowym również zmienia schowek Inkwell</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Zmiana w schowku Inkwell również zmienia schowek systemowy</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Wbudowane w aplikację Inkwell</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">Ikona aplikacji Inkwell</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">Słoik na napiwki</string>
+    <string name="tip_kind">Dobre wsparcie</string>
+    <string name="tip_excellent">Doskonałe wsparcie</string>
+    <string name="tip_incredible">Niesamowite wsparcie</string>
+    <string name="action_support_project">Wsparcie projektowe</string>
+    <string name="action_support_project_summary">Kup aplikację, aby wspierać przyszły rozwój i dodatkowe funkcje</string>
+    <string name="learn_more">Dowiedz się więcej</string>
+    <string name="night_theme_summary">Dostosowywanie motywu do trybu ciemnej klawiatury</string>
+    <string name="theme_manager_summary">Zarządzanie zainstalowanymi i niestandardowymi motywami</string>
+    <string name="plus_title">Wesprzyj nas</string>
+    <string name="plus_summary">Wszystkie nasze aplikacje są wolne od reklam, Open Source i zawsze tak pozostanie. Z Twoją pomocą jesteśmy w stanie zaimplementować więcej funkcji i uczynić je jeszcze lepszymi</string>
+
+    <string name="any_support_unlock_all">Wybierz dostępny dla Ciebie poziom wsparcia projektowego (jednorazowy, miesięczny lub roczny). Każde wsparcie odblokowuje wszystkie funkcje aplikacji</string>
+    <string name="locked">Zablokowany</string>
+    <string name="unlock">Odblokować</string>
+    <string name="donate_text">Dla tych, którzy nie korzystają z Google Play, istnieje możliwość odblokowania wszystkich funkcji aplikacji.             \\nJeśli podobają Ci się nasze aplikacje, które są offline, nieinwazyjne i nie zawierają reklam, rozważ wsparcie nas w jakiś sposób. Będziemy bardzo wdzięczni.             \\n\\nDziękujemy!</string>
+    <!--Not used-->
+    <string name="lifebuoy_title">We will support you</string>
+    <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>
+    <string name="participants_title">Participants</string>
+    <string name="special_thanks_to">Special thanks to</string>
+    <string name="get">Get</string>
+
+    <!--Billing-->
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Confirming the purchase…</string>
+    <string name="billing_purchase_delete_in_progress">Deleting a purchase…</string>
+    <string name="billing_product_confirmed">Product confirmed</string>
+    <string name="billing_product_deleted">Purchase cancelled</string>
+    <string name="billing_subscriptions">Subscriptions</string>
+    <string name="billing_error_application_signature_not_correct">To pay via RuStore you need to install the app version from RuStore</string>
+    <string name="per_month">%s/miesiąc</string>
+    <string name="per_year">%s/rok</string>
+    <string name="restore_purchase">Przywracanie zakupów</string>
+
+    <!--About-->
+    <string name="about_rate_title">Oceń aplikację</string>
+    <string name="about_other_app_title">Inne zastosowania</string>
+    <string name="about_message">Klawiatura Inkwell o otwartym kodzie źródłowym. Inkwell jest oparty na aplikacji FlorisBoard o otwartym kodzie źródłowym.         \\n\\nByłbym bardzo wdzięczny, gdybyś zostawił recenzję lub ocenę aplikacji, bardzo pomoże to w rozwoju projektu.</string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Zakładka Domyślna</string>
+    <string name="settings__open_last_tab">Otwórz ostatnio używaną kartę</string>
+    <string name="settings__emoji_as_subtype">Emoji jako podtyp</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Przełącz na emotikony podczas zmiany języka</string>
+    <string name="settings__big_enter_key">Duży Enter</string>
+    <string name="settings__show_comma_key">Pokaż klucz średnika</string>
+    <string name="settings__show_dot_key">Pokaż kropki</string>
+    <string name="settings__by_character_layout">O układzie liter</string>
+    <string name="settings__keys">Klucze</string>
+    <string name="settings__uses_material_you__label">Używa kolorów Material You</string>
+    <string name="settings__keyboard_type">Typ klawiatury</string>
+    <string name="settings__number">Liczby</string>
+    <string name="settings__text">Tekst</string>
+    <string name="settings__sound_effect">Efekt dźwiękowy</string>
+    <string name="settings__sound_effect_summary">Efekty dźwiękowe mogą się różnić w zależności od urządzenia</string>
+    <string name="settings__sound_effect__standard">Standardowy dźwięk</string>
+    <string name="settings__sound_effect__clicking">Dźwięk kliknięcia</string>
+    <string name="settings__use_horizontal_grid">Używanie przewijania w poziomie</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Spacja Przesuń palcem w dół</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Ukryj skróty podczas przesuwania kursora</string>
+</resources>

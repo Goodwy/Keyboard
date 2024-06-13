@@ -1,0 +1,86 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name_g">Inkwell</string>
+
+    <string name="settings__home__ime_not_enabled_g" comment="Error message shown in Home fragment when Inkwell is not enabled in the system">Inkwell není povolena v systému a proto nemůže být použita jako metoda zadávání. Klikněte sem pro vyřešení tohoto problému.</string>
+    <string name="settings__home__ime_not_selected_g" comment="Warning message shown in Home fragment when Inkwell is not selected as the default keyboard">Inkwell není vybrán jako výchozí vstupní metoda. Kliknutím sem tento problém vyřešíte.</string>
+    <string name="about__project_license__summary_g" comment="Preference summary">Inkwell je licencován pod {license_name}</string>
+    <string name="setup__grant_notification_permission__description_g">Počínaje systémem Android 13 musí aplikace žádat o oprávnění
+        k posílání oznámení. V aplikaci Inkwell je toto oprávnění použito pouze pro otevření obrazovky hlášení
+        o pádu. Toto oprávnění lze kdykoli změnit v systémových nastaveních.
+    </string>
+    <string name="crash_dialog__title_g" comment="Title of crash dialog">Zpráva o chybě Inkwell</string>
+    <string name="crash_dialog__description_g" comment="Description of crash dialog">Omlouváme se za potíže, ale aplikace Inkwell spadla kvůli neočekávané chybě.</string>
+    <string name="crash_dialog__report_instructions_g" comment="Issue tracker report instructions for the crash dialog. The %s placeholder is the name of the crash report template and always in English/LTR.">Pokud chcete tuto chybu nahlásit, podívejte se nejprve do nástroje pro sledování problémů na GitHubu, pokud již nebyla chyba nahlášena.\nPokud tomu tak není, zkopírujte vygenerovaný záznam o chybě a otevřete nový problém. Použijte šablonu „%s“ a vyplňte popis, kroky k reprodukci a na konec vložte vygenerovaný záznam o pádu. Pomůžete tak k tomu, aby byl Inkwell lepší a stabilnější pro všechny. Děkujeme!</string>
+    <string name="crash_notification_channel__title_g" comment="Title of crash notification channel">Inkwell chybová hlášení</string>
+    <string name="crash_once_notification__title_g" comment="Title of the notification for a single crash">Inkwell přestal pracovat…</string>
+    <string name="crash_multiple_notification__title_g" comment="Title of the notification for consecutive crashes">Inkwell seems to stop working repeatedly…</string>
+    <string name="pref__clipboard__sync_from_system_clipboard__summary_g">Aktualizace systémové schránky také zahrnují schránku Inkwell</string>
+    <string name="pref__clipboard__sync_to_system_clipboard__summary_g">Aktualizace schránky Inkwell také zahrnují systémovou schránku</string>
+    <!--Not used-->
+    <string name="pref__theme__source_assets_g" comment="Label for the theme source field">Podklady aplikace Inkwell</string>
+    <string name="about__app_icon_content_description_g" comment="Content description of app icon in About">Ikona aplikace Inkwell</string>
+
+    <!--Purchase-->
+    <string name="tipping_jar_title">Tip Jar</string>
+    <string name="tip_kind">Dobrá podpora</string>
+    <string name="tip_excellent">Vynikající podpora</string>
+    <string name="tip_incredible">Úžasná podpora</string>
+    <string name="action_support_project">Projektová podpora</string>
+    <string name="action_support_project_summary">Zakoupením aplikace podpoříte budoucí vývoj a další funkce</string>
+    <string name="learn_more">Víc se uč</string>
+    <string name="night_theme_summary">Přizpůsobení motivu pro tmavý režim klávesnice</string>
+    <string name="theme_manager_summary">Správa nainstalovaných a vlastních motivů</string>
+    <string name="plus_title">Podpořte nás</string>
+    <string name="plus_summary">Všechny naše aplikace jsou bez reklam, Open Source a tak to vždy zůstane. S vaší pomocí jsme schopni implementovat další funkce a ještě je vylepšit</string>
+
+    <string name="any_support_unlock_all">Vyberte si úroveň projektové podpory, kterou máte k dispozici (jednorázovou, měsíční nebo roční). Jakákoli podpora odemkne všechny funkce aplikace</string>
+    <string name="locked">Blokovaný</string>
+    <string name="unlock">Odemknout</string>
+    <string name="donate_text">Pro ty, kteří nepoužívají Google Play, je možné odemknout všechny funkce aplikace.             \\nPokud se vám líbí naše aplikace, které jsou offline, nevtíravé a nemají žádné reklamy, zvažte prosím naši podporu. Byli bychom velmi vděční.             \\n\\nDěkujeme!</string>
+    <!--Not used-->
+    <string name="lifebuoy_title">We will support you</string>
+    <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>
+    <string name="participants_title">Participants</string>
+    <string name="special_thanks_to">Special thanks to</string>
+    <string name="get">Get</string>
+
+    <!--Billing-->
+
+    <!--RuStore-->
+    <string name="billing_purchase_confirm_in_progress">Confirming the purchase…</string>
+    <string name="billing_purchase_delete_in_progress">Deleting a purchase…</string>
+    <string name="billing_product_confirmed">Product confirmed</string>
+    <string name="billing_product_deleted">Purchase cancelled</string>
+    <string name="billing_subscriptions">Subscriptions</string>
+    <string name="billing_error_application_signature_not_correct">To pay via RuStore you need to install the app version from RuStore</string>
+    <string name="per_month">%s/měsíc</string>
+    <string name="per_year">%s/rok</string>
+    <string name="restore_purchase">Obnovení zakoupených položek</string>
+
+    <!--About-->
+    <string name="about_rate_title">Ohodnoťte aplikaci</string>
+    <string name="about_other_app_title">Jiné aplikace</string>
+    <string name="about_message">Klávesnice Inkwell s otevřeným zdrojovým kódem. Inkwell je založen na open source aplikaci FlorisBoard.         \\n\\nByl bych velmi vděčný, kdybyste zanechali recenzi nebo hodnocení o aplikaci, velmi to pomůže rozvoji projektu.</string>
+
+    <!--settings-->
+    <string name="settings__default_tab">Výchozí záložka</string>
+    <string name="settings__open_last_tab">Otevření poslední použité karty</string>
+    <string name="settings__emoji_as_subtype">Emoji jako podtyp</string>
+    <string name="settings__switch_to_emoji_when_changing_language">Přepnutí na emotikony při změně jazyka</string>
+    <string name="settings__big_enter_key">Velká klávesa Enter</string>
+    <string name="settings__show_comma_key">Zobrazit středníkový klíč</string>
+    <string name="settings__show_dot_key">Zobrazit tečkovou klávesu</string>
+    <string name="settings__by_character_layout">O rozložení písmen</string>
+    <string name="settings__keys">Klíče</string>
+    <string name="settings__uses_material_you__label">Používá barvy Material You</string>
+    <string name="settings__keyboard_type">Typ klávesnice</string>
+    <string name="settings__number">Čísla</string>
+    <string name="settings__text">Text</string>
+    <string name="settings__sound_effect">Zvukový efekt</string>
+    <string name="settings__sound_effect_summary">Zvukové efekty se mohou lišit v závislosti na zařízení</string>
+    <string name="settings__sound_effect__standard">Standardní zvuk</string>
+    <string name="settings__sound_effect__clicking">Zvuk cvakání</string>
+    <string name="settings__use_horizontal_grid">Použití vodorovného posouvání</string>
+    <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Přejetí dolů přes mezerník</string>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Skrytí klávesových zkratek při pohybu kurzoru</string>
+</resources>

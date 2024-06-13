@@ -286,7 +286,8 @@ internal fun <T : PreferenceModel, V : Any> PreferenceUiScope<T>.ListPreferenceR
                                     horizontal = 16.dp,
                                     vertical = 8.dp,
                                 )
-                                .alpha(alpha)
+                                .alpha(alpha),
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
                             RadioButton(
                                 selected = entry.key == tmpListPrefValue,
@@ -297,7 +298,7 @@ internal fun <T : PreferenceModel, V : Any> PreferenceUiScope<T>.ListPreferenceR
                                 modifier = Modifier.padding(end = 12.dp),
                             )
                             Column(
-                                modifier = Modifier.fillMaxWidth()
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 entry.labelComposer(entry.label)
                                 if (entry.showDescriptionOnlyIfSelected) {

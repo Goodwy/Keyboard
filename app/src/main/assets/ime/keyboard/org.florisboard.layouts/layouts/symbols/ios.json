@@ -110,8 +110,8 @@
         { "code": 8218, "label": "‚" }
       ]
     } },
-    { "code": 10003, "label": "✓", "popup": {
-      "main": { "code": 10003, "label": "✓" },
+    { "code":   35, "label": "#", "popup": {
+      "main": { "code":   35, "label": "#" },
       "relevant": [
         { "code": 8730, "label": "√" },
         { "code":  215, "label": "×" },
@@ -123,7 +123,8 @@
       "main": { "code":  169, "label": "©" },
       "relevant": [
         { "code":  174, "label": "®" },
-        { "code": 8482, "label": "™" }
+        { "code": 8482, "label": "™" },
+        { "code": 10003, "label": "✓" }
       ]
     } }
   ]

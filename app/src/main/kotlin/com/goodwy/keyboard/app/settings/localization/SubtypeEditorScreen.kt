@@ -306,7 +306,8 @@ fun SubtypeEditorScreen(id: Long?) = FlorisScreen {
                         val suggestedPresets = remember(subtypePresets) {
                             val presets = mutableListOf<SubtypePreset>()
                             for (systemLocale in systemLocales) {
-                                subtypePresets.find { it.locale == systemLocale }?.let { presets.add(it) }
+                                //subtypePresets.find { it.locale == systemLocale }?.let { presets.add(it) }
+                                subtypePresets.find { it.locale.language == systemLocale.language }?.let { presets.add(it) }
                             }
                             presets
                         }
