@@ -39,8 +39,8 @@ import com.goodwy.keyboard.ime.theme.FlorisImeTheme
 import com.goodwy.keyboard.ime.theme.FlorisImeUi
 import com.goodwy.keyboard.keyboardManager
 import com.goodwy.keyboard.lib.compose.stringRes
-import com.goodwy.keyboard.lib.snygg.ui.SnyggButton
-import com.goodwy.keyboard.lib.snygg.ui.snyggBackground
+import com.goodwy.lib.snygg.ui.SnyggButton
+import com.goodwy.lib.snygg.ui.snyggBackground
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 
 @Composable

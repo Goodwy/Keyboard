@@ -6,10 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import com.android.billingclient.api.*
 import com.android.billingclient.api.BillingFlowParams.ProductDetailsParams
 import com.android.billingclient.api.QueryProductDetailsParams.Product
-import com.goodwy.keyboard.R
 import kotlinx.coroutines.*
 import java.util.*
-
 
 class PurchaseHelper(
   val activity: Activity,

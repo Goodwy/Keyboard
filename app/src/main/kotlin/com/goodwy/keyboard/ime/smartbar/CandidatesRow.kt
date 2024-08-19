@@ -22,16 +22,14 @@ import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -57,15 +55,15 @@ import com.goodwy.keyboard.ime.nlp.SuggestionCandidate
 import com.goodwy.keyboard.ime.theme.FlorisImeTheme
 import com.goodwy.keyboard.ime.theme.FlorisImeUi
 import com.goodwy.keyboard.keyboardManager
-import com.goodwy.keyboard.lib.android.AndroidVersion
 import com.goodwy.keyboard.lib.compose.florisHorizontalScroll
 import com.goodwy.keyboard.lib.compose.safeTimes
 import com.goodwy.keyboard.lib.observeAsNonNullState
-import com.goodwy.keyboard.lib.snygg.ui.snyggBackground
-import com.goodwy.keyboard.lib.snygg.ui.solidColor
-import com.goodwy.keyboard.lib.snygg.ui.spSize
 import com.goodwy.keyboard.nlpManager
 import com.goodwy.keyboard.subtypeManager
+import com.goodwy.lib.android.AndroidVersion
+import com.goodwy.lib.snygg.ui.snyggBackground
+import com.goodwy.lib.snygg.ui.solidColor
+import com.goodwy.lib.snygg.ui.spSize
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 
 private val CandidatesRowScrollbarHeight = 2.dp

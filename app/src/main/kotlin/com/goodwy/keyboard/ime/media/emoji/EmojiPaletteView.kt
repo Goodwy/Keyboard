@@ -40,16 +40,14 @@ import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.GenericShape
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Icon
-import androidx.compose.material.LocalContentColor
-import androidx.compose.material.Tab
-import androidx.compose.material.TabRow
-import androidx.compose.material.TabRowDefaults
-import androidx.compose.material.TabRowDefaults.tabIndicatorOffset
-import androidx.compose.material.Text
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
+import androidx.compose.material3.TabRowDefaults
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
@@ -87,17 +85,17 @@ import com.goodwy.keyboard.ime.text.keyboard.TextKeyData
 import com.goodwy.keyboard.ime.theme.FlorisImeTheme
 import com.goodwy.keyboard.ime.theme.FlorisImeUi
 import com.goodwy.keyboard.keyboardManager
-import com.goodwy.keyboard.lib.android.AndroidKeyguardManager
-import com.goodwy.keyboard.lib.android.showShortToast
-import com.goodwy.keyboard.lib.android.systemService
 import com.goodwy.keyboard.lib.compose.florisScrollbar
 import com.goodwy.keyboard.lib.compose.safeTimes
 import com.goodwy.keyboard.lib.compose.stringRes
-import com.goodwy.keyboard.lib.snygg.ui.snyggBackground
-import com.goodwy.keyboard.lib.snygg.ui.snyggBorder
-import com.goodwy.keyboard.lib.snygg.ui.snyggShadow
-import com.goodwy.keyboard.lib.snygg.ui.solidColor
-import com.goodwy.keyboard.lib.snygg.ui.spSize
+import com.goodwy.lib.android.AndroidKeyguardManager
+import com.goodwy.lib.android.showShortToast
+import com.goodwy.lib.android.systemService
+import com.goodwy.lib.snygg.ui.snyggBackground
+import com.goodwy.lib.snygg.ui.snyggBorder
+import com.goodwy.lib.snygg.ui.snyggShadow
+import com.goodwy.lib.snygg.ui.solidColor
+import com.goodwy.lib.snygg.ui.spSize
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -323,15 +321,13 @@ private fun EmojiCategoriesTabRow(
             .fillMaxWidth()
             .height(FlorisImeSizing.smartbarHeight),
         selectedTabIndex = selectedTabIndex,
-        backgroundColor = Color.Transparent,
+        containerColor = Color.Transparent,
         contentColor = selectedContentColor,
         indicator = { tabPositions ->
-            Box(
-                modifier = Modifier
-                    .tabIndicatorOffset(tabPositions[selectedTabIndex])
-                    .padding(horizontal = 8.dp)
-                    .height(TabRowDefaults.IndicatorHeight)
-                    .background(LocalContentColor.current, CircleShape),
+            TabRowDefaults.PrimaryIndicator(
+                Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
+                color = selectedContentColor,
+                height = 4.dp
             )
         },
     ) {

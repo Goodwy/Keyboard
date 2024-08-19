@@ -1,4 +1,4 @@
-package com.goodwy.keyboard.lib.snygg
+package com.goodwy.lib.snygg
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.data.forAll

@@ -19,11 +19,8 @@ package com.goodwy.keyboard.ime.smartbar.quickaction
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
@@ -35,15 +32,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import com.goodwy.keyboard.app.florisPreferenceModel
 import com.goodwy.keyboard.ime.smartbar.SmartbarLayout
 import com.goodwy.keyboard.ime.text.keyboard.TextKeyData
 import com.goodwy.keyboard.ime.theme.FlorisImeTheme
 import com.goodwy.keyboard.ime.theme.FlorisImeUi
 import com.goodwy.keyboard.keyboardManager
-import com.goodwy.keyboard.lib.snygg.ui.snyggBackground
-import com.goodwy.keyboard.lib.snygg.ui.solidColor
+import com.goodwy.lib.snygg.ui.snyggBackground
+import com.goodwy.lib.snygg.ui.solidColor
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 
 internal val ToggleOverflowPanelAction = QuickAction.InsertKey(TextKeyData.TOGGLE_ACTIONS_OVERFLOW)

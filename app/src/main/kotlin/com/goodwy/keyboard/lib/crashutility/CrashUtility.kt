@@ -32,14 +32,14 @@ import android.util.Log
 import com.goodwy.keyboard.BuildConfig
 import com.goodwy.keyboard.FlorisImeService
 import com.goodwy.keyboard.R
-import com.goodwy.keyboard.lib.android.AndroidVersion
 import com.goodwy.keyboard.lib.devtools.LogTopic
 import com.goodwy.keyboard.lib.devtools.flogError
 import com.goodwy.keyboard.lib.devtools.flogInfo
-import com.goodwy.keyboard.lib.io.FsDir
-import com.goodwy.keyboard.lib.io.FsFile
-import com.goodwy.keyboard.lib.io.subDir
-import com.goodwy.keyboard.lib.io.subFile
+import com.goodwy.lib.android.AndroidVersion
+import com.goodwy.lib.kotlin.io.FsDir
+import com.goodwy.lib.kotlin.io.FsFile
+import com.goodwy.lib.kotlin.io.subDir
+import com.goodwy.lib.kotlin.io.subFile
 import java.lang.ref.WeakReference
 import kotlin.system.exitProcess
 

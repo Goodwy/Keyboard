@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">استفاده از پیمایش افقی</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">کشیدن نوار فاصله پایین</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">مخفی کردن میانبرها هنگام حرکت مکاننما</string>
+    <string name="one_time_purchase">پشتیبانی یک بار</string>
+    <string name="monthly">پشتیبانی ماهانه</string>
+    <string name="yearly">پشتیبانی سالانه</string>
 </resources>

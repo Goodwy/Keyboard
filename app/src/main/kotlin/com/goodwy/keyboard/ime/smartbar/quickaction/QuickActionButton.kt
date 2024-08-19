@@ -35,8 +35,8 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
@@ -47,7 +47,6 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -62,11 +61,11 @@ import com.goodwy.keyboard.ime.text.key.KeyCode
 import com.goodwy.keyboard.ime.text.keyboard.TextKeyData
 import com.goodwy.keyboard.ime.theme.FlorisImeTheme
 import com.goodwy.keyboard.ime.theme.FlorisImeUi
-import com.goodwy.keyboard.lib.snygg.ui.shape
-import com.goodwy.keyboard.lib.snygg.ui.snyggBorder
-import com.goodwy.keyboard.lib.snygg.ui.snyggClip
-import com.goodwy.keyboard.lib.snygg.ui.snyggShadow
-import com.goodwy.keyboard.lib.snygg.ui.solidColor
+import com.goodwy.lib.snygg.ui.shape
+import com.goodwy.lib.snygg.ui.snyggBorder
+import com.goodwy.lib.snygg.ui.snyggClip
+import com.goodwy.lib.snygg.ui.snyggShadow
+import com.goodwy.lib.snygg.ui.solidColor
 
 private val BackgroundAnimationSpec = tween<Color>(durationMillis = 150, easing = FastOutSlowInEasing)
 private val DebugHelperColor = Color.Red.copy(alpha = 0.5f)

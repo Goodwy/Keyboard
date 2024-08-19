@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">Використовуйте горизонтальне прокручування</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Провести вниз на пробілі</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Приховування ярликів під час переміщення курсора</string>
+    <string name="one_time_purchase">Одноразова підтримка</string>
+    <string name="monthly">Щомісячна підтримка</string>
+    <string name="yearly">Щорічна підтримка</string>
 </resources>

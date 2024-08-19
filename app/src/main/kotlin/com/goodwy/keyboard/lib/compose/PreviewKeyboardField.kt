@@ -37,7 +37,6 @@ import androidx.compose.material.icons.rounded.Link
 import androidx.compose.material.icons.rounded.MailOutline
 import androidx.compose.material.icons.rounded.Numbers
 import androidx.compose.material.icons.rounded.TextFields
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -55,7 +54,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
@@ -77,8 +75,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.florisPreferenceModel
-import com.goodwy.keyboard.lib.android.showShortToast
 import com.goodwy.keyboard.lib.util.InputMethodUtils
+import com.goodwy.lib.android.showShortToast
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 import dev.patrickgold.jetpref.datastore.ui.LocalDefaultDialogPrefStrings
 import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
@@ -101,7 +99,6 @@ class PreviewFieldController {
     var text by mutableStateOf(TextFieldValue(""))
 }
 
-@OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun PreviewKeyboardField(
     controller: PreviewFieldController,

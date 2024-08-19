@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">Χρήση οριζόντιας κύλισης</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Ολίσθηση προς τα κάτω από το πλήκτρο διαστήματος</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Απόκρυψη συντομεύσεων κατά τη μετακίνηση του δρομέα</string>
+    <string name="one_time_purchase">Εφάπαξ υποστήριξη</string>
+    <string name="monthly">Μηνιαία υποστήριξη</string>
+    <string name="yearly">Ετήσια υποστήριξη</string>
 </resources>

@@ -26,11 +26,11 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -46,21 +46,20 @@ import androidx.navigation.compose.rememberNavController
 import com.goodwy.keyboard.BuildConfig
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.apptheme.FlorisAppTheme
+import com.goodwy.keyboard.app.ext.ExtensionImportScreenType
 import com.goodwy.keyboard.app.settings.purchase.Product
 import com.goodwy.keyboard.app.setup.NotificationPermissionState
+import com.goodwy.keyboard.cacheManager
 import com.goodwy.keyboard.lib.FlorisLocale
-import com.goodwy.keyboard.lib.android.AndroidVersion
-import com.goodwy.keyboard.lib.android.hideAppIcon
-import com.goodwy.keyboard.lib.android.setLocale
-import com.goodwy.keyboard.lib.android.showAppIcon
-import com.goodwy.keyboard.lib.android.showShortToast
 import com.goodwy.keyboard.lib.compose.LocalPreviewFieldController
 import com.goodwy.keyboard.lib.compose.PreviewKeyboardField
 import com.goodwy.keyboard.lib.compose.ProvideLocalizedResources
 import com.goodwy.keyboard.lib.compose.rememberPreviewFieldController
 import com.goodwy.keyboard.lib.compose.stringRes
 import com.goodwy.keyboard.lib.util.AppVersionUtils
-import dev.patrickgold.jetpref.datastore.model.PreferenceData
+import com.goodwy.lib.android.AndroidVersion
+import com.goodwy.lib.android.hideAppIcon
+import com.goodwy.lib.android.showAppIcon
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 import dev.patrickgold.jetpref.datastore.ui.ProvideDefaultDialogPrefStrings
 import kotlinx.coroutines.launch
@@ -83,9 +82,11 @@ val LocalNavController = staticCompositionLocalOf<NavController> {
 
 class FlorisAppActivity : ComponentActivity() {
     private val prefs by florisPreferenceModel()
+    private val cacheManager by cacheManager()
     private var appTheme by mutableStateOf(AppTheme.AUTO)
     private var showAppIcon = true
     private var resourcesContext by mutableStateOf(this as Context)
+    private var intentToBeHandled by mutableStateOf<Intent?>(null)
 
     private val purchaseHelper = PurchaseHelper(this)
     private val ruStoreHelper = RuStoreHelper(this)
@@ -113,7 +114,8 @@ class FlorisAppActivity : ComponentActivity() {
         }
         prefs.advanced.settingsLanguage.observe(this) {
             val config = Configuration(resources.configuration)
-            config.setLocale(if (it == "auto") FlorisLocale.default() else FlorisLocale.fromTag(it))
+            val locale = if (it == "auto") FlorisLocale.default() else FlorisLocale.fromTag(it)
+            config.setLocale(locale.base)
             resourcesContext = createConfigurationContext(config)
         }
         if (AndroidVersion.ATMOST_API28_P) {
@@ -136,13 +138,14 @@ class FlorisAppActivity : ComponentActivity() {
             AppVersionUtils.updateVersionOnInstallAndLastUse(this, prefs)
             setContent {
                 ProvideLocalizedResources(resourcesContext) {
-                    FlorisAppTheme(theme = appTheme, isMaterialYouAware = prefs.advanced.useMaterialYou.observeAsState().value) {
+                    val useMaterialYou by prefs.advanced.useMaterialYou.observeAsState()
+                    FlorisAppTheme(theme = appTheme, isMaterialYouAware = useMaterialYou) {
                         Surface(color = MaterialTheme.colorScheme.background) {
-                            //SystemUiApp()
                             AppContent()
                         }
                     }
                 }
+                onNewIntent(intent)
             }
         }
 
@@ -205,6 +208,29 @@ class FlorisAppActivity : ComponentActivity() {
         }
     }
 
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+
+        if (intent?.action == Intent.ACTION_VIEW && intent.categories?.contains(Intent.CATEGORY_BROWSABLE) == true) {
+            intentToBeHandled = intent
+            return
+        }
+        if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
+            intentToBeHandled = intent
+            return
+        }
+        if (intent?.action == Intent.ACTION_SEND && intent.clipData != null) {
+            intentToBeHandled = intent
+            return
+        }
+        intentToBeHandled = null
+
+        if (isRuStoreInstalled()) {
+            billingRuStoreClient.onNewIntent(intent)
+        }
+    }
+
     @Composable
     private fun AppContent() {
         val navController = rememberNavController()
@@ -237,6 +263,24 @@ class FlorisAppActivity : ComponentActivity() {
             }
         }
 
+        LaunchedEffect(intentToBeHandled) {
+            val intent = intentToBeHandled
+            if (intent != null) {
+                if (intent.action == Intent.ACTION_VIEW && intent.categories?.contains(Intent.CATEGORY_BROWSABLE) == true) {
+                    navController.handleDeepLink(intent)
+                } else {
+                    val data = if (intent.action == Intent.ACTION_VIEW) {
+                        intent.data!!
+                    } else {
+                        intent.clipData!!.getItemAt(0).uri
+                    }
+                    val workspace = runCatching { cacheManager.readFromUriIntoCache(data) }.getOrNull()
+                    navController.navigate(Routes.Ext.Import(ExtensionImportScreenType.EXT_ANY, workspace?.uuid))
+                }
+            }
+            intentToBeHandled = null
+        }
+
         SideEffect {
             navController.setOnBackPressedDispatcher(this.onBackPressedDispatcher)
         }
@@ -258,13 +302,6 @@ class FlorisAppActivity : ComponentActivity() {
         //Billing
         if (isPlayStoreInstalled) initPlayStore()
         if (isRuStoreInstalled) initRuStore()
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        if (isRuStoreInstalled()) {
-            billingRuStoreClient.onNewIntent(intent)
-        }
     }
 
     private fun initPlayStore() {

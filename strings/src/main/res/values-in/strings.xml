@@ -86,4 +86,7 @@
     <string name="settings__use_horizontal_grid">Gunakan pengguliran horizontal</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Geser batang spasi ke turun</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Sembunyikan label kunci saat menggerakkan kursor</string>
+    <string name="one_time_purchase">Dukungan satu kali</string>
+    <string name="monthly">Dukungan bulanan</string>
+    <string name="yearly">Dukungan tahunan</string>
 </resources>

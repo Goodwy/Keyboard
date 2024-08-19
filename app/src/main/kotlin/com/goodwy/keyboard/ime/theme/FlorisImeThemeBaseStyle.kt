@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.goodwy.keyboard.ime.input.InputShiftState
 import com.goodwy.keyboard.ime.text.key.KeyCode
-import com.goodwy.keyboard.lib.snygg.SnyggStylesheet
+import com.goodwy.lib.snygg.SnyggStylesheet
 
 val FlorisImeThemeBaseStyle = SnyggStylesheet {
     defines {
@@ -102,6 +102,11 @@ val FlorisImeThemeBaseStyle = SnyggStylesheet {
         background = rgbaColor(117, 117, 117)
         foreground = `var`("onSurface")
         fontSize = size(14.sp)
+        shape = roundedCornerShape(12.dp)
+    }
+    FlorisImeUi.ClipboardEnableHistoryButton {
+        background = `var`("primary")
+        foreground = rgbaColor(0, 0, 0)
         shape = roundedCornerShape(12.dp)
     }
 

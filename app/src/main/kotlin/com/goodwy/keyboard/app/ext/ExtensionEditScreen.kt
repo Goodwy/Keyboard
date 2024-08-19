@@ -59,7 +59,6 @@ import com.goodwy.keyboard.ime.theme.ThemeExtensionComponentEditor
 import com.goodwy.keyboard.ime.theme.ThemeExtensionComponentImpl
 import com.goodwy.keyboard.ime.theme.ThemeExtensionEditor
 import com.goodwy.keyboard.lib.ValidationResult
-import com.goodwy.keyboard.lib.android.showLongToast
 import com.goodwy.keyboard.lib.cache.CacheManager
 import com.goodwy.keyboard.lib.compose.FlorisButtonBar
 import com.goodwy.keyboard.lib.compose.FlorisIconButton
@@ -68,7 +67,6 @@ import com.goodwy.keyboard.lib.compose.FlorisOutlinedBox
 import com.goodwy.keyboard.lib.compose.FlorisOutlinedTextField
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.FlorisUnsavedChangesDialog
-import com.goodwy.keyboard.lib.compose.autoMirrorForRtl
 import com.goodwy.keyboard.lib.compose.defaultFlorisOutlinedBox
 import com.goodwy.keyboard.lib.compose.stringRes
 import com.goodwy.keyboard.lib.ext.Extension
@@ -84,11 +82,12 @@ import com.goodwy.keyboard.lib.ext.ExtensionValidation
 import com.goodwy.keyboard.lib.ext.validate
 import com.goodwy.keyboard.lib.io.FlorisRef
 import com.goodwy.keyboard.lib.io.ZipUtils
-import com.goodwy.keyboard.lib.io.subFile
-import com.goodwy.keyboard.lib.io.writeJson
 import com.goodwy.keyboard.lib.rememberValidationResult
-import com.goodwy.keyboard.lib.snygg.SnyggStylesheetJsonConfig
 import com.goodwy.keyboard.themeManager
+import com.goodwy.lib.android.showLongToast
+import com.goodwy.lib.snygg.SnyggStylesheetJsonConfig
+import com.goodwy.lib.kotlin.io.subFile
+import com.goodwy.lib.kotlin.io.writeJson
 import dev.patrickgold.jetpref.datastore.ui.Preference
 import dev.patrickgold.jetpref.datastore.ui.vectorResource
 import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
@@ -299,7 +298,6 @@ private fun EditScreen(
     navigationIcon {
         FlorisIconButton(
             onClick = { handleBackPress() },
-            //modifier = Modifier.autoMirrorForRtl(),
             icon = Icons.AutoMirrored.Rounded.ArrowBackIos,
         )
     }

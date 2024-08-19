@@ -22,7 +22,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material.Icon
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.florisPreferenceModel
+import com.goodwy.keyboard.ime.keyboard.KeyboardMode
 import com.goodwy.keyboard.ime.smartbar.IncognitoDisplayMode
 import com.goodwy.keyboard.ime.smartbar.Smartbar
 import com.goodwy.keyboard.ime.smartbar.quickaction.QuickActionsOverflowPanel
@@ -43,7 +44,7 @@ import com.goodwy.keyboard.ime.text.keyboard.TextKeyboardLayout
 import com.goodwy.keyboard.ime.theme.FlorisImeTheme
 import com.goodwy.keyboard.ime.theme.FlorisImeUi
 import com.goodwy.keyboard.keyboardManager
-import com.goodwy.keyboard.lib.snygg.ui.solidColor
+import com.goodwy.lib.snygg.ui.solidColor
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 
 @Composable
@@ -84,7 +85,11 @@ fun TextInputLayout(
                             ),
                         )
                     }
-                    TextKeyboardLayout(evaluator = evaluator)
+                    if (state.keyboardMode != KeyboardMode.EDITING) {
+                        TextKeyboardLayout(evaluator = evaluator)
+                    } else {
+                        HowDidWeGetHere()
+                    }
                 }
             }
         }

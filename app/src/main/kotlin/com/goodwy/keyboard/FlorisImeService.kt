@@ -97,14 +97,6 @@ import com.goodwy.keyboard.ime.smartbar.quickaction.QuickActionsEditorPanel
 import com.goodwy.keyboard.ime.text.TextInputLayout
 import com.goodwy.keyboard.ime.theme.FlorisImeTheme
 import com.goodwy.keyboard.ime.theme.FlorisImeUi
-import com.goodwy.keyboard.lib.android.AndroidInternalR
-import com.goodwy.keyboard.lib.android.AndroidVersion
-import com.goodwy.keyboard.lib.android.isOrientationLandscape
-import com.goodwy.keyboard.lib.android.isOrientationPortrait
-import com.goodwy.keyboard.lib.android.launchActivity
-import com.goodwy.keyboard.lib.android.setLocale
-import com.goodwy.keyboard.lib.android.showShortToast
-import com.goodwy.keyboard.lib.android.systemServiceOrNull
 import com.goodwy.keyboard.lib.compose.FlorisButton
 import com.goodwy.keyboard.lib.compose.ProvideLocalizedResources
 import com.goodwy.keyboard.lib.compose.SystemUiIme
@@ -113,17 +105,24 @@ import com.goodwy.keyboard.lib.devtools.flogError
 import com.goodwy.keyboard.lib.devtools.flogInfo
 import com.goodwy.keyboard.lib.devtools.flogWarning
 import com.goodwy.keyboard.lib.observeAsTransformingState
-import com.goodwy.keyboard.lib.snygg.ui.SnyggSurface
-import com.goodwy.keyboard.lib.snygg.ui.shape
-import com.goodwy.keyboard.lib.snygg.ui.snyggBackground
-import com.goodwy.keyboard.lib.snygg.ui.snyggBorder
-import com.goodwy.keyboard.lib.snygg.ui.snyggShadow
-import com.goodwy.keyboard.lib.snygg.ui.solidColor
-import com.goodwy.keyboard.lib.snygg.ui.spSize
 import com.goodwy.keyboard.lib.util.ViewUtils
 import com.goodwy.keyboard.lib.util.debugSummarize
+import com.goodwy.keyboard.lib.util.launchActivity
+import com.goodwy.lib.android.AndroidInternalR
+import com.goodwy.lib.android.AndroidVersion
+import com.goodwy.lib.android.isOrientationLandscape
+import com.goodwy.lib.android.isOrientationPortrait
+import com.goodwy.lib.android.showShortToast
+import com.goodwy.lib.android.systemServiceOrNull
+import com.goodwy.lib.snygg.ui.SnyggSurface
+import com.goodwy.lib.snygg.ui.shape
+import com.goodwy.lib.snygg.ui.snyggBackground
+import com.goodwy.lib.snygg.ui.snyggBorder
+import com.goodwy.lib.snygg.ui.snyggShadow
+import com.goodwy.lib.snygg.ui.solidColor
+import com.goodwy.lib.snygg.ui.spSize
+import com.goodwy.lib.kotlin.collectLatestIn
 import dev.patrickgold.jetpref.datastore.model.observeAsState
-import org.florisboard.lib.kotlin.collectLatestIn
 import java.lang.ref.WeakReference
 
 /**
@@ -276,7 +275,7 @@ class FlorisImeService : LifecycleInputMethodService() {
         WindowCompat.setDecorFitsSystemWindows(window.window!!, false)
         subtypeManager.activeSubtypeFlow.collectLatestIn(lifecycleScope) { subtype ->
             val config = Configuration(resources.configuration)
-            config.setLocale(subtype.primaryLocale)
+            config.setLocale(subtype.primaryLocale.base)
             resourcesContext = createConfigurationContext(config)
         }
     }

@@ -50,11 +50,11 @@ import com.goodwy.keyboard.ime.text.key.KeyHintMode
 import com.goodwy.keyboard.ime.text.key.UtilityKeyAction
 import com.goodwy.keyboard.ime.theme.ThemeMode
 import com.goodwy.keyboard.ime.theme.extCoreTheme
-import com.goodwy.keyboard.lib.android.isOrientationPortrait
 import com.goodwy.keyboard.lib.ext.ExtensionComponentName
 import com.goodwy.keyboard.lib.observeAsTransformingState
-import com.goodwy.keyboard.lib.snygg.SnyggLevel
 import com.goodwy.keyboard.lib.util.VersionName
+import com.goodwy.lib.android.isOrientationPortrait
+import com.goodwy.lib.snygg.SnyggLevel
 import dev.patrickgold.jetpref.datastore.JetPref
 import dev.patrickgold.jetpref.datastore.model.PreferenceMigrationEntry
 import dev.patrickgold.jetpref.datastore.model.PreferenceModel
@@ -709,18 +709,10 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
             key = "theme__mode",
             default = ThemeMode.FOLLOW_SYSTEM,
         )
-        val dayThemeAdaptToApp = boolean(
-            key = "theme__day_theme_adapt_to_app",
-            default = false,
-        )
         val dayThemeId = custom(
             key = "theme__day_theme_id",
             default = extCoreTheme("ios_day"),
             serializer = ExtensionComponentName.Serializer,
-        )
-        val nightThemeAdaptToApp = boolean(
-            key = "theme__night_theme_adapt_to_app",
-            default = false,
         )
         val nightThemeId = custom(
             key = "theme__night_theme_id",

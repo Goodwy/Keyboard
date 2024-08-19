@@ -48,7 +48,6 @@ import com.goodwy.keyboard.app.ext.ExtensionImportScreenType
 import com.goodwy.keyboard.app.florisPreferenceModel
 import com.goodwy.keyboard.extensionManager
 import com.goodwy.keyboard.ime.nlp.LanguagePackComponent
-import com.goodwy.keyboard.lib.android.showLongToast
 import com.goodwy.keyboard.lib.compose.FlorisConfirmDeleteDialog
 import com.goodwy.keyboard.lib.compose.FlorisOutlinedBox
 import com.goodwy.keyboard.lib.compose.FlorisScreen
@@ -59,6 +58,7 @@ import com.goodwy.keyboard.lib.compose.stringRes
 import com.goodwy.keyboard.lib.ext.Extension
 import com.goodwy.keyboard.lib.ext.ExtensionComponentName
 import com.goodwy.keyboard.lib.observeAsNonNullState
+import com.goodwy.lib.android.showLongToast
 import dev.patrickgold.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
 import dev.patrickgold.jetpref.datastore.ui.Preference
 import dev.patrickgold.jetpref.material.ui.JetPrefListItem

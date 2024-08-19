@@ -29,9 +29,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import com.goodwy.keyboard.BuildConfig
-import com.goodwy.keyboard.lib.android.AndroidSettings
-import com.goodwy.keyboard.lib.android.AndroidVersion
-import com.goodwy.keyboard.lib.android.systemServiceOrNull
+import com.goodwy.keyboard.lib.compose.observeAsState
+import com.goodwy.lib.android.AndroidSettings
+import com.goodwy.lib.android.AndroidVersion
+import com.goodwy.lib.android.systemServiceOrNull
 import com.goodwy.keyboard.lib.devtools.flogDebug
 import kotlinx.coroutines.delay
 

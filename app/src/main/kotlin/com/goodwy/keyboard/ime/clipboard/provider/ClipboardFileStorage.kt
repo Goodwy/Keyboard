@@ -18,11 +18,11 @@ package com.goodwy.keyboard.ime.clipboard.provider
 
 import android.content.Context
 import android.net.Uri
-import com.goodwy.keyboard.lib.android.readToFile
 import com.goodwy.keyboard.lib.devtools.LogTopic
 import com.goodwy.keyboard.lib.devtools.flogDebug
-import com.goodwy.keyboard.lib.io.FsFile
-import com.goodwy.keyboard.lib.io.subFile
+import com.goodwy.lib.android.readToFile
+import com.goodwy.lib.kotlin.io.FsFile
+import com.goodwy.lib.kotlin.io.subFile
 
 /**
  * Backend helper object which is used by [ClipboardMediaProvider] to serve content.

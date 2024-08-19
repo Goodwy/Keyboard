@@ -1,4 +1,4 @@
-package com.goodwy.keyboard.lib.snygg.value
+package com.goodwy.lib.snygg.value
 
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp

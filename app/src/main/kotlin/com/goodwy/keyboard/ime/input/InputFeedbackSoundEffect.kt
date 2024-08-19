@@ -24,18 +24,4 @@ import dev.patrickgold.jetpref.datastore.ui.listPrefEntries
 enum class InputFeedbackSoundEffect  {
     KEYPRESS_STANDARD,
     KEY_CLICK;
-
-    companion object {
-        @Composable
-        fun audioListEntries() = listPrefEntries {
-            entry(
-                key = KEYPRESS_STANDARD,
-                label = stringRes(com.goodwy.keyboard.strings.R.string.settings__sound_effect__standard),
-            )
-            entry(
-                key = KEY_CLICK,
-                label = stringRes(com.goodwy.keyboard.strings.R.string.settings__sound_effect__clicking),
-            )
-        }
-    }
 }

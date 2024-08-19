@@ -81,4 +81,7 @@
     <string name="settings__use_horizontal_grid">Използване на хоризонтално превъртане</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Плъзване върху клавиша за интервал надолу</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Скриване на клавишните комбинации при преместване на курсора</string>
+    <string name="one_time_purchase">Еднократна поддръжка</string>
+    <string name="monthly">Месечна подкрепа</string>
+    <string name="yearly">Годишна подкрепа</string>
 </resources>

@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">Yatay kaydırmayı kullanma</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Boşluk tuşu aşağı kaydırma</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">İmleci hareket ettirirken kısayolları gizleme</string>
+    <string name="one_time_purchase">Tek seferlik destek</string>
+    <string name="monthly">Aylık destek</string>
+    <string name="yearly">Yıllık destek</string>
 </resources>

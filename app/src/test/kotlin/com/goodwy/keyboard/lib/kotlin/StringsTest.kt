@@ -1,4 +1,4 @@
-package org.florisboard.lib.kotlin
+package com.goodwy.lib.kotlin
 
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe

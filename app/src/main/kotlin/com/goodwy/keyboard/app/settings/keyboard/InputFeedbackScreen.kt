@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.goodwy.keyboard.R
+import com.goodwy.keyboard.app.enumDisplayEntriesOf
 import com.goodwy.keyboard.app.settings.DialogSliderPreferenceRow
 import com.goodwy.keyboard.app.settings.DividerRow
 import com.goodwy.keyboard.app.settings.ListPreferenceRow
@@ -31,11 +32,11 @@ import com.goodwy.keyboard.app.settings.SwitchPreferenceRow
 import com.goodwy.keyboard.ime.input.InputFeedbackActivationMode
 import com.goodwy.keyboard.ime.input.HapticVibrationMode
 import com.goodwy.keyboard.ime.input.InputFeedbackSoundEffect
-import com.goodwy.keyboard.lib.android.AndroidVersion
-import com.goodwy.keyboard.lib.android.systemVibratorOrNull
-import com.goodwy.keyboard.lib.android.vibrate
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.stringRes
+import com.goodwy.lib.android.AndroidVersion
+import com.goodwy.lib.android.systemVibratorOrNull
+import com.goodwy.lib.android.vibrate
 import dev.patrickgold.jetpref.datastore.ui.DialogSliderPreference
 import dev.patrickgold.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
 import dev.patrickgold.jetpref.datastore.ui.ListPreference
@@ -59,7 +60,7 @@ fun InputFeedbackScreen() = FlorisScreen {
                 switchPref = prefs.inputFeedback.audioEnabled,
                 title = stringRes(R.string.pref__input_feedback__audio_enabled__label),
                 summarySwitchDisabled = stringRes(R.string.pref__input_feedback__audio_enabled__summary_disabled),
-                entries = InputFeedbackActivationMode.audioListEntries(),
+                entries = enumDisplayEntriesOf(InputFeedbackActivationMode::class, "audio"),
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(
@@ -67,7 +68,7 @@ fun InputFeedbackScreen() = FlorisScreen {
                 title = stringRes(com.goodwy.keyboard.strings.R.string.settings__sound_effect),
                 summary = stringRes(com.goodwy.keyboard.strings.R.string.settings__sound_effect_summary),
                 enabledIf = { prefs.inputFeedback.audioEnabled isEqualTo true},
-                entries = InputFeedbackSoundEffect.audioListEntries(),
+                entries = enumDisplayEntriesOf(InputFeedbackSoundEffect::class),
             )
             DividerRow(start = 16.dp)
             DialogSliderPreferenceRow(
@@ -122,14 +123,14 @@ fun InputFeedbackScreen() = FlorisScreen {
                 switchPref = prefs.inputFeedback.hapticEnabled,
                 title = stringRes(R.string.pref__input_feedback__haptic_enabled__label),
                 summarySwitchDisabled = stringRes(R.string.pref__input_feedback__haptic_enabled__summary_disabled),
-                entries = InputFeedbackActivationMode.hapticListEntries(),
+                entries = enumDisplayEntriesOf(InputFeedbackActivationMode::class, "haptic")
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(
                 prefs.inputFeedback.hapticVibrationMode,
                 title = stringRes(R.string.pref__input_feedback__haptic_vibration_mode__label),
                 enabledIf = { prefs.inputFeedback.hapticEnabled isEqualTo true },
-                entries = HapticVibrationMode.listEntries(),
+                entries = enumDisplayEntriesOf(HapticVibrationMode::class),
             )
             DividerRow(start = 16.dp)
             DialogSliderPreferenceRow(

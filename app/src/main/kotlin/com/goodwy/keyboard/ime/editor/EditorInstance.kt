@@ -38,11 +38,11 @@ import com.goodwy.keyboard.ime.text.composing.Appender
 import com.goodwy.keyboard.ime.text.composing.Composer
 import com.goodwy.keyboard.ime.text.key.KeyVariation
 import com.goodwy.keyboard.keyboardManager
-import com.goodwy.keyboard.lib.android.AndroidVersion
-import com.goodwy.keyboard.lib.android.showShortToast
 import com.goodwy.keyboard.lib.ext.ExtensionComponentName
 import com.goodwy.keyboard.nlpManager
 import com.goodwy.keyboard.subtypeManager
+import com.goodwy.lib.android.AndroidVersion
+import com.goodwy.lib.android.showShortToast
 import kotlinx.coroutines.runBlocking
 import java.util.concurrent.atomic.AtomicInteger
 

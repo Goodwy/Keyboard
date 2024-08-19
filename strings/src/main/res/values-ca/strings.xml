@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">Utilitzar el desplaçament horitzontal</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Space bar swipe down</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Amaga les dreceres quan mous el cursor</string>
+    <string name="one_time_purchase">Suport únic</string>
+    <string name="monthly">Suport mensual</string>
+    <string name="yearly">Suport anual</string>
 </resources>

@@ -36,9 +36,9 @@ import com.goodwy.keyboard.ime.smartbar.ExtendedActionsPlacement
 import com.goodwy.keyboard.ime.smartbar.SmartbarLayout
 import com.goodwy.keyboard.ime.text.keyboard.TextKeyboard
 import com.goodwy.keyboard.keyboardManager
-import com.goodwy.keyboard.lib.android.isOrientationLandscape
 import com.goodwy.keyboard.lib.observeAsTransformingState
 import com.goodwy.keyboard.lib.util.ViewUtils
+import com.goodwy.lib.android.isOrientationLandscape
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 
 private val LocalKeyboardRowBaseHeight = staticCompositionLocalOf { 65.dp }

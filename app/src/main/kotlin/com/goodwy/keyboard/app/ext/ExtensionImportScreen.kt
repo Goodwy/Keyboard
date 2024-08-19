@@ -51,7 +51,6 @@ import com.goodwy.keyboard.ime.keyboard.KeyboardExtension
 import com.goodwy.keyboard.ime.nlp.LanguagePackExtension
 import com.goodwy.keyboard.ime.theme.ThemeExtension
 import com.goodwy.keyboard.lib.NATIVE_NULLPTR
-import com.goodwy.keyboard.lib.android.showLongToast
 import com.goodwy.keyboard.lib.cache.CacheManager
 import com.goodwy.keyboard.lib.compose.FlorisBulletSpacer
 import com.goodwy.keyboard.lib.compose.FlorisButtonBar
@@ -62,7 +61,8 @@ import com.goodwy.keyboard.lib.compose.defaultFlorisOutlinedBox
 import com.goodwy.keyboard.lib.compose.florisHorizontalScroll
 import com.goodwy.keyboard.lib.compose.stringRes
 import com.goodwy.keyboard.lib.io.FileRegistry
-import org.florisboard.lib.kotlin.resultOk
+import com.goodwy.lib.android.showLongToast
+import com.goodwy.lib.kotlin.resultOk
 
 enum class ExtensionImportScreenType(
     val id: String,
@@ -100,12 +100,6 @@ fun ExtensionImportScreen(type: ExtensionImportScreenType, initUuid: String?) = 
     val cacheManager by context.cacheManager()
     val extensionManager by context.extensionManager()
 
-    val initWsUuid by rememberSaveable { mutableStateOf(initUuid) }
-    var importResult by remember {
-        val workspace = initWsUuid?.let { cacheManager.importer.getWorkspaceByUuid(it) }?.let { resultOk(it) }
-        mutableStateOf(workspace)
-    }
-
     fun getSkipReason(fileInfo: CacheManager.FileInfo): Int {
         return when {
             !FileRegistry.matchesFileFilter(fileInfo, type.supportedFiles) -> {
@@ -119,13 +113,26 @@ fun ExtensionImportScreen(type: ExtensionImportScreenType, initUuid: String?) = 
                     NATIVE_NULLPTR.toInt()
                 }
             }
-            fileInfo.mediaType == FileRegistry.FlexExtension.mediaType -> {
+            else -> { // ext == null
                 R.string.ext__import__file_skip_ext_corrupted
             }
-            else -> {
-                NATIVE_NULLPTR.toInt()
-            }
         }
+    }
+
+    fun Result<CacheManager.ImporterWorkspace>.mapSkipReasons(): Result<CacheManager.ImporterWorkspace> {
+        return this.map { workspace ->
+            workspace.inputFileInfos.forEach { fileInfo ->
+                fileInfo.skipReason = getSkipReason(fileInfo)
+            }
+            workspace
+        }
+    }
+
+    var importResult by remember(initUuid) {
+        val workspace = initUuid?.let { cacheManager.importer.getWorkspaceByUuid(it) }
+            ?.let { resultOk(it) }
+            ?.mapSkipReasons()
+        mutableStateOf(workspace)
     }
 
     val importLauncher = rememberLauncherForActivityResult(
@@ -134,14 +141,9 @@ fun ExtensionImportScreen(type: ExtensionImportScreenType, initUuid: String?) = 
             // If uri is null it indicates that the selection activity
             //  was cancelled (mostly by pressing the back button), so
             //  we don't display an error message here.
-            if (uriList.isNullOrEmpty()) return@rememberLauncherForActivityResult
+            if (uriList.isEmpty()) return@rememberLauncherForActivityResult
             importResult?.getOrNull()?.close()
-            importResult = runCatching { cacheManager.readFromUriIntoCache(uriList) }.map { workspace ->
-                workspace.inputFileInfos.forEach { fileInfo ->
-                    fileInfo.skipReason = getSkipReason(fileInfo)
-                }
-                workspace
-            }
+            importResult = runCatching { cacheManager.readFromUriIntoCache(uriList) }.mapSkipReasons()
         },
     )
 
@@ -197,15 +199,17 @@ fun ExtensionImportScreen(type: ExtensionImportScreenType, initUuid: String?) = 
     }
 
     content {
-        FlorisOutlinedButton(
-            onClick = {
-                importLauncher.launch("*/*")
-            },
-            modifier = Modifier
-                .padding(vertical = 16.dp)
-                .align(Alignment.CenterHorizontally),
-            text = stringRes(R.string.action__select_files),
-        )
+        if (initUuid == null) {
+            FlorisOutlinedButton(
+                onClick = {
+                    importLauncher.launch("*/*")
+                },
+                modifier = Modifier
+                    .padding(vertical = 16.dp)
+                    .align(Alignment.CenterHorizontally),
+                text = stringRes(R.string.action__select_files),
+            )
+        }
 
         val result = importResult
         when {

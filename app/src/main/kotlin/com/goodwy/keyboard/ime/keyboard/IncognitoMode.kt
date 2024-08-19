@@ -16,37 +16,8 @@
 
 package com.goodwy.keyboard.ime.keyboard
 
-import androidx.compose.runtime.Composable
-import com.goodwy.keyboard.R
-import com.goodwy.keyboard.lib.compose.stringRes
-import dev.patrickgold.jetpref.datastore.ui.listPrefEntries
-
 enum class IncognitoMode {
     FORCE_OFF,
     FORCE_ON,
     DYNAMIC_ON_OFF;
-
-    companion object {
-        @Composable
-        fun listEntries() = listPrefEntries {
-            entry(
-                key = FORCE_OFF,
-                label = stringRes(R.string.enum__incognito_mode__force_off),
-                description = stringRes(R.string.enum__incognito_mode__force_off__description),
-                showDescriptionOnlyIfSelected = true,
-            )
-            entry(
-                key = DYNAMIC_ON_OFF,
-                label = stringRes(R.string.enum__incognito_mode__dynamic_on_off),
-                description = stringRes(R.string.enum__incognito_mode__dynamic_on_off__description),
-                showDescriptionOnlyIfSelected = true,
-            )
-            entry(
-                key = FORCE_ON,
-                label = stringRes(R.string.enum__incognito_mode__force_on),
-                description = stringRes(R.string.enum__incognito_mode__force_on__description),
-                showDescriptionOnlyIfSelected = true,
-            )
-        }
-    }
 }

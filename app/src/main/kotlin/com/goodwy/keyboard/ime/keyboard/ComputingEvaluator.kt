@@ -203,11 +203,10 @@ fun ComputingEvaluator.computeImageVector(data: KeyData): ImageVector? {
             Icons.Outlined.DeleteSweep
         }
         KeyCode.COMPACT_LAYOUT_TO_LEFT -> {
-            //Icons.Rounded.Smartphone
+//            context()?.vectorResource(id = R.drawable.ic_accessibility_one_handed)
             ImageVector.vectorResource(theme = null, resId = R.drawable.ic_keyboard_left, res = this.context()?.resources!!)
         }
         KeyCode.COMPACT_LAYOUT_TO_RIGHT -> {
-            //Icons.Rounded.Smartphone
             ImageVector.vectorResource(theme = null, resId = R.drawable.ic_keyboard_right, res = this.context()?.resources!!)
         }
         KeyCode.VOICE_INPUT -> {
@@ -215,7 +214,6 @@ fun ComputingEvaluator.computeImageVector(data: KeyData): ImageVector? {
         }
         KeyCode.DELETE -> {
             ImageVector.vectorResource(theme = null, resId = R.drawable.ic_backspace, res = this.context()?.resources!!)
-            //Icons.Rounded.Backspace
         }
         KeyCode.ENTER -> {
             val imeOptions = evaluator.editorInfo.imeOptions
@@ -287,9 +285,9 @@ fun ComputingEvaluator.computeImageVector(data: KeyData): ImageVector? {
         }
         KeyCode.TOGGLE_INCOGNITO_MODE -> {
             if (evaluator.state.isIncognitoMode) {
-                ImageVector.vectorResource(theme = null, resId = R.drawable.ic_incognito, res = this.context()?.resources!!)
+                this.context()?.vectorResource(id = R.drawable.ic_incognito)
             } else {
-                ImageVector.vectorResource(theme = null, resId = R.drawable.ic_incognito_off, res = this.context()?.resources!!)
+                this.context()?.vectorResource(id = R.drawable.ic_incognito_off)
             }
         }
         KeyCode.TOGGLE_AUTOCORRECT -> {

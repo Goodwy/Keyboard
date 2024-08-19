@@ -20,12 +20,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Adb
+import androidx.compose.material.icons.automirrored.outlined.Assignment
+import androidx.compose.material.icons.filled.Extension
 import androidx.compose.material.icons.filled.Gesture
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.SentimentSatisfiedAlt
 import androidx.compose.material.icons.filled.SmartButton
-import androidx.compose.material.icons.outlined.Assignment
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Keyboard
 import androidx.compose.material.icons.outlined.Palette
@@ -167,13 +167,13 @@ fun HomeScreen() = FlorisScreen {
                 title = stringRes(R.string.settings__typing__title),
                 onClick = { navController.navigate(Routes.Settings.Typing) },
             )
-            DividerRow()
-            PreferenceRow(
-                iconColor = preferenceMagenta,
-                icon = ImageVector.vectorResource(R.drawable.ic_dictionary),
-                title = stringRes(R.string.settings__dictionary__title),
-                onClick = { navController.navigate(Routes.Settings.Dictionary) },
-            )
+//            DividerRow()
+//            PreferenceRow(
+//                iconColor = preferenceMagenta,
+//                icon = ImageVector.vectorResource(R.drawable.ic_dictionary),
+//                title = stringRes(R.string.settings__dictionary__title),
+//                onClick = { navController.navigate(Routes.Settings.Dictionary) },
+//            )
             DividerRow()
             PreferenceRow(
                 iconColor = preferencePurple,
@@ -184,7 +184,7 @@ fun HomeScreen() = FlorisScreen {
             DividerRow()
             PreferenceRow(
                 iconColor = preferenceGreen,
-                icon = Icons.Outlined.Assignment,
+                icon = Icons.AutoMirrored.Outlined.Assignment,
                 title = stringRes(R.string.settings__clipboard__title),
                 onClick = { navController.navigate(Routes.Settings.Clipboard) },
             )
@@ -208,9 +208,9 @@ fun HomeScreen() = FlorisScreen {
                 DividerRow()
                 PreferenceRow(
                     iconColor = preferencePurple,
-                    icon = Icons.Default.Adb,
-                    title = stringRes(R.string.devtools__title),
-                    onClick = { navController.navigate(Routes.Devtools.Home) },
+                    icon = Icons.Default.Extension,
+                    title = stringRes(R.string.ext__home__title),
+                    onClick = { navController.navigate(Routes.Ext.Home) },
                 )
             }
             DividerRow()

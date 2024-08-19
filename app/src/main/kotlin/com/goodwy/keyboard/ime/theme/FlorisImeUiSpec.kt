@@ -16,21 +16,21 @@
 
 package com.goodwy.keyboard.ime.theme
 
-import com.goodwy.keyboard.lib.snygg.Snygg
-import com.goodwy.keyboard.lib.snygg.SnyggLevel
-import com.goodwy.keyboard.lib.snygg.SnyggPropertySetSpecBuilder
-import com.goodwy.keyboard.lib.snygg.SnyggSpec
-import com.goodwy.keyboard.lib.snygg.value.SnyggCircleShapeValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggCutCornerDpShapeValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggCutCornerPercentShapeValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggDpSizeValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggMaterialYouDarkColorValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggMaterialYouLightColorValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggRectangleShapeValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggRoundedCornerDpShapeValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggRoundedCornerPercentShapeValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggSolidColorValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggSpSizeValue
+import com.goodwy.lib.snygg.Snygg
+import com.goodwy.lib.snygg.SnyggLevel
+import com.goodwy.lib.snygg.SnyggPropertySetSpecBuilder
+import com.goodwy.lib.snygg.SnyggSpec
+import com.goodwy.lib.snygg.value.SnyggCircleShapeValue
+import com.goodwy.lib.snygg.value.SnyggCutCornerDpShapeValue
+import com.goodwy.lib.snygg.value.SnyggCutCornerPercentShapeValue
+import com.goodwy.lib.snygg.value.SnyggDpSizeValue
+import com.goodwy.lib.snygg.value.SnyggMaterialYouDarkColorValue
+import com.goodwy.lib.snygg.value.SnyggMaterialYouLightColorValue
+import com.goodwy.lib.snygg.value.SnyggRectangleShapeValue
+import com.goodwy.lib.snygg.value.SnyggRoundedCornerDpShapeValue
+import com.goodwy.lib.snygg.value.SnyggRoundedCornerPercentShapeValue
+import com.goodwy.lib.snygg.value.SnyggSolidColorValue
+import com.goodwy.lib.snygg.value.SnyggSpSizeValue
 
 fun SnyggPropertySetSpecBuilder.background() {
     property(
@@ -216,6 +216,11 @@ object FlorisImeUiSpec : SnyggSpec({
         shape()
         shadow()
         border()
+    }
+    element(FlorisImeUi.ClipboardEnableHistoryButton) {
+        background()
+        foreground()
+        shape()
     }
 
     element(FlorisImeUi.EmojiKey) {

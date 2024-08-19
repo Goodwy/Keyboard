@@ -23,10 +23,10 @@ import androidx.compose.ui.platform.LocalContext
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.LocalNavController
 import com.goodwy.keyboard.extensionManager
-import com.goodwy.keyboard.lib.android.showLongToast
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.ext.Extension
 import com.goodwy.keyboard.lib.ext.ExtensionDefaults
+import com.goodwy.lib.android.showLongToast
 
 @Composable
 fun ExtensionExportScreen(id: String) {

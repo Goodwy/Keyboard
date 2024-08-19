@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.LocalNavController
 import com.goodwy.keyboard.app.Routes
+import com.goodwy.keyboard.app.enumDisplayEntriesOf
 import com.goodwy.keyboard.app.settings.DividerRow
 import com.goodwy.keyboard.app.settings.ListPreferenceRow
 import com.goodwy.keyboard.app.settings.PreferenceGroupCard
@@ -83,7 +84,6 @@ fun LocalizationScreen() = FlorisScreen {
         )
     }
 
-
     content {
         val subtypes by subtypeManager.subtypesFlow.collectAsState()
 
@@ -91,7 +91,7 @@ fun LocalizationScreen() = FlorisScreen {
             ListPreferenceRow(
                 prefs.localization.displayLanguageNamesIn,
                 title = stringRes(R.string.settings__localization__display_language_names_in__label),
-                entries = DisplayLanguageNamesIn.listEntries(),
+                entries = enumDisplayEntriesOf(DisplayLanguageNamesIn::class),
             )
             DividerRow(start = 16.dp)
             PreferenceRow(

@@ -23,7 +23,7 @@ import android.os.Debug
 import com.goodwy.keyboard.BuildConfig
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.AppPrefs
-import com.goodwy.keyboard.lib.android.systemService
+import com.goodwy.lib.android.systemService
 import com.goodwy.keyboard.lib.titlecase
 import com.goodwy.keyboard.lib.util.TimeUtils
 import com.goodwy.keyboard.lib.util.UnitUtils

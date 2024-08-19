@@ -27,8 +27,8 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.LayoutDirection
 import com.goodwy.keyboard.R
-import org.florisboard.lib.kotlin.CurlyArg
-import org.florisboard.lib.kotlin.curlyFormat
+import com.goodwy.lib.kotlin.CurlyArg
+import com.goodwy.lib.kotlin.curlyFormat
 
 private val LocalResourcesContext = staticCompositionLocalOf<Context> {
     error("resources context not initialized!!")
@@ -99,5 +99,15 @@ fun stringResAddLockedLabelIfNeeded(
 ): String {
     val resources = LocalResourcesContext.current.resources
     val string = if (needed) "${resources.getString(id)} (${resources.getString(com.goodwy.keyboard.strings.R.string.locked)})" else resources.getString(id)
+    return formatString(string, args)
+}
+@Composable
+fun stringAddLockedLabelIfNeeded(
+    text: String,
+    needed: Boolean,
+    vararg args: CurlyArg,
+): String {
+    val resources = LocalResourcesContext.current.resources
+    val string = if (needed) "$text (${resources.getString(com.goodwy.keyboard.strings.R.string.locked)})" else text
     return formatString(string, args)
 }

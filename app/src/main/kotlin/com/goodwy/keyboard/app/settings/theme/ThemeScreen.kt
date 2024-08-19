@@ -22,35 +22,44 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BrightnessAuto
 import androidx.compose.material.icons.filled.DarkMode
-import androidx.compose.material.icons.filled.FormatPaint
 import androidx.compose.material.icons.filled.LightMode
-import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.LocalNavController
 import com.goodwy.keyboard.app.Routes
+import com.goodwy.keyboard.app.enumDisplayEntriesOf
+import com.goodwy.keyboard.app.ext.AddonManagementReferenceBox
+import com.goodwy.keyboard.app.ext.ExtensionListScreenType
 import com.goodwy.keyboard.app.settings.ALPHA_DISABLED
 import com.goodwy.keyboard.app.settings.DividerRow
 import com.goodwy.keyboard.app.settings.ListPreferenceRow
 import com.goodwy.keyboard.app.settings.PreferenceGroupCard
 import com.goodwy.keyboard.app.settings.PreferenceRow
 import com.goodwy.keyboard.app.settings.SupportRow
-import com.goodwy.keyboard.app.settings.SwitchPreferenceRow
 import com.goodwy.keyboard.app.settings.shake
+import com.goodwy.keyboard.ime.theme.ThemeManager
 import com.goodwy.keyboard.ime.theme.ThemeMode
 import com.goodwy.keyboard.lib.compose.FlorisInfoCard
 import com.goodwy.keyboard.lib.compose.FlorisScreen
+import com.goodwy.keyboard.lib.compose.stringAddLockedLabelIfNeeded
 import com.goodwy.keyboard.lib.compose.stringRes
 import com.goodwy.keyboard.lib.compose.stringResAddLockedLabelIfNeeded
+import com.goodwy.keyboard.lib.ext.ExtensionComponentName
+import com.goodwy.keyboard.themeManager
+import com.goodwy.lib.kotlin.curlyFormat
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 
 @Composable
@@ -58,8 +67,16 @@ fun ThemeScreen() = FlorisScreen {
     title = stringRes(R.string.settings__theme__title)
     previewFieldVisible = true
 
-//    val context = LocalContext.current
+    val context = LocalContext.current
     val navController = LocalNavController.current
+    val themeManager by context.themeManager()
+
+    @Composable
+    fun ThemeManager.getThemeLabel(id: ExtensionComponentName): String {
+        val configs by indexedThemeConfigs.observeAsState()
+        configs?.get(id)?.let { return it.label }
+        return id.toString()
+    }
 
     content {
         // Support project
@@ -98,7 +115,7 @@ fun ThemeScreen() = FlorisScreen {
                 prefs.theme.mode,
                 icon = Icons.Default.BrightnessAuto,
                 title = stringRes(R.string.pref__theme__mode__label),
-                entries = ThemeMode.listEntries(),
+                entries = enumDisplayEntriesOf(ThemeMode::class),
             )
             if (themeMode == ThemeMode.FOLLOW_TIME) {
                 FlorisInfoCard(
@@ -111,49 +128,22 @@ fun ThemeScreen() = FlorisScreen {
             }
             DividerRow()
             PreferenceRow(
-                modifier = Modifier.alpha(if (isProApp) 1f else ALPHA_DISABLED),
-                icon = Icons.Outlined.Palette,
-                title = stringResAddLockedLabelIfNeeded(R.string.settings__theme_manager__title_manage, !isProApp),
-                onClick = {
-                    if (isProApp) navController.navigate(Routes.Settings.ThemeManager(ThemeManagerScreenAction.MANAGE))
-                    else {
-                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                        enabledShake = true
-                    }
-                },
-            )
-        }
-
-        PreferenceGroupCard(
-            title = stringRes(R.string.pref__theme__day),
-            enabledIf = { prefs.theme.mode isNotEqualTo ThemeMode.ALWAYS_NIGHT },
-        ) {
-            PreferenceRow(
                 icon = Icons.Default.LightMode,
-                title = stringRes(R.string.pref__theme__any_theme__label),
-                summary = dayThemeId.toString(),
+                title = stringRes(R.string.pref__theme__day),
+                value = themeManager.getThemeLabel(dayThemeId),
+                enabledIf = { prefs.theme.mode isNotEqualTo ThemeMode.ALWAYS_NIGHT },
                 onClick = {
                     navController.navigate(Routes.Settings.ThemeManager(ThemeManagerScreenAction.SELECT_DAY))
                 },
+                showEndIcon = false,
             )
-            SwitchPreferenceRow(
-                prefs.theme.dayThemeAdaptToApp,
-                icon = Icons.Default.FormatPaint,
-                title = stringRes(R.string.pref__theme__any_theme_adapt_to_app__label),
-                summary = stringRes(R.string.pref__theme__any_theme_adapt_to_app__summary),
-                visibleIf = { false },
-            )
-        }
-
-        PreferenceGroupCard(
-            title = stringRes(R.string.pref__theme__night),
-            enabledIf = { prefs.theme.mode isNotEqualTo ThemeMode.ALWAYS_DAY },
-        ) {
+            DividerRow()
             PreferenceRow(
                 modifier = Modifier.alpha(if (isProApp) 1f else ALPHA_DISABLED),
                 icon = Icons.Default.DarkMode,
-                title = stringResAddLockedLabelIfNeeded(R.string.pref__theme__any_theme__label, !isProApp),
-                summary = nightThemeId.toString(),
+                title = stringResAddLockedLabelIfNeeded(R.string.pref__theme__night, !isProApp),
+                value = themeManager.getThemeLabel(nightThemeId),
+                enabledIf = { prefs.theme.mode isNotEqualTo ThemeMode.ALWAYS_DAY },
                 onClick = {
                     if (isProApp) navController.navigate(Routes.Settings.ThemeManager(ThemeManagerScreenAction.SELECT_NIGHT))
                     else {
@@ -161,13 +151,34 @@ fun ThemeScreen() = FlorisScreen {
                         enabledShake = true
                     }
                 },
+                showEndIcon = false,
             )
-            SwitchPreferenceRow(
-                prefs.theme.nightThemeAdaptToApp,
-                icon = Icons.Default.FormatPaint,
-                title = stringRes(R.string.pref__theme__any_theme_adapt_to_app__label),
-                summary = stringRes(R.string.pref__theme__any_theme_adapt_to_app__summary),
-                visibleIf = { false },
+        }
+
+//        AddonManagementReferenceBox(type = ExtensionListScreenType.EXT_THEME)
+
+        PreferenceGroupCard(paddingTop = 16.dp) {
+            val type = ExtensionListScreenType.EXT_THEME
+            val title = stringRes(id = R.string.ext__addon_management_box__managing_placeholder).curlyFormat(
+                "extensions" to type.let { stringRes(id = it.titleResId).lowercase() }
+            )
+            PreferenceRow(
+                modifier = Modifier.alpha(if (isProApp) 1f else ALPHA_DISABLED),
+                icon = ImageVector.vectorResource(R.drawable.ic_extension),
+                title = stringAddLockedLabelIfNeeded(title, !isProApp),
+                summary = stringRes(id = R.string.ext__addon_management_box__addon_manager_info),
+                onClick = {
+                    if (isProApp) {
+                        val route = Routes.Ext.List(type = ExtensionListScreenType.EXT_THEME, showUpdate = true)
+                        navController.navigate(
+                            route
+                        )
+                    }
+                    else {
+                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                        enabledShake = true
+                    }
+                },
             )
         }
         Spacer(modifier = Modifier.size(32.dp))

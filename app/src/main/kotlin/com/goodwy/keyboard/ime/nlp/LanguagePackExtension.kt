@@ -9,8 +9,8 @@ import com.goodwy.keyboard.lib.ext.Extension
 import com.goodwy.keyboard.lib.ext.ExtensionComponent
 import com.goodwy.keyboard.lib.ext.ExtensionEditor
 import com.goodwy.keyboard.lib.ext.ExtensionMeta
-import com.goodwy.keyboard.lib.io.FsDir
-import com.goodwy.keyboard.lib.io.subFile
+import com.goodwy.lib.kotlin.io.FsDir
+import com.goodwy.lib.kotlin.io.subFile
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient

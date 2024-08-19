@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">Vízszintes görgetés használata</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Szóköz lehúzás</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Billentyűparancsok elrejtése a kurzor mozgatásakor</string>
+    <string name="one_time_purchase">Egyszeri támogatás</string>
+    <string name="monthly">Havi támogatás</string>
+    <string name="yearly">תמיכה שנתית</string>
 </resources>

@@ -19,6 +19,7 @@ package com.goodwy.keyboard.app.settings.advanced
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Adb
 import androidx.compose.material.icons.filled.Archive
 import androidx.compose.material.icons.filled.FormatPaint
 import androidx.compose.material.icons.filled.Language
@@ -33,6 +34,7 @@ import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.AppTheme
 import com.goodwy.keyboard.app.LocalNavController
 import com.goodwy.keyboard.app.Routes
+import com.goodwy.keyboard.app.enumDisplayEntriesOf
 import com.goodwy.keyboard.app.settings.DividerRow
 import com.goodwy.keyboard.app.settings.ListPreferenceRow
 import com.goodwy.keyboard.app.settings.PreferenceGroupCard
@@ -41,9 +43,9 @@ import com.goodwy.keyboard.app.settings.SwitchPreferenceRow
 import com.goodwy.keyboard.ime.core.DisplayLanguageNamesIn
 import com.goodwy.keyboard.ime.keyboard.IncognitoMode
 import com.goodwy.keyboard.lib.FlorisLocale
-import com.goodwy.keyboard.lib.android.AndroidVersion
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.stringRes
+import com.goodwy.lib.android.AndroidVersion
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 import dev.patrickgold.jetpref.datastore.ui.listPrefEntries
 import dev.patrickgold.jetpref.datastore.ui.vectorResource
@@ -61,37 +63,7 @@ fun AdvancedScreen() = FlorisScreen {
                 prefs.advanced.settingsTheme,
                 icon = Icons.Default.Palette,
                 title = stringRes(R.string.pref__advanced__settings_theme__label),
-                entries = listPrefEntries {
-                    entry(
-                        key = AppTheme.AUTO,
-                        label = stringRes(R.string.settings__system_default),
-                    )
-                    entry(
-                        key = AppTheme.AUTO_AMOLED,
-                        label = stringRes(R.string.pref__advanced__settings_theme__auto_amoled),
-                    )
-                    entry(
-                        key = AppTheme.LIGHT,
-                        label = stringRes(R.string.pref__advanced__settings_theme__light),
-                    )
-                    entry(
-                        key = AppTheme.DARK,
-                        label = stringRes(R.string.pref__advanced__settings_theme__dark),
-                    )
-                    entry(
-                        key = AppTheme.AMOLED_DARK,
-                        label = stringRes(R.string.pref__advanced__settings_theme__amoled_dark),
-                    )
-                },
-            )
-            DividerRow()
-            SwitchPreferenceRow(
-                pref = prefs.advanced.useMaterialYou,
-                icon = Icons.Default.FormatPaint,
-                title = stringRes(R.string.pref__advanced__settings_material_you__label),
-                visibleIf = {
-                    AndroidVersion.ATLEAST_API31_S
-                },
+                entries = enumDisplayEntriesOf(AppTheme::class),
             )
             DividerRow()
             ListPreferenceRow(
@@ -174,7 +146,13 @@ fun AdvancedScreen() = FlorisScreen {
                 prefs.advanced.incognitoMode,
                 icon = vectorResource(id = R.drawable.ic_incognito),
                 title = stringRes(R.string.pref__advanced__incognito_mode__label),
-                entries = IncognitoMode.listEntries(),
+                entries = enumDisplayEntriesOf(IncognitoMode::class),
+            )
+            DividerRow()
+            PreferenceRow(
+                icon = Icons.Default.Adb,
+                title = stringRes(R.string.devtools__title),
+                onClick = { navController.navigate(Routes.Devtools.Home) },
             )
         }
 

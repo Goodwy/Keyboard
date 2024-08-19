@@ -31,7 +31,9 @@
     <string name="plus_title">Поддержите нас</string>
     <string name="plus_summary">Все наши приложения без рекламы, с открытым исходным кодом, и так будет всегда. С Вашей помощью мы сможем реализовать больше функций и сделать их еще лучше</string>
     <string name="any_support_unlock_all">Выберите доступный Вам уровень поддержки проекта (единовременный, ежемесячный или ежегодный). Любая поддержка разблокирует все функции приложения</string>
-
+    <string name="one_time_purchase">Разовая поддержка</string>
+    <string name="monthly">Ежемесячная поддержка</string>
+    <string name="yearly">Ежегодная поддержка</string>
     <string name="locked">Заблокированно</string>
     <string name="unlock">Разблокировать</string>
     <string name="donate_text">

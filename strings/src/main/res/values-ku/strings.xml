@@ -85,4 +85,8 @@
     <string name="settings__sound_effect__clicking">Deng bitikîne</string>
     <string name="settings__use_horizontal_grid">Pêgerîna horizontal bikar bînin</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Destûra xwarê li ser valahiyê</string>
-    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Dema ku nîşanderê diherike etîketên mifteyê veşêre</string></resources>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Dema ku nîşanderê diherike etîketên mifteyê veşêre</string>
+    <string name="one_time_purchase">Piştgiriya yek-dem</string>
+    <string name="monthly">Piştgiriya mehane</string>
+    <string name="yearly">Piştgiriya salane</string>
+</resources>

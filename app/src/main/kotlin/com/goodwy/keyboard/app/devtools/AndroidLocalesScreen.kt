@@ -32,12 +32,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.ime.core.DisplayLanguageNamesIn
-import com.goodwy.keyboard.lib.android.showLongToast
 import com.goodwy.keyboard.lib.compose.FlorisIconButton
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.stringRes
-import com.goodwy.keyboard.lib.io.subDir
-import com.goodwy.keyboard.lib.io.subFile
+import com.goodwy.lib.android.showLongToast
+import com.goodwy.lib.kotlin.io.subDir
+import com.goodwy.lib.kotlin.io.subFile
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 import java.util.*
 

@@ -85,4 +85,7 @@
     <string name="settings__use_horizontal_grid">Use a rolagem horizontal</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Deslizar barra de espaço para baixo</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Ocultar atalhos ao mover o cursor</string>
+    <string name="one_time_purchase">Suporte único</string>
+    <string name="monthly">Suporte mensal</string>
+    <string name="yearly">Suporte anual</string>
 </resources>

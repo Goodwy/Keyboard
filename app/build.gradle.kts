@@ -65,6 +65,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "BUILD_COMMIT_HASH", "\"${getGitCommitHash()}\"")
+        buildConfigField("String", "FLADDONS_API_VERSION", "\"v~draft2\"")
+        buildConfigField("String", "FLADDONS_STORE_URL", "\"beta.addons.florisboard.org\"")
 
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
@@ -189,7 +191,6 @@ dependencies {
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.autofill)
     implementation(libs.androidx.collection.ktx)
-    implementation(libs.androidx.compose.material)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.runtime.livedata)
     implementation(libs.androidx.compose.ui)
@@ -214,8 +215,10 @@ dependencies {
     implementation(libs.patrickgold.jetpref.datastore.ui)
     implementation(libs.patrickgold.jetpref.material.ui)
 
+    implementation(project(":lib:android"))
     implementation(project(":lib:kotlin"))
     implementation(project(":lib:native"))
+    implementation(project(":lib:snygg"))
 
     testImplementation(libs.equalsverifier)
     testImplementation(libs.kotest.assertions.core)

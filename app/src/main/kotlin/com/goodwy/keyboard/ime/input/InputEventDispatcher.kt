@@ -26,8 +26,9 @@ import com.goodwy.keyboard.ime.keyboard.KeyData
 import com.goodwy.keyboard.ime.text.gestures.SwipeAction
 import com.goodwy.keyboard.ime.text.key.KeyCode
 import com.goodwy.keyboard.ime.text.keyboard.TextKeyData
-import com.goodwy.keyboard.lib.android.removeAndReturn
 import com.goodwy.keyboard.lib.devtools.flogDebug
+import com.goodwy.lib.kotlin.guardedByLock
+import com.goodwy.lib.android.removeAndReturn
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -38,7 +39,6 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import org.florisboard.lib.kotlin.guardedByLock
 
 class InputEventDispatcher private constructor(private val repeatableKeyCodes: IntArray) {
     companion object {

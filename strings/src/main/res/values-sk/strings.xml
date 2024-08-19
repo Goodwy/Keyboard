@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">Používanie vodorovného posúvania</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Space bar swipe down</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Skrytie skratiek pri pohybe kurzora</string>
+    <string name="one_time_purchase">Jednorazová podpora</string>
+    <string name="monthly">Mesačná podpora</string>
+    <string name="yearly">Každoročná podpora</string>
 </resources>

@@ -42,6 +42,8 @@ import com.goodwy.keyboard.keyboardManager
 import com.goodwy.keyboard.lib.devtools.flogError
 import com.goodwy.keyboard.lib.util.NetworkUtils
 import com.goodwy.keyboard.subtypeManager
+import com.goodwy.lib.kotlin.collectLatestIn
+import com.goodwy.lib.kotlin.guardedByLock
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -51,8 +53,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import org.florisboard.lib.kotlin.collectLatestIn
-import org.florisboard.lib.kotlin.guardedByLock
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger

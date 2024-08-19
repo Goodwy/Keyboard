@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">Utiliser le défilement horizontal</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Glisser de la barre d\'espace vers le bas</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Masquer les raccourcis lors du déplacement du curseur</string>
+    <string name="one_time_purchase">Assistance ponctuelle</string>
+    <string name="monthly">Assistance mensuelle</string>
+    <string name="yearly">Soutien annuel</string>
 </resources>

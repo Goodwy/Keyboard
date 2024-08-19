@@ -55,10 +55,6 @@ import com.goodwy.keyboard.ime.text.key.KeyType
 import com.goodwy.keyboard.ime.text.key.UtilityKeyAction
 import com.goodwy.keyboard.ime.text.keyboard.TextKeyData
 import com.goodwy.keyboard.ime.text.keyboard.TextKeyboardCache
-import com.goodwy.keyboard.lib.android.AndroidKeyguardManager
-import com.goodwy.keyboard.lib.android.showLongToast
-import com.goodwy.keyboard.lib.android.showShortToast
-import com.goodwy.keyboard.lib.android.systemService
 import com.goodwy.keyboard.lib.devtools.LogTopic
 import com.goodwy.keyboard.lib.devtools.flogError
 import com.goodwy.keyboard.lib.ext.ExtensionComponentName
@@ -67,6 +63,12 @@ import com.goodwy.keyboard.lib.uppercase
 import com.goodwy.keyboard.lib.util.InputMethodUtils
 import com.goodwy.keyboard.nlpManager
 import com.goodwy.keyboard.subtypeManager
+import com.goodwy.lib.android.AndroidKeyguardManager
+import com.goodwy.lib.android.showLongToast
+import com.goodwy.lib.android.showShortToast
+import com.goodwy.lib.android.systemService
+import com.goodwy.lib.kotlin.collectIn
+import com.goodwy.lib.kotlin.collectLatestIn
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -75,8 +77,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import org.florisboard.lib.kotlin.collectIn
-import org.florisboard.lib.kotlin.collectLatestIn
 import java.lang.ref.WeakReference
 
 private val DoubleSpacePeriodMatcher = """([^.!?‽\s]\s)""".toRegex()

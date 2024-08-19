@@ -45,9 +45,6 @@ import com.goodwy.keyboard.app.FlorisAppActivity
 import com.goodwy.keyboard.app.LocalNavController
 import com.goodwy.keyboard.app.Routes
 import com.goodwy.keyboard.app.florisPreferenceModel
-import com.goodwy.keyboard.lib.android.AndroidVersion
-import com.goodwy.keyboard.lib.android.launchActivity
-import com.goodwy.keyboard.lib.android.launchUrl
 import com.goodwy.keyboard.lib.compose.FlorisBulletSpacer
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.FlorisScreenScope
@@ -56,6 +53,9 @@ import com.goodwy.keyboard.lib.compose.FlorisStepLayout
 import com.goodwy.keyboard.lib.compose.FlorisStepState
 import com.goodwy.keyboard.lib.compose.stringRes
 import com.goodwy.keyboard.lib.util.InputMethodUtils
+import com.goodwy.keyboard.lib.util.launchActivity
+import com.goodwy.keyboard.lib.util.launchUrl
+import com.goodwy.lib.android.AndroidVersion
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 import dev.patrickgold.jetpref.datastore.ui.PreferenceUiScope
 import kotlinx.coroutines.delay

@@ -34,6 +34,14 @@
       "isMaterialYouAware": false
     },
     {
+      "id": "ios_day_borderless",
+      "label": "iOS Day Borderless",
+      "authors": [ "Goodwy" ],
+      "isNight": false,
+      "isBorderless": true,
+      "isMaterialYouAware": false
+    },
+    {
       "id": "ios_night",
       "label": "iOS Night",
       "authors": [ "Goodwy" ],
@@ -42,10 +50,34 @@
       "isMaterialYouAware": false
     },
     {
+      "id": "ios_night_borderless",
+      "label": "iOS Night Borderless",
+      "authors": [ "Goodwy" ],
+      "isNight": true,
+      "isBorderless": true,
+      "isMaterialYouAware": false
+    },
+    {
       "id": "ios_pure_night",
       "label": "iOS Pure Night",
       "authors": [ "Goodwy" ],
       "isNight": true,
+      "isBorderless": false,
+      "isMaterialYouAware": false
+    },
+    {
+      "id": "ios_pure_night_borderless",
+      "label": "iOS Pure Night Borderless",
+      "authors": [ "Goodwy" ],
+      "isNight": true,
+      "isBorderless": true,
+      "isMaterialYouAware": false
+    },
+    {
+      "id": "l_pop_daydream",
+      "label": "POP Daydream",
+      "authors": [ "Goodwy" ],
+      "isNight": false,
       "isBorderless": false,
       "isMaterialYouAware": false
     },
@@ -82,18 +114,26 @@
       "isMaterialYouAware": false
     },
     {
-      "id": "vintage_night",
-      "label": "Vintage Night",
-      "authors": [ "Goodwy" ],
-      "isNight": true,
-      "isBorderless": false,
-      "isMaterialYouAware": false
-    },
-    {
       "id": "vintage_candy_day",
       "label": "Candy Day",
       "authors": [ "Goodwy" ],
       "isNight": false,
+      "isBorderless": false,
+      "isMaterialYouAware": false
+    },
+    {
+      "id": "vintage_day",
+      "label": "Vintage Day",
+      "authors": [ "Goodwy" ],
+      "isNight": false,
+      "isBorderless": false,
+      "isMaterialYouAware": false
+    },
+    {
+      "id": "vintage_night",
+      "label": "Vintage Night",
+      "authors": [ "Goodwy" ],
+      "isNight": true,
       "isBorderless": false,
       "isMaterialYouAware": false
     }

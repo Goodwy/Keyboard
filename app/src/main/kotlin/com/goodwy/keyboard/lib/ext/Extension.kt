@@ -17,15 +17,17 @@
 package com.goodwy.keyboard.lib.ext
 
 import android.content.Context
+import android.net.Uri
+import com.goodwy.keyboard.BuildConfig
 import com.goodwy.keyboard.lib.io.FlorisRef
-import com.goodwy.keyboard.lib.io.FsDir
-import com.goodwy.keyboard.lib.io.FsFile
 import com.goodwy.keyboard.lib.io.ZipUtils
 import kotlinx.serialization.Polymorphic
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
-import org.florisboard.lib.kotlin.resultErr
-import org.florisboard.lib.kotlin.resultOk
+import com.goodwy.lib.kotlin.io.FsDir
+import com.goodwy.lib.kotlin.io.FsFile
+import com.goodwy.lib.kotlin.resultErr
+import com.goodwy.lib.kotlin.resultOk
 
 /**
  * An extension container holding a parsed config, a working directory file
@@ -111,6 +113,38 @@ abstract class Extension {
     }
 
     abstract fun edit(): ExtensionEditor
+}
+
+/**
+ * Generates an update url for [Extension] lists.
+ *
+ * @param version the version of the api path
+ * @param host the host for the addons store
+ * @return the Url
+ */
+internal fun List<Extension>.generateUpdateUrl(
+    version: String = BuildConfig.FLADDONS_API_VERSION,
+    host: String = BuildConfig.FLADDONS_STORE_URL,
+): String {
+    return Uri.Builder().run {
+        scheme("https")
+        authority(host)
+        appendPath("check-updates")
+        // TODO: Uncomment when version is supported by the addons store api
+        //appendPath(version)
+        encodedFragment(
+            buildString {
+                append("data={")
+                for (extension in this@generateUpdateUrl) {
+                    append(extension.meta.getUpdateJsonPair())
+                    if (extension != this@generateUpdateUrl.last()) {
+                        append(",")
+                    }
+                }
+                append("}")
+            }
+        )
+    }.build().toString()
 }
 
 interface ExtensionEditor {

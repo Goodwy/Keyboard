@@ -28,12 +28,12 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.sp
 import com.goodwy.keyboard.R
-import com.goodwy.keyboard.assetManager
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.florisHorizontalScroll
 import com.goodwy.keyboard.lib.compose.florisVerticalScroll
 import com.goodwy.keyboard.lib.compose.stringRes
 import com.goodwy.keyboard.lib.io.FlorisRef
+import com.goodwy.keyboard.lib.io.loadTextAsset
 
 @Composable
 fun ProjectLicenseScreen() = FlorisScreen {
@@ -41,7 +41,6 @@ fun ProjectLicenseScreen() = FlorisScreen {
     scrollable = false
 
     val context = LocalContext.current
-    val assetManager by context.assetManager()
 
     content {
         // Forcing LTR because the Apache 2.0 License shipped and displayed
@@ -54,8 +53,8 @@ fun ProjectLicenseScreen() = FlorisScreen {
                     .florisVerticalScroll()
                     .florisHorizontalScroll(),
             ) {
-                val licenseText = assetManager.loadTextAsset(
-                    FlorisRef.assets("license/project_license.txt")
+                val licenseText = FlorisRef.assets("license/project_license.txt").loadTextAsset(
+                    context
                 ).getOrElse {
                     stringRes(R.string.about__project_license__error_license_text_failed, "error_message" to (it.message ?: ""))
                 }

@@ -20,8 +20,8 @@ import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import com.goodwy.keyboard.lib.compose.stringRes
-import org.florisboard.lib.kotlin.CurlyArg
-import org.florisboard.lib.kotlin.curlyFormat
+import com.goodwy.lib.kotlin.CurlyArg
+import com.goodwy.lib.kotlin.curlyFormat
 import kotlin.contracts.contract
 import kotlin.reflect.KClass
 

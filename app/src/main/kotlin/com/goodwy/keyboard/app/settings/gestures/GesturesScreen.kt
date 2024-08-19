@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.goodwy.keyboard.R
+import com.goodwy.keyboard.app.enumDisplayEntriesOf
 import com.goodwy.keyboard.app.settings.DialogSliderPreferenceRow
 import com.goodwy.keyboard.app.settings.DividerRow
 import com.goodwy.keyboard.app.settings.ListPreferenceRow
@@ -96,28 +97,28 @@ fun GesturesScreen() = FlorisScreen {
             ListPreferenceRow(
                 prefs.gestures.swipeUp,
                 title = stringRes(R.string.pref__gestures__swipe_up__label),
-                entries = SwipeAction.generalListEntries(),
+                entries = enumDisplayEntriesOf(SwipeAction::class, "general"),
                 enabledIf = { prefs.glide.enabled isEqualTo false },
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(
                 prefs.gestures.swipeDown,
                 title = stringRes(R.string.pref__gestures__swipe_down__label),
-                entries = SwipeAction.generalListEntries(),
+                entries = enumDisplayEntriesOf(SwipeAction::class, "general"),
                 enabledIf = { prefs.glide.enabled isEqualTo false },
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(
                 prefs.gestures.swipeLeft,
                 title = stringRes(R.string.pref__gestures__swipe_left__label),
-                entries = SwipeAction.generalListEntries(),
+                entries = enumDisplayEntriesOf(SwipeAction::class, "general"),
                 enabledIf = { prefs.glide.enabled isEqualTo false },
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(
                 prefs.gestures.swipeRight,
                 title = stringRes(R.string.pref__gestures__swipe_right__label),
-                entries = SwipeAction.generalListEntries(),
+                entries = enumDisplayEntriesOf(SwipeAction::class, "general"),
                 enabledIf = { prefs.glide.enabled isEqualTo false },
             )
         }
@@ -126,31 +127,31 @@ fun GesturesScreen() = FlorisScreen {
             ListPreferenceRow(
                 prefs.gestures.spaceBarLongPress,
                 title = stringRes(R.string.pref__gestures__space_bar_long_press__label),
-                entries = SwipeAction.generalListEntries(),
+                entries = enumDisplayEntriesOf(SwipeAction::class, "general"),
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(
                 prefs.gestures.spaceBarSwipeUp,
                 title = stringRes(R.string.pref__gestures__space_bar_swipe_up__label),
-                entries = SwipeAction.generalListEntries(),
+                entries = enumDisplayEntriesOf(SwipeAction::class, "general"),
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(
                 prefs.gestures.spaceBarSwipeLeft,
                 title = stringRes(R.string.pref__gestures__space_bar_swipe_left__label),
-                entries = SwipeAction.generalListEntries(),
+                entries = enumDisplayEntriesOf(SwipeAction::class, "general"),
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(
                 prefs.gestures.spaceBarSwipeRight,
                 title = stringRes(R.string.pref__gestures__space_bar_swipe_right__label),
-                entries = SwipeAction.generalListEntries(),
+                entries = enumDisplayEntriesOf(SwipeAction::class, "general"),
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(
                 prefs.gestures.spaceBarSwipeDown,
                 title = stringRes(com.goodwy.keyboard.strings.R.string.pref__gestures__space_bar_swipe_down__label_g),
-                entries = SwipeAction.generalListEntries(),
+                entries = enumDisplayEntriesOf(SwipeAction::class, "general"),
             )
             DividerRow(start = 16.dp)
             SwitchPreferenceRow(
@@ -165,13 +166,13 @@ fun GesturesScreen() = FlorisScreen {
             ListPreferenceRow(
                 prefs.gestures.deleteKeySwipeLeft,
                 title = stringRes(R.string.pref__gestures__delete_key_swipe_left__label),
-                entries = SwipeAction.deleteSwipeListEntries(),
+                entries = enumDisplayEntriesOf(SwipeAction::class, "deleteSwipe"),
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(
                 prefs.gestures.deleteKeyLongPress,
                 title = stringRes(R.string.pref__gestures__delete_key_long_press__label),
-                entries = SwipeAction.deleteLongPressListEntries(),
+                entries = enumDisplayEntriesOf(SwipeAction::class, "deleteLongPress"),
             )
             DividerRow(start = 16.dp)
             DialogSliderPreferenceRow(

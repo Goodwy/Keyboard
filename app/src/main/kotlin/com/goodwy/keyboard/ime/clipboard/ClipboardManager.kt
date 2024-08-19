@@ -28,11 +28,12 @@ import com.goodwy.keyboard.ime.clipboard.provider.ClipboardHistoryDao
 import com.goodwy.keyboard.ime.clipboard.provider.ClipboardHistoryDatabase
 import com.goodwy.keyboard.ime.clipboard.provider.ClipboardItem
 import com.goodwy.keyboard.ime.clipboard.provider.ItemType
-import com.goodwy.keyboard.lib.android.AndroidClipboardManager
-import com.goodwy.keyboard.lib.android.AndroidClipboardManager_OnPrimaryClipChangedListener
-import com.goodwy.keyboard.lib.android.setOrClearPrimaryClip
-import com.goodwy.keyboard.lib.android.showShortToast
-import com.goodwy.keyboard.lib.android.systemService
+import com.goodwy.lib.android.AndroidClipboardManager
+import com.goodwy.lib.android.AndroidClipboardManager_OnPrimaryClipChangedListener
+import com.goodwy.lib.android.setOrClearPrimaryClip
+import com.goodwy.lib.android.showShortToast
+import com.goodwy.lib.android.systemService
+import com.goodwy.lib.kotlin.tryOrNull
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -45,7 +46,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import org.florisboard.lib.kotlin.tryOrNull
 import java.io.Closeable
 
 /**

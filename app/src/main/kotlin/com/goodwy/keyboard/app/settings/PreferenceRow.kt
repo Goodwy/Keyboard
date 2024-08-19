@@ -45,6 +45,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -62,6 +64,7 @@ fun <T : PreferenceModel> PreferenceUiScope<T>.PreferenceRow(
     iconSpaceReserved: Boolean = false,
     title: String,
     summary: String? = null,
+    value: String? = null,
     trailing: @Composable (() -> Unit)? = null,
     enabledIf: PreferenceDataEvaluator = { true },
     visibleIf: PreferenceDataEvaluator = { true },
@@ -137,6 +140,19 @@ fun <T : PreferenceModel> PreferenceUiScope<T>.PreferenceRow(
                         )
                     }
                     Spacer(modifier = Modifier.size(16.dp))
+                    if (value != null) {
+                        Text(
+                            modifier = Modifier
+                                .weight(0.8f)
+                                .alpha(0.6f)
+                                .padding(4.dp),
+                            text = value,
+                            maxLines = 2,
+                            lineHeight = 15.sp,
+                            overflow = TextOverflow.Ellipsis,
+                            textAlign = TextAlign.End
+                        )
+                    }
                     if (showEndIcon) Icon(
                         modifier = Modifier.alpha(0.6f).autoMirrorForRtl(),
                         imageVector = endIcon ?: Icons.Rounded.ChevronRight,

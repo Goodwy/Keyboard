@@ -33,7 +33,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import com.goodwy.keyboard.app.AppTheme
-import com.goodwy.keyboard.lib.android.AndroidVersion
+import com.goodwy.lib.android.AndroidVersion
 
 /*private val AmoledDarkColorPalette = darkColorScheme(
     primary = Green500,

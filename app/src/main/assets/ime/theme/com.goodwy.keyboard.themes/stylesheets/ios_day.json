@@ -28,7 +28,7 @@
     "shadow-elevation": "1dp"
   },
   "key:pressed": {
-    "background": "var(--surface-variant)",
+    "background": "var(--surface)",
     "foreground": "var(--on-surface)"
   },
   "key[code={c:enter}]": {

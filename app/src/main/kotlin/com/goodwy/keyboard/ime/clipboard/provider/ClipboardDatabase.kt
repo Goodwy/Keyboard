@@ -39,10 +39,10 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import androidx.room.Update
-import com.goodwy.keyboard.lib.android.UriSerializer
-import com.goodwy.keyboard.lib.android.query
+import com.goodwy.lib.android.UriSerializer
+import com.goodwy.lib.android.query
+import com.goodwy.lib.kotlin.tryOrNull
 import kotlinx.serialization.Serializable
-import org.florisboard.lib.kotlin.tryOrNull
 
 private const val CLIPBOARD_HISTORY_TABLE = "clipboard_history"
 private const val CLIPBOARD_FILES_TABLE = "clipboard_files"

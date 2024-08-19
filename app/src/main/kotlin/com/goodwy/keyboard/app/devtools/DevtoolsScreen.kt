@@ -41,11 +41,11 @@ import com.goodwy.keyboard.app.settings.SwitchPreferenceRow
 import com.goodwy.keyboard.extensionManager
 import com.goodwy.keyboard.ime.dictionary.DictionaryManager
 import com.goodwy.keyboard.ime.dictionary.FlorisUserDictionaryDatabase
-import com.goodwy.keyboard.lib.android.AndroidSettings
-import com.goodwy.keyboard.lib.android.showLongToast
 import com.goodwy.keyboard.lib.compose.FlorisConfirmDeleteDialog
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.stringRes
+import com.goodwy.lib.android.AndroidSettings
+import com.goodwy.lib.android.showLongToast
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 
 class DebugOnPurposeCrashException : Exception(

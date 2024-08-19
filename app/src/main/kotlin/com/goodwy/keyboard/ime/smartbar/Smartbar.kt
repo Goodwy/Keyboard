@@ -20,7 +20,6 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.background
@@ -35,13 +34,13 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.UnfoldLess
 import androidx.compose.material.icons.filled.UnfoldMore
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
@@ -65,10 +64,10 @@ import com.goodwy.keyboard.ime.theme.FlorisImeUi
 import com.goodwy.keyboard.keyboardManager
 import com.goodwy.keyboard.lib.compose.horizontalTween
 import com.goodwy.keyboard.lib.compose.verticalTween
-import com.goodwy.keyboard.lib.snygg.ui.snyggBackground
-import com.goodwy.keyboard.lib.snygg.ui.snyggBorder
-import com.goodwy.keyboard.lib.snygg.ui.snyggShadow
-import com.goodwy.keyboard.lib.snygg.ui.solidColor
+import com.goodwy.lib.snygg.ui.snyggBackground
+import com.goodwy.lib.snygg.ui.snyggBorder
+import com.goodwy.lib.snygg.ui.snyggShadow
+import com.goodwy.lib.snygg.ui.solidColor
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 import dev.patrickgold.jetpref.datastore.ui.vectorResource
 
@@ -188,10 +187,16 @@ private fun SmartbarMainRow(modifier: Modifier = Modifier) {
                     arrowIcon
                 }
                 val angle = if (isIncognitoMode && incognitoDisplayMode.value == IncognitoDisplayMode.REPLACE_SHARED_ACTIONS_TOGGLE) 360f else 180f
-                val rotation by animateFloatAsState(
-                    animationSpec = if (shouldAnimate) AnimationTween else NoAnimationTween,
-                    targetValue = if (sharedActionsExpanded) angle else 0f, label = "Icon rotation",
-                )
+                val transition = updateTransition(sharedActionsExpanded, label = "sharedActionsExpandedToggleBtn")
+                val rotation by transition.animateFloat(
+                    transitionSpec = {
+                        if (shouldAnimate) AnimationTween else NoAnimationTween
+                    },
+                    label = "rotation",
+                ) {
+                    if (it) angle else 0f
+                }
+
                 Icon(
                     modifier = Modifier.rotate(rotation),
                     imageVector = icon,

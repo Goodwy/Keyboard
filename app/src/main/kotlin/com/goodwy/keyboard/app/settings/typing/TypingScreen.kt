@@ -16,16 +16,14 @@
 
 package com.goodwy.keyboard.app.settings.typing
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.LibraryBooks
 import androidx.compose.material.icons.filled.Contacts
 import androidx.compose.material.icons.filled.Language
-import androidx.compose.material.icons.filled.LibraryBooks
-import androidx.compose.material.icons.filled.SpaceBar
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,29 +33,30 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.goodwy.keyboard.R
+import com.goodwy.keyboard.app.LocalNavController
+import com.goodwy.keyboard.app.Routes
+import com.goodwy.keyboard.app.enumDisplayEntriesOf
 import com.goodwy.keyboard.app.settings.DialogSliderPreferenceRow
 import com.goodwy.keyboard.app.settings.DividerRow
 import com.goodwy.keyboard.app.settings.ListPreferenceRow
 import com.goodwy.keyboard.app.settings.PreferenceGroupCard
+import com.goodwy.keyboard.app.settings.PreferenceRow
 import com.goodwy.keyboard.app.settings.SwitchPreferenceRow
 import com.goodwy.keyboard.ime.nlp.SpellingLanguageMode
-import com.goodwy.keyboard.lib.android.AndroidVersion
 import com.goodwy.keyboard.lib.compose.FlorisErrorCard
-import com.goodwy.keyboard.lib.compose.FlorisHyperlinkText
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.stringRes
+import com.goodwy.lib.android.AndroidVersion
 import dev.patrickgold.jetpref.datastore.model.observeAsState
-import dev.patrickgold.jetpref.datastore.ui.DialogSliderPreference
 import dev.patrickgold.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
-import dev.patrickgold.jetpref.datastore.ui.ListPreference
-import dev.patrickgold.jetpref.datastore.ui.PreferenceGroup
-import dev.patrickgold.jetpref.datastore.ui.SwitchPreference
 
 @OptIn(ExperimentalJetPrefDatastoreUi::class)
 @Composable
 fun TypingScreen() = FlorisScreen {
     title = stringRes(R.string.settings__typing__title)
     previewFieldVisible = true
+
+    val navController = LocalNavController.current
 
     content {
         // This card is temporary and is therefore not using a string resource
@@ -177,7 +176,7 @@ fun TypingScreen() = FlorisScreen {
                 prefs.spelling.languageMode,
                 icon = Icons.Default.Language,
                 title = stringRes(R.string.pref__spelling__language_mode__label),
-                entries = SpellingLanguageMode.listEntries(),
+                entries = enumDisplayEntriesOf(SpellingLanguageMode::class),
                 enabledIf = { florisSpellCheckerEnabled.value },
             )
             DividerRow(start = 16.dp)
@@ -192,11 +191,19 @@ fun TypingScreen() = FlorisScreen {
             DividerRow(start = 16.dp)
             SwitchPreferenceRow(
                 prefs.spelling.useUdmEntries,
-                icon = Icons.Default.LibraryBooks,
+                icon = Icons.AutoMirrored.Rounded.LibraryBooks,
                 title = stringRes(R.string.pref__spelling__use_udm_entries__label),
                 summary = stringRes(R.string.pref__spelling__use_udm_entries__summary),
                 enabledIf = { florisSpellCheckerEnabled.value },
                 visibleIf = { false }, // For now
+            )
+        }
+
+        PreferenceGroupCard(title = stringRes(R.string.settings__dictionary__title)) {
+            PreferenceRow(
+                icon = Icons.AutoMirrored.Rounded.LibraryBooks,
+                title = stringRes(R.string.settings__dictionary__title),
+                onClick = { navController.navigate(Routes.Settings.Dictionary) },
             )
         }
         Spacer(modifier = Modifier.size(32.dp))

@@ -18,7 +18,7 @@ package com.goodwy.keyboard.ime.theme
 
 import com.goodwy.keyboard.lib.ext.ExtensionComponent
 import com.goodwy.keyboard.lib.ext.ExtensionComponentName
-import com.goodwy.keyboard.lib.snygg.SnyggStylesheetEditor
+import com.goodwy.lib.snygg.SnyggStylesheetEditor
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

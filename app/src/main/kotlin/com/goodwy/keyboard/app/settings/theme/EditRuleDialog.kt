@@ -85,8 +85,6 @@ import com.goodwy.keyboard.ime.text.keyboard.TextKeyData
 import com.goodwy.keyboard.ime.theme.FlorisImeUiSpec
 import com.goodwy.keyboard.keyboardManager
 import com.goodwy.keyboard.lib.NATIVE_NULLPTR
-import com.goodwy.keyboard.lib.android.showShortToast
-import com.goodwy.keyboard.lib.android.stringRes
 import com.goodwy.keyboard.lib.compose.FlorisChip
 import com.goodwy.keyboard.lib.compose.FlorisDropdownMenu
 import com.goodwy.keyboard.lib.compose.FlorisHyperlinkText
@@ -94,12 +92,14 @@ import com.goodwy.keyboard.lib.compose.FlorisIconButton
 import com.goodwy.keyboard.lib.compose.FlorisOutlinedTextField
 import com.goodwy.keyboard.lib.compose.florisHorizontalScroll
 import com.goodwy.keyboard.lib.compose.stringRes
-import com.goodwy.keyboard.lib.snygg.SnyggLevel
-import com.goodwy.keyboard.lib.snygg.SnyggRule
 import com.goodwy.keyboard.lib.util.InputMethodUtils
+import com.goodwy.lib.android.showShortToast
+import com.goodwy.lib.android.stringRes
+import com.goodwy.lib.kotlin.curlyFormat
+import com.goodwy.lib.kotlin.getKeyByValue
+import com.goodwy.lib.snygg.SnyggLevel
+import com.goodwy.lib.snygg.SnyggRule
 import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
-import org.florisboard.lib.kotlin.curlyFormat
-import org.florisboard.lib.kotlin.getKeyByValue
 
 private val TransparentTextSelectionColors = TextSelectionColors(
     handleColor = Color.Transparent,

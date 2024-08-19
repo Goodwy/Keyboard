@@ -8,7 +8,7 @@ val projectCompileSdk: String by project
 val projectNdkVersion: String by project
 
 android {
-    namespace = "org.florisboard.libnative"
+    namespace = "com.goodwy.libnative"
     compileSdk = projectCompileSdk.toInt()
     ndkVersion = projectNdkVersion
 
@@ -42,7 +42,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
             )
         }
-
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">Horizontaal scrollen gebruiken</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Swipe vinger vanop de spatiebalk</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Snelkoppelingen verbergen bij het verplaatsen van de cursor</string>
+    <string name="one_time_purchase">Eenmalige ondersteuning</string>
+    <string name="monthly">Maandelijkse ondersteuning</string>
+    <string name="yearly">Jaarlijkse ondersteuning</string>
 </resources>

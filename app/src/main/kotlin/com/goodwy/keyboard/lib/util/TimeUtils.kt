@@ -20,7 +20,7 @@ import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import android.icu.util.TimeZone
 import com.goodwy.keyboard.lib.FlorisLocale
-import com.goodwy.keyboard.lib.android.AndroidVersion
+import com.goodwy.lib.android.AndroidVersion
 import java.time.Instant
 import java.time.format.DateTimeFormatter
 

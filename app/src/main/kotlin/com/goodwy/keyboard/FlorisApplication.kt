@@ -34,6 +34,7 @@ import com.goodwy.keyboard.ime.keyboard.KeyboardManager
 import com.goodwy.keyboard.ime.media.emoji.FlorisEmojiCompat
 import com.goodwy.keyboard.ime.nlp.NlpManager
 import com.goodwy.keyboard.ime.text.gestures.GlideTypingManager
+import com.goodwy.keyboard.ime.theme.FlorisImeTheme
 import com.goodwy.keyboard.ime.theme.ThemeManager
 import com.goodwy.keyboard.lib.cache.CacheManager
 import com.goodwy.keyboard.lib.crashutility.CrashUtility
@@ -41,11 +42,10 @@ import com.goodwy.keyboard.lib.devtools.Flog
 import com.goodwy.keyboard.lib.devtools.LogTopic
 import com.goodwy.keyboard.lib.devtools.flogError
 import com.goodwy.keyboard.lib.ext.ExtensionManager
-import com.goodwy.keyboard.lib.io.AssetManager
-import com.goodwy.keyboard.lib.io.deleteContentsRecursively
+import com.goodwy.lib.kotlin.io.deleteContentsRecursively
+import com.goodwy.lib.kotlin.tryOrNull
+import com.goodwy.libnative.dummyAdd
 import dev.patrickgold.jetpref.datastore.JetPref
-import org.florisboard.lib.kotlin.tryOrNull
-import org.florisboard.libnative.dummyAdd
 import java.lang.ref.WeakReference
 
 /**
@@ -62,13 +62,13 @@ class FlorisApplication : Application() {
                 System.loadLibrary("fl_native")
             } catch (_: Exception) {
             }
+            FlorisImeTheme.init()
         }
     }
 
     private val prefs by florisPreferenceModel()
     private val mainHandler by lazy { Handler(mainLooper) }
 
-    val assetManager = lazy { AssetManager(this) }
     val cacheManager = lazy { CacheManager(this) }
     val clipboardManager = lazy { ClipboardManager(this) }
     val editorInstance = lazy { EditorInstance(this) }
@@ -146,8 +146,6 @@ private tailrec fun Context.florisApplication(): FlorisApplication {
 }
 
 fun Context.appContext() = lazyOf(this.florisApplication())
-
-fun Context.assetManager() = this.florisApplication().assetManager
 
 fun Context.cacheManager() = this.florisApplication().cacheManager
 

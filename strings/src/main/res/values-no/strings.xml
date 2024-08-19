@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">Bruk horisontal rulling</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Sveip ned på mellomromstast</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Skjule snarveier når du flytter markøren</string>
+    <string name="one_time_purchase">Engangsstøtte</string>
+    <string name="monthly">Månedlig støtte</string>
+    <string name="yearly">Årlig støtte</string>
 </resources>

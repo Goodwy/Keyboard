@@ -17,7 +17,7 @@
 package com.goodwy.keyboard.app.settings.purchase
 
 import androidx.compose.runtime.saveable.Saver
-import com.goodwy.keyboard.lib.ext.ExtensionComponentName
+import com.goodwy.lib.kotlin.tryOrNull
 import dev.patrickgold.jetpref.datastore.model.PreferenceSerializer
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
@@ -25,7 +25,6 @@ import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import org.florisboard.lib.kotlin.tryOrNull
 
 @Serializable(with = Product.Serializer::class)
 data class Product(val id: String, var price: String, var purchased: Boolean = false, var valid: Boolean = false) {

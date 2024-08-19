@@ -42,8 +42,6 @@ import com.goodwy.keyboard.cacheManager
 import com.goodwy.keyboard.clipboardManager
 import com.goodwy.keyboard.ime.clipboard.provider.ClipboardFileStorage
 import com.goodwy.keyboard.ime.clipboard.provider.ItemType
-import com.goodwy.keyboard.lib.android.showLongToast
-import com.goodwy.keyboard.lib.android.writeFromFile
 import com.goodwy.keyboard.lib.cache.CacheManager
 import com.goodwy.keyboard.lib.compose.FlorisButtonBar
 import com.goodwy.keyboard.lib.compose.FlorisOutlinedBox
@@ -55,9 +53,11 @@ import com.goodwy.keyboard.lib.devtools.flogError
 import com.goodwy.keyboard.lib.ext.ExtensionManager
 import com.goodwy.keyboard.lib.io.FileRegistry
 import com.goodwy.keyboard.lib.io.ZipUtils
-import com.goodwy.keyboard.lib.io.subDir
-import com.goodwy.keyboard.lib.io.subFile
-import com.goodwy.keyboard.lib.io.writeJson
+import com.goodwy.lib.android.showLongToast
+import com.goodwy.lib.android.writeFromFile
+import com.goodwy.lib.kotlin.io.subDir
+import com.goodwy.lib.kotlin.io.subFile
+import com.goodwy.lib.kotlin.io.writeJson
 import dev.patrickgold.jetpref.datastore.jetprefDatastoreDir
 import dev.patrickgold.jetpref.material.ui.JetPrefListItem
 import kotlinx.serialization.SerialName

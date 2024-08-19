@@ -24,7 +24,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.Schedule
@@ -51,8 +50,6 @@ import com.goodwy.keyboard.clipboardManager
 import com.goodwy.keyboard.ime.clipboard.provider.ClipboardFileStorage
 import com.goodwy.keyboard.ime.clipboard.provider.ClipboardItem
 import com.goodwy.keyboard.ime.clipboard.provider.ItemType
-import com.goodwy.keyboard.lib.android.readToFile
-import com.goodwy.keyboard.lib.android.showLongToast
 import com.goodwy.keyboard.lib.cache.CacheManager
 import com.goodwy.keyboard.lib.compose.FlorisButtonBar
 import com.goodwy.keyboard.lib.compose.FlorisCardDefaults
@@ -63,10 +60,12 @@ import com.goodwy.keyboard.lib.compose.defaultFlorisOutlinedBox
 import com.goodwy.keyboard.lib.compose.stringRes
 import com.goodwy.keyboard.lib.ext.ExtensionManager
 import com.goodwy.keyboard.lib.io.ZipUtils
-import com.goodwy.keyboard.lib.io.deleteContentsRecursively
-import com.goodwy.keyboard.lib.io.readJson
-import com.goodwy.keyboard.lib.io.subDir
-import com.goodwy.keyboard.lib.io.subFile
+import com.goodwy.lib.android.readToFile
+import com.goodwy.lib.android.showLongToast
+import com.goodwy.lib.kotlin.io.deleteContentsRecursively
+import com.goodwy.lib.kotlin.io.readJson
+import com.goodwy.lib.kotlin.io.subDir
+import com.goodwy.lib.kotlin.io.subFile
 import dev.patrickgold.jetpref.datastore.JetPref
 import dev.patrickgold.jetpref.datastore.ui.Preference
 import kotlinx.coroutines.CoroutineScope
@@ -336,12 +335,12 @@ fun RestoreScreen() = FlorisScreen {
                                 .fillMaxWidth()
                                 .height(9.dp)
                                 .padding(bottom = 8.dp)
-                                .background(LocalContentColor.current.copy(alpha = LocalContentAlpha.current))
+                                .background(LocalContentColor.current)
                         )
                         Text(
                             text = stringRes(workspace.restoreWarningId!!),
                             style = MaterialTheme.typography.bodyMedium,
-                            color = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
+                            color = LocalContentColor.current,
                             fontStyle = FontStyle.Italic,
                         )
                     }

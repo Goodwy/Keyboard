@@ -36,9 +36,9 @@ import androidx.room.Update
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.lib.FlorisLocale
 import com.goodwy.keyboard.lib.ValidationRule
-import com.goodwy.keyboard.lib.android.readText
-import com.goodwy.keyboard.lib.android.writeText
-import org.florisboard.lib.kotlin.tryOrNull
+import com.goodwy.lib.android.readText
+import com.goodwy.lib.android.writeText
+import com.goodwy.lib.kotlin.tryOrNull
 import java.lang.ref.WeakReference
 
 private const val WORDS_TABLE = "words"

@@ -25,11 +25,11 @@ import com.goodwy.keyboard.app.florisPreferenceModel
 import com.goodwy.keyboard.ime.keyboard.KeyData
 import com.goodwy.keyboard.ime.text.key.KeyCode
 import com.goodwy.keyboard.ime.text.keyboard.TextKeyData
-import com.goodwy.keyboard.lib.android.AndroidVersion
-import com.goodwy.keyboard.lib.android.systemServiceOrNull
-import com.goodwy.keyboard.lib.android.systemVibratorOrNull
-import com.goodwy.keyboard.lib.android.vibrate
 import com.goodwy.keyboard.lib.devtools.flogDebug
+import com.goodwy.lib.android.AndroidVersion
+import com.goodwy.lib.android.systemServiceOrNull
+import com.goodwy.lib.android.systemVibratorOrNull
+import com.goodwy.lib.android.vibrate
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

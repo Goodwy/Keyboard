@@ -37,12 +37,12 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.sp
 import com.goodwy.keyboard.app.florisPreferenceModel
 import com.goodwy.keyboard.clipboardManager
-import com.goodwy.keyboard.lib.android.showShortToast
 import com.goodwy.keyboard.lib.compose.FlorisButton
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.florisHorizontalScroll
 import com.goodwy.keyboard.lib.compose.florisScrollbar
 import com.goodwy.keyboard.lib.devtools.Devtools
+import com.goodwy.lib.android.showShortToast
 
 // TODO: This screen is just a quick thrown-together thing and needs further enhancing in the UI and in localization
 @Composable

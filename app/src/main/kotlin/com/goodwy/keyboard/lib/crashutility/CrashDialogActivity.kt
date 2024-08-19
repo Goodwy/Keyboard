@@ -31,7 +31,7 @@ import com.goodwy.keyboard.BuildConfig
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.AppPrefs
 import com.goodwy.keyboard.app.florisPreferenceModel
-import com.goodwy.keyboard.lib.android.stringRes
+import com.goodwy.lib.android.stringRes
 import com.goodwy.keyboard.lib.devtools.Devtools
 import com.goodwy.keyboard.lib.devtools.LogTopic
 import com.goodwy.keyboard.lib.devtools.flogWarning

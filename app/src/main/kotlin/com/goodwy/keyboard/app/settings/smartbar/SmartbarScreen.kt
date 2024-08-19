@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.goodwy.keyboard.R
+import com.goodwy.keyboard.app.enumDisplayEntriesOf
 import com.goodwy.keyboard.app.settings.DividerRow
 import com.goodwy.keyboard.app.settings.ListPreferenceRow
 import com.goodwy.keyboard.app.settings.PreferenceGroupCard
@@ -31,9 +32,6 @@ import com.goodwy.keyboard.ime.smartbar.ExtendedActionsPlacement
 import com.goodwy.keyboard.ime.smartbar.SmartbarLayout
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.stringRes
-import dev.patrickgold.jetpref.datastore.ui.ListPreference
-import dev.patrickgold.jetpref.datastore.ui.PreferenceGroup
-import dev.patrickgold.jetpref.datastore.ui.SwitchPreference
 
 @Composable
 fun SmartbarScreen() = FlorisScreen {
@@ -51,7 +49,7 @@ fun SmartbarScreen() = FlorisScreen {
             ListPreferenceRow(
                 listPref = prefs.smartbar.layout,
                 title = stringRes(R.string.pref__smartbar__layout__label),
-                entries = SmartbarLayout.listEntries(),
+                entries = enumDisplayEntriesOf(SmartbarLayout::class),
                 enabledIf = { prefs.smartbar.enabled isEqualTo true },
             )
         }
@@ -60,7 +58,7 @@ fun SmartbarScreen() = FlorisScreen {
             ListPreferenceRow(
                 prefs.suggestion.displayMode,
                 title = stringRes(R.string.pref__suggestion__display_mode__label),
-                entries = CandidatesDisplayMode.listEntries(),
+                entries = enumDisplayEntriesOf(CandidatesDisplayMode::class),
                 enabledIf = { prefs.smartbar.enabled isEqualTo true },
                 visibleIf = { prefs.smartbar.layout isNotEqualTo SmartbarLayout.ACTIONS_ONLY },
             )
@@ -87,7 +85,7 @@ fun SmartbarScreen() = FlorisScreen {
             ListPreferenceRow(
                 listPref = prefs.smartbar.extendedActionsPlacement,
                 title = stringRes(R.string.pref__smartbar__extended_actions_placement__label),
-                entries = ExtendedActionsPlacement.listEntries(),
+                entries = enumDisplayEntriesOf(ExtendedActionsPlacement::class),
                 enabledIf = { prefs.smartbar.enabled isEqualTo true },
                 visibleIf = { prefs.smartbar.layout isEqualTo SmartbarLayout.SUGGESTIONS_ACTIONS_EXTENDED },
             )

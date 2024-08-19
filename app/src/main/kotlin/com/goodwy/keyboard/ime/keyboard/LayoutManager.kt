@@ -19,7 +19,6 @@ package com.goodwy.keyboard.ime.keyboard
 import android.content.Context
 import com.goodwy.keyboard.app.florisPreferenceModel
 import com.goodwy.keyboard.appContext
-import com.goodwy.keyboard.assetManager
 import com.goodwy.keyboard.extensionManager
 import com.goodwy.keyboard.ime.core.Subtype
 import com.goodwy.keyboard.ime.popup.PopupMapping
@@ -34,6 +33,7 @@ import com.goodwy.keyboard.lib.devtools.flogDebug
 import com.goodwy.keyboard.lib.devtools.flogWarning
 import com.goodwy.keyboard.lib.ext.ExtensionComponentName
 import com.goodwy.keyboard.lib.io.ZipUtils
+import com.goodwy.keyboard.lib.io.loadJsonAsset
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -42,8 +42,8 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import org.florisboard.lib.kotlin.DeferredResult
-import org.florisboard.lib.kotlin.runCatchingAsync
+import com.goodwy.lib.kotlin.DeferredResult
+import com.goodwy.lib.kotlin.runCatchingAsync
 
 private data class LTN(
     val type: LayoutType,
@@ -69,7 +69,6 @@ private data class CachedPopupMapping(
 class LayoutManager(context: Context) {
     private val prefs by florisPreferenceModel()
     private val appContext by context.appContext()
-    private val assetManager by context.assetManager()
     private val extensionManager by context.extensionManager()
     private val keyboardManager by context.keyboardManager()
 
@@ -101,7 +100,7 @@ class LayoutManager(context: Context) {
                 val layout = async {
                     runCatching {
                         val jsonStr = ZipUtils.readFileFromArchive(appContext, ext.sourceRef!!, path).getOrThrow()
-                        val arrangement = assetManager.loadJsonAsset<LayoutArrangement>(jsonStr).getOrThrow()
+                        val arrangement = loadJsonAsset<LayoutArrangement>(jsonStr).getOrThrow()
                         CachedLayout(ltn.type, ltn.name, meta, arrangement)
                     }
                 }
@@ -128,7 +127,7 @@ class LayoutManager(context: Context) {
                 val popupMapping = async {
                     runCatching {
                         val jsonStr = ZipUtils.readFileFromArchive(appContext, ext.sourceRef!!, path).getOrThrow()
-                        val mapping = assetManager.loadJsonAsset<PopupMapping>(jsonStr).getOrThrow()
+                        val mapping = loadJsonAsset<PopupMapping>(jsonStr).getOrThrow()
                         CachedPopupMapping(name, meta, mapping)
                     }
                 }

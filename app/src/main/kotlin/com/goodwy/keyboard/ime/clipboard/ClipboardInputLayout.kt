@@ -54,10 +54,8 @@ import androidx.compose.material.icons.filled.ToggleOff
 import androidx.compose.material.icons.filled.ToggleOn
 import androidx.compose.material.icons.filled.Videocam
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -92,10 +90,6 @@ import com.goodwy.keyboard.ime.keyboard.FlorisImeSizing
 import com.goodwy.keyboard.ime.theme.FlorisImeTheme
 import com.goodwy.keyboard.ime.theme.FlorisImeUi
 import com.goodwy.keyboard.keyboardManager
-import com.goodwy.keyboard.lib.android.AndroidKeyguardManager
-import com.goodwy.keyboard.lib.android.AndroidVersion
-import com.goodwy.keyboard.lib.android.showShortToast
-import com.goodwy.keyboard.lib.android.systemService
 import com.goodwy.keyboard.lib.compose.FlorisIconButtonWithInnerPadding
 import com.goodwy.keyboard.lib.compose.FlorisStaggeredVerticalGrid
 import com.goodwy.keyboard.lib.compose.FlorisTextButton
@@ -105,15 +99,20 @@ import com.goodwy.keyboard.lib.compose.rippleClickable
 import com.goodwy.keyboard.lib.compose.safeTimes
 import com.goodwy.keyboard.lib.compose.stringRes
 import com.goodwy.keyboard.lib.observeAsNonNullState
-import com.goodwy.keyboard.lib.snygg.SnyggPropertySet
-import com.goodwy.keyboard.lib.snygg.ui.SnyggSurface
-import com.goodwy.keyboard.lib.snygg.ui.snyggBackground
-import com.goodwy.keyboard.lib.snygg.ui.snyggBorder
-import com.goodwy.keyboard.lib.snygg.ui.snyggClip
-import com.goodwy.keyboard.lib.snygg.ui.snyggShadow
-import com.goodwy.keyboard.lib.snygg.ui.solidColor
-import com.goodwy.keyboard.lib.snygg.ui.spSize
 import com.goodwy.keyboard.lib.util.NetworkUtils
+import com.goodwy.lib.android.AndroidKeyguardManager
+import com.goodwy.lib.android.AndroidVersion
+import com.goodwy.lib.android.showShortToast
+import com.goodwy.lib.android.systemService
+import com.goodwy.lib.snygg.SnyggPropertySet
+import com.goodwy.lib.snygg.ui.SnyggButton
+import com.goodwy.lib.snygg.ui.SnyggSurface
+import com.goodwy.lib.snygg.ui.snyggBackground
+import com.goodwy.lib.snygg.ui.snyggBorder
+import com.goodwy.lib.snygg.ui.snyggClip
+import com.goodwy.lib.snygg.ui.snyggShadow
+import com.goodwy.lib.snygg.ui.solidColor
+import com.goodwy.lib.snygg.ui.spSize
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 
 private val ContentPadding = PaddingValues(horizontal = 4.dp)
@@ -144,6 +143,7 @@ fun ClipboardInputLayout(
     val headerStyle = FlorisImeTheme.style.get(FlorisImeUi.ClipboardHeader)
     val itemStyle = FlorisImeTheme.style.get(FlorisImeUi.ClipboardItem)
     val popupStyle = FlorisImeTheme.style.get(FlorisImeUi.ClipboardItemPopup)
+    val enableHistoryButtonStyle = FlorisImeTheme.style.get(FlorisImeUi.ClipboardEnableHistoryButton)
 
     fun isPopupSurfaceActive() = popupItem != null || showClearAllHistory
 
@@ -158,7 +158,6 @@ fun ClipboardInputLayout(
         ) {
             FlorisIconButtonWithInnerPadding(
                 onClick = { keyboardManager.activeState.imeUiMode = ImeUiMode.TEXT },
-                //modifier = Modifier.autoMirrorForRtl(),
                 icon = Icons.AutoMirrored.Rounded.ArrowBackIos,
                 iconColor = headerStyle.foreground.solidColor(context),
             )
@@ -537,21 +536,14 @@ fun ClipboardInputLayout(
                         color = itemStyle.foreground.solidColor(context),
                         fontSize = itemStyle.fontSize.spSize(),
                     )
-                    Button(
+                    SnyggButton(
                         modifier = Modifier
                             .padding(top = 8.dp)
                             .align(Alignment.End),
                         onClick = { prefs.clipboard.historyEnabled.set(true) },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.primary,
-                            contentColor = Color.White,
-                        ),
-                    ) {
-                        Text(
-                            text = stringRes(R.string.clipboard__disabled__enable_button),
-                            fontSize = itemStyle.fontSize.spSize(),
-                        )
-                    }
+                        style = enableHistoryButtonStyle,
+                        text = stringRes(R.string.clipboard__disabled__enable_button)
+                    )
                 }
             }
         }

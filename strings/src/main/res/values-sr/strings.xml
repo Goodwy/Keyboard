@@ -89,4 +89,7 @@
     <string name="settings__use_horizontal_grid">Користите хоризонтално померање</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Space bar swipe down</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Сакријте пречице када померате курсор</string>
+    <string name="one_time_purchase">Једнократна подршка</string>
+    <string name="monthly">Месечна подршка</string>
+    <string name="yearly">Годишња подршка</string>
 </resources>

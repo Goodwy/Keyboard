@@ -17,6 +17,7 @@
 package com.goodwy.keyboard.lib.io
 
 import com.goodwy.keyboard.lib.cache.CacheManager
+import com.goodwy.lib.kotlin.io.FsFile
 
 object FileRegistry {
     val BackupArchive = Entry(

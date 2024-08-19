@@ -59,51 +59,5 @@ enum class EmojiCategory(val id: String) {
             FLAGS -> Icons.Default.EmojiFlags
         }
     }
-
-    companion object {
-        @Composable
-        fun listEntries() = listPrefEntries {
-            entry(
-                key = RECENTLY_USED,
-                label = stringRes(R.string.clipboard__group_recent),
-            )
-            entry(
-                key = SMILEYS_EMOTION,
-                label = stringRes(R.string.emoji__category__smileys_emotion),
-            )
-            entry(
-                key = PEOPLE_BODY,
-                label = stringRes(R.string.emoji__category__people_body),
-            )
-            entry(
-                key = ANIMALS_NATURE,
-                label = stringRes(R.string.emoji__category__animals_nature),
-            )
-            entry(
-                key = FOOD_DRINK,
-                label = stringRes(R.string.emoji__category__food_drink),
-            )
-            entry(
-                key = TRAVEL_PLACES,
-                label = stringRes(R.string.emoji__category__travel_places),
-            )
-            entry(
-                key = ACTIVITIES,
-                label = stringRes(R.string.emoji__category__activities),
-            )
-            entry(
-                key = OBJECTS,
-                label = stringRes(R.string.emoji__category__objects),
-            )
-            entry(
-                key = SYMBOLS,
-                label = stringRes(R.string.emoji__category__symbols),
-            )
-            entry(
-                key = FLAGS,
-                label = stringRes(R.string.emoji__category__flags),
-            )
-        }
-    }
 }
 

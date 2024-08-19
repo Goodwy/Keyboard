@@ -85,4 +85,7 @@
     <string name="settings__use_horizontal_grid">Uzu horizontala movo</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Malsupren gesto sur spacbreto</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Kaŝi klavajn etikedojn dum movo de kursoro</string>
+    <string name="one_time_purchase">Unufoja subteno</string>
+    <string name="monthly">Monata subteno</string>
+    <string name="yearly">Jara subteno</string>
 </resources>

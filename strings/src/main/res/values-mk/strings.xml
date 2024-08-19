@@ -86,4 +86,8 @@
     <string name="settings__sound_effect__clicking">Звук на кликнување</string>
     <string name="settings__use_horizontal_grid">Користете хоризонтално лизгање</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Гест надолу на празно место</string>
-    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Сокриј ги етикетите на копчињата при движење на курсорот</string></resources>
+    <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Сокриј ги етикетите на копчињата при движење на курсорот</string>
+    <string name="one_time_purchase">Еднократна поддршка</string>
+    <string name="monthly">Месечна поддршка</string>
+    <string name="yearly">Годишна поддршка</string>
+</resources>

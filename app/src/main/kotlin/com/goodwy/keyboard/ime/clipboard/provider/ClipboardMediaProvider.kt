@@ -30,11 +30,11 @@ import android.provider.OpenableColumns
 import androidx.exifinterface.media.ExifInterface
 import com.goodwy.keyboard.BuildConfig
 import com.goodwy.keyboard.lib.devtools.flogError
+import com.goodwy.lib.kotlin.tryOrNull
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import org.florisboard.lib.kotlin.tryOrNull
 
 /**
  * Allows apps to access images and videos on the clipboard.

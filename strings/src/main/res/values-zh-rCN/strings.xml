@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">使用水平滚动</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">空格键向下移动</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">移动光标时隐藏快捷方式</string>
+    <string name="one_time_purchase">一次性支持</string>
+    <string name="monthly">每月支持</string>
+    <string name="yearly">年度支持</string>
 </resources>

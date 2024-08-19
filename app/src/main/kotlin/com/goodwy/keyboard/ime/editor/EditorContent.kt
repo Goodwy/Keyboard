@@ -16,7 +16,7 @@
 
 package com.goodwy.keyboard.ime.editor
 
-import org.florisboard.lib.kotlin.safeSubstring
+import com.goodwy.lib.kotlin.safeSubstring
 
 /**
  * A snapshot window of an input editor content around the selection/cursor.

@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">Verwenden Sie horizontales Scrollen</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Leertaste nach unten wischen</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Ausblenden von Verknüpfungen beim Bewegen des Cursors</string>
+    <string name="one_time_purchase">Einmalige Unterstützung</string>
+    <string name="monthly">Monatlicher Support</string>
+    <string name="yearly">Jährlicher Support</string>
 </resources>

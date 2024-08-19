@@ -16,7 +16,7 @@
 
 package com.goodwy.keyboard.lib.ext
 
-import org.florisboard.lib.kotlin.curlyFormat
+import com.goodwy.lib.kotlin.curlyFormat
 
 object ExtensionDefaults {
     private const val ID_LOCAL_TEMPLATE = "local.{groupName}.{extensionName}"

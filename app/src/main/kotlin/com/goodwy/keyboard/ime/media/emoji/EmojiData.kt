@@ -18,7 +18,7 @@ package com.goodwy.keyboard.ime.media.emoji
 
 import android.content.Context
 import com.goodwy.keyboard.lib.FlorisLocale
-import com.goodwy.keyboard.lib.android.bufferedReader
+import com.goodwy.lib.android.bufferedReader
 import io.github.reactivecircus.cache4k.Cache
 import java.util.*
 

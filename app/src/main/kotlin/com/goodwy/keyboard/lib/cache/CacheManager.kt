@@ -29,19 +29,12 @@ import com.goodwy.keyboard.app.settings.advanced.Backup
 import com.goodwy.keyboard.appContext
 import com.goodwy.keyboard.ime.theme.ThemeExtensionEditor
 import com.goodwy.keyboard.lib.NATIVE_NULLPTR
-import com.goodwy.keyboard.lib.android.query
-import com.goodwy.keyboard.lib.android.readToFile
 import com.goodwy.keyboard.lib.ext.Extension
 import com.goodwy.keyboard.lib.ext.ExtensionDefaults
 import com.goodwy.keyboard.lib.ext.ExtensionEditor
 import com.goodwy.keyboard.lib.ext.ExtensionJsonConfig
 import com.goodwy.keyboard.lib.io.FileRegistry
-import com.goodwy.keyboard.lib.io.FsDir
-import com.goodwy.keyboard.lib.io.FsFile
 import com.goodwy.keyboard.lib.io.ZipUtils
-import com.goodwy.keyboard.lib.io.readJson
-import com.goodwy.keyboard.lib.io.subDir
-import com.goodwy.keyboard.lib.io.subFile
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -51,8 +44,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import com.goodwy.lib.android.query
+import com.goodwy.lib.android.readToFile
+import com.goodwy.lib.kotlin.io.FsDir
+import com.goodwy.lib.kotlin.io.FsFile
+import com.goodwy.lib.kotlin.io.readJson
+import com.goodwy.lib.kotlin.io.subDir
+import com.goodwy.lib.kotlin.io.subFile
 import java.io.Closeable
-import java.util.*
+import java.util.UUID
 
 class CacheManager(context: Context) {
     companion object {

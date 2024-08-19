@@ -16,7 +16,7 @@
 
 package com.goodwy.keyboard.lib.util
 
-import com.goodwy.keyboard.lib.android.AndroidVersion
+import com.goodwy.lib.android.AndroidVersion
 
 /**
  * Helper object containing methods to validate and extract network names and components from strings.

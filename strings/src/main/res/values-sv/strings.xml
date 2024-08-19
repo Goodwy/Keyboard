@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">Använd vågrät rullning</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Blanksteg svep ner</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Dölj genvägar när du flyttar markören</string>
+    <string name="one_time_purchase">Engångsstöd</string>
+    <string name="monthly">Månatlig support</string>
+    <string name="yearly">Årligt stöd</string>
 </resources>

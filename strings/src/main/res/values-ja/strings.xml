@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">水平スクロールを使用する</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Space bar swipe down</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">カーソル移動時にショートカットを隠す</string>
+    <string name="one_time_purchase">1 回限りのサポート</string>
+    <string name="monthly">マンスリーサポート</string>
+    <string name="yearly">年間サポート</string>
 </resources>

@@ -86,4 +86,7 @@
     <string name="settings__use_horizontal_grid">Përdor lëvizjen horizontale</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Gest poshtë në shiritin e hapësirës</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Fshih etiketat kryesore kur lëviz kursorin</string>
+    <string name="one_time_purchase">Mbështetje një herë</string>
+    <string name="monthly">Mbështetje mujore</string>
+    <string name="yearly">Mbështetje vjetore</string>
 </resources>

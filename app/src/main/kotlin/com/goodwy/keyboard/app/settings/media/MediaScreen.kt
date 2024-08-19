@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.goodwy.keyboard.R
+import com.goodwy.keyboard.app.enumDisplayEntriesOf
 import com.goodwy.keyboard.app.settings.DialogSliderPreferenceRow
 import com.goodwy.keyboard.app.settings.DividerRow
 import com.goodwy.keyboard.app.settings.ListPreferenceRow
@@ -68,7 +69,7 @@ fun MediaScreen() = FlorisScreen {
             ListPreferenceRow(
                 prefs.media.emojiDefaultTab,
                 title = stringRes(com.goodwy.keyboard.strings.R.string.settings__default_tab),
-                entries = EmojiCategory.listEntries(),
+                entries = enumDisplayEntriesOf(EmojiCategory::class),
                 enabledIf = { prefs.media.emojiUseLastTab isEqualTo false },
                 showEndIcon = true,
                 endIcon = emojiDefaultTab.value.icon()
@@ -82,7 +83,7 @@ fun MediaScreen() = FlorisScreen {
             ListPreferenceRow(
                 prefs.media.emojiPreferredSkinTone,
                 title = stringRes(R.string.prefs__media__emoji_preferred_skin_tone),
-                entries = EmojiSkinTone.listEntries(),
+                entries = enumDisplayEntriesOf(EmojiSkinTone::class),
             )
         }
         Spacer(modifier = Modifier.size(32.dp))

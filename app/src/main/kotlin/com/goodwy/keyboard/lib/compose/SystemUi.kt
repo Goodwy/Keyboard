@@ -29,8 +29,8 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowInsetsControllerCompat
 import com.goodwy.keyboard.ime.theme.FlorisImeTheme
 import com.goodwy.keyboard.ime.theme.FlorisImeUi
-import com.goodwy.keyboard.lib.android.AndroidVersion
-import com.goodwy.keyboard.lib.snygg.ui.solidColor
+import com.goodwy.lib.android.AndroidVersion
+import com.goodwy.lib.snygg.ui.solidColor
 
 
 @Composable

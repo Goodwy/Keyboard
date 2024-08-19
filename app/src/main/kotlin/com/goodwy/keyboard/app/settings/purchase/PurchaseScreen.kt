@@ -73,11 +73,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.florisPreferenceModel
-import com.goodwy.keyboard.lib.android.launchUrl
-import com.goodwy.keyboard.lib.android.launchUrlNew
 import com.goodwy.keyboard.lib.compose.FlorisIconButton
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.stringRes
+import com.goodwy.keyboard.lib.util.launchUrl
+import com.goodwy.keyboard.lib.util.launchUrlNew
 import com.sdkit.paylib.paylibsdk.client.domain.DefaultPaylibClientInfoProvider.packageName
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 import dev.patrickgold.jetpref.datastore.ui.LocalDefaultDialogPrefStrings
@@ -142,7 +142,7 @@ fun PurchaseScreen() = FlorisScreen {
                         )
                     }
                 }
-                Spacer(modifier = Modifier.size(8.dp))
+                Spacer(modifier = Modifier.size(12.dp))
             }
             val isRustore = !useGooglePlay && isRuStoreInstalled
             val textButton = stringRes(StringsR.string.restore_purchase)
@@ -313,7 +313,7 @@ fun PurchaseScreen() = FlorisScreen {
                                     .height(52.dp)
                                     .padding(horizontal = 2.dp)
                                     .wrapContentHeight(),
-                                text = stringResource(StringsR.string.tip_kind),
+                                text = stringResource(StringsR.string.one_time_purchase),
                                 fontSize = 14.sp,
                                 lineHeight = 14.sp,
                                 textAlign = TextAlign.Center,
@@ -355,16 +355,16 @@ fun PurchaseScreen() = FlorisScreen {
                                     .fillMaxWidth()
                                     .height(28.dp)
                                     .alpha(0.7f),
-                                enabled = isEnabled4,
+                                enabled = isEnabled2,
                                 colors = ButtonDefaults.buttonColors(
                                     disabledContainerColor = MaterialTheme.colorScheme.primary,
                                     disabledContentColor = MaterialTheme.colorScheme.onPrimary
                                 ),
-                                onClick = { prefs.purchase.startPurchase.set(product4) },
+                                onClick = { prefs.purchase.startPurchase.set(product2) },
                                 shape = RoundedCornerShape(10.dp),
                                 contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp)
                             ) {
-                                if (isPurchased4) {
+                                if (isPurchased2) {
                                     Icon(
                                         modifier = Modifier.size(24.dp),
                                         imageVector = Icons.Rounded.CheckCircle,
@@ -372,7 +372,7 @@ fun PurchaseScreen() = FlorisScreen {
                                     )
                                 } else {
                                     Text(
-                                        text = prices4,
+                                        text = prices2,
                                         overflow = TextOverflow.Ellipsis,
                                         maxLines = 1,
                                         fontSize = 11.sp,
@@ -385,16 +385,16 @@ fun PurchaseScreen() = FlorisScreen {
                                     .fillMaxWidth()
                                     .height(28.dp)
                                     .alpha(0.8f),
-                                enabled = isEnabled7,
+                                enabled = isEnabled3,
                                 colors = ButtonDefaults.buttonColors(
                                     disabledContainerColor = MaterialTheme.colorScheme.primary,
                                     disabledContentColor = MaterialTheme.colorScheme.onPrimary
                                 ),
-                                onClick = { prefs.purchase.startPurchase.set(product7) },
+                                onClick = { prefs.purchase.startPurchase.set(product3) },
                                 shape = RoundedCornerShape(10.dp),
                                 contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp)
                             ) {
-                                if (isPurchased7) {
+                                if (isPurchased3) {
                                     Icon(
                                         modifier = Modifier.size(24.dp),
                                         imageVector = Icons.Rounded.CheckCircle,
@@ -402,7 +402,7 @@ fun PurchaseScreen() = FlorisScreen {
                                     )
                                 } else {
                                     Text(
-                                        text = prices7,
+                                        text = prices3,
                                         overflow = TextOverflow.Ellipsis,
                                         maxLines = 1,
                                         fontSize = 11.sp,
@@ -434,7 +434,7 @@ fun PurchaseScreen() = FlorisScreen {
                                     .height(52.dp)
                                     .padding(horizontal = 2.dp)
                                     .wrapContentHeight(),
-                                text = stringResource(StringsR.string.tip_excellent),
+                                text = stringResource(StringsR.string.monthly),
                                 fontSize = 14.sp,
                                 lineHeight = 14.sp,
                                 textAlign = TextAlign.Center,
@@ -446,16 +446,16 @@ fun PurchaseScreen() = FlorisScreen {
                                     .fillMaxWidth()
                                     .height(28.dp)
                                     .alpha(0.7f),
-                                enabled = isEnabled2,
+                                enabled = isEnabled4,
                                 colors = ButtonDefaults.buttonColors(
                                     disabledContainerColor = MaterialTheme.colorScheme.primary,
                                     disabledContentColor = MaterialTheme.colorScheme.onPrimary
                                 ),
-                                onClick = { prefs.purchase.startPurchase.set(product2) },
+                                onClick = { prefs.purchase.startPurchase.set(product4) },
                                 shape = RoundedCornerShape(10.dp),
                                 contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp)
                             ) {
-                                if (isPurchased2) {
+                                if (isPurchased4) {
                                     Icon(
                                         modifier = Modifier.size(24.dp),
                                         imageVector = Icons.Rounded.CheckCircle,
@@ -463,7 +463,7 @@ fun PurchaseScreen() = FlorisScreen {
                                     )
                                 } else {
                                     Text(
-                                        text = prices2,
+                                        text = prices4,
                                         overflow = TextOverflow.Ellipsis,
                                         maxLines = 1,
                                         fontSize = 11.sp,
@@ -506,16 +506,16 @@ fun PurchaseScreen() = FlorisScreen {
                                     .fillMaxWidth()
                                     .height(28.dp)
                                     .alpha(0.9f),
-                                enabled = isEnabled8,
+                                enabled = isEnabled6,
                                 colors = ButtonDefaults.buttonColors(
                                     disabledContainerColor = MaterialTheme.colorScheme.primary,
                                     disabledContentColor = MaterialTheme.colorScheme.onPrimary
                                 ),
-                                onClick = { prefs.purchase.startPurchase.set(product8) },
+                                onClick = { prefs.purchase.startPurchase.set(product6) },
                                 shape = RoundedCornerShape(10.dp),
                                 contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp)
                             ) {
-                                if (isPurchased8) {
+                                if (isPurchased6) {
                                     Icon(
                                         modifier = Modifier.size(24.dp),
                                         imageVector = Icons.Rounded.CheckCircle,
@@ -523,7 +523,7 @@ fun PurchaseScreen() = FlorisScreen {
                                     )
                                 } else {
                                     Text(
-                                        text = prices8,
+                                        text = prices6,
                                         overflow = TextOverflow.Ellipsis,
                                         maxLines = 1,
                                         fontSize = 11.sp,
@@ -555,7 +555,7 @@ fun PurchaseScreen() = FlorisScreen {
                                     .height(52.dp)
                                     .padding(horizontal = 2.dp)
                                     .wrapContentHeight(),
-                                text = stringResource(StringsR.string.tip_incredible),
+                                text = stringResource(StringsR.string.yearly),
                                 fontSize = 14.sp,
                                 lineHeight = 14.sp,
                                 textAlign = TextAlign.Center,
@@ -567,16 +567,16 @@ fun PurchaseScreen() = FlorisScreen {
                                     .fillMaxWidth()
                                     .height(28.dp)
                                     .alpha(0.8f),
-                                enabled = isEnabled3,
+                                enabled = isEnabled7,
                                 colors = ButtonDefaults.buttonColors(
                                     disabledContainerColor = MaterialTheme.colorScheme.primary,
                                     disabledContentColor = MaterialTheme.colorScheme.onPrimary
                                 ),
-                                onClick = { prefs.purchase.startPurchase.set(product3) },
+                                onClick = { prefs.purchase.startPurchase.set(product7) },
                                 shape = RoundedCornerShape(10.dp),
                                 contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp)
                             ) {
-                                if (isPurchased3) {
+                                if (isPurchased7) {
                                     Icon(
                                         modifier = Modifier.size(24.dp),
                                         imageVector = Icons.Rounded.CheckCircle,
@@ -584,7 +584,7 @@ fun PurchaseScreen() = FlorisScreen {
                                     )
                                 } else {
                                     Text(
-                                        text = prices3,
+                                        text = prices7,
                                         overflow = TextOverflow.Ellipsis,
                                         maxLines = 1,
                                         fontSize = 11.sp,
@@ -597,16 +597,16 @@ fun PurchaseScreen() = FlorisScreen {
                                     .fillMaxWidth()
                                     .height(28.dp)
                                     .alpha(0.9f),
-                                enabled = isEnabled6,
+                                enabled = isEnabled8,
                                 colors = ButtonDefaults.buttonColors(
                                     disabledContainerColor = MaterialTheme.colorScheme.primary,
                                     disabledContentColor = MaterialTheme.colorScheme.onPrimary
                                 ),
-                                onClick = { prefs.purchase.startPurchase.set(product6) },
+                                onClick = { prefs.purchase.startPurchase.set(product8) },
                                 shape = RoundedCornerShape(10.dp),
                                 contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp)
                             ) {
-                                if (isPurchased6) {
+                                if (isPurchased8) {
                                     Icon(
                                         modifier = Modifier.size(24.dp),
                                         imageVector = Icons.Rounded.CheckCircle,
@@ -614,7 +614,7 @@ fun PurchaseScreen() = FlorisScreen {
                                     )
                                 } else {
                                     Text(
-                                        text = prices6,
+                                        text = prices8,
                                         overflow = TextOverflow.Ellipsis,
                                         maxLines = 1,
                                         fontSize = 11.sp,
@@ -751,7 +751,7 @@ fun PurchaseScreen() = FlorisScreen {
                     contentDescription = null
                 )
 
-                when(purchaseErrorRustore) {
+                if (!useGooglePlay) when(purchaseErrorRustore) {
                     "Application signature not correct" -> isDialogOpen.value = true
                     "RuStore User Not Authorized" -> isDialogOpen.value = true
                     "" -> {}
@@ -773,7 +773,7 @@ fun PurchaseScreen() = FlorisScreen {
                         confirmLabel = if (signatureError) stringRes(id = ru.rustore.sdk.billingclient.R.string.ru_store_not_installed_button)
                                         else stringRes(id = ru.rustore.sdk.billingclient.R.string.ru_store_user_unauthorized_button),
                         onConfirm = {
-                            if (signatureError) context.launchUrlNew("https://apps.rustore.ru/app/$packageName")
+                            if (signatureError) context.launchUrlNew("https://www.rustore.ru/catalog/app/$packageName")
                             else context.launchUrlNew("rustore://auth")
                             isDialogOpen.value = false
                             prefs.purchase.purchaseErrorRustore.set("")

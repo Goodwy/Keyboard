@@ -47,19 +47,18 @@ import com.goodwy.keyboard.appContext
 import com.goodwy.keyboard.extensionManager
 import com.goodwy.keyboard.lib.ext.ExtensionComponentName
 import com.goodwy.keyboard.lib.io.ZipUtils
-import com.goodwy.keyboard.lib.snygg.SnyggStylesheet
-import com.goodwy.keyboard.lib.snygg.SnyggStylesheetJsonConfig
-import com.goodwy.keyboard.lib.snygg.ui.solidColor
-import com.goodwy.keyboard.lib.snygg.value.MaterialYouColor
-import com.goodwy.keyboard.lib.snygg.value.SnyggSolidColorValue
 import com.goodwy.keyboard.lib.util.ViewUtils
+import com.goodwy.lib.snygg.SnyggStylesheet
+import com.goodwy.lib.snygg.SnyggStylesheetJsonConfig
+import com.goodwy.lib.snygg.ui.solidColor
+import com.goodwy.lib.snygg.value.MaterialYouColor
+import com.goodwy.lib.snygg.value.SnyggSolidColorValue
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import kotlinx.serialization.decodeFromString
 import kotlin.properties.Delegates
 
 /**

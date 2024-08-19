@@ -21,7 +21,6 @@ import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -41,14 +40,12 @@ import androidx.compose.material.icons.rounded.Description
 import androidx.compose.material.icons.rounded.Policy
 import androidx.compose.material.icons.rounded.Savings
 import androidx.compose.material.icons.rounded.Star
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -68,12 +65,11 @@ import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.LocalNavController
 import com.goodwy.keyboard.app.Routes
 import com.goodwy.keyboard.clipboardManager
-import com.goodwy.keyboard.lib.android.launchUrlNew
-import com.goodwy.keyboard.lib.android.stringRes
+import com.goodwy.keyboard.lib.util.launchUrlNew
 import com.goodwy.keyboard.lib.compose.FlorisCanvasIcon
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.stringRes
-import dev.patrickgold.jetpref.datastore.ui.Preference
+import com.goodwy.lib.android.stringRes
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

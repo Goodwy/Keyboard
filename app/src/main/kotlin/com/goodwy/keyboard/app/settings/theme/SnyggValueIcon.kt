@@ -39,15 +39,15 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.goodwy.keyboard.lib.snygg.value.SnyggCutCornerDpShapeValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggDefinedVarValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggDpSizeValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggMaterialYouValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggRoundedCornerDpShapeValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggShapeValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggSolidColorValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggSpSizeValue
-import com.goodwy.keyboard.lib.snygg.value.SnyggValue
+import com.goodwy.lib.snygg.value.SnyggCutCornerDpShapeValue
+import com.goodwy.lib.snygg.value.SnyggDefinedVarValue
+import com.goodwy.lib.snygg.value.SnyggDpSizeValue
+import com.goodwy.lib.snygg.value.SnyggMaterialYouValue
+import com.goodwy.lib.snygg.value.SnyggRoundedCornerDpShapeValue
+import com.goodwy.lib.snygg.value.SnyggShapeValue
+import com.goodwy.lib.snygg.value.SnyggSolidColorValue
+import com.goodwy.lib.snygg.value.SnyggSpSizeValue
+import com.goodwy.lib.snygg.value.SnyggValue
 import dev.patrickgold.jetpref.material.ui.checkeredBackground
 
 object SnyggValueIcon {

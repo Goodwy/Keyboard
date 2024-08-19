@@ -30,6 +30,6 @@
     <!-- Goodwy -->
     <string name="inkwell__google_play_url" translatable="false">https://play.google.com/store/apps/details?id=com.goodwy.keyboard</string>
     <string name="inkwell__google_play_apps_url" translatable="false">https://play.google.com/store/apps/dev?id=8268163890866913014</string>
-    <string name="inkwell__rustore_url" translatable="false">https://apps.rustore.ru/app/com.goodwy.keyboard</string>
+    <string name="inkwell__rustore_url" translatable="false">https://www.rustore.ru/catalog/app/com.goodwy.keyboard</string>
     <string name="inkwell__rustore_apps_url" translatable="false">rustore://apps.rustore.ru/developer/d01f495d</string>
 </resources>

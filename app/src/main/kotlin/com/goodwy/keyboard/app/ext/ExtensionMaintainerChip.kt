@@ -18,10 +18,8 @@ package com.goodwy.keyboard.app.ext
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Link
-import androidx.compose.material.icons.filled.Mail
 import androidx.compose.material.icons.outlined.Mail
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -32,13 +30,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.goodwy.keyboard.R
-import com.goodwy.keyboard.lib.android.launchUrl
 import com.goodwy.keyboard.lib.compose.FlorisChip
 import com.goodwy.keyboard.lib.ext.ExtensionMaintainer
+import com.goodwy.keyboard.lib.util.launchUrl
 import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ExtensionMaintainerChip(
     maintainer: ExtensionMaintainer,

@@ -18,9 +18,9 @@ package com.goodwy.keyboard.ime.nlp
 
 import android.icu.text.BreakIterator
 import com.goodwy.keyboard.lib.FlorisLocale
+import com.goodwy.lib.kotlin.GuardedByLock
+import com.goodwy.lib.kotlin.guardedByLock
 import io.github.reactivecircus.cache4k.Cache
-import org.florisboard.lib.kotlin.GuardedByLock
-import org.florisboard.lib.kotlin.guardedByLock
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 

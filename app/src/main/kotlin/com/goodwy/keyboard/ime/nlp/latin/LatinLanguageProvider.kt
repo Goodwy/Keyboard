@@ -25,14 +25,14 @@ import com.goodwy.keyboard.ime.nlp.SpellingResult
 import com.goodwy.keyboard.ime.nlp.SuggestionCandidate
 import com.goodwy.keyboard.ime.nlp.SuggestionProvider
 import com.goodwy.keyboard.ime.nlp.WordSuggestionCandidate
-import com.goodwy.keyboard.lib.android.readText
 import com.goodwy.keyboard.lib.devtools.flogDebug
+import com.goodwy.lib.android.readText
+import com.goodwy.lib.kotlin.guardedByLock
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.builtins.MapSerializer
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.json.Json
-import org.florisboard.lib.kotlin.guardedByLock
 
 class LatinLanguageProvider(context: Context) : SpellingProvider, SuggestionProvider {
     companion object {

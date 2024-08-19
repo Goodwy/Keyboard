@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">Używanie przewijania w poziomie</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Spacja Przesuń palcem w dół</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Ukryj skróty podczas przesuwania kursora</string>
+    <string name="one_time_purchase">Jednorazowe wsparcie</string>
+    <string name="monthly">Miesięczne wsparcie</string>
+    <string name="yearly">Roczne wsparcie</string>
 </resources>

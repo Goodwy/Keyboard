@@ -17,6 +17,7 @@
 package com.goodwy.keyboard.lib.compose
 
 import android.app.Activity
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -36,9 +37,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
 import com.goodwy.keyboard.app.AppPrefs
+import com.goodwy.keyboard.app.AppTheme
 import com.goodwy.keyboard.app.LocalNavController
 import com.goodwy.keyboard.app.florisPreferenceModel
+import com.goodwy.lib.android.AndroidVersion
+import dev.patrickgold.jetpref.datastore.model.observeAsState
 import dev.patrickgold.jetpref.datastore.ui.PreferenceLayout
 import dev.patrickgold.jetpref.datastore.ui.PreferenceUiContent
 
@@ -122,12 +128,24 @@ private class FlorisScreenScopeImpl : FlorisScreenScope {
     fun Render() {
         val context = LocalContext.current
         val previewFieldController = LocalPreviewFieldController.current
+        val view = LocalView.current
+        val prefs by florisPreferenceModel()
+        val theme by prefs.advanced.settingsTheme.observeAsState()
+        val darkTheme =
+            theme == AppTheme.DARK
+                || theme == AppTheme.AMOLED_DARK
+                || (theme == AppTheme.AUTO && isSystemInDarkTheme())
+                || (theme == AppTheme.AUTO_AMOLED && isSystemInDarkTheme())
 
         SideEffect {
             val window = (context as Activity).window
             previewFieldController?.isVisible = previewFieldVisible
             window.statusBarColor = Color.Transparent.toArgb()
             window.navigationBarColor = Color.Transparent.toArgb()
+            if (AndroidVersion.ATLEAST_API29_Q) {
+                window.isNavigationBarContrastEnforced = true
+            }
+            WindowCompat.getInsetsController(window, view).isAppearanceLightNavigationBars = !darkTheme
         }
 
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()

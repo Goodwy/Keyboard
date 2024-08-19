@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.LocalNavController
 import com.goodwy.keyboard.app.Routes
+import com.goodwy.keyboard.app.enumDisplayEntriesOf
 import com.goodwy.keyboard.app.settings.DialogSliderPreferenceRow
 import com.goodwy.keyboard.app.settings.DividerRow
 import com.goodwy.keyboard.app.settings.ListPreferenceRow
@@ -67,7 +68,8 @@ fun KeyboardScreen() = FlorisScreen {
                 switchPref = prefs.keyboard.hintedNumberRowEnabled,
                 title = stringRes(R.string.pref__keyboard__hinted_number_row_mode__label),
                 summarySwitchDisabled = stringRes(R.string.state__disabled),
-                entries = KeyHintMode.listEntries(),
+                entries = enumDisplayEntriesOf(KeyHintMode::class),
+                enabledIf = { prefs.keyboard.numberRow.isFalse() }
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(
@@ -75,7 +77,7 @@ fun KeyboardScreen() = FlorisScreen {
                 switchPref = prefs.keyboard.hintedSymbolsEnabled,
                 title = stringRes(R.string.pref__keyboard__hinted_symbols_mode__label),
                 summarySwitchDisabled = stringRes(R.string.state__disabled),
-                entries = KeyHintMode.listEntries(),
+                entries = enumDisplayEntriesOf(KeyHintMode::class),
             )
             DividerRow(start = 16.dp)
             SwitchPreferenceRow(
@@ -88,7 +90,7 @@ fun KeyboardScreen() = FlorisScreen {
             ListPreferenceRow(
                 prefs.keyboard.utilityKeyAction,
                 title = stringRes(R.string.pref__keyboard__utility_key_action__label),
-                entries = UtilityKeyAction.listEntries(),
+                entries = enumDisplayEntriesOf(UtilityKeyAction::class),
                 //visibleIf = { prefs.keyboard.utilityKeyEnabled isEqualTo true },
                 enabledIf = { prefs.keyboard.utilityKeyEnabled isEqualTo true },
             )
@@ -113,13 +115,13 @@ fun KeyboardScreen() = FlorisScreen {
             ListPreferenceRow(
                 prefs.keyboard.spaceBarMode,
                 title = stringRes(R.string.pref__keyboard__space_bar_mode__label),
-                entries = SpaceBarMode.listEntries(),
+                entries = enumDisplayEntriesOf(SpaceBarMode::class),
             )
             DividerRow(start = 16.dp)
             ListPreferenceRow(
                 prefs.keyboard.capitalizationBehavior,
                 title = stringRes(R.string.pref__keyboard__capitalization_behavior__label),
-                entries = CapitalizationBehavior.listEntries(),
+                entries = enumDisplayEntriesOf(CapitalizationBehavior::class),
             )
             DividerRow(start = 16.dp)
             DialogSliderPreferenceRow(
@@ -137,7 +139,7 @@ fun KeyboardScreen() = FlorisScreen {
             ListPreferenceRow(
                 listPref = prefs.keyboard.incognitoDisplayMode,
                 title = stringRes(R.string.pref__keyboard__incognito_indicator__label),
-                entries = IncognitoDisplayMode.listEntries(),
+                entries = enumDisplayEntriesOf(IncognitoDisplayMode::class),
             )
         }
 
@@ -145,7 +147,7 @@ fun KeyboardScreen() = FlorisScreen {
             ListPreferenceRow(
                 prefs.keyboard.oneHandedMode,
                 title = stringRes(R.string.pref__keyboard__one_handed_mode__label),
-                entries = OneHandedMode.listEntries(),
+                entries = enumDisplayEntriesOf(OneHandedMode::class),
             )
             DividerRow(start = 16.dp)
             DialogSliderPreferenceRow(
@@ -161,7 +163,7 @@ fun KeyboardScreen() = FlorisScreen {
             ListPreferenceRow(
                 prefs.keyboard.landscapeInputUiMode,
                 title = stringRes(R.string.pref__keyboard__landscape_input_ui_mode__label),
-                entries = LandscapeInputUiMode.listEntries(),
+                entries = enumDisplayEntriesOf(LandscapeInputUiMode::class),
             )
             DividerRow(start = 16.dp)
             DialogSliderPreferenceRow(

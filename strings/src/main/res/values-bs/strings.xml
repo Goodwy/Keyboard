@@ -85,4 +85,7 @@
     <string name="settings__use_horizontal_grid">Koristite horizontalno pomicanje</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Pokret prema dolje na razmaknici</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">Sakrij oznake tipki prilikom pomicanja kursora</string>
+    <string name="one_time_purchase">Jednokratna podrška</string>
+    <string name="monthly">Mjesečna podrška</string>
+    <string name="yearly">Godišnja podrška</string>
 </resources>

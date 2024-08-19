@@ -17,7 +17,7 @@
 package com.goodwy.keyboard.ime.nlp
 
 import android.view.textservice.SuggestionsInfo
-import com.goodwy.keyboard.lib.android.AndroidVersion
+import com.goodwy.lib.android.AndroidVersion
 
 /**
  * Inline value class wrapping the Android spelling [SuggestionsInfo] class with helpers.

@@ -28,9 +28,9 @@ import com.goodwy.keyboard.ime.nlp.SpellingResult
 import com.goodwy.keyboard.lib.FlorisLocale
 import com.goodwy.keyboard.lib.devtools.LogTopic
 import com.goodwy.keyboard.lib.devtools.flogInfo
+import com.goodwy.lib.kotlin.map
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
-import org.florisboard.lib.kotlin.map
 
 class FlorisSpellCheckerService : SpellCheckerService() {
     private val prefs by florisPreferenceModel()

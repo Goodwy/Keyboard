@@ -52,7 +52,6 @@ import com.goodwy.keyboard.extensionManager
 import com.goodwy.keyboard.ime.nlp.LanguagePackExtension
 import com.goodwy.keyboard.ime.theme.ThemeExtension
 import com.goodwy.keyboard.ime.theme.ThemeExtensionComponentImpl
-import com.goodwy.keyboard.lib.android.showLongToast
 import com.goodwy.keyboard.lib.compose.FlorisConfirmDeleteDialog
 import com.goodwy.keyboard.lib.compose.FlorisHyperlinkText
 import com.goodwy.keyboard.lib.compose.FlorisOutlinedButton
@@ -63,6 +62,7 @@ import com.goodwy.keyboard.lib.ext.Extension
 import com.goodwy.keyboard.lib.ext.ExtensionMaintainer
 import com.goodwy.keyboard.lib.ext.ExtensionMeta
 import com.goodwy.keyboard.lib.io.FlorisRef
+import com.goodwy.lib.android.showLongToast
 
 @Composable
 fun ExtensionViewScreen(id: String) {

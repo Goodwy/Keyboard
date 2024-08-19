@@ -31,12 +31,12 @@ import com.goodwy.keyboard.keyboardManager
 import com.goodwy.keyboard.lib.ext.ExtensionComponentName
 import com.goodwy.keyboard.nlpManager
 import com.goodwy.keyboard.subtypeManager
+import com.goodwy.lib.kotlin.guardedByLock
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import org.florisboard.lib.kotlin.guardedByLock
 import kotlin.math.max
 import kotlin.math.min
 

@@ -83,4 +83,7 @@
     <string name="settings__use_horizontal_grid">가로 스크롤 사용</string>
     <string name="pref__gestures__space_bar_swipe_down__label_g" comment="Preference title">Space bar swipe down</string>
     <string name="pref__gestures__use_hide_label_when_move_cursor__label" comment="Preference title">커서를 이동할 때 바로 가기 숨기기</string>
+    <string name="one_time_purchase">일회성 지원</string>
+    <string name="monthly">월간 지원</string>
+    <string name="yearly">연간 지원</string>
 </resources>
