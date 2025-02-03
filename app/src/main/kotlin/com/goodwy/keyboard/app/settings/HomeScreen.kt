@@ -65,14 +65,15 @@ fun HomeScreen() = FlorisScreen {
         val isPro by prefs.purchase.isPro.observeAsState()
         val isProSubs by prefs.purchase.isProSubs.observeAsState()
         val isProRustore by prefs.purchase.isProRustore.observeAsState()
-        val isProApp = isPro || isProSubs || isProRustore
+        val isProNoGP by prefs.purchase.isProNoGP.observeAsState()
+        val isProApp = isPro || isProSubs || isProRustore || isProNoGP
         if (!isProApp) {
             SupportRow(
                 modifier = Modifier.padding(horizontal = 12.dp),
                 onClick = { navController.navigate(Routes.Settings.Purchase) })
         }
 
-        val isCollapsed by prefs.internal.homeIsBetaToolboxCollapsed.observeAsState()
+//        val isCollapsed by prefs.internal.homeIsBetaToolboxCollapsed.observeAsState()
 
         val isFlorisBoardEnabled by InputMethodUtils.observeIsFlorisboardEnabled(foregroundOnly = true)
         val isFlorisBoardSelected by InputMethodUtils.observeIsFlorisboardSelected(foregroundOnly = true)
@@ -228,6 +229,6 @@ fun HomeScreen() = FlorisScreen {
                 onClick = { navController.navigate(Routes.Settings.About) },
             )
         }
-        Spacer(modifier = Modifier.size(32.dp))
+        Spacer(modifier = Modifier.size(82.dp))
     }
 }

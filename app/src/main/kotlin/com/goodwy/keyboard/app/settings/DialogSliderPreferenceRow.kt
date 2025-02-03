@@ -35,6 +35,7 @@ import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -59,21 +60,21 @@ import com.goodwy.keyboard.R
 import dev.patrickgold.jetpref.datastore.model.PreferenceData
 import dev.patrickgold.jetpref.datastore.model.PreferenceDataEvaluator
 import dev.patrickgold.jetpref.datastore.model.PreferenceDataEvaluatorScope
-import dev.patrickgold.jetpref.datastore.model.PreferenceModel
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 import dev.patrickgold.jetpref.datastore.ui.DialogPrefStrings
-import dev.patrickgold.jetpref.datastore.ui.DialogSliderPreference
 import dev.patrickgold.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
 import dev.patrickgold.jetpref.datastore.ui.LocalDefaultDialogPrefStrings
-import dev.patrickgold.jetpref.datastore.ui.PreferenceUiScope
+import dev.patrickgold.jetpref.datastore.ui.LocalIconSpaceReserved
+import dev.patrickgold.jetpref.datastore.ui.LocalIsPrefEnabled
+import dev.patrickgold.jetpref.datastore.ui.LocalIsPrefVisible
 import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
-import dev.patrickgold.jetpref.material.ui.JetPrefListItem
 import kotlin.math.round
 import kotlin.math.roundToInt
 
+//Modified version https://github.com/patrickgold/jetpref/blob/main/datastore-ui/src/main/kotlin/dev/patrickgold/jetpref/datastore/ui/DialogSliderPreference.kt
 @ExperimentalJetPrefDatastoreUi
 @Composable
-fun <T : PreferenceModel> PreferenceUiScope<T>.DialogSliderPreferenceRow(
+fun DialogSliderPreferenceRow(
     pref: PreferenceData<Int>,
     modifier: Modifier = Modifier,
     icon: ImageVector? = null,
@@ -110,7 +111,7 @@ fun <T : PreferenceModel> PreferenceUiScope<T>.DialogSliderPreferenceRow(
 
 @ExperimentalJetPrefDatastoreUi
 @Composable
-internal fun <T : PreferenceModel, V> PreferenceUiScope<T>.DialogSliderPreferenceRow(
+internal fun <V> DialogSliderPreferenceRow(
     pref: PreferenceData<V>,
     modifier: Modifier,
     icon: ImageVector? = null,
@@ -140,159 +141,164 @@ internal fun <T : PreferenceModel, V> PreferenceUiScope<T>.DialogSliderPreferenc
     var sliderValue by remember { mutableFloatStateOf(0.0f) }
     val isDialogOpen = remember { mutableStateOf(false) }
 
-    val evalScope = PreferenceDataEvaluatorScope.instance()
-    if (visibleIf(evalScope)) {
-        val isEnabled = enabledIf(evalScope)
-        if (oldView) Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .heightIn(min = MIN_HEIGHT_ROW.dp)
-                .fillMaxWidth()
-                .alpha(if (isEnabled) 1f else ALPHA_DISABLED)
-                .clickable(
-                    enabled = isEnabled,
-                    role = Role.Button,
-                    onClick = {
-                        sliderValue = prefValue.toFloat()
-                        isDialogOpen.value = true
-                    }
-                )
-                .background(color = MaterialTheme.colorScheme.inverseOnSurface),
+    if (LocalIsPrefVisible.current && visibleIf(PreferenceDataEvaluatorScope)) {
+        val isEnabled = LocalIsPrefEnabled.current && enabledIf(PreferenceDataEvaluatorScope)
+        CompositionLocalProvider(
+            LocalIconSpaceReserved provides iconSpaceReserved,
+            LocalIsPrefEnabled provides isEnabled,
+            LocalIsPrefVisible provides true,
         ) {
-            Row(
+            if (oldView) Box(
+                contentAlignment = Alignment.Center,
                 modifier = Modifier
+                    .heightIn(min = MIN_HEIGHT_ROW.dp)
                     .fillMaxWidth()
-                    .padding(start = paddingStart, end = paddingEnd, top = paddingTop, bottom = paddingBottom),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                if (icon != null) {
-                    Icon(
-                        modifier = Modifier
-                            .height(32.dp)
-                            .width(32.dp)
-                            .paint(
-                                painter = painterResource(R.drawable.ic_squircle),
-                                contentScale = ContentScale.FillWidth,
-                                colorFilter = ColorFilter.tint(color = iconColor)
-                            )
-                            .padding(4.dp),
-                        imageVector = icon,
-                        contentDescription = title,
-                        tint = Color.White
+                    .alpha(if (isEnabled) 1f else ALPHA_DISABLED)
+                    .clickable(
+                        enabled = isEnabled,
+                        role = Role.Button,
+                        onClick = {
+                            sliderValue = prefValue.toFloat()
+                            isDialogOpen.value = true
+                        }
                     )
-                    Spacer(modifier = Modifier.size(16.dp))
+                    .background(color = MaterialTheme.colorScheme.inverseOnSurface),
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = paddingStart, end = paddingEnd, top = paddingTop, bottom = paddingBottom),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    if (icon != null) {
+                        Icon(
+                            modifier = Modifier
+                                .height(32.dp)
+                                .width(32.dp)
+                                .paint(
+                                    painter = painterResource(R.drawable.ic_squircle),
+                                    contentScale = ContentScale.FillWidth,
+                                    colorFilter = ColorFilter.tint(color = iconColor)
+                                )
+                                .padding(4.dp),
+                            imageVector = icon,
+                            contentDescription = title,
+                            tint = Color.White
+                        )
+                        Spacer(modifier = Modifier.size(16.dp))
+                    }
+                    Column(verticalArrangement = Arrangement.Center) {
+                        Text(
+                            modifier = Modifier.padding(end = 34.dp),
+                            text = title,
+                            lineHeight = 15.sp,)
+                        Text(
+                            modifier = Modifier.alpha(0.6f).fillMaxWidth(),
+                            text = summary(prefValue),
+                            fontSize = 15.sp,
+                            lineHeight = 15.sp,
+                            overflow = TextOverflow.Ellipsis,
+                            textAlign = TextAlign.End)
+                    }
                 }
-                Column(verticalArrangement = Arrangement.Center) {
+            } else Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .heightIn(min = MIN_HEIGHT_ROW.dp)
+                    .fillMaxWidth()
+                    .alpha(if (isEnabled) 1f else ALPHA_DISABLED)
+                    .clickable(
+                        enabled = isEnabled,
+                        role = Role.Button,
+                        onClick = {
+                            sliderValue = prefValue.toFloat()
+                            isDialogOpen.value = true
+                        }
+                    )
+                    .background(color = MaterialTheme.colorScheme.inverseOnSurface),
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = paddingStart, end = paddingEnd, top = paddingTop, bottom = paddingBottom),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    if (icon != null) {
+                        Icon(
+                            modifier = Modifier
+                                .height(32.dp)
+                                .width(32.dp)
+                                .paint(
+                                    painter = painterResource(R.drawable.ic_squircle),
+                                    contentScale = ContentScale.FillWidth,
+                                    colorFilter = ColorFilter.tint(color = iconColor)
+                                )
+                                .padding(4.dp),
+                            imageVector = icon,
+                            contentDescription = title,
+                            tint = Color.White
+                        )
+                        Spacer(modifier = Modifier.size(16.dp))
+                    }
                     Text(
-                        modifier = Modifier.padding(end = 34.dp),
+                        modifier = Modifier
+                            .weight(1f),
                         text = title,
-                        lineHeight = 15.sp,)
+                        lineHeight = 15.sp)
+                    Spacer(modifier = Modifier.size(16.dp))
                     Text(
-                        modifier = Modifier.alpha(0.6f).fillMaxWidth(),
+                        modifier = Modifier
+                            .alpha(0.6f)
+                            .padding(4.dp),
                         text = summary(prefValue),
-                        fontSize = 15.sp,
+                        maxLines = 3,
                         lineHeight = 15.sp,
                         overflow = TextOverflow.Ellipsis,
-                        textAlign = TextAlign.End)
+                        textAlign = TextAlign.End
+                    )
                 }
             }
-        } else Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .heightIn(min = MIN_HEIGHT_ROW.dp)
-                .fillMaxWidth()
-                .alpha(if (isEnabled) 1f else ALPHA_DISABLED)
-                .clickable(
-                    enabled = isEnabled,
-                    role = Role.Button,
-                    onClick = {
-                        sliderValue = prefValue.toFloat()
-                        isDialogOpen.value = true
+            if (isDialogOpen.value) {
+                JetPrefAlertDialog(
+                    title = title,
+                    confirmLabel = dialogStrings.confirmLabel,
+                    onConfirm = {
+                        pref.set(convertToV(sliderValue))
+                        isDialogOpen.value = false
+                    },
+                    dismissLabel = dialogStrings.dismissLabel,
+                    onDismiss = { isDialogOpen.value = false },
+                    neutralLabel = dialogStrings.neutralLabel,
+                    onNeutral = {
+                        pref.reset()
+                        isDialogOpen.value = false
                     }
-                )
-                .background(color = MaterialTheme.colorScheme.inverseOnSurface),
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = paddingStart, end = paddingEnd, top = paddingTop, bottom = paddingBottom),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                if (icon != null) {
-                    Icon(
-                        modifier = Modifier
-                            .height(32.dp)
-                            .width(32.dp)
-                            .paint(
-                                painter = painterResource(R.drawable.ic_squircle),
-                                contentScale = ContentScale.FillWidth,
-                                colorFilter = ColorFilter.tint(color = iconColor)
-                            )
-                            .padding(4.dp),
-                        imageVector = icon,
-                        contentDescription = title,
-                        tint = Color.White
-                    )
-                    Spacer(modifier = Modifier.size(16.dp))
-                }
-                Text(
-                    modifier = Modifier
-                        .weight(1f),
-                    text = title,
-                    lineHeight = 15.sp)
-                Spacer(modifier = Modifier.size(16.dp))
-                Text(
-                    modifier = Modifier
-                        .alpha(0.6f)
-                        .padding(4.dp),
-                    text = summary(prefValue),
-                    maxLines = 3,
-                    lineHeight = 15.sp,
-                    overflow = TextOverflow.Ellipsis,
-                    textAlign = TextAlign.End
-                )
-            }
-        }
-        if (isDialogOpen.value) {
-            JetPrefAlertDialog(
-                title = title,
-                confirmLabel = dialogStrings.confirmLabel,
-                onConfirm = {
-                    pref.set(convertToV(sliderValue))
-                    isDialogOpen.value = false
-                },
-                dismissLabel = dialogStrings.dismissLabel,
-                onDismiss = { isDialogOpen.value = false },
-                neutralLabel = dialogStrings.neutralLabel,
-                onNeutral = {
-                    pref.reset()
-                    isDialogOpen.value = false
-                }
-            ) {
-                Column {
-                    Text(
-                        text = valueLabel(convertToV(sliderValue)),
-                        modifier = Modifier.align(Alignment.CenterHorizontally),
-                    )
-                    Slider(
-                        value = sliderValue,
-                        valueRange = min.toFloat()..max.toFloat(),
-                        steps = ((max.toFloat() - min.toFloat()) / stepIncrement.toFloat()).roundToInt() - 1,
-                        onValueChange = { sliderValue = round(it) },
-                        onValueChangeFinished = { onPreviewSelectedValue(convertToV(sliderValue)) },
-                        colors = SliderDefaults.colors(
-                            thumbColor = MaterialTheme.colorScheme.primary,
-                            activeTrackColor = MaterialTheme.colorScheme.primary,
-                            activeTickColor = Color.Transparent,
-                            inactiveTrackColor = MaterialTheme.colorScheme.onSurface.copy(
-                                alpha = SliderDefaults.colors().inactiveTrackColor.alpha,
+                ) {
+                    Column {
+                        Text(
+                            text = valueLabel(convertToV(sliderValue)),
+                            modifier = Modifier.align(Alignment.CenterHorizontally),
+                        )
+                        Slider(
+                            value = sliderValue,
+                            valueRange = min.toFloat()..max.toFloat(),
+                            steps = ((max.toFloat() - min.toFloat()) / stepIncrement.toFloat()).roundToInt() - 1,
+                            onValueChange = { sliderValue = round(it) },
+                            onValueChangeFinished = { onPreviewSelectedValue(convertToV(sliderValue)) },
+                            colors = SliderDefaults.colors(
+                                thumbColor = MaterialTheme.colorScheme.primary,
+                                activeTrackColor = MaterialTheme.colorScheme.primary,
+                                activeTickColor = Color.Transparent,
+                                inactiveTrackColor = MaterialTheme.colorScheme.onSurface.copy(
+                                    alpha = SliderDefaults.colors().inactiveTrackColor.alpha,
+                                ),
+                                inactiveTickColor = Color.Transparent,
                             ),
-                            inactiveTickColor = Color.Transparent,
-                        ),
-                        modifier = Modifier.fillMaxWidth(),
-                    )
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                    }
                 }
             }
         }
@@ -301,7 +307,7 @@ internal fun <T : PreferenceModel, V> PreferenceUiScope<T>.DialogSliderPreferenc
 
 @ExperimentalJetPrefDatastoreUi
 @Composable
-fun <T : PreferenceModel> PreferenceUiScope<T>.DialogSliderPreferenceRow(
+fun DialogSliderPreferenceRow(
     primaryPref: PreferenceData<Int>,
     secondaryPref: PreferenceData<Int>,
     modifier: Modifier = Modifier,
@@ -343,7 +349,7 @@ fun <T : PreferenceModel> PreferenceUiScope<T>.DialogSliderPreferenceRow(
 
 @ExperimentalJetPrefDatastoreUi
 @Composable
-internal fun <T : PreferenceModel, V> PreferenceUiScope<T>.DialogSliderPreferenceRow(
+internal fun <V> DialogSliderPreferenceRow(
     primaryPref: PreferenceData<V>,
     secondaryPref: PreferenceData<V>,
     modifier: Modifier,
@@ -379,135 +385,140 @@ internal fun <T : PreferenceModel, V> PreferenceUiScope<T>.DialogSliderPreferenc
     var secondarySliderValue by remember { mutableStateOf(convertToV(0.0f)) }
     val isDialogOpen = remember { mutableStateOf(false) }
 
-    val evalScope = PreferenceDataEvaluatorScope.instance()
-    if (visibleIf(evalScope)) {
-        val isEnabled = enabledIf(evalScope)
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .heightIn(min = MIN_HEIGHT_ROW.dp)
-                .fillMaxWidth()
-                .alpha(if (isEnabled) 1f else ALPHA_DISABLED)
-                .clickable(
-                    enabled = isEnabled,
-                    role = Role.Button,
-                    onClick = {
-                        primarySliderValue = primaryPrefValue
-                        secondarySliderValue = secondaryPrefValue
-                        isDialogOpen.value = true
-                    }
-                )
-                .background(color = MaterialTheme.colorScheme.inverseOnSurface),
+    if (LocalIsPrefVisible.current && visibleIf(PreferenceDataEvaluatorScope)) {
+        val isEnabled = LocalIsPrefEnabled.current && enabledIf(PreferenceDataEvaluatorScope)
+        CompositionLocalProvider(
+            LocalIconSpaceReserved provides iconSpaceReserved,
+            LocalIsPrefEnabled provides isEnabled,
+            LocalIsPrefVisible provides true,
         ) {
-            Row(
+            Box(
+                contentAlignment = Alignment.Center,
                 modifier = Modifier
+                    .heightIn(min = MIN_HEIGHT_ROW.dp)
                     .fillMaxWidth()
-                    .padding(start = paddingStart, end = paddingEnd, top = paddingTop, bottom = paddingBottom),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                    .alpha(if (isEnabled) 1f else ALPHA_DISABLED)
+                    .clickable(
+                        enabled = isEnabled,
+                        role = Role.Button,
+                        onClick = {
+                            primarySliderValue = primaryPrefValue
+                            secondarySliderValue = secondaryPrefValue
+                            isDialogOpen.value = true
+                        }
+                    )
+                    .background(color = MaterialTheme.colorScheme.inverseOnSurface),
             ) {
-                if (icon != null) {
-                    Icon(
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = paddingStart, end = paddingEnd, top = paddingTop, bottom = paddingBottom),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    if (icon != null) {
+                        Icon(
+                            modifier = Modifier
+                                .height(32.dp)
+                                .width(32.dp)
+                                .paint(
+                                    painter = painterResource(R.drawable.ic_squircle),
+                                    contentScale = ContentScale.FillWidth,
+                                    colorFilter = ColorFilter.tint(color = iconColor)
+                                )
+                                .padding(4.dp),
+                            imageVector = icon,
+                            contentDescription = title,
+                            tint = Color.White
+                        )
+                        Spacer(modifier = Modifier.size(16.dp))
+                    }
+                    Text(
                         modifier = Modifier
-                            .height(32.dp)
-                            .width(32.dp)
-                            .paint(
-                                painter = painterResource(R.drawable.ic_squircle),
-                                contentScale = ContentScale.FillWidth,
-                                colorFilter = ColorFilter.tint(color = iconColor)
-                            )
-                            .padding(4.dp),
-                        imageVector = icon,
-                        contentDescription = title,
-                        tint = Color.White
-                    )
+                            .weight(1f),
+                        text = title,
+                        lineHeight = 15.sp)
                     Spacer(modifier = Modifier.size(16.dp))
+                    Text(
+                        modifier = Modifier
+                            .alpha(0.6f)
+                            .padding(4.dp),
+                        text = summary(primaryPrefValue, secondaryPrefValue),
+                        maxLines = 3,
+                        lineHeight = 15.sp,
+                        overflow = TextOverflow.Ellipsis,
+                        textAlign = TextAlign.End
+                    )
                 }
-                Text(
-                    modifier = Modifier
-                        .weight(1f),
-                    text = title,
-                    lineHeight = 15.sp)
-                Spacer(modifier = Modifier.size(16.dp))
-                Text(
-                    modifier = Modifier
-                        .alpha(0.6f)
-                        .padding(4.dp),
-                    text = summary(primaryPrefValue, secondaryPrefValue),
-                    maxLines = 3,
-                    lineHeight = 15.sp,
-                    overflow = TextOverflow.Ellipsis,
-                    textAlign = TextAlign.End
-                )
             }
-        }
-        if (isDialogOpen.value) {
-            JetPrefAlertDialog(
-                title = title,
-                confirmLabel = dialogStrings.confirmLabel,
-                onConfirm = {
-                    primaryPref.set(primarySliderValue)
-                    secondaryPref.set(secondarySliderValue)
-                    isDialogOpen.value = false
-                },
-                dismissLabel = dialogStrings.dismissLabel,
-                onDismiss = { isDialogOpen.value = false },
-                neutralLabel = dialogStrings.neutralLabel,
-                onNeutral = {
-                    primaryPref.reset()
-                    secondaryPref.reset()
-                    isDialogOpen.value = false
-                }
-            ) {
-                Column {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                    ) {
-                        Text(primaryLabel)
-                        Text(valueLabel(primarySliderValue))
+            if (isDialogOpen.value) {
+                JetPrefAlertDialog(
+                    title = title,
+                    confirmLabel = dialogStrings.confirmLabel,
+                    onConfirm = {
+                        primaryPref.set(primarySliderValue)
+                        secondaryPref.set(secondarySliderValue)
+                        isDialogOpen.value = false
+                    },
+                    dismissLabel = dialogStrings.dismissLabel,
+                    onDismiss = { isDialogOpen.value = false },
+                    neutralLabel = dialogStrings.neutralLabel,
+                    onNeutral = {
+                        primaryPref.reset()
+                        secondaryPref.reset()
+                        isDialogOpen.value = false
                     }
-                    Slider(
-                        value = primarySliderValue.toFloat(),
-                        valueRange = min.toFloat()..max.toFloat(),
-                        steps = ((max.toFloat() - min.toFloat()) / stepIncrement.toFloat()).toInt() - 1,
-                        onValueChange = { primarySliderValue = convertToV(it) },
-                        onValueChangeFinished = { onPreviewSelectedPrimaryValue(primarySliderValue) },
-                        colors = SliderDefaults.colors(
-                            thumbColor = MaterialTheme.colorScheme.primary,
-                            activeTrackColor = MaterialTheme.colorScheme.primary,
-                            activeTickColor = Color.Transparent,
-                            inactiveTrackColor = MaterialTheme.colorScheme.onSurface.copy(
-                                alpha = SliderDefaults.colors().inactiveTrackColor.alpha,
+                ) {
+                    Column {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                        ) {
+                            Text(primaryLabel)
+                            Text(valueLabel(primarySliderValue))
+                        }
+                        Slider(
+                            value = primarySliderValue.toFloat(),
+                            valueRange = min.toFloat()..max.toFloat(),
+                            steps = ((max.toFloat() - min.toFloat()) / stepIncrement.toFloat()).toInt() - 1,
+                            onValueChange = { primarySliderValue = convertToV(it) },
+                            onValueChangeFinished = { onPreviewSelectedPrimaryValue(primarySliderValue) },
+                            colors = SliderDefaults.colors(
+                                thumbColor = MaterialTheme.colorScheme.primary,
+                                activeTrackColor = MaterialTheme.colorScheme.primary,
+                                activeTickColor = Color.Transparent,
+                                inactiveTrackColor = MaterialTheme.colorScheme.onSurface.copy(
+                                    alpha = SliderDefaults.colors().inactiveTrackColor.alpha,
+                                ),
+                                inactiveTickColor = Color.Transparent,
                             ),
-                            inactiveTickColor = Color.Transparent,
-                        ),
-                        modifier = Modifier.fillMaxWidth(),
-                    )
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                    ) {
-                        Text(secondaryLabel)
-                        Text(valueLabel(secondarySliderValue))
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                        ) {
+                            Text(secondaryLabel)
+                            Text(valueLabel(secondarySliderValue))
+                        }
+                        Slider(
+                            value = secondarySliderValue.toFloat(),
+                            valueRange = min.toFloat()..max.toFloat(),
+                            steps = ((max.toFloat() - min.toFloat()) / stepIncrement.toFloat()).toInt() - 1,
+                            onValueChange = { secondarySliderValue = convertToV(it) },
+                            onValueChangeFinished = { onPreviewSelectedSecondaryValue(secondarySliderValue) },
+                            colors = SliderDefaults.colors(
+                                thumbColor = MaterialTheme.colorScheme.primary,
+                                activeTrackColor = MaterialTheme.colorScheme.primary,
+                                activeTickColor = Color.Transparent,
+                                inactiveTrackColor = MaterialTheme.colorScheme.onSurface.copy(
+                                    alpha = SliderDefaults.colors().inactiveTrackColor.alpha,
+                                ),
+                                inactiveTickColor = Color.Transparent,
+                            ),
+                            modifier = Modifier.fillMaxWidth(),
+                        )
                     }
-                    Slider(
-                        value = secondarySliderValue.toFloat(),
-                        valueRange = min.toFloat()..max.toFloat(),
-                        steps = ((max.toFloat() - min.toFloat()) / stepIncrement.toFloat()).toInt() - 1,
-                        onValueChange = { secondarySliderValue = convertToV(it) },
-                        onValueChangeFinished = { onPreviewSelectedSecondaryValue(secondarySliderValue) },
-                        colors = SliderDefaults.colors(
-                            thumbColor = MaterialTheme.colorScheme.primary,
-                            activeTrackColor = MaterialTheme.colorScheme.primary,
-                            activeTickColor = Color.Transparent,
-                            inactiveTrackColor = MaterialTheme.colorScheme.onSurface.copy(
-                                alpha = SliderDefaults.colors().inactiveTrackColor.alpha,
-                            ),
-                            inactiveTickColor = Color.Transparent,
-                        ),
-                        modifier = Modifier.fillMaxWidth(),
-                    )
                 }
             }
         }
@@ -516,7 +527,7 @@ internal fun <T : PreferenceModel, V> PreferenceUiScope<T>.DialogSliderPreferenc
 
 @ExperimentalJetPrefDatastoreUi
 @Composable
-fun <T : PreferenceModel> PreferenceUiScope<T>.DialogSliderPreferenceRow(
+fun DialogSliderPreferenceRow(
     primaryPref: PreferenceData<Float>,
     secondaryPref: PreferenceData<Float>,
     modifier: Modifier = Modifier,

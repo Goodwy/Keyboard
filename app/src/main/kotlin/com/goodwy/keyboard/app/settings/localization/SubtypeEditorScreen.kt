@@ -30,11 +30,16 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.ListItemColors
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -53,13 +58,13 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Observer
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.LocalNavController
 import com.goodwy.keyboard.app.Routes
@@ -84,6 +89,7 @@ import com.goodwy.keyboard.lib.compose.FlorisButtonBar
 import com.goodwy.keyboard.lib.compose.FlorisDropdownLikeButton
 import com.goodwy.keyboard.lib.compose.FlorisDropdownMenu
 import com.goodwy.keyboard.lib.compose.FlorisScreen
+import com.goodwy.keyboard.lib.compose.florisScrollbar
 import com.goodwy.keyboard.lib.compose.stringRes
 import com.goodwy.keyboard.lib.ext.ExtensionComponentName
 import com.goodwy.keyboard.lib.observeAsNonNullState
@@ -189,7 +195,7 @@ fun SubtypeEditorScreen(id: Long?) = FlorisScreen {
     })
 
     val selectValue = stringRes(R.string.settings__localization__subtype_select_placeholder)
-    val selectListValues = remember (selectValue) { listOf(selectValue) }
+    val selectListValues = remember(selectValue) { listOf(selectValue) }
 
     val prefs by florisPreferenceModel()
     val navController = LocalNavController.current
@@ -239,7 +245,7 @@ fun SubtypeEditorScreen(id: Long?) = FlorisScreen {
     @Composable
     fun SubtypePropertyDropdown(
         title: String,
-        layoutType: LayoutType
+        layoutType: LayoutType,
     ) {
         SubtypeProperty(title) {
             SubtypeLayoutDropdown(
@@ -339,6 +345,7 @@ fun SubtypeEditorScreen(id: Long?) = FlorisScreen {
                                         DisplayLanguageNamesIn.NATIVE_LOCALE -> suggestedPreset.locale.displayName(suggestedPreset.locale)
                                     },
                                     secondaryText = suggestedPreset.preferred.characters.componentId,
+//                                    colors = ListItemDefaults.colors(containerColor = CardDefaults.cardColors().containerColor),
                                 )
                                 if (suggestedPresets.last() != suggestedPreset) DividerRow(start = 16.dp)
                             }
@@ -493,20 +500,30 @@ fun SubtypeEditorScreen(id: Long?) = FlorisScreen {
                     showSubtypePresetsDialog = false
                 },
             ) {
-                LazyColumn {
-                    items(subtypePresets) { subtypePreset ->
-                        JetPrefListItem(
-                            modifier = Modifier.clickable {
-                                subtypeEditor.applySubtype(subtypePreset.toSubtype())
-                                showSubtypePresetsDialog = false
-                            },
-                            text = when (displayLanguageNamesIn) {
-                                DisplayLanguageNamesIn.SYSTEM_LOCALE -> subtypePreset.locale.displayName()
-                                DisplayLanguageNamesIn.NATIVE_LOCALE -> subtypePreset.locale.displayName(subtypePreset.locale)
-                            },
-                            secondaryText = subtypePreset.preferred.characters.componentId,
-                        )
+                Column {
+                    HorizontalDivider()
+                    val lazyListState = rememberLazyListState()
+                    LazyColumn(
+                        modifier = Modifier
+                            .florisScrollbar(lazyListState, isVertical = true).weight(1f),
+                        state = lazyListState,
+                    ) {
+                        items(subtypePresets) { subtypePreset ->
+                            JetPrefListItem(
+                                modifier = Modifier.clickable {
+                                    subtypeEditor.applySubtype(subtypePreset.toSubtype())
+                                    showSubtypePresetsDialog = false
+                                },
+                                text = when (displayLanguageNamesIn) {
+                                    DisplayLanguageNamesIn.SYSTEM_LOCALE -> subtypePreset.locale.displayName()
+                                    DisplayLanguageNamesIn.NATIVE_LOCALE -> subtypePreset.locale.displayName(subtypePreset.locale)
+                                },
+                                secondaryText = subtypePreset.preferred.characters.componentId,
+                                colors = ListItemDefaults.colors(containerColor = AlertDialogDefaults.containerColor),
+                            )
+                        }
                     }
+                    HorizontalDivider()
                 }
             }
         }
@@ -578,6 +595,7 @@ fun JetPrefListItemRow(
     text: String,
     secondaryText: String? = null,
     enabled: Boolean = true,
+//    colors: ListItemColors = ListItemDefaults.colors(),
     paddingStart: Dp = 16.dp,
     paddingEnd: Dp = 12.dp,
     paddingTop: Dp = 6.dp,

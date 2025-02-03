@@ -23,10 +23,12 @@ import android.os.Debug
 import com.goodwy.keyboard.BuildConfig
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.AppPrefs
-import com.goodwy.lib.android.systemService
+import com.goodwy.keyboard.extensionManager
 import com.goodwy.keyboard.lib.titlecase
 import com.goodwy.keyboard.lib.util.TimeUtils
 import com.goodwy.keyboard.lib.util.UnitUtils
+import com.goodwy.keyboard.subtypeManager
+import com.goodwy.lib.android.systemService
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -35,6 +37,16 @@ import java.io.InputStreamReader
 object Devtools {
     fun generateDebugLog(context: Context, prefs: AppPrefs? = null, includeLogcat: Boolean = false): String {
         return buildString {
+            append(generateDebugLogHeader(context, prefs))
+            if (includeLogcat) {
+                appendLine()
+                append(generateLogcatDump())
+            }
+        }
+    }
+
+    fun generateDebugLogHeader(context: Context, prefs: AppPrefs? = null): String {
+        return buildString {
             append(generateSystemInfoLog(context))
             appendLine()
             append(generateAppInfoLog(context))
@@ -42,9 +54,33 @@ object Devtools {
                 appendLine()
                 append(generateFeatureConfigLog(prefs))
             }
+            appendLine()
+            append(generateExtensionConfigLog(context))
+            appendLine()
+            append(generateActiveSubtypeConfigLog(context))
+        }
+    }
+
+    fun generateDebugLogForGithub(context: Context, prefs: AppPrefs? = null, includeLogcat: Boolean = false): String {
+        return buildString {
+            appendLine("<details>")
+            appendLine("<summary>Detailed info (Debug log header)</summary>")
+            appendLine()
+            appendLine("```")
+            append(generateDebugLogHeader(context, prefs))
+            appendLine()
+            appendLine("```")
+            appendLine("</details>")
             if (includeLogcat) {
                 appendLine()
+                appendLine("<details>")
+                appendLine("<summary>Debug log content</summary>")
+                appendLine()
+                appendLine("```")
                 append(generateLogcatDump())
+                appendLine()
+                appendLine("```")
+                appendLine("</details>")
             }
         }
     }
@@ -85,6 +121,32 @@ object Devtools {
             append("Inline autofill enabled     : ").appendLine(prefs.suggestion.api30InlineSuggestionsEnabled.get())
             append("Glide enabled               : ").appendLine(prefs.glide.enabled.get())
             append("Internal clipboard enabled  : ").appendLine(prefs.clipboard.useInternalClipboard.get())
+        }
+    }
+
+    fun generateExtensionConfigLog(context: Context, withTitle: Boolean = true): String {
+        return buildString {
+            if (withTitle) appendLine("======= EXTENSION CONFIG =======")
+            appendLine("Theme extensions    : ")
+            context.extensionManager().value.themes.value?.forEach { append("    ").appendLine(it.meta.id) }
+            appendLine("Language Packs      : ")
+            context.extensionManager().value.languagePacks.value?.forEach { append("    ").appendLine(it.meta.id) }
+        }
+    }
+
+    fun generateActiveSubtypeConfigLog(context: Context, withTitle: Boolean = true): String {
+        return buildString {
+            if (withTitle) appendLine("======= ACTIVE SUBTYPE CONFIG =======")
+            context.subtypeManager().value.let { subtypeManager ->
+                appendLine("Active Subtype      : ")
+                append("    ")
+                appendLine(subtypeManager.activeSubtype.toShortString())
+                appendLine("Installed Subtypes    : ")
+                subtypeManager.subtypes.forEach { subtype ->
+                    append("    ").appendLine(subtype.toShortString())
+                }
+            }
+
         }
     }
 

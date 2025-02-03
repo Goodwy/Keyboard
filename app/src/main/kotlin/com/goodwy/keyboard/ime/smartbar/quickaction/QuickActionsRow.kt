@@ -113,7 +113,7 @@ fun QuickActionsRow(
                 QuickActionButton(action, evaluator)
             }
             if (showOverflowAction && !flipToggles) {
-                //TODO Goodwy. Candidates Divider
+                //TODO Goodwy. More actions Divider
                 VerticalDivider(
                     modifier = Modifier
                         .fillMaxHeight(0.6f)

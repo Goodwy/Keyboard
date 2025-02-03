@@ -110,7 +110,9 @@ class ClipboardManager(
     val primaryClipFlow = _primaryClipFlow.asStateFlow()
     inline var primaryClip
         get() = primaryClipFlow.value
-        private set(v) { _primaryClipFlow.value = v }
+        private set(v) {
+            _primaryClipFlow.value = v
+        }
 
     init {
         systemClipboardManager.addPrimaryClipChangedListener(this)
@@ -252,14 +254,20 @@ class ClipboardManager(
     }
 
     private fun enforceExpiryDate(clipHistory: ClipboardHistory) {
+        val itemsToRemove = mutableSetOf<ClipboardItem>()
         if (prefs.clipboard.cleanUpOld.get()) {
             val nonPinnedItems = clipHistory.recent + clipHistory.other
             val expiryTime = System.currentTimeMillis() - (prefs.clipboard.cleanUpAfter.get() * 60 * 1000)
-            val itemsToRemove = nonPinnedItems.filter { it.creationTimestampMs < expiryTime }
-            if (itemsToRemove.isNotEmpty()) {
-                ioScope.launch {
-                    clipHistoryDao?.delete(itemsToRemove)
-                }
+            itemsToRemove.addAll(nonPinnedItems.filter { it.creationTimestampMs < expiryTime })
+        }
+        if (prefs.clipboard.autoCleanSensitive.get()) {
+            val sensitiveData = clipHistory.all.filter { it.isSensitive }
+            val expiryTime = System.currentTimeMillis() - (prefs.clipboard.autoCleanSensitiveAfter.get() * 1000)
+            itemsToRemove.addAll(sensitiveData.filter { it.creationTimestampMs < expiryTime })
+        }
+        if (itemsToRemove.isNotEmpty()) {
+            ioScope.launch {
+                clipHistoryDao?.delete(itemsToRemove.toList())
             }
         }
     }
@@ -278,6 +286,9 @@ class ClipboardManager(
         }
     }
 
+    /**
+     * Clears all unpinned items from the clipboard history
+     */
     fun clearHistory() {
         ioScope.launch {
             for (item in history().all) {
@@ -287,6 +298,9 @@ class ClipboardManager(
         }
     }
 
+    /**
+     * Clears the full clipboard history
+     */
     fun clearFullHistory() {
         ioScope.launch {
             for (item in history().all) {
@@ -300,25 +314,14 @@ class ClipboardManager(
     /**
      * Restore the clipboard history from a [List]
      *
-     * @param shouldReset if the history should be reset
      * @param items the [ClipboardItem] list with the new items
      */
-    fun restoreHistory(items: List<ClipboardItem>, shouldReset: Boolean, itemType: ItemType) {
+    fun restoreHistory(items: List<ClipboardItem>) {
         ioScope.launch {
-            if (shouldReset) {
-                for (item in history().all) {
-                    item.close(appContext)
-                }
-                clipHistoryDao?.deleteAllFromType(itemType)
-                for (item in items) {
+            val currentHistory = this@ClipboardManager.history().all
+            for (item in items) {
+                if (!currentHistory.map { it.copy(id = 0) }.contains(item.copy(id = 0))) {
                     this@ClipboardManager.insertClip(item.copy(id = 0))
-                }
-            } else {
-                val currentHistory = this@ClipboardManager.history().all
-                for (item in items) {
-                    if (!currentHistory.map { it.copy(id = 0) }.contains(item.copy(id = 0))) {
-                        this@ClipboardManager.insertClip(item.copy(id = 0))
-                    }
                 }
             }
         }
@@ -344,7 +347,7 @@ class ClipboardManager(
 
     fun unpinClip(item: ClipboardItem) {
         ioScope.launch {
-            clipHistoryDao?.update(item.copy(isPinned =  false))
+            clipHistoryDao?.update(item.copy(isPinned = false))
         }
     }
 

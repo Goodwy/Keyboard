@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.kotlin.jvm)
 }
@@ -33,14 +35,16 @@ sourceSets {
     }
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions {
-        jvmTarget = "1.8"
-        freeCompilerArgs = listOf(
-            "-Xallow-result-return-type",
+tasks {
+    compileKotlin {
+        compilerOptions.jvmTarget = JvmTarget.JVM_1_8
+        compilerOptions.freeCompilerArgs = listOf(
             "-opt-in=kotlin.contracts.ExperimentalContracts",
             "-Xjvm-default=all-compatibility",
         )
+    }
+    compileTestKotlin {
+        compilerOptions.jvmTarget = JvmTarget.JVM_1_8
     }
 }
 

@@ -46,6 +46,7 @@ import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.stringRes
 import com.goodwy.lib.android.AndroidSettings
 import com.goodwy.lib.android.showLongToast
+import com.goodwy.lib.android.AndroidVersion
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 
 class DebugOnPurposeCrashException : Exception(
@@ -74,13 +75,6 @@ fun DevtoolsScreen() = FlorisScreen {
 
         PreferenceGroupCard(title = stringRes(R.string.devtools__title)) {
             SwitchPreferenceRow(
-                prefs.devtools.showHeapMemoryStats,
-                title = stringRes(R.string.devtools__show_heap_memory_stats__label),
-                summary = stringRes(R.string.devtools__show_heap_memory_stats__summary),
-                enabledIf = { prefs.devtools.enabled isEqualTo true },
-            )
-            DividerRow(start = 16.dp)
-            SwitchPreferenceRow(
                 prefs.devtools.showPrimaryClip,
                 title = stringRes(R.string.devtools__show_primary_clip__label),
                 summary = stringRes(R.string.devtools__show_primary_clip__summary),
@@ -99,6 +93,14 @@ fun DevtoolsScreen() = FlorisScreen {
                 title = stringRes(R.string.devtools__show_spelling_overlay__label),
                 summary = stringRes(R.string.devtools__show_spelling_overlay__summary),
                 enabledIf = { prefs.devtools.enabled isEqualTo true },
+            )
+            DividerRow(start = 16.dp)
+            SwitchPreferenceRow(
+                prefs.devtools.showInlineAutofillOverlay,
+                title = stringRes(R.string.devtools__show_inline_autofill_overlay__label),
+                summary = stringRes(R.string.devtools__show_inline_autofill_overlay__summary),
+                enabledIf = { prefs.devtools.enabled isEqualTo true },
+                visibleIf = { AndroidVersion.ATLEAST_API30_R },
             )
             DividerRow(start = 16.dp)
             SwitchPreferenceRow(

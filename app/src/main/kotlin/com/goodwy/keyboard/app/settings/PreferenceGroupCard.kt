@@ -26,6 +26,8 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -36,38 +38,79 @@ import dev.patrickgold.jetpref.datastore.model.PreferenceModel
 import dev.patrickgold.jetpref.datastore.ui.PreferenceUiContent
 import dev.patrickgold.jetpref.datastore.ui.PreferenceUiScope
 
+/**
+ * Composition local for the global setting if all sub-preference composables should reserve an icon space.
+ * This can be overridden for each individual preference composable.
+ *
+ * @since 0.2.0
+ */
+val LocalIconSpaceReserved = staticCompositionLocalOf { false }
+/**
+ * Composition local of the current isEnabled state which applies.
+ *
+ * @since 0.2.0
+ */
+val LocalIsPrefEnabled = staticCompositionLocalOf { true }
+/**
+ * Composition local of the current isVisible state which applies.
+ *
+ * @since 0.2.0
+ */
+val LocalIsPrefVisible = staticCompositionLocalOf { true }
+
+//Modified version https://github.com/patrickgold/jetpref/blob/main/datastore-ui/src/main/kotlin/dev/patrickgold/jetpref/datastore/ui/PreferenceUi.kt
+/**
+ * Material preference group which automatically provides a title UI.
+ *
+ * @param modifier Modifier to be applied to this group.
+ * @param icon The [ImageVector] of the group title.
+ * @param iconSpaceReserved If the space at the start of the list item should be reserved (blank
+ *  space) if no `icon` is provided. Also acts as a local setting if all sub-preference composables
+ *  should reserve an additional space if no icon is specified. It Can be overridden for each
+ *  preference composable.
+ * @param title The title of this preference group.
+ * @param enabledIf Evaluator scope which allows to dynamically decide if this preference layout
+ *  should be enabled (true) or disabled (false).
+ * @param visibleIf Evaluator scope which allows to dynamically decide if this preference layout
+ *  should be visible (true) or hidden (false).
+ * @param content The content of this preference group.
+ *
+ * @since 0.1.0
+ */
 @Composable
 fun <T : PreferenceModel> PreferenceUiScope<T>.PreferenceGroupCard(
     modifier: Modifier = Modifier,
-    iconSpaceReserved: Boolean = false,
+    iconSpaceReserved: Boolean = false, //LocalIconSpaceReserved.current
     title: String? = null,
     paddingTop: Dp = 24.dp,
     enabledIf: PreferenceDataEvaluator = { true },
     visibleIf: PreferenceDataEvaluator = { true },
     content: PreferenceUiContent<T>,
 ) {
-    val evalScope = PreferenceDataEvaluatorScope.instance()
-    if (visibleIf(evalScope)) {
+    if (LocalIsPrefVisible.current && visibleIf(PreferenceDataEvaluatorScope)) {
         Column(modifier = modifier) {
             val preferenceScope = PreferenceUiScope(
                 prefs = this@PreferenceGroupCard.prefs,
-                iconSpaceReserved = iconSpaceReserved,
-                enabledIf = { enabledIf(evalScope) },
-                visibleIf = { visibleIf(evalScope) },
                 columnScope = this@Column,
             )
 
-            if (title != null) {
-                Spacer(modifier = Modifier.size(16.dp))
-                HeaderRow(title)
-            } else Spacer(modifier = Modifier.size(paddingTop))
-
-            Card(
-                modifier = Modifier.padding(horizontal = 12.dp),
-                shape = RoundedCornerShape(12.dp),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.inverseOnSurface)
+            CompositionLocalProvider(
+                LocalIconSpaceReserved provides iconSpaceReserved,
+                LocalIsPrefEnabled provides enabledIf(PreferenceDataEvaluatorScope),
+                LocalIsPrefVisible provides visibleIf(PreferenceDataEvaluatorScope),
             ) {
-                content(preferenceScope)
+                if (title != null) {
+                    Spacer(modifier = Modifier.size(16.dp))
+                    HeaderRow(title)
+                } else Spacer(modifier = Modifier.size(paddingTop))
+
+                Card(
+                    modifier = Modifier.padding(horizontal = 12.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.inverseOnSurface)
+                ) {
+                    content(preferenceScope)
+                }
             }
         }
     }

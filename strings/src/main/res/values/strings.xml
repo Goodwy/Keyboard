@@ -43,6 +43,13 @@
             \nIf you like our apps which are offline, non-intrusive and have no ads, please consider supporting us in some way. We would be very grateful.
             \n\nThank you!
     </string>
+    <string name="donate_text_no_gp">
+            Due to issues we are temporarily unable to make payments through Google Play,
+            so for this period we are giving all users the option to manually unlock all features of the app.
+            \nIf you like our apps which are offline, non-intrusive and have no ads,
+            please consider supporting us in some way. We would be very grateful.
+            \n\nThank you!
+    </string>
     <!--Not used-->
     <string name="lifebuoy_title">We will support you</string>
     <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>

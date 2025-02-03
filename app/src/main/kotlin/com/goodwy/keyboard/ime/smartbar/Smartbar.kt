@@ -42,6 +42,7 @@ import androidx.compose.material.icons.filled.UnfoldMore
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -56,6 +57,7 @@ import androidx.compose.ui.unit.dp
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.florisPreferenceModel
 import com.goodwy.keyboard.ime.keyboard.FlorisImeSizing
+import com.goodwy.keyboard.ime.nlp.NlpInlineAutofill
 import com.goodwy.keyboard.ime.smartbar.quickaction.QuickActionButton
 import com.goodwy.keyboard.ime.smartbar.quickaction.QuickActionsRow
 import com.goodwy.keyboard.ime.smartbar.quickaction.ToggleOverflowPanelAction
@@ -64,6 +66,8 @@ import com.goodwy.keyboard.ime.theme.FlorisImeUi
 import com.goodwy.keyboard.keyboardManager
 import com.goodwy.keyboard.lib.compose.horizontalTween
 import com.goodwy.keyboard.lib.compose.verticalTween
+import com.goodwy.keyboard.nlpManager
+import com.goodwy.lib.android.AndroidVersion
 import com.goodwy.lib.snygg.ui.snyggBackground
 import com.goodwy.lib.snygg.ui.snyggBorder
 import com.goodwy.lib.snygg.ui.snyggShadow
@@ -138,6 +142,13 @@ private fun SmartbarMainRow(modifier: Modifier = Modifier) {
     val prefs by florisPreferenceModel()
     val context = LocalContext.current
     val keyboardManager by context.keyboardManager()
+    val nlpManager by context.nlpManager()
+
+    val inlineSuggestions by NlpInlineAutofill.suggestions.collectAsState()
+    LaunchedEffect(inlineSuggestions) {
+        nlpManager.autoExpandCollapseSmartbarActions(null, inlineSuggestions)
+    }
+    val shouldShowInlineSuggestionsUi = AndroidVersion.ATLEAST_API30_R && inlineSuggestions.isNotEmpty()
 
     val smartbarLayout by prefs.smartbar.layout.observeAsState()
     val flipToggles by prefs.smartbar.flipToggles.observeAsState()
@@ -225,7 +236,11 @@ private fun SmartbarMainRow(modifier: Modifier = Modifier) {
                 enter = enterTransition,
                 exit = exitTransition,
             ) {
-                CandidatesRow()
+                if (shouldShowInlineSuggestionsUi) {
+                    InlineSuggestionsUi(inlineSuggestions)
+                } else {
+                    CandidatesRow()
+                }
             }
             androidx.compose.animation.AnimatedVisibility(
                 visible = expanded,
@@ -334,11 +349,19 @@ private fun SmartbarMainRow(modifier: Modifier = Modifier) {
     ) {
         when (smartbarLayout) {
             SmartbarLayout.SUGGESTIONS_ONLY -> {
-                CandidatesRow()
+                if (shouldShowInlineSuggestionsUi) {
+                    InlineSuggestionsUi(inlineSuggestions)
+                } else {
+                    CandidatesRow()
+                }
             }
 
             SmartbarLayout.ACTIONS_ONLY -> {
-                QuickActionsRow(elementName = FlorisImeUi.SmartbarSharedActionsRow)
+                if (shouldShowInlineSuggestionsUi) {
+                    InlineSuggestionsUi(inlineSuggestions)
+                } else {
+                    QuickActionsRow(elementName = FlorisImeUi.SmartbarSharedActionsRow)
+                }
             }
 
             SmartbarLayout.SUGGESTIONS_ACTIONS_SHARED -> {

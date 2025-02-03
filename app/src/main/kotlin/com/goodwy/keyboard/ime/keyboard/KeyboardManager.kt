@@ -91,7 +91,7 @@ class KeyboardManager(context: Context) : InputKeyEventReceiver {
     private val subtypeManager by context.subtypeManager()
 
     private val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())
-    private val layoutManager = LayoutManager(context)
+    val layoutManager = LayoutManager(context)
     private val keyboardCache = TextKeyboardCache()
 
     val resources = KeyboardManagerResources()
@@ -142,6 +142,9 @@ class KeyboardManager(context: Context) : InputKeyEventReceiver {
             prefs.keyboard.utilityKeyEnabled.observeForever {
                 updateActiveEvaluators()
             }
+            prefs.keyboard.utilityKeyAction.observeForever {
+                updateActiveEvaluators()
+            }
             prefs.keyboard.commaKeyEnabled.observeForever {
                 updateActiveEvaluators()
             }
@@ -155,6 +158,9 @@ class KeyboardManager(context: Context) : InputKeyEventReceiver {
                 if (prefs.gestures.useHideLabelWhenMoveCursor.get()) updateActiveEvaluators()
             }
             activeState.collectLatestIn(scope) {
+                updateActiveEvaluators()
+            }
+            subtypeManager.subtypesFlow.collectLatestIn(scope) {
                 updateActiveEvaluators()
             }
             subtypeManager.activeSubtypeFlow.collectLatestIn(scope) {

@@ -193,6 +193,6 @@ fun GesturesScreen() = FlorisScreen {
                 stepIncrement = 1,
             )
         }
-        Spacer(modifier = Modifier.size(32.dp))
+        Spacer(modifier = Modifier.size(82.dp))
     }
 }

@@ -37,6 +37,13 @@
     <string name="locked">Bloqueado</string>
     <string name="unlock">Desbloqueio</string>
     <string name="donate_text">Para aqueles que não usam o Google Play, é possível desbloquear todas as funções do aplicativo.</string>
+    <string name="donate_text_no_gp">
+            Devido a problemas, estamos temporariamente impossibilitados de fazer pagamentos pelo Google Play,
+            portanto, durante esse período, estamos oferecendo a todos os usuários a opção de desbloquear manualmente todos os recursos do aplicativo.
+            \nSe você gosta dos nossos aplicativos, que são off-line, não intrusivos e não têm anúncios, considere a possibilidade de nos apoiar de alguma forma.
+            Ficaremos muito gratos.
+            \n\nObrigado!
+    </string>
     <!--Not used-->
     <string name="lifebuoy_title">We will support you</string>
     <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>

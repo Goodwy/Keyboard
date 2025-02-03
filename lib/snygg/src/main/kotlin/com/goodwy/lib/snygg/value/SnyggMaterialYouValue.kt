@@ -17,6 +17,7 @@
 package com.goodwy.lib.snygg.value
 
 import android.content.Context
+import androidx.annotation.RequiresApi
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -33,6 +34,7 @@ sealed interface SnyggMaterialYouValue : SnyggValue {
     val colorName: String
     val dark: Boolean
 
+    @RequiresApi(31)
     fun loadColor(context: Context) = MaterialYouColor.loadColor(context, colorName, dark)
 }
 
@@ -75,6 +77,7 @@ object MaterialYouColor {
     const val lightColorName = "dynamic-light-color"
     const val darkColorName = "dynamic-dark-color"
 
+    @RequiresApi(31)
     private var lightColorScheme: ColorScheme? = null
     private var darkColorScheme: ColorScheme? = null
 
@@ -140,6 +143,7 @@ object MaterialYouColor {
 
     val colorNames = ColorPalette.entries.map { it.id }
 
+    @RequiresApi(31)
     fun loadColor(context: Context, colorName: String, dark: Boolean): Color {
         val colorScheme = getAndCacheColorScheme(context, dark)
 

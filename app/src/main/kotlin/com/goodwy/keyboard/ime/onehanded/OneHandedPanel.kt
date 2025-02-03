@@ -22,8 +22,8 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.ZoomOutMap
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -55,7 +55,8 @@ fun RowScope.OneHandedPanel(
     Column(
         modifier = modifier
             .weight(weight)
-            .snyggBackground(context, oneHandedPanelStyle),
+            .snyggBackground(context, oneHandedPanelStyle)
+            .height(FlorisImeSizing.imeUiHeight()),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly,
     ) {
@@ -77,13 +78,13 @@ fun RowScope.OneHandedPanel(
                 inputFeedbackController.keyPress()
                 prefs.keyboard.oneHandedMode.set(panelSide)
             },
-            modifier = Modifier.height(FlorisImeSizing.keyboardUiHeight()).fillMaxWidth()
+            modifier = Modifier.weight(1f).fillMaxWidth(),
         ) {
             Icon(
                 imageVector = if (panelSide == OneHandedMode.START) {
-                    Icons.Default.KeyboardArrowLeft
+                    Icons.AutoMirrored.Filled.KeyboardArrowLeft
                 } else {
-                    Icons.Default.KeyboardArrowRight
+                    Icons.AutoMirrored.Filled.KeyboardArrowRight
                 },
                 contentDescription = stringRes(
                     if (panelSide == OneHandedMode.START) {

@@ -16,6 +16,8 @@
 
 package com.goodwy.keyboard.ime.theme
 
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import com.goodwy.keyboard.lib.ext.Extension
 import com.goodwy.keyboard.lib.ext.ExtensionEditor
 import com.goodwy.keyboard.lib.ext.ExtensionMeta
@@ -41,14 +43,14 @@ class ThemeExtension(
     override fun edit() = ThemeExtensionEditor(
         meta = meta,
         dependencies = dependencies?.toMutableList() ?: mutableListOf(),
-        themes = themes.map { it.edit() }.toMutableList(),
+        themes = mutableStateListOf(*themes.map { it.edit() }.toTypedArray()),
     )
 }
 
 class ThemeExtensionEditor(
     override var meta: ExtensionMeta,
     override val dependencies: MutableList<String>,
-    val themes: MutableList<ThemeExtensionComponentEditor>,
+    val themes: SnapshotStateList<ThemeExtensionComponentEditor>,
 ) : ExtensionEditor {
 
     override fun build() = ThemeExtension(

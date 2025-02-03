@@ -1,4 +1,4 @@
-package com.goodwy.keyboard
+package com.goodwy.keyboard.ime.clipboard
 
 import android.content.ClipData
 import android.content.Intent
@@ -10,9 +10,11 @@ import android.provider.MediaStore
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -28,6 +30,7 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.apptheme.FlorisAppTheme
 import com.goodwy.keyboard.app.florisPreferenceModel
 import com.goodwy.keyboard.lib.compose.ProvideLocalizedResources
@@ -84,6 +87,7 @@ class FlorisCopyToClipboardActivity : ComponentActivity() {
                     } else {
                         val uri: Uri? =
                             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                                @Suppress("DEPRECATION")
                                 intent.getParcelableExtra(Intent.EXTRA_STREAM)
                             } else {
                                 intent.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
@@ -114,12 +118,14 @@ class FlorisCopyToClipboardActivity : ComponentActivity() {
                             )
                         }
                         bitmap?.let {
-                            Image(
-                                modifier = Modifier
-                                    .padding(start = 64.dp, end = 64.dp, top = 32.dp, bottom = 8.dp),
-                                bitmap = bitmap!!.asImageBitmap(),
-                                contentDescription = null
-                            )
+                            Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                                Image(
+                                    modifier = Modifier
+                                        .padding(start = 64.dp, end = 64.dp, top = 32.dp, bottom = 8.dp),
+                                    bitmap = bitmap!!.asImageBitmap(),
+                                    contentDescription = null
+                                )
+                            }
                         }
                     }
                 }

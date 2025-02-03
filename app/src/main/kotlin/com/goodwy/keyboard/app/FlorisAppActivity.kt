@@ -23,7 +23,9 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.displayCutoutPadding
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.MaterialTheme
@@ -31,12 +33,13 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.flowWithLifecycle
@@ -54,6 +57,7 @@ import com.goodwy.keyboard.lib.FlorisLocale
 import com.goodwy.keyboard.lib.compose.LocalPreviewFieldController
 import com.goodwy.keyboard.lib.compose.PreviewKeyboardField
 import com.goodwy.keyboard.lib.compose.ProvideLocalizedResources
+import com.goodwy.keyboard.lib.compose.conditional
 import com.goodwy.keyboard.lib.compose.rememberPreviewFieldController
 import com.goodwy.keyboard.lib.compose.stringRes
 import com.goodwy.keyboard.lib.util.AppVersionUtils
@@ -208,19 +212,19 @@ class FlorisAppActivity : ComponentActivity() {
         }
     }
 
-    override fun onNewIntent(intent: Intent?) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
 
-        if (intent?.action == Intent.ACTION_VIEW && intent.categories?.contains(Intent.CATEGORY_BROWSABLE) == true) {
+        if (intent.action == Intent.ACTION_VIEW && intent.categories?.contains(Intent.CATEGORY_BROWSABLE) == true) {
             intentToBeHandled = intent
             return
         }
-        if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
+        if (intent.action == Intent.ACTION_VIEW && intent.data != null) {
             intentToBeHandled = intent
             return
         }
-        if (intent?.action == Intent.ACTION_SEND && intent.clipData != null) {
+        if (intent.action == Intent.ACTION_SEND && intent.clipData != null) {
             intentToBeHandled = intent
             return
         }
@@ -247,14 +251,34 @@ class FlorisAppActivity : ComponentActivity() {
                 dismissLabel = stringRes(R.string.action__cancel),
                 neutralLabel = stringRes(R.string.action__default),
             ) {
-                Column(
+//                Column(
+//                    modifier = Modifier
+//                        //.statusBarsPadding()
+//                        .navigationBarsPadding()
+//                        .conditional(LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//                            displayCutoutPadding()
+//                        }
+//                        .imePadding(),
+//                ) {
+//                    Routes.AppNavHost(
+//                        modifier = Modifier.weight(1.0f),
+//                        navController = navController,
+//                        startDestination = if (isImeSetUp) Routes.Settings.Home else Routes.Setup.Screen,
+//                    )
+//                    PreviewKeyboardField(previewFieldController)
+//                }
+                Box(
                     modifier = Modifier
                         //.statusBarsPadding()
                         .navigationBarsPadding()
+                        .conditional(LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                            displayCutoutPadding()
+                        }
                         .imePadding(),
+                    contentAlignment = Alignment.BottomCenter,
                 ) {
                     Routes.AppNavHost(
-                        modifier = Modifier.weight(1.0f),
+                        modifier = Modifier,
                         navController = navController,
                         startDestination = if (isImeSetUp) Routes.Settings.Home else Routes.Setup.Screen,
                     )
@@ -279,10 +303,6 @@ class FlorisAppActivity : ComponentActivity() {
                 }
             }
             intentToBeHandled = null
-        }
-
-        SideEffect {
-            navController.setOnBackPressedDispatcher(this.onBackPressedDispatcher)
         }
     }
 

@@ -19,6 +19,7 @@ package com.goodwy.keyboard.app.settings.smartbar
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.goodwy.keyboard.R
@@ -74,11 +75,16 @@ fun SmartbarScreen() = FlorisScreen {
                 },
             )
             DividerRow(start = 16.dp)
+            // TODO: schedule to remove this preference in the future, but keep it for now so users
+            //  know why the setting is not available anymore. Also force enable it for UI display.
+            SideEffect {
+                prefs.smartbar.sharedActionsAutoExpandCollapse.set(true)
+            }
             SwitchPreferenceRow(
                 prefs.smartbar.sharedActionsAutoExpandCollapse,
                 title = stringRes(R.string.pref__smartbar__shared_actions_auto_expand_collapse__label),
-                summary = stringRes(R.string.pref__smartbar__shared_actions_auto_expand_collapse__summary),
-                enabledIf = { prefs.smartbar.enabled isEqualTo true },
+                summary = "[Since v0.2.9] Always enabled due to UX issues",
+                enabledIf = { false },
                 visibleIf = { prefs.smartbar.layout isEqualTo SmartbarLayout.SUGGESTIONS_ACTIONS_SHARED },
             )
             DividerRow(start = 16.dp)
@@ -90,6 +96,6 @@ fun SmartbarScreen() = FlorisScreen {
                 visibleIf = { prefs.smartbar.layout isEqualTo SmartbarLayout.SUGGESTIONS_ACTIONS_EXTENDED },
             )
         }
-        Spacer(modifier = Modifier.size(32.dp))
+        Spacer(modifier = Modifier.size(82.dp))
     }
 }

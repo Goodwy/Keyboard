@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Goodwy
+ * Copyright (C) 2024-2025 Goodwy
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.ErrorOutline
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -55,6 +54,7 @@ import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -95,7 +95,8 @@ fun PurchaseScreen() = FlorisScreen {
     val isPro by prefs.purchase.isPro.observeAsState()
     val isProSubs by prefs.purchase.isProSubs.observeAsState()
     val isProRustore by prefs.purchase.isProRustore.observeAsState()
-    val isProApp = isPro || isProSubs || isProRustore
+    val isProNoGP by prefs.purchase.isProNoGP.observeAsState()
+    val isProApp = isPro || isProSubs || isProRustore || isProNoGP
 
     val isPlayStoreInstalled by prefs.purchase.isPlayStoreInstalled.observeAsState()
     val isRuStoreInstalled by prefs.purchase.isRuStoreInstalled.observeAsState()
@@ -124,7 +125,7 @@ fun PurchaseScreen() = FlorisScreen {
     val isDialogOpen = remember { mutableStateOf(false) }
     val purchaseErrorRustore by prefs.purchase.purchaseErrorRustore.observeAsState()
 
-    if (isPlayStoreInstalled || isRuStoreInstalled) {
+    if (isRuStoreInstalled) { //isPlayStoreInstalled || isRuStoreInstalled
         actions {
             if (isPlayStoreInstalled && isRuStoreInstalled) {
                 if (useGooglePlay) {
@@ -157,7 +158,7 @@ fun PurchaseScreen() = FlorisScreen {
                             textButton,
                             Toast.LENGTH_SHORT,
                         ).show() },
-                        indication = rememberRipple(bounded = false, radius = 20.dp),
+                        indication = ripple(bounded = false, radius = 20.dp),
                         interactionSource = remember { MutableInteractionSource() },
                     ),
                 contentAlignment = Alignment.Center,
@@ -269,7 +270,7 @@ fun PurchaseScreen() = FlorisScreen {
             }
             Spacer(modifier = Modifier.size(16.dp))
 
-            if (isPlayStoreInstalled || isRuStoreInstalled) {
+            if (isRuStoreInstalled) { //isPlayStoreInstalled || isRuStoreInstalled
                 Text(
                     text = stringResource(StringsR.string.action_support_project),
                     fontSize = 18.sp,
@@ -827,7 +828,7 @@ fun PurchaseScreen() = FlorisScreen {
                 ) {
                     Text(
                         modifier = Modifier.padding(horizontal = 24.dp),
-                        text = stringResource(StringsR.string.donate_text),
+                        text = if (isPlayStoreInstalled) stringResource(StringsR.string.donate_text_no_gp) else stringResource(StringsR.string.donate_text),
                         textAlign = TextAlign.Center,
                     )
                     Spacer(modifier = Modifier.size(16.dp))
@@ -844,8 +845,11 @@ fun PurchaseScreen() = FlorisScreen {
                     Spacer(modifier = Modifier.size(8.dp))
                     Switch(
                         modifier = Modifier.scale(2f),
-                        checked = isPro,
-                        onCheckedChange = { prefs.purchase.isPro.set(!isPro) },
+                        checked = if (isPlayStoreInstalled) isProNoGP else isPro,
+                        onCheckedChange = {
+                            if (isPlayStoreInstalled) prefs.purchase.isProNoGP.set(!isProNoGP)
+                            else prefs.purchase.isPro.set(!isPro)
+                        },
                     )
                     Spacer(modifier = Modifier.size(56.dp))
                 }

@@ -16,7 +16,12 @@
 
 package com.goodwy.keyboard.ime.keyboard
 
+import android.content.Context
 import android.content.res.Resources
+import android.os.Build
+import android.view.View
+import android.view.WindowManager
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
@@ -27,8 +32,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowInsetsCompat
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.florisPreferenceModel
 import com.goodwy.keyboard.ime.onehanded.OneHandedMode
@@ -38,6 +45,7 @@ import com.goodwy.keyboard.ime.text.keyboard.TextKeyboard
 import com.goodwy.keyboard.keyboardManager
 import com.goodwy.keyboard.lib.observeAsTransformingState
 import com.goodwy.keyboard.lib.util.ViewUtils
+import com.goodwy.lib.android.AndroidVersion
 import com.goodwy.lib.android.isOrientationLandscape
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 
@@ -115,11 +123,17 @@ fun ProvideKeyboardRowBaseHeight(content: @Composable () -> Unit) {
     val oneHandedMode by prefs.keyboard.oneHandedMode.observeAsState()
     val oneHandedModeScaleFactor by prefs.keyboard.oneHandedModeScaleFactor.observeAsTransformingState { it.toFloat() / 100f }
 
+    // Only set systemBarHeights on api 35 or later because https://developer.android.com/about/versions/15/behavior-changes-15#stable-configuration
+    val systemBarHeights = if (AndroidVersion.ATLEAST_API35_V) {
+        systemBarHeights()
+    } else {
+        0
+    }
     val baseRowHeight = remember(
         configuration, resources, heightFactorPortrait, heightFactorLandscape,
-        oneHandedMode, oneHandedModeScaleFactor,
+        oneHandedMode, oneHandedModeScaleFactor, systemBarHeights,
     ) {
-        calcInputViewHeight(resources) * when {
+        calcInputViewHeight(resources, systemBarHeights) * when {
             configuration.isOrientationLandscape() -> heightFactorLandscape
             else -> heightFactorPortrait * (if (oneHandedMode != OneHandedMode.OFF) oneHandedModeScaleFactor else 1f)
         }
@@ -139,6 +153,30 @@ fun ProvideKeyboardRowBaseHeight(content: @Composable () -> Unit) {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.R)
+@Composable
+fun systemBarHeights(): Int {
+    val view = view()
+    val context = LocalContext.current
+
+    // Get the navigationBarHeight
+    val insets = WindowInsetsCompat.toWindowInsetsCompat(view.rootWindowInsets)
+    val navigationBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+
+    // Use windowManager because the IME ui does not have statusBars insets
+    val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+    val metrics = windowManager.currentWindowMetrics
+    val statusBarHeight = metrics.windowInsets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+
+    return navigationBarHeight + statusBarHeight
+}
+
+@Composable
+private fun view(): View {
+    val view = LocalView.current
+    return view
+}
+
 /**
  * Calculates the input view height based on the current screen dimensions and the auto
  * selected dimension values.
@@ -149,18 +187,20 @@ fun ProvideKeyboardRowBaseHeight(content: @Composable () -> Unit) {
  * by calculating the average of the min and max height values, then taking at least the input
  * view base height and return this resulting value.
  */
-private fun calcInputViewHeight(resources: Resources): Float {
+private fun calcInputViewHeight(resources: Resources, systemBarHeights: Int): Float {
     val dm = resources.displayMetrics
+    val height = dm.heightPixels - systemBarHeights
+    val width = dm.widthPixels
     val minBaseSize = when {
         resources.configuration.isOrientationLandscape() -> resources.getFraction(
-            R.fraction.inputView_minHeightFraction, dm.heightPixels, dm.heightPixels
+            R.fraction.inputView_minHeightFraction, height, height
         )
         else -> resources.getFraction(
-            R.fraction.inputView_minHeightFraction, dm.widthPixels, dm.widthPixels
+            R.fraction.inputView_minHeightFraction, width, width
         )
     }
     val maxBaseSize = resources.getFraction(
-        R.fraction.inputView_maxHeightFraction, dm.heightPixels, dm.heightPixels
+        R.fraction.inputView_maxHeightFraction, height, height
     )
     return ((minBaseSize + maxBaseSize) / 2.0f).coerceAtLeast(
         resources.getDimension(R.dimen.inputView_baseHeight)

@@ -48,15 +48,16 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBackIos
+import androidx.compose.material.icons.automirrored.outlined.Backspace
 import androidx.compose.material.icons.filled.ClearAll
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.ToggleOff
 import androidx.compose.material.icons.filled.ToggleOn
 import androidx.compose.material.icons.filled.Videocam
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -67,11 +68,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -87,6 +90,8 @@ import com.goodwy.keyboard.ime.clipboard.provider.ClipboardFileStorage
 import com.goodwy.keyboard.ime.clipboard.provider.ClipboardItem
 import com.goodwy.keyboard.ime.clipboard.provider.ItemType
 import com.goodwy.keyboard.ime.keyboard.FlorisImeSizing
+import com.goodwy.keyboard.ime.media.KeyboardLikeButton
+import com.goodwy.keyboard.ime.text.keyboard.TextKeyData
 import com.goodwy.keyboard.ime.theme.FlorisImeTheme
 import com.goodwy.keyboard.ime.theme.FlorisImeUi
 import com.goodwy.keyboard.keyboardManager
@@ -193,6 +198,16 @@ fun ClipboardInputLayout(
 //                iconColor = headerStyle.foreground.solidColor(context),
 //                enabled = !deviceLocked && historyEnabled && !isPopupSurfaceActive(),
 //            )
+            KeyboardLikeButton(
+                inputEventDispatcher = keyboardManager.inputEventDispatcher,
+                keyData = TextKeyData.DELETE,
+                element = FlorisImeUi.ClipboardHeader,
+            ) {
+                Icon(
+                    modifier = Modifier.autoMirrorForRtl(),
+                    imageVector = ImageVector.vectorResource(R.drawable.ic_backspace),
+                    contentDescription = stringRes(R.string.action__delete))
+            }
         }
     }
 
@@ -212,7 +227,7 @@ fun ClipboardInputLayout(
             clip = true,
             clickAndSemanticsModifier = Modifier.combinedClickable(
                 interactionSource = remember { MutableInteractionSource() },
-                indication = rememberRipple(),
+                indication = ripple(),
                 enabled = popupItem == null,
                 onLongClick = {
                     popupItem = item
@@ -307,7 +322,7 @@ fun ClipboardInputLayout(
                             .fillMaxWidth()
                             .run { if (contentScrollInsteadOfClip) this.florisVerticalScroll() else this }
                             .padding(ItemPadding),
-                        text = text,
+                        text = item.displayText(),
                         style = TextStyle(textDirection = TextDirection.ContentOrLtr),
                         color = style.foreground.solidColor(context),
                         fontSize = style.fontSize.spSize(),
@@ -577,7 +592,7 @@ fun ClipboardInputLayout(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .wrapContentHeight(),
+            .height(FlorisImeSizing.imeUiHeight()),
     ) {
         HeaderRow()
         if (deviceLocked) {

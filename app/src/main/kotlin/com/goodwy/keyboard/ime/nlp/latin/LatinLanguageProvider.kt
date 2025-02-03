@@ -24,7 +24,6 @@ import com.goodwy.keyboard.ime.nlp.SpellingProvider
 import com.goodwy.keyboard.ime.nlp.SpellingResult
 import com.goodwy.keyboard.ime.nlp.SuggestionCandidate
 import com.goodwy.keyboard.ime.nlp.SuggestionProvider
-import com.goodwy.keyboard.ime.nlp.WordSuggestionCandidate
 import com.goodwy.keyboard.lib.devtools.flogDebug
 import com.goodwy.lib.android.readText
 import com.goodwy.lib.kotlin.guardedByLock
@@ -106,8 +105,8 @@ class LatinLanguageProvider(context: Context) : SpellingProvider, SuggestionProv
         allowPossiblyOffensive: Boolean,
         isPrivateSession: Boolean,
     ): List<SuggestionCandidate> {
-        val word = content.composingText.ifBlank { "next" }
-        val suggestions = buildList {
+        return emptyList()
+        /*val suggestions = buildList {
             for (n in 0 until maxCandidateCount) {
                 add(WordSuggestionCandidate(
                     text = "$word$n",
@@ -119,7 +118,7 @@ class LatinLanguageProvider(context: Context) : SpellingProvider, SuggestionProv
                 ))
             }
         }
-        return suggestions
+        return suggestions*/
     }
 
     override suspend fun notifySuggestionAccepted(subtype: Subtype, candidate: SuggestionCandidate) {

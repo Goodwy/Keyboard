@@ -16,6 +16,8 @@
 
 package com.goodwy.keyboard.app.devtools
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -40,9 +42,14 @@ import androidx.compose.ui.unit.sp
 import com.goodwy.keyboard.app.florisPreferenceModel
 import com.goodwy.keyboard.clipboardManager
 import com.goodwy.keyboard.editorInstance
+import com.goodwy.keyboard.ime.keyboard.CachedLayout
+import com.goodwy.keyboard.ime.keyboard.DebugLayoutComputationResult
+import com.goodwy.keyboard.ime.nlp.NlpInlineAutofill
+import com.goodwy.keyboard.keyboardManager
 import com.goodwy.keyboard.lib.FlorisLocale
 import com.goodwy.keyboard.lib.observeAsNonNullState
 import com.goodwy.keyboard.nlpManager
+import com.goodwy.lib.android.AndroidVersion
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 import java.text.SimpleDateFormat
 import java.util.*
@@ -52,25 +59,37 @@ private val DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss", FlorisLocale.
 
 @Composable
 fun DevtoolsOverlay(modifier: Modifier = Modifier) {
+    val context = LocalContext.current
     val prefs by florisPreferenceModel()
+    val keyboardManager by context.keyboardManager()
 
+    val devtoolsEnabled by prefs.devtools.enabled.observeAsState()
     val showPrimaryClip by prefs.devtools.showPrimaryClip.observeAsState()
     val showInputStateOverlay by prefs.devtools.showInputStateOverlay.observeAsState()
     val showSpellingOverlay by prefs.devtools.showSpellingOverlay.observeAsState()
+    val showInlineAutofillOverlay by prefs.devtools.showInlineAutofillOverlay.observeAsState()
+
+    val debugLayoutResult by keyboardManager.layoutManager.debugLayoutComputationResultFlow.collectAsState()
 
     CompositionLocalProvider(
         LocalContentColor provides Color.White,
         LocalLayoutDirection provides LayoutDirection.Ltr,
     ) {
         Column(modifier = modifier) {
-            if (showPrimaryClip) {
+            if (devtoolsEnabled && showPrimaryClip) {
                 DevtoolsClipboardOverlay()
             }
-            if (showInputStateOverlay) {
+            if (devtoolsEnabled && showInputStateOverlay) {
                 DevtoolsInputStateOverlay()
             }
-            if (showSpellingOverlay) {
+            if (debugLayoutResult?.allLayoutsSuccess() == false) {
+                DevtoolsLastLayoutComputationOverlay(debugLayoutResult)
+            }
+            if (devtoolsEnabled && showSpellingOverlay) {
                 DevtoolsSpellingOverlay()
+            }
+            if (devtoolsEnabled && showInlineAutofillOverlay && AndroidVersion.ATLEAST_API30_R) {
+                DevtoolsInlineAutofillOverlay()
             }
         }
     }
@@ -117,6 +136,33 @@ private fun DevtoolsInputStateOverlay() {
     }
 }
 
+@Composable
+private fun DevtoolsLastLayoutComputationOverlay(debugLayoutResult: DebugLayoutComputationResult?) {
+    @Composable
+    fun PrintResult(result: Result<CachedLayout?>) {
+        if (result.isSuccess) {
+            DevtoolsText(text = "loaded: ${result.getOrNull()?.name}")
+        } else {
+            DevtoolsText(text = "error: ${result.exceptionOrNull()}")
+        }
+    }
+
+    DevtoolsOverlayBox(title = "Last layout computation") {
+        if (debugLayoutResult == null) {
+            DevtoolsText(text = "No layout computation result available.")
+            return@DevtoolsOverlayBox
+        }
+        DevtoolsSubGroup(title = "main") {
+            PrintResult(debugLayoutResult!!.main)
+        }
+        DevtoolsSubGroup(title = "mod") {
+            PrintResult(debugLayoutResult!!.mod)
+        }
+        DevtoolsSubGroup(title = "ext") {
+            PrintResult(debugLayoutResult!!.ext)
+        }
+    }
+}
 
 @Composable
 private fun DevtoolsSpellingOverlay() {
@@ -155,6 +201,25 @@ private fun DevtoolsSpellingOverlay() {
                     fontFamily = FontFamily.Monospace,
                     fontSize = 12.sp,
                 )
+            }
+        }
+    }
+}
+
+@RequiresApi(Build.VERSION_CODES.R)
+@Composable
+private fun DevtoolsInlineAutofillOverlay() {
+    val inlineSuggestions by NlpInlineAutofill.suggestions.collectAsState()
+
+    DevtoolsOverlayBox(title = "Inline autofill overlay (${inlineSuggestions.size})") {
+        for (inlineSuggestion in inlineSuggestions) {
+            DevtoolsSubGroup(title = "NlpInlineSuggestion") {
+                val info = inlineSuggestion.info
+                DevtoolsText(text = "info.type:     ${info.type}")
+                DevtoolsText(text = "info.source:   ${info.source}")
+                DevtoolsText(text = "info.isPinned: ${info.isPinned}")
+                val view = inlineSuggestion.view
+                DevtoolsText(text = "view: ${view?.javaClass?.name}")
             }
         }
     }

@@ -42,6 +42,7 @@ import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -74,16 +75,19 @@ import dev.patrickgold.jetpref.datastore.model.observeAsState
 import dev.patrickgold.jetpref.datastore.ui.DialogPrefStrings
 import dev.patrickgold.jetpref.datastore.ui.ListPreferenceEntry
 import dev.patrickgold.jetpref.datastore.ui.LocalDefaultDialogPrefStrings
-import dev.patrickgold.jetpref.datastore.ui.PreferenceUiScope
+import dev.patrickgold.jetpref.datastore.ui.LocalIconSpaceReserved
+import dev.patrickgold.jetpref.datastore.ui.LocalIsPrefEnabled
+import dev.patrickgold.jetpref.datastore.ui.LocalIsPrefVisible
 import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
 
+//Modified version https://github.com/patrickgold/jetpref/blob/main/datastore-ui/src/main/kotlin/dev/patrickgold/jetpref/datastore/ui/ListPreference.kt
 @Composable
-internal fun <T : PreferenceModel, V : Any> PreferenceUiScope<T>.ListPreferenceRow(
+internal fun <V : Any> ListPreferenceRow(
     listPref: PreferenceData<V>,
     switchPref: PreferenceData<Boolean>? = null,
     modifier: Modifier = Modifier,
     icon: ImageVector? = null,
-    iconSpaceReserved: Boolean = false,
+    iconSpaceReserved: Boolean = false, //LocalIconSpaceReserved.current
     title: String,
     summary: String? = null,
     summarySwitchDisabled: String? = null,
@@ -105,208 +109,213 @@ internal fun <T : PreferenceModel, V : Any> PreferenceUiScope<T>.ListPreferenceR
     val (tmpSwitchPrefValue, setTmpSwitchPrefValue) = remember { mutableStateOf(false) }
     val isDialogOpen = remember { mutableStateOf(false) }
 
-    val evalScope = PreferenceDataEvaluatorScope.instance()
-    if (visibleIf(evalScope)) {
-        val isEnabled = enabledIf(evalScope)
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .heightIn(min = MIN_HEIGHT_ROW.dp)
-                .fillMaxWidth()
-                .alpha(if (isEnabled) 1f else ALPHA_DISABLED)
-                .clickable(
-                    enabled = isEnabled,
-                    role = Role.Button,
-                    onClick = {
-                        setTmpListPrefValue(listPrefValue)
-                        if (switchPrefValue != null) {
-                            setTmpSwitchPrefValue(switchPrefValue.value)
-                        }
-                        isDialogOpen.value = true
-                    }
-                )
-                .background(color = MaterialTheme.colorScheme.inverseOnSurface),
+    if (LocalIsPrefVisible.current && visibleIf(PreferenceDataEvaluatorScope)) {
+        val isEnabled = LocalIsPrefEnabled.current && enabledIf(PreferenceDataEvaluatorScope)
+        CompositionLocalProvider(
+            LocalIconSpaceReserved provides iconSpaceReserved,
+            LocalIsPrefEnabled provides isEnabled,
+            LocalIsPrefVisible provides true,
         ) {
-            Row(
+            Box(
+                contentAlignment = Alignment.Center,
                 modifier = Modifier
+                    .heightIn(min = MIN_HEIGHT_ROW.dp)
                     .fillMaxWidth()
-                    .padding(start = paddingStart, end = paddingEnd, top = paddingTop, bottom = paddingBottom),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                if (icon != null) {
-                    Icon(
-                        modifier = Modifier
-                            .height(32.dp)
-                            .width(32.dp)
-                            .paint(
-                                painter = painterResource(R.drawable.ic_squircle),
-                                contentScale = ContentScale.FillWidth,
-                                colorFilter = ColorFilter.tint(color = iconColor)
-                            )
-                            .padding(4.dp),
-                        imageVector = icon,
-                        contentDescription = title,
-                        tint = Color.White
+                    .alpha(if (isEnabled) 1f else ALPHA_DISABLED)
+                    .clickable(
+                        enabled = isEnabled,
+                        role = Role.Button,
+                        onClick = {
+                            setTmpListPrefValue(listPrefValue)
+                            if (switchPrefValue != null) {
+                                setTmpSwitchPrefValue(switchPrefValue.value)
+                            }
+                            isDialogOpen.value = true
+                        }
                     )
-                    Spacer(modifier = Modifier.size(16.dp))
-                }
-                Column(
-                    modifier = Modifier
-                        .weight(1f),
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    Text(text = title, lineHeight = 15.sp)
-                    val value = if (switchPrefValue?.value == true || switchPrefValue == null) {
-                        entries.find {
-                            it.key == listPrefValue
-                        }?.label ?: "!! invalid !!"
-                    } else { summarySwitchDisabled }
-                    if (value != null && switchPrefValue != null) Text(
-                        modifier = Modifier.alpha(0.6f).fillMaxWidth(),
-                        text = value,
-                        maxLines = 2,
-                        fontSize = 15.sp,
-                        lineHeight = 15.sp,
-                        overflow = TextOverflow.Ellipsis,
-                        textAlign = TextAlign.End)
-                    if (summary != null) Text(
-                        modifier = Modifier.alpha(0.6f),
-                        text = summary,
-                        fontSize = 12.sp,
-                        lineHeight = 12.sp)
-                }
-                Spacer(modifier = Modifier.size(16.dp))
+                    .background(color = MaterialTheme.colorScheme.inverseOnSurface),
+            ) {
                 Row(
-                    modifier = Modifier.widthIn(min = 24.dp, max = 200.dp),
-                    horizontalArrangement = Arrangement.End,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = paddingStart, end = paddingEnd, top = paddingTop, bottom = paddingBottom),
+                    horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    val value = if (switchPrefValue?.value == true || switchPrefValue == null) {
-                        entries.find {
-                            it.key == listPrefValue
-                        }?.label ?: "!! invalid !!"
-                    } else { summarySwitchDisabled }
-                    if (value != null && switchPrefValue == null) {
-                        Text(
+                    if (icon != null) {
+                        Icon(
                             modifier = Modifier
-                                .alpha(0.6f)
+                                .height(32.dp)
+                                .width(32.dp)
+                                .paint(
+                                    painter = painterResource(R.drawable.ic_squircle),
+                                    contentScale = ContentScale.FillWidth,
+                                    colorFilter = ColorFilter.tint(color = iconColor)
+                                )
                                 .padding(4.dp),
+                            imageVector = icon,
+                            contentDescription = title,
+                            tint = Color.White
+                        )
+                        Spacer(modifier = Modifier.size(16.dp))
+                    }
+                    Column(
+                        modifier = Modifier
+                            .weight(1f),
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Text(text = title, lineHeight = 15.sp)
+                        val value = if (switchPrefValue?.value == true || switchPrefValue == null) {
+                            entries.find {
+                                it.key == listPrefValue
+                            }?.label ?: "!! invalid !!"
+                        } else { summarySwitchDisabled }
+                        if (value != null && switchPrefValue != null) Text(
+                            modifier = Modifier.alpha(0.6f).fillMaxWidth(),
                             text = value,
-                            maxLines = 3,
+                            maxLines = 2,
+                            fontSize = 15.sp,
                             lineHeight = 15.sp,
                             overflow = TextOverflow.Ellipsis,
-                            textAlign = TextAlign.End
-                        )
+                            textAlign = TextAlign.End)
+                        if (summary != null) Text(
+                            modifier = Modifier.alpha(0.6f),
+                            text = summary,
+                            fontSize = 12.sp,
+                            lineHeight = 12.sp)
                     }
-                    if (showEndIcon) Icon(
-                        modifier = if (endIcon == null) Modifier.alpha(0.6f).autoMirrorForRtl() else Modifier.alpha(0.6f),
-                        imageVector = endIcon ?: Icons.Rounded.ChevronRight,
-                        contentDescription = title)
-                    if (switchPrefValue != null) {
-                        val dividerColor = MaterialTheme.colorScheme.outlineVariant
-                        Box(
-                            modifier = Modifier
-                                .size(LocalViewConfiguration.current.minimumTouchTargetSize + DpSize(10.dp, 0.dp))
-                                .toggleable(
-                                    value = switchPrefValue.value,
-                                    enabled = isEnabled,
-                                    role = Role.Switch,
-                                    onValueChange = { switchPref.set(it) },
-                                )
-                                .drawBehind {
-                                    drawLine(
-                                        color = dividerColor,
-                                        start = Offset(0f, size.height * 0.1f),
-                                        end = Offset(0f, size.height * 0.9f),
-                                        strokeWidth = 2f
-                                    )
-                                }
-                                .padding(end = 2.dp),
-                            contentAlignment = Alignment.Center,
-                        ) {
-                            Switch(
-                                modifier = Modifier.padding(start = 8.dp),
-                                checked = switchPrefValue.value,
-                                onCheckedChange = null,
-                                enabled = isEnabled,
+                    Spacer(modifier = Modifier.size(16.dp))
+                    Row(
+                        modifier = Modifier.widthIn(min = 24.dp, max = 200.dp),
+                        horizontalArrangement = Arrangement.End,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        val value = if (switchPrefValue?.value == true || switchPrefValue == null) {
+                            entries.find {
+                                it.key == listPrefValue
+                            }?.label ?: "!! invalid !!"
+                        } else { summarySwitchDisabled }
+                        if (value != null && switchPrefValue == null) {
+                            Text(
+                                modifier = Modifier
+                                    .alpha(0.6f)
+                                    .padding(4.dp),
+                                text = value,
+                                maxLines = 3,
+                                lineHeight = 15.sp,
+                                overflow = TextOverflow.Ellipsis,
+                                textAlign = TextAlign.End
                             )
+                        }
+                        if (showEndIcon) Icon(
+                            modifier = if (endIcon == null) Modifier.alpha(0.6f).autoMirrorForRtl() else Modifier.alpha(0.6f),
+                            imageVector = endIcon ?: Icons.Rounded.ChevronRight,
+                            contentDescription = title)
+                        if (switchPrefValue != null) {
+                            val dividerColor = MaterialTheme.colorScheme.outlineVariant
+                            Box(
+                                modifier = Modifier
+                                    .size(LocalViewConfiguration.current.minimumTouchTargetSize + DpSize(10.dp, 0.dp))
+                                    .toggleable(
+                                        value = switchPrefValue.value,
+                                        enabled = isEnabled,
+                                        role = Role.Switch,
+                                        onValueChange = { switchPref.set(it) },
+                                    )
+                                    .drawBehind {
+                                        drawLine(
+                                            color = dividerColor,
+                                            start = Offset(0f, size.height * 0.1f),
+                                            end = Offset(0f, size.height * 0.9f),
+                                            strokeWidth = 2f
+                                        )
+                                    }
+                                    .padding(end = 2.dp),
+                                contentAlignment = Alignment.Center,
+                            ) {
+                                Switch(
+                                    modifier = Modifier.padding(start = 8.dp),
+                                    checked = switchPrefValue.value,
+                                    onCheckedChange = null,
+                                    enabled = isEnabled,
+                                )
+                            }
                         }
                     }
                 }
             }
-        }
-        if (isDialogOpen.value) {
-            JetPrefAlertDialog(
-                title = title,
-                confirmLabel = dialogStrings.confirmLabel,
-                onConfirm = {
-                    listPref.set(tmpListPrefValue)
-                    switchPref?.set(tmpSwitchPrefValue)
-                    isDialogOpen.value = false
-                },
-                dismissLabel = dialogStrings.dismissLabel,
-                onDismiss = { isDialogOpen.value = false },
-                neutralLabel = dialogStrings.neutralLabel,
-                onNeutral = {
-                    listPref.reset()
-                    switchPref?.reset()
-                    isDialogOpen.value = false
-                },
-                trailingIconTitle = {
-                    if (switchPrefValue != null) {
-                        Switch(
-                            modifier = Modifier.padding(start = 16.dp),
-                            checked = tmpSwitchPrefValue,
-                            onCheckedChange = { setTmpSwitchPrefValue(it) },
-                            enabled = true,
-                        )
-                    }
-                },
-                contentPadding = PaddingValues(horizontal = 8.dp),
-            ) {
-                Column {
-                    val alpha = when {
-                        switchPrefValue == null -> 1f
-                        tmpSwitchPrefValue -> 1f
-                        else -> 0.38f
-                    }
-                    for (entry in entries) {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .selectable(
-                                    selected = entry.key == tmpListPrefValue,
-                                    enabled = switchPrefValue == null || tmpSwitchPrefValue,
-                                    onClick = {
-                                        setTmpListPrefValue(entry.key)
-                                    }
-                                )
-                                .padding(
-                                    horizontal = 16.dp,
-                                    vertical = 8.dp,
-                                )
-                                .alpha(alpha),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            RadioButton(
-                                selected = entry.key == tmpListPrefValue,
-                                onClick = null,
-                                colors = RadioButtonDefaults.colors(
-                                    selectedColor = MaterialTheme.colorScheme.primary,
-                                ),
-                                modifier = Modifier.padding(end = 12.dp),
+            if (isDialogOpen.value) {
+                JetPrefAlertDialog(
+                    title = title,
+                    confirmLabel = dialogStrings.confirmLabel,
+                    onConfirm = {
+                        listPref.set(tmpListPrefValue)
+                        switchPref?.set(tmpSwitchPrefValue)
+                        isDialogOpen.value = false
+                    },
+                    dismissLabel = dialogStrings.dismissLabel,
+                    onDismiss = { isDialogOpen.value = false },
+                    neutralLabel = dialogStrings.neutralLabel,
+                    onNeutral = {
+                        listPref.reset()
+                        switchPref?.reset()
+                        isDialogOpen.value = false
+                    },
+                    trailingIconTitle = {
+                        if (switchPrefValue != null) {
+                            Switch(
+                                modifier = Modifier.padding(start = 16.dp),
+                                checked = tmpSwitchPrefValue,
+                                onCheckedChange = { setTmpSwitchPrefValue(it) },
+                                enabled = true,
                             )
-                            Column(
-                                modifier = Modifier.fillMaxWidth(),
+                        }
+                    },
+                    contentPadding = PaddingValues(horizontal = 8.dp),
+                ) {
+                    Column {
+                        val alpha = when {
+                            switchPrefValue == null -> 1f
+                            tmpSwitchPrefValue -> 1f
+                            else -> 0.38f
+                        }
+                        for (entry in entries) {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .selectable(
+                                        selected = entry.key == tmpListPrefValue,
+                                        enabled = switchPrefValue == null || tmpSwitchPrefValue,
+                                        onClick = {
+                                            setTmpListPrefValue(entry.key)
+                                        }
+                                    )
+                                    .padding(
+                                        horizontal = 16.dp,
+                                        vertical = 8.dp,
+                                    )
+                                    .alpha(alpha),
+                                verticalAlignment = Alignment.CenterVertically
                             ) {
-                                entry.labelComposer(entry.label)
-                                if (entry.showDescriptionOnlyIfSelected) {
-                                    if (entry.key == tmpListPrefValue) {
+                                RadioButton(
+                                    selected = entry.key == tmpListPrefValue,
+                                    onClick = null,
+                                    colors = RadioButtonDefaults.colors(
+                                        selectedColor = MaterialTheme.colorScheme.primary,
+                                    ),
+                                    modifier = Modifier.padding(end = 12.dp),
+                                )
+                                Column(
+                                    modifier = Modifier.fillMaxWidth(),
+                                ) {
+                                    entry.labelComposer(entry.label)
+                                    if (entry.showDescriptionOnlyIfSelected) {
+                                        if (entry.key == tmpListPrefValue) {
+                                            entry.descriptionComposer(entry.description)
+                                        }
+                                    } else {
                                         entry.descriptionComposer(entry.description)
                                     }
-                                } else {
-                                    entry.descriptionComposer(entry.description)
                                 }
                             }
                         }

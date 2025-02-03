@@ -1,6 +1,10 @@
 # Built application files
 *.apk
+*.aab
 *.ap_
+
+# dotenv
+.env
 
 # Files for the ART/Dalvik VM
 *.dex
@@ -36,6 +40,7 @@ captures/
 # Intellij
 *.iml
 .idea/
+!/.idea/copyright/
 
 # Keystore files
 *.jks
@@ -54,7 +59,6 @@ result
 # Rust
 debug/
 target/
-Cargo.lock
 **/*.rs.bk
 *.pdb
 .DS_Store

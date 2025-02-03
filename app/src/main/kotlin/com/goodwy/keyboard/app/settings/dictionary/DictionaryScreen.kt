@@ -68,6 +68,6 @@ fun DictionaryScreen() = FlorisScreen {
                 enabledIf = { prefs.dictionary.enableFlorisUserDictionary isEqualTo true },
             )
         }
-        Spacer(modifier = Modifier.size(32.dp))
+        Spacer(modifier = Modifier.size(82.dp))
     }
 }

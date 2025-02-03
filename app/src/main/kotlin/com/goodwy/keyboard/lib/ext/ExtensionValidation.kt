@@ -21,9 +21,6 @@ import com.goodwy.keyboard.R
 import com.goodwy.keyboard.ime.theme.ThemeExtensionComponent
 import com.goodwy.keyboard.lib.ValidationRule
 import com.goodwy.lib.snygg.SnyggStylesheet
-import com.goodwy.lib.snygg.value.SnyggDpShapeValue
-import com.goodwy.lib.snygg.value.SnyggPercentShapeValue
-import com.goodwy.lib.snygg.value.SnyggSolidColorValue
 import com.goodwy.keyboard.lib.validate
 import com.goodwy.lib.snygg.value.SnyggVarValue
 
@@ -157,7 +154,7 @@ object ExtensionValidation {
     }
 
     val SnyggSolidColorValue = ValidationRule<String> {
-        forKlass = SnyggSolidColorValue::class
+        forKlass = com.goodwy.lib.snygg.value.SnyggSolidColorValue::class
         forProperty = "color"
         validator { input ->
             val str = input.trim()
@@ -172,7 +169,7 @@ object ExtensionValidation {
     }
 
     val SnyggDpShapeValue = ValidationRule<String> {
-        forKlass = SnyggDpShapeValue::class
+        forKlass = com.goodwy.lib.snygg.value.SnyggDpShapeValue::class
         forProperty = "corner"
         validator { str ->
             val floatValue = str.toFloatOrNull()
@@ -186,7 +183,7 @@ object ExtensionValidation {
     }
 
     val SnyggPercentShapeValue = ValidationRule<String> {
-        forKlass = SnyggPercentShapeValue::class
+        forKlass = com.goodwy.lib.snygg.value.SnyggPercentShapeValue::class
         forProperty = "corner"
         validator { str ->
             val intValue = str.toIntOrNull()

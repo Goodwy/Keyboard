@@ -58,6 +58,8 @@ import com.goodwy.keyboard.ime.text.keyboard.TextKeyData
 import com.goodwy.keyboard.ime.theme.FlorisImeTheme
 import com.goodwy.keyboard.ime.theme.FlorisImeUi
 import com.goodwy.keyboard.keyboardManager
+import com.goodwy.keyboard.lib.compose.autoMirrorForRtl
+import com.goodwy.keyboard.lib.compose.stringRes
 import com.goodwy.lib.snygg.ui.SnyggSurface
 
 @SuppressLint("MutableCollectionMutableState")
@@ -103,7 +105,10 @@ fun MediaInputLayout(
                     inputEventDispatcher = keyboardManager.inputEventDispatcher,
                     keyData = TextKeyData.DELETE,
                 ) {
-                    Icon(imageVector = ImageVector.vectorResource(R.drawable.ic_backspace), contentDescription = null)
+                    Icon(
+                        modifier = Modifier.autoMirrorForRtl(),
+                        imageVector = ImageVector.vectorResource(R.drawable.ic_backspace),
+                        contentDescription = stringRes(R.string.action__delete))
                 }
             }
         }
@@ -115,12 +120,13 @@ internal fun KeyboardLikeButton(
     modifier: Modifier = Modifier,
     inputEventDispatcher: InputEventDispatcher,
     keyData: KeyData,
+    element: String = FlorisImeUi.EmojiKey,
     content: @Composable RowScope.() -> Unit,
 ) {
     val inputFeedbackController = LocalInputFeedbackController.current
     var isPressed by remember { mutableStateOf(false) }
     val keyStyle = FlorisImeTheme.style.get(
-        element = FlorisImeUi.EmojiKey,
+        element = element,
         code = keyData.code,
         isPressed = isPressed,
     )

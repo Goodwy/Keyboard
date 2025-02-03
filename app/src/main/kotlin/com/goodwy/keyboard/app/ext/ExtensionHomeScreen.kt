@@ -21,14 +21,13 @@ import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.LocalNavController
 import com.goodwy.keyboard.app.Routes
 import com.goodwy.keyboard.extensionManager
-import com.goodwy.keyboard.lib.util.launchUrl
 import com.goodwy.keyboard.lib.compose.FlorisOutlinedBox
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.FlorisTextButton
 import com.goodwy.keyboard.lib.compose.defaultFlorisOutlinedBox
 import com.goodwy.keyboard.lib.compose.stringRes
+import com.goodwy.keyboard.lib.util.launchUrl
 import dev.patrickgold.jetpref.datastore.ui.Preference
-import dev.patrickgold.jetpref.datastore.ui.PreferenceGroup
 
 @Composable
 fun ExtensionHomeScreen() = FlorisScreen {
@@ -74,28 +73,26 @@ fun ExtensionHomeScreen() = FlorisScreen {
 
         UpdateBox(extensionIndex = extensionIndex)
 
-        PreferenceGroup(title = stringRes(id = R.string.ext__home__visit_store)) {
-            Preference(
-                icon = Icons.Default.Palette,
-                title = stringRes(R.string.ext__list__ext_theme),
-                onClick = {
-                    navController.navigate(Routes.Ext.List(ExtensionListScreenType.EXT_THEME,false))
-                },
-            )
-            Preference(
-                icon = Icons.Default.Keyboard,
-                title = stringRes(R.string.ext__list__ext_keyboard),
-                onClick = {
-                    navController.navigate(Routes.Ext.List(ExtensionListScreenType.EXT_KEYBOARD,false))
-                },
-            )
-            Preference(
-                icon = Icons.Default.Language,
-                title = stringRes(R.string.ext__list__ext_languagepack),
-                onClick = {
-                    navController.navigate(Routes.Ext.List(ExtensionListScreenType.EXT_LANGUAGEPACK,false))
-                },
-            )
-        }
+        Preference(
+            icon = Icons.Default.Palette,
+            title = stringRes(R.string.ext__list__ext_theme),
+            onClick = {
+                navController.navigate(Routes.Ext.List(ExtensionListScreenType.EXT_THEME,false))
+            },
+        )
+        Preference(
+            icon = Icons.Default.Keyboard,
+            title = stringRes(R.string.ext__list__ext_keyboard),
+            onClick = {
+                navController.navigate(Routes.Ext.List(ExtensionListScreenType.EXT_KEYBOARD,false))
+            },
+        )
+        Preference(
+            icon = Icons.Default.Language,
+            title = stringRes(R.string.ext__list__ext_languagepack),
+            onClick = {
+                navController.navigate(Routes.Ext.List(ExtensionListScreenType.EXT_LANGUAGEPACK,false))
+            },
+        )
     }
 }

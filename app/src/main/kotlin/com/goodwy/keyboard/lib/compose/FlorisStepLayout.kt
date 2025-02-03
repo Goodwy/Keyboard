@@ -55,6 +55,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -69,6 +70,7 @@ private val StepHeaderTextInnerPaddingHorizontal = 16.dp
 data class FlorisStep(
     val id: Int,
     val title: String,
+    val click: () -> Unit,
     val content: @Composable FlorisStepLayoutScope.() -> Unit,
 )
 
@@ -175,6 +177,7 @@ fun FlorisStepLayout(
                     stepState = stepState,
                     title = step.title,
                     primaryColor = primaryColor,
+                    onClick = step.click,
                 ) {
                     step.content(FlorisStepLayoutScope(this, primaryColor))
                 }
@@ -191,6 +194,7 @@ private fun ColumnScope.Step(
     stepState: FlorisStepState,
     title: String,
     primaryColor: Color,
+    onClick: () -> Unit,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     val currentStepId by stepState.getCurrent()
@@ -209,6 +213,8 @@ private fun ColumnScope.Step(
         backgroundColor = backgroundColor,
         step = ownStepId,
         title = title,
+        enabled = contentVisible,
+        onClick = onClick,
     )
     val animSpec = spring<Float>(stiffness = Spring.StiffnessMedium)
     val weight by animateFloatAsState(
@@ -258,6 +264,8 @@ private fun StepHeader(
     contentColor: Color = contentColorFor(backgroundColor),
     step: Int,
     title: String,
+    enabled: Boolean,
+    onClick: () -> Unit,
 ) {
     Row(
         modifier = modifier
@@ -283,7 +291,12 @@ private fun StepHeader(
                 .height(StepHeaderTextBoxHeight)
                 .weight(1.0f)
                 .clip(CircleShape)
-                .background(backgroundColor),
+                .background(backgroundColor)
+                .clickable (
+                    enabled = enabled,
+                    role = Role.Button,
+                    onClick = onClick
+                ),
         ) {
             Text(
                 modifier = Modifier

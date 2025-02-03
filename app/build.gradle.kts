@@ -14,12 +14,14 @@
  * limitations under the License.
  */
 
+import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import java.io.ByteArrayOutputStream
 import java.util.Properties
 
 plugins {
     alias(libs.plugins.agp.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.plugin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.mannodermaus.android.junit5)
@@ -33,7 +35,7 @@ val projectBuildToolsVersion: String by project
 val projectNdkVersion: String by project
 val projectVersionCode: String by project
 val projectVersionName: String by project
-val projectVersionNameSuffix: String by project
+val projectVersionNameSuffix = projectVersionName.substringAfter("-", "")
 
 android {
     namespace = "com.goodwy.keyboard"
@@ -49,7 +51,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
         freeCompilerArgs = listOf(
-            "-Xallow-result-return-type",
             "-opt-in=kotlin.contracts.ExperimentalContracts",
             "-Xjvm-default=all-compatibility",
         )
@@ -60,7 +61,7 @@ android {
         minSdk = projectMinSdk.toInt()
         targetSdk = projectTargetSdk.toInt()
         versionCode = projectVersionCode.toInt()
-        versionName = projectVersionName
+        versionName = projectVersionName.substringBefore("-")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -113,14 +114,10 @@ android {
         compose = true
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
-    }
-
     buildTypes {
         named("debug") {
             applicationIdSuffix = ".debug"
-            versionNameSuffix = "-debug-${getGitCommitHash(short = true)}"
+            versionNameSuffix = "-debug+${getGitCommitHash(short = true)}"
 
             isDebuggable = true
             isJniDebuggable = false
@@ -176,14 +173,14 @@ android {
     }
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
+composeCompiler {
+    // DO NOT ENABLE STRONG SKIPPING! This project currently relies on
+    // recomposition on parent state change to update the UI correctly.
+    featureFlags.add(ComposeFeatureFlag.StrongSkipping.disabled())
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
 
 dependencies {

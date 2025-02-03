@@ -13,10 +13,6 @@ import com.goodwy.keyboard.ime.nlp.SuggestionProvider
 import com.goodwy.keyboard.lib.FlorisLocale
 import io.github.reactivecircus.cache4k.Cache
 
-const val EMOJI_SUGGESTION_INDICATOR = ':'
-const val EMOJI_SUGGESTION_MAX_COUNT = 5
-private const val EMOJI_SUGGESTION_QUERY_MIN_LENGTH = 3
-
 /**
  * Provides emoji suggestions within a text input context.
  *
@@ -30,7 +26,7 @@ class EmojiSuggestionProvider(private val context: Context) : SuggestionProvider
     override val providerId = "org.florisboard.nlp.providers.emoji"
 
     private val prefs by florisPreferenceModel()
-    private val lettersRegex = "^:[A-Za-z]*$".toRegex()
+    private val lettersRegex = "^[A-Za-z]*$".toRegex()
 
     private val cachedEmojiMappings = Cache.Builder().build<FlorisLocale, EmojiDataBySkinTone>()
 
@@ -52,7 +48,8 @@ class EmojiSuggestionProvider(private val context: Context) : SuggestionProvider
         allowPossiblyOffensive: Boolean,
         isPrivateSession: Boolean
     ): List<SuggestionCandidate> {
-        val preferredSkinTone = prefs.media.emojiPreferredSkinTone.get()
+        val preferredSkinTone = prefs.emoji.preferredSkinTone.get()
+        val showName = prefs.emoji.suggestionCandidateShowName.get()
         val query = validateInputQuery(content.composingText) ?: return emptyList()
         val emojis = cachedEmojiMappings.get(subtype.primaryLocale)?.get(preferredSkinTone) ?: emptyList()
         val candidates = withContext(Dispatchers.Default) {
@@ -62,14 +59,24 @@ class EmojiSuggestionProvider(private val context: Context) : SuggestionProvider
                         emoji.keywords.any { it.contains(query, ignoreCase = true) }
                 }
                 .limit(maxCandidateCount.toLong())
-                .map { EmojiSuggestionCandidate(it) }
+                .map { emoji ->
+                    EmojiSuggestionCandidate(
+                        emoji = emoji,
+                        showName = showName,
+                        sourceProvider = this@EmojiSuggestionProvider,
+                    )
+                }
                 .collect(Collectors.toList())
         }
         return candidates
     }
 
     override suspend fun notifySuggestionAccepted(subtype: Subtype, candidate: SuggestionCandidate) {
-        // No-op
+        val updateHistory = prefs.emoji.suggestionUpdateHistory.get()
+        if (!updateHistory || candidate !is EmojiSuggestionCandidate) {
+            return
+        }
+        EmojiHistoryHelper.markEmojiUsed(prefs, candidate.emoji)
     }
 
     override suspend fun notifySuggestionReverted(subtype: Subtype, candidate: SuggestionCandidate) {
@@ -90,15 +97,18 @@ class EmojiSuggestionProvider(private val context: Context) : SuggestionProvider
      * Validates the user input query for emoji suggestions.
      */
     private fun validateInputQuery(composingText: CharSequence): String? {
-        if (!composingText.startsWith(EMOJI_SUGGESTION_INDICATOR)) {
+        val prefix = prefs.emoji.suggestionType.get().prefix
+        val queryMinLength = prefs.emoji.suggestionQueryMinLength.get() + prefix.length
+        if (prefix.isNotEmpty() && !composingText.startsWith(prefix)) {
             return null
         }
-        if (composingText.length <= EMOJI_SUGGESTION_QUERY_MIN_LENGTH) {
+        if (composingText.length < queryMinLength) {
             return null
         }
-        if (!lettersRegex.matches(composingText)) {
+        val emojiPartialName = composingText.substring(prefix.length)
+        if (!lettersRegex.matches(emojiPartialName)) {
             return null
         }
-        return composingText.substring(1)
+        return emojiPartialName
     }
 }

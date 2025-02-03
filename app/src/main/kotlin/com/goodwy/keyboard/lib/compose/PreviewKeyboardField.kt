@@ -19,15 +19,22 @@ package com.goodwy.keyboard.lib.compose
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.isImeVisible
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.SelectionContainer
@@ -55,8 +62,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -75,8 +84,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.florisPreferenceModel
+import com.goodwy.keyboard.ime.theme.FlorisImeTheme
+import com.goodwy.keyboard.ime.theme.FlorisImeUi
 import com.goodwy.keyboard.lib.util.InputMethodUtils
 import com.goodwy.lib.android.showShortToast
+import com.goodwy.lib.snygg.ui.solidColor
 import dev.patrickgold.jetpref.datastore.model.observeAsState
 import dev.patrickgold.jetpref.datastore.ui.LocalDefaultDialogPrefStrings
 import dev.patrickgold.jetpref.material.ui.JetPrefAlertDialog
@@ -99,6 +111,7 @@ class PreviewFieldController {
     var text by mutableStateOf(TextFieldValue(""))
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun PreviewKeyboardField(
     controller: PreviewFieldController,
@@ -113,79 +126,113 @@ fun PreviewKeyboardField(
     val previewKeyboardType by prefs.internal.previewKeyboardType.observeAsState()
     val isDialogOpen = remember { mutableStateOf(false) }
 
-    AnimatedVisibility(
-        visible = controller.isVisible,
-        enter = PreviewEnterTransition,
-        exit = PreviewExitTransition,
-    ) {
-        SelectionContainer {
-            HorizontalDivider(thickness = Dp.Hairline)
-            TextField(
-                modifier = modifier
-                    .height(56.dp)
-                    .fillMaxWidth()
-                    .onPreviewKeyEvent { event ->
-                        if (event.key == Key.Back) {
-                            focusManager.clearFocus()
-                        }
-                        false
-                    }
-                    .focusRequester(controller.focusRequester),
-                value = controller.text,
-                onValueChange = { controller.text = it },
-                textStyle = LocalTextStyle.current.copy(textDirection = TextDirection.ContentOrLtr),
-                placeholder = {
-                    Text(
-                        text = hint,
-                        overflow = TextOverflow.Ellipsis,
-                        maxLines = 1,
-                    )
-                },
-                leadingIcon = {
-                    IconButton(onClick = {
-                        isDialogOpen.value = true
-                    }) {
-                        Icon(
-                            imageVector = keyboardTypeIcon(previewKeyboardType),
-                            contentDescription = null,
-                        )
-                    }
-                },
-                trailingIcon = {
-                    Row {
-                        IconButton(onClick = {
-                            if (!InputMethodUtils.showImePicker(context)) {
-                                context.showShortToast("Error: InputMethodManager service not available!")
-                            }
-                        }) {
-                            Icon(
-                                imageVector = ImageVector.vectorResource(R.drawable.ic_keyboard), //Icons.Default.Keyboard,
-                                contentDescription = null,
-                            )
-                        }
-                    }
-                },
-                keyboardActions = KeyboardActions(
-                    onDone = { focusManager.clearFocus() },
-                ),
-                keyboardOptions = KeyboardOptions(autoCorrect = true, keyboardType = when(previewKeyboardType) {
-                    3 -> KeyboardType.Number
-                    4 -> KeyboardType.Phone
-                    5 -> KeyboardType.Uri
-                    6 -> KeyboardType.Email
-                    else -> KeyboardType.Text
-                }),
-                singleLine = true,
-                shape = RectangleShape,
-                colors = TextFieldDefaults.colors(
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    disabledIndicatorColor = Color.Transparent,
-                    focusedContainerColor = MaterialTheme.colorScheme.background,
-                    unfocusedContainerColor = MaterialTheme.colorScheme.background,
-                    disabledContainerColor = MaterialTheme.colorScheme.background,
-                ),
+    FlorisImeTheme {
+        val keyboardBackgroundColor =
+            FlorisImeTheme.style.get(FlorisImeUi.Keyboard).background.solidColor(context, default = Color.Black)
+        val verticalGradientBrush = Brush.verticalGradient(
+            colorStops = arrayOf(
+                0.0f to Color.Transparent,
+                0.6f to keyboardBackgroundColor.copy(alpha = 0.9f),
+                0.8f to keyboardBackgroundColor
             )
+        )
+        val transparentBrush = Brush.verticalGradient(
+            colors = listOf(
+                Color.Transparent,
+                Color.Transparent
+            )
+        )
+        val isImeVisible = WindowInsets.isImeVisible
+        val isFlorisBoardSelected by InputMethodUtils.observeIsFlorisboardSelected(foregroundOnly = true)
+        AnimatedVisibility(
+            modifier = Modifier
+                .background(
+                    brush = if (isImeVisible && isFlorisBoardSelected) verticalGradientBrush else transparentBrush,
+                    shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)),
+            visible = controller.isVisible,
+            enter = PreviewEnterTransition,
+            exit = PreviewExitTransition,
+        ) {
+            SelectionContainer(modifier = modifier) {
+//            HorizontalDivider(thickness = Dp.Hairline)
+                TextField(
+                    modifier = modifier
+                        .height(62.dp)
+                        .fillMaxWidth()
+                        .padding(6.dp)
+                        .onPreviewKeyEvent { event ->
+                            if (event.key == Key.Back) {
+                                focusManager.clearFocus()
+                            }
+                            false
+                        }
+                        .shadow(3.dp, RoundedCornerShape(28.dp))
+                        .focusRequester(controller.focusRequester),
+                    value = controller.text,
+                    onValueChange = { controller.text = it },
+                    textStyle = LocalTextStyle.current.copy(textDirection = TextDirection.ContentOrLtr),
+                    placeholder = {
+                        Text(
+                            text = hint,
+                            overflow = TextOverflow.Ellipsis,
+                            maxLines = 1,
+                        )
+                    },
+                    leadingIcon = {
+                        IconButton( onClick = {
+                            isDialogOpen.value = true
+                        }) {
+                            Box(
+                                modifier = modifier
+                                    .padding(start = 3.dp)
+                                    .background(color = MaterialTheme.colorScheme.surfaceContainer, shape = RoundedCornerShape(28.dp))
+                            ) {
+                                Icon(
+                                    modifier = modifier
+                                        .padding(4.dp),
+                                    imageVector = keyboardTypeIcon(previewKeyboardType),
+                                    contentDescription = null,
+                                )
+                            }
+                        }
+                    },
+                    trailingIcon = {
+                        Row {
+                            IconButton(onClick = {
+                                if (!InputMethodUtils.showImePicker(context)) {
+                                    context.showShortToast("Error: InputMethodManager service not available!")
+                                }
+                            }) {
+                                Icon(
+                                    modifier = modifier.padding(end = 8.dp),
+                                    imageVector = ImageVector.vectorResource(R.drawable.ic_keyboard),
+                                    contentDescription = null,
+                                )
+                            }
+                        }
+                    },
+                    keyboardActions = KeyboardActions(
+                        onDone = { focusManager.clearFocus() },
+                    ),
+                    keyboardOptions = KeyboardOptions(autoCorrectEnabled = true, keyboardType = when(previewKeyboardType) {
+                        3 -> KeyboardType.Number
+                        4 -> KeyboardType.Phone
+                        5 -> KeyboardType.Uri
+                        6 -> KeyboardType.Email
+                        else -> KeyboardType.Text
+                    }),
+                    singleLine = true,
+                    shape = RoundedCornerShape(28.dp), //RectangleShape,
+                    colors = TextFieldDefaults.colors(
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        disabledIndicatorColor = Color.Transparent,
+                        focusedContainerColor = MaterialTheme.colorScheme.onSecondary,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.onSecondary,
+                        disabledContainerColor = MaterialTheme.colorScheme.background,
+                    ),
+                )
+            }
         }
     }
 

@@ -18,7 +18,15 @@ package com.goodwy.keyboard.ime.keyboard
 
 import android.content.Context
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ArrowRightAlt
+import androidx.compose.material.icons.automirrored.rounded.ArrowRightAlt
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.rounded.KeyboardReturn
+import androidx.compose.material.icons.automirrored.rounded.Redo
+import androidx.compose.material.icons.automirrored.rounded.Send
+import androidx.compose.material.icons.automirrored.rounded.Undo
+import androidx.compose.material.icons.automirrored.outlined.Assignment
+import androidx.compose.material.icons.outlined.DeleteSweep
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.ContentCopy
 import androidx.compose.material.icons.rounded.ContentCut
@@ -26,21 +34,13 @@ import androidx.compose.material.icons.rounded.ContentPaste
 import androidx.compose.material.icons.rounded.Done
 import androidx.compose.material.icons.rounded.FontDownload
 import androidx.compose.material.icons.rounded.KeyboardArrowDown
-import androidx.compose.material.icons.rounded.KeyboardArrowLeft
-import androidx.compose.material.icons.rounded.KeyboardArrowRight
 import androidx.compose.material.icons.rounded.KeyboardArrowUp
-import androidx.compose.material.icons.rounded.KeyboardReturn
 import androidx.compose.material.icons.rounded.KeyboardVoice
 import androidx.compose.material.icons.rounded.MoreHoriz
-import androidx.compose.material.icons.rounded.Redo
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.SelectAll
-import androidx.compose.material.icons.rounded.Send
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.SpaceBar
-import androidx.compose.material.icons.rounded.Undo
-import androidx.compose.material.icons.outlined.Assignment
-import androidx.compose.material.icons.outlined.DeleteSweep
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import com.goodwy.keyboard.R
@@ -176,10 +176,10 @@ fun ComputingEvaluator.computeImageVector(data: KeyData): ImageVector? {
     val evaluator = this
     return when (data.code) {
         KeyCode.ARROW_LEFT -> {
-            Icons.Rounded.KeyboardArrowLeft
+            Icons.AutoMirrored.Rounded.KeyboardArrowLeft
         }
         KeyCode.ARROW_RIGHT -> {
-            Icons.Rounded.KeyboardArrowRight
+            Icons.AutoMirrored.Rounded.KeyboardArrowRight
         }
         KeyCode.ARROW_UP -> {
             Icons.Rounded.KeyboardArrowUp
@@ -219,17 +219,17 @@ fun ComputingEvaluator.computeImageVector(data: KeyData): ImageVector? {
             val imeOptions = evaluator.editorInfo.imeOptions
             val inputAttributes = evaluator.editorInfo.inputAttributes
             if (imeOptions.flagNoEnterAction || inputAttributes.flagTextMultiLine) {
-                Icons.Rounded.KeyboardReturn
+                Icons.AutoMirrored.Rounded.KeyboardReturn
             } else {
                 when (imeOptions.action) {
                     ImeOptions.Action.DONE -> Icons.Rounded.Done
-                    ImeOptions.Action.GO -> Icons.Rounded.ArrowRightAlt
-                    ImeOptions.Action.NEXT -> Icons.Rounded.ArrowRightAlt
-                    ImeOptions.Action.NONE -> Icons.Rounded.KeyboardReturn
-                    ImeOptions.Action.PREVIOUS -> Icons.Rounded.ArrowRightAlt
+                    ImeOptions.Action.GO -> Icons.AutoMirrored.Rounded.ArrowRightAlt
+                    ImeOptions.Action.NEXT -> Icons.AutoMirrored.Rounded.ArrowRightAlt
+                    ImeOptions.Action.NONE -> Icons.AutoMirrored.Rounded.KeyboardReturn
+                    ImeOptions.Action.PREVIOUS -> Icons.AutoMirrored.Rounded.ArrowRightAlt
                     ImeOptions.Action.SEARCH -> Icons.Rounded.Search
-                    ImeOptions.Action.SEND -> Icons.Rounded.Send
-                    ImeOptions.Action.UNSPECIFIED -> Icons.Rounded.KeyboardReturn
+                    ImeOptions.Action.SEND -> Icons.AutoMirrored.Rounded.Send
+                    ImeOptions.Action.UNSPECIFIED -> Icons.AutoMirrored.Rounded.KeyboardReturn
                 }
             }
         }
@@ -238,7 +238,7 @@ fun ComputingEvaluator.computeImageVector(data: KeyData): ImageVector? {
             ImageVector.vectorResource(theme = null, resId = R.drawable.ic_sentimental_satisfied, res = this.context()?.resources!!)
         }
         KeyCode.IME_UI_MODE_CLIPBOARD -> {
-            Icons.Outlined.Assignment
+            Icons.AutoMirrored.Outlined.Assignment
         }
         KeyCode.LANGUAGE_SWITCH -> {
 //            Icons.Rounded.Language
@@ -275,10 +275,10 @@ fun ComputingEvaluator.computeImageVector(data: KeyData): ImageVector? {
             }
         }
         KeyCode.UNDO -> {
-            Icons.Rounded.Undo
+            Icons.AutoMirrored.Rounded.Undo
         }
         KeyCode.REDO -> {
-            Icons.Rounded.Redo
+            Icons.AutoMirrored.Rounded.Redo
         }
         KeyCode.TOGGLE_ACTIONS_OVERFLOW -> {
             Icons.Rounded.MoreHoriz

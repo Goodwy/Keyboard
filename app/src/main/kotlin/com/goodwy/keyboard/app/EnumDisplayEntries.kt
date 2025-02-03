@@ -14,6 +14,7 @@ import com.goodwy.keyboard.ime.input.InputFeedbackSoundEffect.KEY_CLICK
 import com.goodwy.keyboard.ime.keyboard.IncognitoMode
 import com.goodwy.keyboard.ime.keyboard.SpaceBarMode
 import com.goodwy.keyboard.ime.landscapeinput.LandscapeInputUiMode
+import com.goodwy.keyboard.ime.media.emoji.EmojiHistory
 import com.goodwy.keyboard.ime.media.emoji.EmojiCategory
 import com.goodwy.keyboard.ime.media.emoji.EmojiCategory.ACTIVITIES
 import com.goodwy.keyboard.ime.media.emoji.EmojiCategory.ANIMALS_NATURE
@@ -26,6 +27,7 @@ import com.goodwy.keyboard.ime.media.emoji.EmojiCategory.SMILEYS_EMOTION
 import com.goodwy.keyboard.ime.media.emoji.EmojiCategory.SYMBOLS
 import com.goodwy.keyboard.ime.media.emoji.EmojiCategory.TRAVEL_PLACES
 import com.goodwy.keyboard.ime.media.emoji.EmojiSkinTone
+import com.goodwy.keyboard.ime.media.emoji.EmojiSuggestionType
 import com.goodwy.keyboard.ime.nlp.SpellingLanguageMode
 import com.goodwy.keyboard.ime.onehanded.OneHandedMode
 import com.goodwy.keyboard.ime.smartbar.CandidatesDisplayMode
@@ -152,6 +154,30 @@ private val ENUM_DISPLAY_ENTRIES = mapOf<Pair<KClass<*>, String>, @Composable ()
             )
         }
     },
+    EmojiHistory.UpdateStrategy::class to DEFAULT to {
+        listPrefEntries {
+            entry(
+                key = EmojiHistory.UpdateStrategy.AUTO_SORT_PREPEND,
+                label = stringRes(R.string.enum__emoji_history_update_strategy__auto_sort_prepend),
+                description = stringRes(R.string.enum__emoji_history_update_strategy__auto_sort_prepend__description),
+            )
+            entry(
+                key = EmojiHistory.UpdateStrategy.AUTO_SORT_APPEND,
+                label = stringRes(R.string.enum__emoji_history_update_strategy__auto_sort_append),
+                description = stringRes(R.string.enum__emoji_history_update_strategy__auto_sort_append__description),
+            )
+            entry(
+                key = EmojiHistory.UpdateStrategy.MANUAL_SORT_PREPEND,
+                label = stringRes(R.string.enum__emoji_history_update_strategy__manual_sort_prepend),
+                description = stringRes(R.string.enum__emoji_history_update_strategy__manual_sort_prepend__description),
+            )
+            entry(
+                key = EmojiHistory.UpdateStrategy.MANUAL_SORT_APPEND,
+                label = stringRes(R.string.enum__emoji_history_update_strategy__manual_sort_append),
+                description = stringRes(R.string.enum__emoji_history_update_strategy__manual_sort_append__description),
+            )
+        }
+    },
     EmojiSkinTone::class to DEFAULT to {
         listPrefEntries {
             entry(
@@ -195,6 +221,20 @@ private val ENUM_DISPLAY_ENTRIES = mapOf<Pair<KClass<*>, String>, @Composable ()
                     R.string.enum__emoji_skin_tone__dark_skin_tone,
                     "emoji" to "\uD83D\uDC4B\uD83C\uDFFF" // 👋🏿
                 ),
+            )
+        }
+    },
+    EmojiSuggestionType::class to DEFAULT to {
+        listPrefEntries {
+            entry(
+                key = EmojiSuggestionType.LEADING_COLON,
+                label = stringRes(R.string.enum__emoji_suggestion_type__leading_colon),
+                description = stringRes(R.string.enum__emoji_suggestion_type__leading_colon__description),
+            )
+            entry(
+                key = EmojiSuggestionType.INLINE_TEXT,
+                label = stringRes(R.string.enum__emoji_suggestion_type__inline_text),
+                description = stringRes(R.string.enum__emoji_suggestion_type__inline_text__description),
             )
         }
     },

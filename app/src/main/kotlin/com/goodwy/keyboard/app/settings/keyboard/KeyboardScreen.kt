@@ -23,13 +23,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.goodwy.keyboard.R
 import com.goodwy.keyboard.app.LocalNavController
-import com.goodwy.keyboard.app.Routes
 import com.goodwy.keyboard.app.enumDisplayEntriesOf
 import com.goodwy.keyboard.app.settings.DialogSliderPreferenceRow
 import com.goodwy.keyboard.app.settings.DividerRow
 import com.goodwy.keyboard.app.settings.ListPreferenceRow
 import com.goodwy.keyboard.app.settings.PreferenceGroupCard
-import com.goodwy.keyboard.app.settings.PreferenceRow
 import com.goodwy.keyboard.app.settings.SwitchPreferenceRow
 import com.goodwy.keyboard.ime.input.CapitalizationBehavior
 import com.goodwy.keyboard.ime.keyboard.SpaceBarMode
@@ -40,12 +38,7 @@ import com.goodwy.keyboard.ime.text.key.KeyHintMode
 import com.goodwy.keyboard.ime.text.key.UtilityKeyAction
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.stringRes
-import dev.patrickgold.jetpref.datastore.ui.DialogSliderPreference
 import dev.patrickgold.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
-import dev.patrickgold.jetpref.datastore.ui.ListPreference
-import dev.patrickgold.jetpref.datastore.ui.Preference
-import dev.patrickgold.jetpref.datastore.ui.PreferenceGroup
-import dev.patrickgold.jetpref.datastore.ui.SwitchPreference
 
 @OptIn(ExperimentalJetPrefDatastoreUi::class)
 @Composable
@@ -236,6 +229,6 @@ fun KeyboardScreen() = FlorisScreen {
                 summary = stringRes(R.string.pref__keyboard__space_bar_switches_to_characters__summary),
             )
         }
-        Spacer(modifier = Modifier.size(32.dp))
+        Spacer(modifier = Modifier.size(82.dp))
     }
 }

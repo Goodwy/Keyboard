@@ -37,6 +37,13 @@
     <string name="locked">Blokovaný</string>
     <string name="unlock">Odemknout</string>
     <string name="donate_text">Pro ty, kteří nepoužívají Google Play, je možné odemknout všechny funkce aplikace.             \\nPokud se vám líbí naše aplikace, které jsou offline, nevtíravé a nemají žádné reklamy, zvažte prosím naši podporu. Byli bychom velmi vděční.             \\n\\nDěkujeme!</string>
+    <string name="donate_text_no_gp">
+            Kvůli problémům dočasně nemůžeme provádět platby prostřednictvím služby Google Play,
+            proto po tuto dobu poskytujeme všem uživatelům možnost ručního odemknutí všech funkcí aplikace.
+            \nPokud se vám líbí naše aplikace, které jsou offline, nerušivé a bez reklam, zvažte, zda nás nějakým způsobem nepodpořit.
+            Budeme vám velmi vděční.
+            \n\nDěkujeme!
+    </string>
     <!--Not used-->
     <string name="lifebuoy_title">We will support you</string>
     <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>

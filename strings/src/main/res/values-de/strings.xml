@@ -37,6 +37,12 @@
     <string name="locked">Gesperrt</string>
     <string name="unlock">Aufschließen</string>
     <string name="donate_text">Für diejenigen, die Google Play nicht verwenden, ist es möglich, alle Funktionen der Anwendung freizuschalten.             \\nWenn Ihnen unsere Apps gefallen, die offline und nicht aufdringlich sind und keine Werbung enthalten, ziehen Sie bitte in Betracht, uns in irgendeiner Weise zu unterstützen. Wir wären sehr dankbar.             \\n\\nDanke!</string>
+    <string name="donate_text_no_gp">
+            Aufgrund von Problemen ist es uns vorübergehend nicht möglich, Zahlungen über Google Play vorzunehmen,
+            Daher bieten wir allen Nutzern für diesen Zeitraum die Möglichkeit, alle Funktionen der App manuell freizuschalten.
+            \nWenn Ihnen unsere Apps gefallen, die offline, nicht aufdringlich und werbefrei sind, ziehen Sie bitte in Erwägung, uns auf irgendeine Weise zu unterstützen. Wir wären Ihnen sehr dankbar.
+            \n\nIch danke Ihnen!
+    </string>
     <!--Not used-->
     <string name="lifebuoy_title">We will support you</string>
     <string name="lifebuoy_summary">If for some reason you can\'t afford our app, but really want to use all the features, just email us</string>

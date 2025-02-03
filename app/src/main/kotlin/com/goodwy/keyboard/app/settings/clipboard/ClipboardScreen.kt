@@ -29,10 +29,8 @@ import com.goodwy.keyboard.app.settings.SwitchPreferenceRow
 import com.goodwy.keyboard.lib.compose.FlorisScreen
 import com.goodwy.keyboard.lib.compose.pluralsRes
 import com.goodwy.keyboard.lib.compose.stringRes
-import dev.patrickgold.jetpref.datastore.ui.DialogSliderPreference
+import com.goodwy.lib.android.AndroidVersion
 import dev.patrickgold.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
-import dev.patrickgold.jetpref.datastore.ui.PreferenceGroup
-import dev.patrickgold.jetpref.datastore.ui.SwitchPreference
 
 @OptIn(ExperimentalJetPrefDatastoreUi::class)
 @Composable
@@ -87,6 +85,24 @@ fun ClipboardScreen() = FlorisScreen {
             )
             DividerRow(start = 16.dp)
             SwitchPreferenceRow(
+                prefs.clipboard.autoCleanSensitive,
+                title = stringRes(R.string.pref__clipboard__auto_clean_sensitive__label),
+                enabledIf = { prefs.clipboard.historyEnabled isEqualTo true },
+                visibleIf = { AndroidVersion.ATLEAST_API33_T },
+            )
+            DividerRow(start = 16.dp)
+            DialogSliderPreferenceRow(
+                prefs.clipboard.autoCleanSensitiveAfter,
+                title = stringRes(R.string.pref__clipboard__auto_clean_sensitive_after__label),
+                valueLabel = { pluralsRes(R.plurals.unit__seconds__written, it, "v" to it) },
+                min = 0,
+                max = 300,
+                stepIncrement = 10,
+                enabledIf = { prefs.clipboard.historyEnabled isEqualTo true && prefs.clipboard.autoCleanSensitive isEqualTo true },
+                visibleIf = { AndroidVersion.ATLEAST_API33_T },
+            )
+            DividerRow(start = 16.dp)
+            SwitchPreferenceRow(
                 prefs.clipboard.limitHistorySize,
                 title = stringRes(R.string.pref__clipboard__limit_history_size__label),
                 enabledIf = { prefs.clipboard.historyEnabled isEqualTo true },
@@ -109,6 +125,6 @@ fun ClipboardScreen() = FlorisScreen {
                 enabledIf = { prefs.clipboard.historyEnabled isEqualTo true },
             )
         }
-        Spacer(modifier = Modifier.size(32.dp))
+        Spacer(modifier = Modifier.size(82.dp))
     }
 }

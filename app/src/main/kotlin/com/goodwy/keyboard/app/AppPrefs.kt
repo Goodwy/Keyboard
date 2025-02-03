@@ -35,8 +35,9 @@ import com.goodwy.keyboard.ime.keyboard.SpaceBarMode
 import com.goodwy.keyboard.ime.landscapeinput.LandscapeInputUiMode
 import com.goodwy.keyboard.ime.media.emoji.EmojiCategory
 import com.goodwy.keyboard.ime.media.emoji.EmojiHairStyle
-import com.goodwy.keyboard.ime.media.emoji.EmojiRecentlyUsedHelper
+import com.goodwy.keyboard.ime.media.emoji.EmojiHistory
 import com.goodwy.keyboard.ime.media.emoji.EmojiSkinTone
+import com.goodwy.keyboard.ime.media.emoji.EmojiSuggestionType
 import com.goodwy.keyboard.ime.nlp.SpellingLanguageMode
 import com.goodwy.keyboard.ime.onehanded.OneHandedMode
 import com.goodwy.keyboard.ime.smartbar.IncognitoDisplayMode
@@ -60,6 +61,8 @@ import dev.patrickgold.jetpref.datastore.model.PreferenceMigrationEntry
 import dev.patrickgold.jetpref.datastore.model.PreferenceModel
 import dev.patrickgold.jetpref.datastore.model.PreferenceType
 import dev.patrickgold.jetpref.datastore.model.observeAsState
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 fun florisPreferenceModel() = JetPref.getOrCreatePreferenceModel(AppPrefs::class, ::AppPrefs)
 
@@ -119,6 +122,14 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
             key = "clipboard__clean_up_after",
             default = 20,
         )
+        val autoCleanSensitive = boolean(
+            key = "clipboard__auto_clean_sensitive",
+            default = false,
+        )
+        val autoCleanSensitiveAfter = int(
+            key = "clipboard__auto_clean_sensitive_after",
+            default = 20,
+        )
         val limitHistorySize = boolean(
             key = "clipboard__limit_history_size",
             default = true,
@@ -159,10 +170,6 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
             key = "devtools__enabled",
             default = false,
         )
-        val showHeapMemoryStats = boolean(
-            key = "devtools__show_heap_memory_stats",
-            default = false,
-        )
         val showPrimaryClip = boolean(
             key = "devtools__show_primary_clip",
             default = false,
@@ -173,6 +180,10 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
         )
         val showSpellingOverlay = boolean(
             key = "devtools__show_spelling_overlay",
+            default = false,
+        )
+        val showInlineAutofillOverlay = boolean(
+            key = "devtools__show_inline_autofill_overlay",
             default = false,
         )
         val showKeyTouchBoundaries = boolean(
@@ -199,6 +210,84 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
         val enableFlorisUserDictionary = boolean(
             key = "suggestion__enable_floris_user_dictionary",
             default = true,
+        )
+    }
+
+    val emoji = Emoji()
+    inner class Emoji {
+        val preferredSkinTone = enum(
+            key = "emoji__preferred_skin_tone",
+            default = EmojiSkinTone.DEFAULT,
+        )
+        val preferredHairStyle = enum(
+            key = "emoji__preferred_hair_style",
+            default = EmojiHairStyle.DEFAULT,
+        )
+        val historyEnabled = boolean(
+            key = "emoji__history_enabled",
+            default = true,
+        )
+        val historyData = custom(
+            key = "emoji__history_data",
+            default = EmojiHistory.Empty,
+            serializer = EmojiHistory.Serializer,
+        )
+        val historyPinnedUpdateStrategy = enum(
+            key = "emoji__history_pinned_update_strategy",
+            default = EmojiHistory.UpdateStrategy.MANUAL_SORT_PREPEND,
+        )
+        val historyPinnedMaxSize = int(
+            key = "emoji__history_pinned_max_size",
+            default = EmojiHistory.MaxSizeUnlimited,
+        )
+        val historyRecentUpdateStrategy = enum(
+            key = "emoji__history_recent_update_strategy",
+            default = EmojiHistory.UpdateStrategy.AUTO_SORT_PREPEND,
+        )
+        val historyRecentMaxSize = int(
+            key = "emoji__history_recent_max_size",
+            default = 90,
+        )
+        val suggestionEnabled = boolean(
+            key = "emoji__suggestion_enabled",
+            default = true,
+        )
+        val suggestionType = enum(
+            key = "emoji__suggestion_type",
+            default = EmojiSuggestionType.LEADING_COLON,
+        )
+        val suggestionUpdateHistory = boolean(
+            key = "emoji__suggestion_update_history",
+            default = true,
+        )
+        val suggestionCandidateShowName = boolean(
+            key = "emoji__suggestion_candidate_show_name",
+            default = false,
+        )
+        val suggestionQueryMinLength = int(
+            key = "emoji__suggestion_query_min_length",
+            default = 3,
+        )
+        val suggestionCandidateMaxCount = int(
+            key = "emoji__suggestion_candidate_max_count",
+            default = 5,
+        )
+        //Goodwy
+        val emojiUseLastTab = boolean(
+            key = "media__emoji_last_tab",
+            default = true
+        )
+        val emojiLastTab = enum(
+            key = "media__emoji_last_tab",
+            default = EmojiCategory.RECENTLY_USED
+        )
+        val emojiDefaultTab = enum(
+            key = "media__emoji_default_tab",
+            default = EmojiCategory.RECENTLY_USED,
+        )
+        val emojiUseHorizontalGrid = boolean(
+            key = "media__emoji_use_horizontal_grid",
+            default = false
         )
     }
 
@@ -580,44 +669,6 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
         )
     }
 
-    val media = Media()
-    inner class Media {
-        val emojiRecentlyUsed = custom(
-            key = "media__emoji_recently_used",
-            default = emptyList(),
-            serializer = EmojiRecentlyUsedHelper.Serializer,
-        )
-        val emojiRecentlyUsedMaxSize = int(
-            key = "media__emoji_recently_used_max_size",
-            default = 90,
-        )
-        val emojiPreferredSkinTone = enum(
-            key = "media__emoji_preferred_skin_tone",
-            default = EmojiSkinTone.DEFAULT,
-        )
-        val emojiPreferredHairStyle = enum(
-            key = "media__emoji_preferred_hair_style",
-            default = EmojiHairStyle.DEFAULT,
-        )
-        //Goodwy
-        val emojiUseLastTab = boolean(
-            key = "media__emoji_last_tab",
-            default = true
-        )
-        val emojiLastTab = enum(
-            key = "media__emoji_last_tab",
-            default = EmojiCategory.RECENTLY_USED
-        )
-        val emojiDefaultTab = enum(
-            key = "media__emoji_default_tab",
-            default = EmojiCategory.RECENTLY_USED,
-        )
-        val emojiUseHorizontalGrid = boolean(
-            key = "media__emoji_use_horizontal_grid",
-            default = false
-        )
-    }
-
     val smartbar = Smartbar()
     inner class Smartbar {
         val enabled = boolean(
@@ -641,6 +692,7 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
             key = "smartbar__shared_actions_expanded",
             default = false,
         )
+        @Deprecated("Always enabled due to UX issues")
         val sharedActionsAutoExpandCollapse = boolean(
             key = "smartbar__shared_actions_auto_expand_collapse",
             default = false,
@@ -750,8 +802,7 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
             "gestures__space_bar_swipe_right", "gestures__space_bar_long_press", "gestures__delete_key_swipe_left",
             "gestures__delete_key_long_press", "keyboard__hinted_number_row_mode", "keyboard__hinted_symbols_mode",
             "keyboard__utility_key_action", "keyboard__one_handed_mode", "keyboard__landscape_input_ui_mode",
-            "localization__display_language_names_in", "media__emoji_preferred_skin_tone",
-            "media__emoji_preferred_hair_style", "smartbar__primary_actions_row_type",
+            "localization__display_language_names_in", "smartbar__primary_actions_row_type",
             "smartbar__secondary_actions_placement", "smartbar__secondary_actions_row_type", "spelling__language_mode",
             "suggestion__display_mode", "theme__mode", "theme__editor_display_colors_as",
             "theme__editor_display_kbd_after_dialogs", "theme__editor_level",
@@ -771,6 +822,32 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
                 } else {
                     entry.reset()
                 }
+            }
+
+            // Migrate media prefs to emoji prefs
+            // Keep migration rule until: 0.6 dev cycle
+            "media__emoji_recently_used" -> {
+                val emojiValues = entry.rawValue.split(";")
+                val recent = emojiValues.map {
+                    com.goodwy.keyboard.ime.media.emoji.Emoji(it, "", emptyList())
+                }
+                val data = EmojiHistory(emptyList(), recent)
+                entry.transform(key = "emoji__history_data", rawValue = Json.encodeToString(data))
+            }
+            "media__emoji_recently_used_max_size" -> {
+                entry.transform(key = "emoji__history_recent_max_size")
+            }
+            "media__emoji_preferred_skin_tone" -> {
+                entry.transform(
+                    key = "emoji__preferred_skin_tone",
+                    rawValue = entry.rawValue.uppercase(), // keep until: 0.5 dev cycle
+                )
+            }
+            "media__emoji_preferred_hair_style" -> {
+                entry.transform(
+                    key = "emoji__preferred_hair_style",
+                    rawValue = entry.rawValue.uppercase(), // keep until: 0.5 dev cycle
+                )
             }
 
             // Default: keep entry
@@ -802,6 +879,10 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
         )
         val isProRustore = boolean(
             key = "purchase__is_pro_rustore",
+            default = false,
+        )
+        val isProNoGP = boolean(
+            key = "purchase__is_pro_no_gp",
             default = false,
         )
         val startPurchase = string(

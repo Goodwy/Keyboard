@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.goodwy.keyboard.extensionManager
 import com.goodwy.keyboard.ime.keyboard.FlorisImeSizing
 import com.goodwy.keyboard.keyboardManager
 import com.goodwy.keyboard.lib.util.launchUrl
@@ -26,6 +27,7 @@ import com.goodwy.lib.snygg.value.SnyggSolidColorValue
 @Composable
 fun HowDidWeGetHere() {
     val context = LocalContext.current
+    val extensionManager by context.extensionManager()
     val keyboardManager by context.keyboardManager()
 
     val style = SnyggPropertySet(mapOf(
@@ -56,6 +58,7 @@ fun HowDidWeGetHere() {
                     SnyggButton(
                         onClick = {
                             keyboardManager.activeState.rawValue = 0u
+                            extensionManager.init()
                         },
                         text = "Try reset keyboard",
                         style = style,

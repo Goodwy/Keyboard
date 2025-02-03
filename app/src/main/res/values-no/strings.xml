@@ -13,7 +13,6 @@
     <string name="media__tab__emojis" comment="Tab description for emojis in the media UI">Emojier</string>
     <string name="media__tab__emoticons" comment="Tab description for emoticons in the media UI">Emotikon</string>
     <string name="media__tab__kaomoji" comment="Tab description for kaomoji in the media UI">Kaomoji</string>
-    <string name="prefs__media__emoji_recently_used_max_size">Emojihistorikk maksstørrelse</string>
     <string name="prefs__media__emoji_preferred_skin_tone">Foretrukket emoji-hudfarge</string>
     <string name="prefs__media__emoji_preferred_hair_style">Foretrukket emoji-sveis</string>
     <!-- Emoji strings -->
@@ -26,10 +25,6 @@
     <string name="emoji__category__objects" comment="Emoji category name">Gjenstander</string>
     <string name="emoji__category__symbols" comment="Emoji category name">Symboler</string>
     <string name="emoji__category__flags" comment="Emoji category name">Flagg</string>
-    <string name="emoji__recently_used__empty_message" comment="Message if no recently used emojis exist">Ingen nylig brukte emojis funnet. Når du begynner å bruke emojis vil de dukke opp her.</string>
-    <string name="emoji__recently_used__phone_locked_message" comment="Message to show if phone is locked">For å tå tilgang til din emoji-historikk, lås opp enheten din først.</string>
-    <string name="emoji__recently_used__removal_tip" comment="Feature discoverability for removal of recently used emojis">Tips: Press og hold nylig brukte emojier for å fjerne dem fra denne visningen!</string>
-    <string name="emoji__recently_used__removal_success_message" comment="Toast message if user has long pressed emoji in recently used collection to remove it">Fjernet {emoji} fra nylig brukte emojier</string>
     <!-- Quick action strings -->
     <string name="quick_action__arrow_up" maxLength="12">Pil opp</string>
     <string name="quick_action__arrow_up__tooltip">Gjør pil opp</string>
@@ -408,8 +403,6 @@
     <string name="devtools__title" comment="Title of Devtools screen. Translators: treat this string as 'Developer tools' for translation, except a similar short term is available for your language.">Utviklerverktøy</string>
     <string name="devtools__enabled__label" comment="Label of Enable developer tools in Devtools">Skru på utviklerverktøy</string>
     <string name="devtools__enabled__summary" comment="Summary of Enable developer tools in Devtools">Verktøy som er spesifikt utviklet for feilsøking</string>
-    <string name="devtools__show_heap_memory_stats__label" comment="Label of Show heap memory stats in Devtools">Vis haugminnestatistikk</string>
-    <string name="devtools__show_heap_memory_stats__summary" comment="Summary of Show heap memory stats in Devtools">Overlegger haugminnebruk og maks størrelse i hjørnet øverst til høyre</string>
     <string name="devtools__clear_udm_internal_database__label" comment="Label of Clear internal user dictionary database in Devtools">Tøm intern brukerordlistedatabase</string>
     <string name="devtools__clear_udm_internal_database__summary" comment="Summary of Clear internal user dictionary database in Devtools">Fjerner alle ord fra ordlistedatabasetabellen</string>
     <string name="devtools__reset_flag__label" comment="Label of Reset flag preferences in Devtools">Tilbakestill \"{flag_name}\" flagg</string>

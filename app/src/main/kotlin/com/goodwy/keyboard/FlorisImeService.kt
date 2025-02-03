@@ -46,6 +46,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.runtime.Composable
@@ -87,6 +88,7 @@ import com.goodwy.keyboard.ime.keyboard.ProvideKeyboardRowBaseHeight
 import com.goodwy.keyboard.ime.landscapeinput.LandscapeInputUiMode
 import com.goodwy.keyboard.ime.lifecycle.LifecycleInputMethodService
 import com.goodwy.keyboard.ime.media.MediaInputLayout
+import com.goodwy.keyboard.ime.nlp.NlpInlineAutofill
 import com.goodwy.keyboard.ime.onehanded.OneHandedMode
 import com.goodwy.keyboard.ime.onehanded.OneHandedPanel
 import com.goodwy.keyboard.ime.sheet.BottomSheetHostUi
@@ -370,7 +372,7 @@ class FlorisImeService : LifecycleInputMethodService() {
         flogInfo { "(no args)" }
         super.onFinishInput()
         editorInstance.handleFinishInput()
-        nlpManager.clearInlineSuggestions()
+        NlpInlineAutofill.clearInlineSuggestions()
     }
 
     override fun onWindowShown() {
@@ -437,23 +439,26 @@ class FlorisImeService : LifecycleInputMethodService() {
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreateInlineSuggestionsRequest(uiExtras: Bundle): InlineSuggestionsRequest? {
-        return if (prefs.smartbar.enabled.get() && prefs.suggestion.api30InlineSuggestionsEnabled.get()) {
-            flogInfo(LogTopic.IMS_EVENTS) {
-                "Creating inline suggestions request because Smartbar and inline suggestions are enabled."
-            }
-            val stylesBundle = themeManager.createInlineSuggestionUiStyleBundle(this)
-            val spec = InlinePresentationSpec.Builder(InlineSuggestionUiSmallestSize, InlineSuggestionUiBiggestSize)
-                .setStyle(stylesBundle)
-                .build()
-            InlineSuggestionsRequest.Builder(listOf(spec)).let { request ->
-                request.setMaxSuggestionCount(InlineSuggestionsRequest.SUGGESTION_COUNT_UNLIMITED)
-                request.build()
-            }
-        } else {
+        if (!prefs.smartbar.enabled.get() || !prefs.suggestion.api30InlineSuggestionsEnabled.get()) {
             flogInfo(LogTopic.IMS_EVENTS) {
                 "Ignoring inline suggestions request because Smartbar and/or inline suggestions are disabled."
             }
-            null
+            return null
+        }
+
+        flogInfo(LogTopic.IMS_EVENTS) { "Creating inline suggestions request" }
+        val stylesBundle = themeManager.createInlineSuggestionUiStyleBundle(this)
+        val spec = InlinePresentationSpec.Builder(
+            InlineSuggestionUiSmallestSize,
+            InlineSuggestionUiBiggestSize,
+        ).run {
+            setStyle(stylesBundle)
+            build()
+        }
+
+        return InlineSuggestionsRequest.Builder(listOf(spec)).run {
+            setMaxSuggestionCount(InlineSuggestionsRequest.SUGGESTION_COUNT_UNLIMITED)
+            build()
         }
     }
 
@@ -463,8 +468,7 @@ class FlorisImeService : LifecycleInputMethodService() {
         flogInfo(LogTopic.IMS_EVENTS) {
             "Received inline suggestions response with ${inlineSuggestions.size} suggestion(s) provided."
         }
-        nlpManager.showInlineSuggestions(inlineSuggestions)
-        return true
+        return NlpInlineAutofill.showInlineSuggestions(this, inlineSuggestions)
     }
 
     override fun onComputeInsets(outInsets: Insets?) {
@@ -548,7 +552,7 @@ class FlorisImeService : LifecycleInputMethodService() {
                                         .fillMaxWidth()
                                         .weight(1f),
                                 ) {
-                                    DevtoolsUi()
+                                    DevtoolsOverlay(modifier = Modifier.fillMaxSize())
                                 }
                             }
                             ImeUi()
@@ -594,6 +598,7 @@ class FlorisImeService : LifecycleInputMethodService() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .wrapContentHeight()
+                        .safeDrawingPadding()
                         // FIXME: removing this fixes the Smartbar sizing but breaks one-handed-mode
                         //.height(IntrinsicSize.Min)
                         .padding(bottom = bottomOffset),
@@ -631,14 +636,6 @@ class FlorisImeService : LifecycleInputMethodService() {
                     }
                 }
             }
-        }
-    }
-
-    @Composable
-    private fun DevtoolsUi() {
-        val devtoolsEnabled by prefs.devtools.enabled.observeAsState()
-        if (devtoolsEnabled) {
-            DevtoolsOverlay(modifier = Modifier.fillMaxSize())
         }
     }
 

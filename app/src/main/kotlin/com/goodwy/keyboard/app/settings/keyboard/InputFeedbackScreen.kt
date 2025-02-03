@@ -37,11 +37,7 @@ import com.goodwy.keyboard.lib.compose.stringRes
 import com.goodwy.lib.android.AndroidVersion
 import com.goodwy.lib.android.systemVibratorOrNull
 import com.goodwy.lib.android.vibrate
-import dev.patrickgold.jetpref.datastore.ui.DialogSliderPreference
 import dev.patrickgold.jetpref.datastore.ui.ExperimentalJetPrefDatastoreUi
-import dev.patrickgold.jetpref.datastore.ui.ListPreference
-import dev.patrickgold.jetpref.datastore.ui.PreferenceGroup
-import dev.patrickgold.jetpref.datastore.ui.SwitchPreference
 
 @OptIn(ExperimentalJetPrefDatastoreUi::class)
 @Composable
@@ -225,6 +221,6 @@ fun InputFeedbackScreen() = FlorisScreen {
                 enabledIf = { prefs.inputFeedback.hapticEnabled isEqualTo true },
             )
         }
-        Spacer(modifier = Modifier.size(32.dp))
+        Spacer(modifier = Modifier.size(82.dp))
     }
 }

@@ -189,7 +189,9 @@ fun QuickActionButton(
                 when (action) {
                     is QuickAction.InsertKey -> {
                         val (imageVector, label) = remember(action, evaluator) {
-                            evaluator.computeImageVector(action.data) to evaluator.computeLabel(action.data)
+                            if (action.data != null) { //https://github.com/Goodwy/Keyboard/issues/6
+                                evaluator.computeImageVector(action.data) to evaluator.computeLabel(action.data)
+                            } else null to null
                         }
                         if (imageVector != null) {
                             Icon(
