@@ -95,8 +95,8 @@ fun PurchaseScreen() = FlorisScreen {
     val isPro by prefs.purchase.isPro.observeAsState()
     val isProSubs by prefs.purchase.isProSubs.observeAsState()
     val isProRustore by prefs.purchase.isProRustore.observeAsState()
-    val isProNoGP by prefs.purchase.isProNoGP.observeAsState()
-    val isProApp = isPro || isProSubs || isProRustore || isProNoGP
+//    val isProNoGP by prefs.purchase.isProNoGP.observeAsState()
+    val isProApp = isPro || isProSubs || isProRustore //|| isProNoGP
 
     val isPlayStoreInstalled by prefs.purchase.isPlayStoreInstalled.observeAsState()
     val isRuStoreInstalled by prefs.purchase.isRuStoreInstalled.observeAsState()
@@ -125,7 +125,7 @@ fun PurchaseScreen() = FlorisScreen {
     val isDialogOpen = remember { mutableStateOf(false) }
     val purchaseErrorRustore by prefs.purchase.purchaseErrorRustore.observeAsState()
 
-    if (isRuStoreInstalled) { //isPlayStoreInstalled || isRuStoreInstalled
+    if (isPlayStoreInstalled || isRuStoreInstalled) {
         actions {
             if (isPlayStoreInstalled && isRuStoreInstalled) {
                 if (useGooglePlay) {
@@ -270,7 +270,7 @@ fun PurchaseScreen() = FlorisScreen {
             }
             Spacer(modifier = Modifier.size(16.dp))
 
-            if (isRuStoreInstalled) { //isPlayStoreInstalled || isRuStoreInstalled
+            if (isPlayStoreInstalled || isRuStoreInstalled) {
                 Text(
                     text = stringResource(StringsR.string.action_support_project),
                     fontSize = 18.sp,
@@ -828,13 +828,13 @@ fun PurchaseScreen() = FlorisScreen {
                 ) {
                     Text(
                         modifier = Modifier.padding(horizontal = 24.dp),
-                        text = if (isPlayStoreInstalled) stringResource(StringsR.string.donate_text_no_gp) else stringResource(StringsR.string.donate_text),
+                        text = stringResource(StringsR.string.donate_text), //if (isPlayStoreInstalled) stringResource(StringsR.string.donate_text_no_gp) else stringResource(StringsR.string.donate_text),
                         textAlign = TextAlign.Center,
                     )
                     Spacer(modifier = Modifier.size(16.dp))
                     Button(
                         //modifier = Modifier.height(28.dp),
-                        onClick = { context.launchUrl("https://sites.google.com/view/goodwy/support-project") },
+                        onClick = { context.launchUrl("https://www.goodwy.dev/support-project") },
                         //shape = RoundedCornerShape(10.dp),
                         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp)
                     ) {
@@ -845,10 +845,11 @@ fun PurchaseScreen() = FlorisScreen {
                     Spacer(modifier = Modifier.size(8.dp))
                     Switch(
                         modifier = Modifier.scale(2f),
-                        checked = if (isPlayStoreInstalled) isProNoGP else isPro,
+                        checked = isPro, //if (isPlayStoreInstalled) isProNoGP else isPro,
                         onCheckedChange = {
-                            if (isPlayStoreInstalled) prefs.purchase.isProNoGP.set(!isProNoGP)
-                            else prefs.purchase.isPro.set(!isPro)
+//                            if (isPlayStoreInstalled) prefs.purchase.isProNoGP.set(!isProNoGP)
+//                            else prefs.purchase.isPro.set(!isPro)
+                            prefs.purchase.isPro.set(!isPro)
                         },
                     )
                     Spacer(modifier = Modifier.size(56.dp))

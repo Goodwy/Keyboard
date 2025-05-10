@@ -210,7 +210,8 @@ fun ComputingEvaluator.computeImageVector(data: KeyData): ImageVector? {
             ImageVector.vectorResource(theme = null, resId = R.drawable.ic_keyboard_right, res = this.context()?.resources!!)
         }
         KeyCode.VOICE_INPUT -> {
-            Icons.Rounded.KeyboardVoice
+//            Icons.Rounded.KeyboardVoice
+            ImageVector.vectorResource(theme = null, resId = R.drawable.ic_mic, res = this.context()?.resources!!)
         }
         KeyCode.DELETE -> {
             ImageVector.vectorResource(theme = null, resId = R.drawable.ic_backspace, res = this.context()?.resources!!)

@@ -17,21 +17,17 @@
 package com.goodwy.keyboard.ime.media.emoji
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.EmojiEmotions
-import androidx.compose.material.icons.filled.EmojiEvents
-import androidx.compose.material.icons.filled.EmojiFlags
-import androidx.compose.material.icons.filled.EmojiFoodBeverage
-import androidx.compose.material.icons.filled.EmojiNature
-import androidx.compose.material.icons.filled.EmojiObjects
-import androidx.compose.material.icons.filled.EmojiPeople
-import androidx.compose.material.icons.filled.EmojiSymbols
-import androidx.compose.material.icons.filled.EmojiTransportation
-import androidx.compose.material.icons.filled.Schedule
-import androidx.compose.runtime.Composable
+import androidx.compose.material.icons.rounded.EmojiEmotions
+import androidx.compose.material.icons.rounded.EmojiEvents
+import androidx.compose.material.icons.rounded.EmojiFlags
+import androidx.compose.material.icons.rounded.EmojiFoodBeverage
+import androidx.compose.material.icons.rounded.EmojiNature
+import androidx.compose.material.icons.rounded.EmojiObjects
+import androidx.compose.material.icons.rounded.EmojiPeople
+import androidx.compose.material.icons.rounded.EmojiSymbols
+import androidx.compose.material.icons.rounded.EmojiTransportation
+import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.goodwy.keyboard.R
-import com.goodwy.keyboard.lib.compose.stringRes
-import dev.patrickgold.jetpref.datastore.ui.listPrefEntries
 
 enum class EmojiCategory(val id: String) {
     RECENTLY_USED("recently_used"),
@@ -47,16 +43,16 @@ enum class EmojiCategory(val id: String) {
 
     fun icon(): ImageVector {
         return when (this) {
-            RECENTLY_USED -> Icons.Default.Schedule
-            SMILEYS_EMOTION -> Icons.Default.EmojiEmotions
-            PEOPLE_BODY -> Icons.Default.EmojiPeople
-            ANIMALS_NATURE -> Icons.Default.EmojiNature
-            FOOD_DRINK -> Icons.Default.EmojiFoodBeverage
-            TRAVEL_PLACES -> Icons.Default.EmojiTransportation
-            ACTIVITIES -> Icons.Default.EmojiEvents
-            OBJECTS -> Icons.Default.EmojiObjects
-            SYMBOLS -> Icons.Default.EmojiSymbols
-            FLAGS -> Icons.Default.EmojiFlags
+            RECENTLY_USED -> Icons.Rounded.Schedule
+            SMILEYS_EMOTION -> Icons.Rounded.EmojiEmotions
+            PEOPLE_BODY -> Icons.Rounded.EmojiPeople
+            ANIMALS_NATURE -> Icons.Rounded.EmojiNature
+            FOOD_DRINK -> Icons.Rounded.EmojiFoodBeverage
+            TRAVEL_PLACES -> Icons.Rounded.EmojiTransportation
+            ACTIVITIES -> Icons.Rounded.EmojiEvents
+            OBJECTS -> Icons.Rounded.EmojiObjects
+            SYMBOLS -> Icons.Rounded.EmojiSymbols
+            FLAGS -> Icons.Rounded.EmojiFlags
         }
     }
 }

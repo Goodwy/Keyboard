@@ -1,7 +1,7 @@
 <resources>
     <string name="florisboard__repo_url" translatable="false">https://github.com/goodwy/keyboard</string>
     <string name="florisboard__issue_tracker_url" translatable="false">https://github.com/goodwy/keyboard/issues</string>
-    <string name="florisboard__privacy_policy_url" translatable="false">https://sites.google.com/view/goodwy/about/privacy-policy-inkwell-keyboard</string>
+    <string name="florisboard__privacy_policy_url" translatable="false">https://www.goodwy.dev/about/privacy-policy-inkwell-keyboard</string>
     <string name="florisboard__changelog_url" translatable="false">https://github.com/goodwy/keyboard/releases/v{version}</string>
     <string name="florisboard__commit_by_hash_url" translatable="false">https://github.com/goodwy/keyboard/commit/{hash}</string>
     <string name="florisboard__spell_checker_wiki_url" translatable="false">https://github.com/goodwy/keyboard/wiki/System-spell-checker-service</string>
@@ -31,7 +31,7 @@
 
     <!-- Goodwy -->
     <string name="inkwell__google_play_url" translatable="false">https://play.google.com/store/apps/details?id=com.goodwy.keyboard</string>
-    <string name="inkwell__google_play_apps_url" translatable="false">https://play.google.com/store/apps/dev?id=8268163890866913014</string>
+    <string name="inkwell__google_play_apps_url" translatable="false">https://play.google.com/store/apps/dev?id=5558472546114098886</string>
     <string name="inkwell__rustore_url" translatable="false">https://www.rustore.ru/catalog/app/com.goodwy.keyboard</string>
     <string name="inkwell__rustore_apps_url" translatable="false">rustore://apps.rustore.ru/developer/d01f495d</string>
 </resources>

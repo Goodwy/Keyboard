@@ -173,7 +173,7 @@ fun LocalizationScreen() = FlorisScreen {
                 }
             }
         }
-        Spacer(modifier = Modifier.size(82.dp))
+        Spacer(modifier = Modifier.size(164.dp))
     }
 
     DeleteSubtypeConfirmationDialog(

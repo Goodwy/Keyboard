@@ -227,4 +227,14 @@ class SubtypeManager(context: Context) {
         prefs.localization.activeSubtypeId.set(newActiveSubtype.id)
         activeSubtype = newActiveSubtype
     }
+
+    /**
+     * Switch to a subtype if possible..
+     */
+    fun switchToSubtype(subtype: Subtype) {
+        if (subtypes.contains(subtype)) {
+            prefs.localization.activeSubtypeId.set(subtype.id)
+            activeSubtype = subtype
+        }
+    }
 }

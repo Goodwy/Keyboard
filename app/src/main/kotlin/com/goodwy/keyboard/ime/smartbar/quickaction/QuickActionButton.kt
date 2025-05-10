@@ -146,9 +146,11 @@ fun QuickActionButton(
         Modifier
     }
 
+    val ratio = if (type == QuickActionBarType.INTERACTIVE_BUTTON) 1f else 1.3f
+
     Box(
         modifier = modifier
-            .aspectRatio(1f)
+            .aspectRatio(ratio)
             .alpha(fgAlpha)
             .snyggShadow(actionStyle)
             .snyggBorder(context, actionStyle)

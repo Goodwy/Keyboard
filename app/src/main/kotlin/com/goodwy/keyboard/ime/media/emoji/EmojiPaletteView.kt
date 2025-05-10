@@ -110,7 +110,7 @@ import kotlin.math.ceil
 
 private val EmojiCategoryValues = EmojiCategory.entries
 private val EmojiBaseWidth = 42.dp
-private val EmojiDefaultFontSize = 22.sp
+private val EmojiDefaultFontSize = 28.sp
 
 private val VariantsTriangleShapeLtr = GenericShape { size, _ ->
     moveTo(x = size.width, y = 0f)
@@ -324,7 +324,8 @@ fun EmojiPaletteView(
                         LazyVerticalGrid(
                             modifier = Modifier
                                 .fillMaxSize()
-                                .florisScrollbar(lazyListState, color = contentColor.copy(alpha = 0.28f)),
+                                .florisScrollbar(lazyListState, color = contentColor.copy(alpha = 0.28f))
+                                .padding(horizontal = 6.dp),
                             columns = GridCells.Adaptive(minSize = EmojiBaseWidth),
                             state = lazyListState,
                         ) {
@@ -378,6 +379,7 @@ private fun EmojiCategoriesTabRow(
     TabRow(
         modifier = Modifier
             .fillMaxWidth()
+            .padding(horizontal = 8.dp)
             .height(FlorisImeSizing.smartbarHeight),
         selectedTabIndex = selectedTabIndex,
         containerColor = Color.Transparent,
@@ -401,7 +403,7 @@ private fun EmojiCategoriesTabRow(
                 },
                 selected = activeCategory == category,
                 icon = { Icon(
-                    modifier = Modifier.size(ButtonDefaults.IconSize),
+                    modifier = Modifier.size(20.dp), //ButtonDefaults.IconSize
                     imageVector = category.icon(),
                     contentDescription = null,
                 ) },

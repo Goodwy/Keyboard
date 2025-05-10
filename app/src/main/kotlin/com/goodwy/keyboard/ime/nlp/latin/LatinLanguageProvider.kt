@@ -24,6 +24,7 @@ import com.goodwy.keyboard.ime.nlp.SpellingProvider
 import com.goodwy.keyboard.ime.nlp.SpellingResult
 import com.goodwy.keyboard.ime.nlp.SuggestionCandidate
 import com.goodwy.keyboard.ime.nlp.SuggestionProvider
+import com.goodwy.keyboard.ime.nlp.WordSuggestionCandidate
 import com.goodwy.keyboard.lib.devtools.flogDebug
 import com.goodwy.lib.android.readText
 import com.goodwy.lib.kotlin.guardedByLock
@@ -106,16 +107,19 @@ class LatinLanguageProvider(context: Context) : SpellingProvider, SuggestionProv
         isPrivateSession: Boolean,
     ): List<SuggestionCandidate> {
         return emptyList()
-        /*val suggestions = buildList {
+        /*val word = content.composingText.ifBlank { "next" }
+        val suggestions = buildList {
             for (n in 0 until maxCandidateCount) {
-                add(WordSuggestionCandidate(
+                add(
+                    WordSuggestionCandidate(
                     text = "$word$n",
                     secondaryText = if (n % 2 == 1) "secondary" else null,
                     confidence = 0.5,
                     isEligibleForAutoCommit = false,//n == 0 && word.startsWith("auto"),
                     // We set ourselves as the source provider so we can get notify events for our candidate
                     sourceProvider = this@LatinLanguageProvider,
-                ))
+                )
+                )
             }
         }
         return suggestions*/

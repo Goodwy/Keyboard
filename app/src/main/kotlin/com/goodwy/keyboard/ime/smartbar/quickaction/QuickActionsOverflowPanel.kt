@@ -17,9 +17,11 @@
 package com.goodwy.keyboard.ime.smartbar.quickaction
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
@@ -78,6 +80,9 @@ fun QuickActionsOverflowPanel() {
                 .padding(horizontal = 8.dp),
             columns = GridCells.Adaptive(FlorisImeSizing.smartbarHeight * 2.2f),
         ) {
+            item(span = { GridItemSpan(maxLineSpan) }) {
+                Spacer(modifier = Modifier.size(10.dp))
+            }
             items(visibleActions) { action ->
                 QuickActionButton(
                     action = action,

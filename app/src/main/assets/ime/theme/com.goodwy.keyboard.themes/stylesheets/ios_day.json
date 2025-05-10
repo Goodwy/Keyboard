@@ -224,7 +224,7 @@
   "emoji-key": {
     "background": "transparent",
     "foreground": "var(--on-background)",
-    "font-size": "22sp",
+    "font-size": "28sp",
     "shape": "var(--shape)"
   },
   "emoji-key:pressed": {

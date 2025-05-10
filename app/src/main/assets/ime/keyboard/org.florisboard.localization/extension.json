@@ -574,7 +574,7 @@
       "currencySet": "org.florisboard.currencysets:euro",
       "popupMapping": "org.florisboard.localization:sk",
       "preferred": {
-        "characters": "org.florisboard.layouts:qwertz"
+        "characters": "org.florisboard.layouts:qwertz_diacritical"
       }
     },
     {
@@ -583,7 +583,7 @@
       "currencySet": "org.florisboard.currencysets:euro",
       "popupMapping": "org.florisboard.localization:cs",
       "preferred": {
-        "characters": "org.florisboard.layouts:qwertz"
+        "characters": "org.florisboard.layouts:qwertz_diacritical"
       }
     },
     {

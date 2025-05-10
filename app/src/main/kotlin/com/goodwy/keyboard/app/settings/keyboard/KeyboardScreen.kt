@@ -74,6 +74,17 @@ fun KeyboardScreen() = FlorisScreen {
             )
             DividerRow(start = 16.dp)
             SwitchPreferenceRow(
+                prefs.keyboard.bottomPanelMode,
+                title = stringRes(com.goodwy.keyboard.strings.R.string.settings__language_switch_under_keyboard),
+            )
+            DividerRow(start = 16.dp)
+            SwitchPreferenceRow(
+                prefs.keyboard.bottomPanelMic,
+                title = stringRes(com.goodwy.keyboard.strings.R.string.settings__mic_under_keyboard),
+                enabledIf = { prefs.keyboard.bottomPanelMode isEqualTo true }
+            )
+            DividerRow(start = 16.dp)
+            SwitchPreferenceRow(
                 prefs.keyboard.utilityKeyEnabled,
                 title = stringRes(R.string.pref__keyboard__utility_key_enabled__label),
                 //summary = stringRes(R.string.pref__keyboard__utility_key_enabled__summary),

@@ -83,6 +83,8 @@
     <string name="settings__show_comma_key">Показать клавишу с запятой</string>
     <string name="settings__show_dot_key">Показать клавишу с точкой</string>
     <string name="settings__by_character_layout">На раскладке букв</string>
+    <string name="settings__language_switch_under_keyboard">Кнопка переключения языка под клавиатурой</string>
+    <string name="settings__mic_under_keyboard">Кнопка голосового ввода под клавиатурой</string>
     <string name="settings__keys">Клавиши</string>
     <string name="settings__uses_material_you__label">Использует цвета Material You</string>
     <string name="settings__keyboard_type">Тип клавиатуры</string>

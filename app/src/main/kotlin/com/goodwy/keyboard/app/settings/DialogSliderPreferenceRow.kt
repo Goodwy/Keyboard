@@ -441,6 +441,7 @@ internal fun <V> DialogSliderPreferenceRow(
                     Spacer(modifier = Modifier.size(16.dp))
                     Text(
                         modifier = Modifier
+                            .weight(1f)
                             .alpha(0.6f)
                             .padding(4.dp),
                         text = summary(primaryPrefValue, secondaryPrefValue),

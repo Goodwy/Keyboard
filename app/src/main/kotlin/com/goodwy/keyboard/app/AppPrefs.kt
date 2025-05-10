@@ -254,7 +254,7 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
         )
         val suggestionType = enum(
             key = "emoji__suggestion_type",
-            default = EmojiSuggestionType.LEADING_COLON,
+            default = EmojiSuggestionType.INLINE_TEXT,
         )
         val suggestionUpdateHistory = boolean(
             key = "emoji__suggestion_update_history",
@@ -279,7 +279,7 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
         )
         val emojiLastTab = enum(
             key = "media__emoji_last_tab",
-            default = EmojiCategory.RECENTLY_USED
+            default = EmojiCategory.SMILEYS_EMOTION
         )
         val emojiDefaultTab = enum(
             key = "media__emoji_default_tab",
@@ -612,6 +612,14 @@ class AppPrefs : PreferenceModel("florisboard-app-prefs") {
         )
         val dotKeyEnabled = boolean(
             key = "keyboard__dot_key_enabled",
+            default = true,
+        )
+        val bottomPanelMode = boolean(
+            key = "keyboard__bottom_panel_enabled",
+            default = false,
+        )
+        val bottomPanelMic = boolean(
+            key = "keyboard__bottom_panel_mic_enabled",
             default = true,
         )
 

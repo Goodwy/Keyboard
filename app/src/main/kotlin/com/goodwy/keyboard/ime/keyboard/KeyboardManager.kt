@@ -789,6 +789,8 @@ class KeyboardManager(context: Context) : InputKeyEventReceiver {
             KeyCode.VIEW_PHONE2 -> activeState.keyboardMode = KeyboardMode.PHONE2
             KeyCode.VIEW_SYMBOLS -> activeState.keyboardMode = KeyboardMode.SYMBOLS
             KeyCode.VIEW_SYMBOLS2 -> activeState.keyboardMode = KeyboardMode.SYMBOLS2
+            KeyCode.ACUTE -> addDiacriticsIfNeed(data)
+            KeyCode.CARON -> addDiacriticsIfNeed(data)
             else -> {
                 if (activeState.imeUiMode == ImeUiMode.MEDIA) {
                     nlpManager.getAutoCommitCandidate()?.let { commitCandidate(it) }
@@ -1043,6 +1045,126 @@ class KeyboardManager(context: Context) : InputKeyEventReceiver {
                 state = state,
                 subtype = Subtype.DEFAULT,
             )
+        }
+    }
+
+    //Adding diacritical marks in Czech and Slovak languages
+    private fun addDiacriticsIfNeed(data: KeyData) {
+        if (subtypeManager.activeSubtype.primaryLocale.language == "cs") {
+            if (data.code == KeyCode.ACUTE) {
+                val text = editorInstance.run { activeContent.getTextBeforeCursor(1) }
+                if (text.length == 1) {
+                    var needDelete = true
+                    val newText = when (text[0]) {
+                        'A' -> "Á"
+                        'a' -> "á"
+                        'E' -> "É"
+                        'e' -> "é"
+                        'I' -> "Í"
+                        'i' -> "í"
+                        'O' -> "Ó"
+                        'o' -> "ó"
+                        'U' -> "Ú"
+                        'u' -> "ú"
+                        'Y' -> "Ý"
+                        'y' -> "ý"
+                        else -> {
+                            needDelete = false
+                            data.asString(isForDisplay = false)
+                        }
+                    }
+                    if (needDelete) editorInstance.deleteBackwards()
+                    editorInstance.commitText(newText)
+                }
+            } else if (data.code == KeyCode.CARON) {
+                val text = editorInstance.run { activeContent.getTextBeforeCursor(1) }
+                if (text.length == 1) {
+                    var needDelete = true
+                    val newText = when (text[0]) {
+                        'C' -> "Č"
+                        'c' -> "č"
+                        'D' -> "Ď"
+                        'd' -> "ď"
+                        'E' -> "Ě"
+                        'e' -> "ě"
+                        'N' -> "Ň"
+                        'n' -> "ň"
+                        'R' -> "Ř"
+                        'r' -> "ř"
+                        'S' -> "Š"
+                        's' -> "š"
+                        'T' -> "Ť"
+                        't' -> "ť"
+                        'Z' -> "Ž"
+                        'z' -> "ž"
+                        else -> {
+                            needDelete = false
+                            data.asString(isForDisplay = false)
+                        }
+                    }
+                    if (needDelete) editorInstance.deleteBackwards()
+                    editorInstance.commitText(newText)
+                }
+            }
+        } else if (subtypeManager.activeSubtype.primaryLocale.language == "sk") {
+            if (data.code == KeyCode.ACUTE) {
+                val text = editorInstance.run { activeContent.getTextBeforeCursor(1) }
+                if (text.length == 1) {
+                    var needDelete = true
+                    val newText = when (text[0]) {
+                        'A' -> "Á"
+                        'a' -> "á"
+                        'E' -> "É"
+                        'e' -> "é"
+                        'I' -> "Í"
+                        'i' -> "í"
+                        'O' -> "Ó"
+                        'o' -> "ó"
+                        'U' -> "Ú"
+                        'u' -> "ú"
+                        'Y' -> "Ý"
+                        'y' -> "ý"
+                        'R' -> "Ŕ"
+                        'r' -> "ŕ"
+                        else -> {
+                            needDelete = false
+                            data.asString(isForDisplay = false)
+                        }
+                    }
+                    if (needDelete) editorInstance.deleteBackwards()
+                    editorInstance.commitText(newText)
+                }
+            } else if (data.code == KeyCode.CARON) {
+                val text = editorInstance.run { activeContent.getTextBeforeCursor(1) }
+                if (text.length == 1) {
+                    var needDelete = true
+                    val newText = when (text[0]) {
+                        'C' -> "Č"
+                        'c' -> "č"
+                        'D' -> "Ď"
+                        'd' -> "ď"
+                        'L' -> "Ĺ"
+                        'l' -> "ĺ"
+                        'N' -> "Ň"
+                        'n' -> "ň"
+                        'S' -> "Š"
+                        's' -> "š"
+                        'T' -> "Ť"
+                        't' -> "ť"
+                        'Z' -> "Ž"
+                        'z' -> "ž"
+                        else -> {
+                            needDelete = false
+                            data.asString(isForDisplay = false)
+                        }
+                    }
+                    if (needDelete) editorInstance.deleteBackwards()
+                    editorInstance.commitText(newText)
+                }
+            }
+        } else {
+            val text = data.asString(isForDisplay = false)
+            editorInstance.commitText(text)
         }
     }
 }

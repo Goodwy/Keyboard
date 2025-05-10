@@ -5,7 +5,7 @@
     "version": "0.1.0",
     "title": "Inkwell default themes",
     "description": "Default themes (both day and night) for the keyboard UI",
-    "maintainers": [ "Goodwy (https://play.google.com/store/apps/dev?id=8268163890866913014)" ],
+    "maintainers": [ "Goodwy (https://www.goodwy.dev)" ],
     "license": "apache-2.0"
   },
   "themes": [

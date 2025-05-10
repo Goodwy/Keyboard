@@ -137,7 +137,11 @@ object KeyCode {
     const val CJK_SPACE =                  12288
 
     //Goodwy
-    const val DOT =                   46 // .
-    const val EMAIL =                 64 // @
-    const val URI =                   47 // /
+    const val DOT =                           46 // .
+    const val EMAIL =                         64 // @
+    const val URI =                           47 // /
+    const val ACUTE =                        180 // ´ - diacritical symbol "čárka" Czech(Áá, Éé, Íí, Óó, Úú, Ýý),
+                                                                        // "dĺžeň" Slovak(Áá, Éé, Íí, Óó, Úú, Ýý, Ŕŕ)
+    const val CARON =                        711 // ˇ - diacritical symbol "háček" Czech(Čč, Ďď, Ěě, Ňň, Řř, Šš, Ťť, Žž),
+                                                                        // "mäkčeň" Slovak(Čč, Ďď, Ĺĺ, Ňň, Šš, Ťť, Žž)
 }

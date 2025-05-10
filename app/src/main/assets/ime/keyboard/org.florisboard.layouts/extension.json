@@ -32,6 +32,13 @@
         "modifier": "org.florisboard.layouts:armenian"
       },
       {
+        "id": "armenian_alt_phonetic",
+        "label": "Armenian (Phonetic)",
+        "authors": [ "patrickgold" ],
+        "direction": "ltr",
+        "modifier": "org.florisboard.layouts:armenian"
+      },
+      {
         "id": "azerbaijani",
         "label": "Azerbaijani",
         "authors": [ "nijatismayilzada" ],
@@ -324,6 +331,12 @@
         "id": "qwertz",
         "label": "QWERTZ",
         "authors": [ "patrickgold" ],
+        "direction": "ltr"
+      },
+      {
+        "id": "qwertz_diacritical",
+        "label": "QWERTZ (Alt)",
+        "authors": [ "Goodwy" ],
         "direction": "ltr"
       },
       {

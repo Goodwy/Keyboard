@@ -83,8 +83,8 @@ fun ThemeScreen() = FlorisScreen {
         val isPro by prefs.purchase.isPro.observeAsState()
         val isProSubs by prefs.purchase.isProSubs.observeAsState()
         val isProRustore by prefs.purchase.isProRustore.observeAsState()
-        val isProNoGP by prefs.purchase.isProNoGP.observeAsState()
-        val isProApp = isPro || isProSubs || isProRustore || isProNoGP
+//        val isProNoGP by prefs.purchase.isProNoGP.observeAsState()
+        val isProApp = isPro || isProSubs || isProRustore //|| isProNoGP
         var enabledShake by remember { mutableStateOf(false) }
         val haptic = LocalHapticFeedback.current
         if (!isProApp) {

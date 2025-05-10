@@ -78,6 +78,7 @@ import com.goodwy.keyboard.app.FlorisAppActivity
 import com.goodwy.keyboard.app.devtools.DevtoolsOverlay
 import com.goodwy.keyboard.app.florisPreferenceModel
 import com.goodwy.keyboard.ime.ImeUiMode
+import com.goodwy.keyboard.ime.bottompanel.BottomPanel
 import com.goodwy.keyboard.ime.clipboard.ClipboardInputLayout
 import com.goodwy.keyboard.ime.editor.EditorRange
 import com.goodwy.keyboard.ime.editor.FlorisEditorInfo
@@ -604,6 +605,7 @@ class FlorisImeService : LifecycleInputMethodService() {
                         .padding(bottom = bottomOffset),
                 ) {
                     val oneHandedMode by prefs.keyboard.oneHandedMode.observeAsState()
+                    val bottomPanelMode by prefs.keyboard.bottomPanelMode.observeAsState()
                     val oneHandedModeScaleFactor by prefs.keyboard.oneHandedModeScaleFactor.observeAsState()
                     val keyboardWeight = when {
                         oneHandedMode == OneHandedMode.OFF || configuration.isOrientationLandscape() -> 1f
@@ -616,16 +618,17 @@ class FlorisImeService : LifecycleInputMethodService() {
                         )
                     }
                     CompositionLocalProvider(LocalLayoutDirection provides layoutDirection) {
-                        Box(
+                        Column(
                             modifier = Modifier
                                 .weight(keyboardWeight)
                                 .wrapContentHeight(),
                         ) {
                             when (state.imeUiMode) {
                                 ImeUiMode.TEXT -> TextInputLayout()
-                                ImeUiMode.MEDIA -> MediaInputLayout()
+                                ImeUiMode.MEDIA -> MediaInputLayout(bottomPanelMode = bottomPanelMode)
                                 ImeUiMode.CLIPBOARD -> ClipboardInputLayout()
                             }
+                            if (bottomPanelMode) BottomPanel()
                         }
                     }
                     if (oneHandedMode == OneHandedMode.START && configuration.isOrientationPortrait()) {

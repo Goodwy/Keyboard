@@ -84,6 +84,8 @@
     <string name="settings__show_comma_key">Show comma key</string>
     <string name="settings__show_dot_key">Show dot key</string>
     <string name="settings__by_character_layout">On the layout of the letters</string>
+    <string name="settings__language_switch_under_keyboard">Language switch button under the keyboard</string>
+    <string name="settings__mic_under_keyboard">Voice input button under the keypad</string>
     <string name="settings__keys">Keys</string>
     <string name="settings__uses_material_you__label">Uses colors Material You</string>
     <string name="settings__keyboard_type">Keyboard type</string>

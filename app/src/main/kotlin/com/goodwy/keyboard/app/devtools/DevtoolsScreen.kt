@@ -229,7 +229,7 @@ fun DevtoolsScreen() = FlorisScreen {
                 endIcon = Icons.Rounded.ContentCopy,
             )
         }
-        Spacer(modifier = Modifier.size(32.dp))
+        Spacer(modifier = Modifier.size(82.dp))
 
         if (showDialog) {
             FlorisConfirmDeleteDialog(

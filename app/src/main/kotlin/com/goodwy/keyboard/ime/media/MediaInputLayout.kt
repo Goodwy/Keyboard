@@ -66,6 +66,7 @@ import com.goodwy.lib.snygg.ui.SnyggSurface
 @Composable
 fun MediaInputLayout(
     modifier: Modifier = Modifier,
+    bottomPanelMode: Boolean,
 ) {
     val context = LocalContext.current
     val keyboardManager by context.keyboardManager()
@@ -86,10 +87,11 @@ fun MediaInputLayout(
                 modifier = Modifier.weight(1f),
                 fullEmojiMappings = emojiLayoutDataMap,
             )
-            Row(
+            if (!bottomPanelMode) Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(FlorisImeSizing.keyboardRowBaseHeight * 0.8f),
+                    .height(FlorisImeSizing.keyboardRowBaseHeight * 0.8f)
+                    .padding(start = 6.dp, end = 6.dp),
             ) {
                 KeyboardLikeButton(
                     inputEventDispatcher = keyboardManager.inputEventDispatcher,
@@ -108,7 +110,8 @@ fun MediaInputLayout(
                     Icon(
                         modifier = Modifier.autoMirrorForRtl(),
                         imageVector = ImageVector.vectorResource(R.drawable.ic_backspace),
-                        contentDescription = stringRes(R.string.action__delete))
+                        contentDescription = null
+                    )
                 }
             }
         }
