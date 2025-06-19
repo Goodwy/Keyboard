@@ -95,8 +95,8 @@ fun PurchaseScreen() = FlorisScreen {
     val isPro by prefs.purchase.isPro.observeAsState()
     val isProSubs by prefs.purchase.isProSubs.observeAsState()
     val isProRustore by prefs.purchase.isProRustore.observeAsState()
-//    val isProNoGP by prefs.purchase.isProNoGP.observeAsState()
-    val isProApp = isPro || isProSubs || isProRustore //|| isProNoGP
+    val isProNoGP by prefs.purchase.isProNoGP.observeAsState()
+    val isProApp = isPro || isProSubs || isProRustore || isProNoGP
 
     val isPlayStoreInstalled by prefs.purchase.isPlayStoreInstalled.observeAsState()
     val isRuStoreInstalled by prefs.purchase.isRuStoreInstalled.observeAsState()
@@ -125,7 +125,7 @@ fun PurchaseScreen() = FlorisScreen {
     val isDialogOpen = remember { mutableStateOf(false) }
     val purchaseErrorRustore by prefs.purchase.purchaseErrorRustore.observeAsState()
 
-    if (isPlayStoreInstalled || isRuStoreInstalled) {
+    if (isRuStoreInstalled) { //isPlayStoreInstalled || isRuStoreInstalled
         actions {
             if (isPlayStoreInstalled && isRuStoreInstalled) {
                 if (useGooglePlay) {
@@ -208,17 +208,17 @@ fun PurchaseScreen() = FlorisScreen {
         val prices2 = if (useGooglePlay) { if (products2.valid) products2.price else failed } else productsRustore2.price
         val prices3 = if (useGooglePlay) { if (products3.valid) products3.price else failed } else productsRustore3.price
         val prices4 = if (useGooglePlay) { if (products4.valid) stringResource(id = StringsR.string.per_month, products4.price) else failed }
-                                else stringResource(id = StringsR.string.per_month, productsRustore4.price)
+        else stringResource(id = StringsR.string.per_month, productsRustore4.price)
         val prices5 = if (useGooglePlay) { if (products5.valid) stringResource(id = StringsR.string.per_month, products5.price) else failed }
-                                else stringResource(id = StringsR.string.per_month, productsRustore5.price)
+        else stringResource(id = StringsR.string.per_month, productsRustore5.price)
         val prices6 = if (useGooglePlay) { if (products6.valid) stringResource(id = StringsR.string.per_month, products6.price) else failed }
-                                else stringResource(id = StringsR.string.per_month, productsRustore6.price)
+        else stringResource(id = StringsR.string.per_month, productsRustore6.price)
         val prices7 = if (useGooglePlay) { if (products7.valid) stringResource(id = StringsR.string.per_year, products7.price) else failed }
-                                else stringResource(id = StringsR.string.per_year, productsRustore7.price)
+        else stringResource(id = StringsR.string.per_year, productsRustore7.price)
         val prices8 = if (useGooglePlay) { if (products8.valid) stringResource(id = StringsR.string.per_year, products8.price) else failed }
-                                else stringResource(id = StringsR.string.per_year, productsRustore8.price)
+        else stringResource(id = StringsR.string.per_year, productsRustore8.price)
         val prices9 = if (useGooglePlay) { if (products9.valid) stringResource(id = StringsR.string.per_year, products9.price) else failed }
-                                else stringResource(id = StringsR.string.per_year, productsRustore9.price)
+        else stringResource(id = StringsR.string.per_year, productsRustore9.price)
 
         val isPurchased1 = if (useGooglePlay) products1.purchased else productsRustore1.purchased
         val isPurchased2 = if (useGooglePlay) products2.purchased else productsRustore2.purchased
@@ -270,7 +270,7 @@ fun PurchaseScreen() = FlorisScreen {
             }
             Spacer(modifier = Modifier.size(16.dp))
 
-            if (isPlayStoreInstalled || isRuStoreInstalled) {
+            if (isRuStoreInstalled) { //isPlayStoreInstalled || isRuStoreInstalled
                 Text(
                     text = stringResource(StringsR.string.action_support_project),
                     fontSize = 18.sp,
@@ -768,11 +768,11 @@ fun PurchaseScreen() = FlorisScreen {
                 if (isDialogOpen.value) {
                     val signatureError = purchaseErrorRustore == "Application signature not correct"
                     val subtitle = if (signatureError) stringRes(StringsR.string.billing_error_application_signature_not_correct)
-                                            else stringRes(ru.rustore.sdk.billingclient.R.string.ru_store_user_unauthorized_title)
+                    else stringRes(ru.rustore.sdk.billingclient.R.string.ru_store_user_unauthorized_title)
                     JetPrefAlertDialog(
                         title = stringRes(R.string.error__title),
                         confirmLabel = if (signatureError) stringRes(id = ru.rustore.sdk.billingclient.R.string.ru_store_not_installed_button)
-                                        else stringRes(id = ru.rustore.sdk.billingclient.R.string.ru_store_user_unauthorized_button),
+                        else stringRes(id = ru.rustore.sdk.billingclient.R.string.ru_store_user_unauthorized_button),
                         onConfirm = {
                             if (signatureError) context.launchUrlNew("https://www.rustore.ru/catalog/app/$packageName")
                             else context.launchUrlNew("rustore://auth")
@@ -828,7 +828,7 @@ fun PurchaseScreen() = FlorisScreen {
                 ) {
                     Text(
                         modifier = Modifier.padding(horizontal = 24.dp),
-                        text = stringResource(StringsR.string.donate_text), //if (isPlayStoreInstalled) stringResource(StringsR.string.donate_text_no_gp) else stringResource(StringsR.string.donate_text),
+                        text = if (isPlayStoreInstalled) stringResource(StringsR.string.donate_text_no_gp) else stringResource(StringsR.string.donate_text),
                         textAlign = TextAlign.Center,
                     )
                     Spacer(modifier = Modifier.size(16.dp))
@@ -845,11 +845,11 @@ fun PurchaseScreen() = FlorisScreen {
                     Spacer(modifier = Modifier.size(8.dp))
                     Switch(
                         modifier = Modifier.scale(2f),
-                        checked = isPro, //if (isPlayStoreInstalled) isProNoGP else isPro,
+                        checked = if (isPlayStoreInstalled) isProNoGP else isPro,
                         onCheckedChange = {
-//                            if (isPlayStoreInstalled) prefs.purchase.isProNoGP.set(!isProNoGP)
-//                            else prefs.purchase.isPro.set(!isPro)
-                            prefs.purchase.isPro.set(!isPro)
+                            if (isPlayStoreInstalled) prefs.purchase.isProNoGP.set(!isProNoGP)
+                            else prefs.purchase.isPro.set(!isPro)
+
                         },
                     )
                     Spacer(modifier = Modifier.size(56.dp))
